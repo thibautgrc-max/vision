@@ -3,1007 +3,815 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Audit IA Conversion & Croissance — score, plan d'action, simulateur ROI, packs & abonnement." />
-  <title>Audit IA Conversion & Croissance — Ultra</title>
+  <meta name="description" content="Mini-audit conversion-first + simulateur de valeur. Objectif: déclencher un RDV / appel 15 min." />
+  <title>Mini-Audit Conversion-First — Simulation de Valeur</title>
 
   <style>
     :root{
-      --bg:#070A12;
-      --bg2:#0B1022;
+      --bg:#070A12; --bg2:#0B1022;
       --card:rgba(255,255,255,.06);
-      --card2:rgba(255,255,255,.10);
       --stroke:rgba(255,255,255,.12);
-      --text:rgba(255,255,255,.90);
-      --muted:rgba(255,255,255,.66);
+      --text:rgba(255,255,255,.92);
+      --muted:rgba(255,255,255,.70);
       --muted2:rgba(255,255,255,.52);
-      --accent:#7C5CFF;
-      --accent2:#00E0FF;
-      --good:#2EE59D;
-      --warn:#FFCC66;
-      --bad:#FF5C7A;
-      --shadow: 0 18px 45px rgba(0,0,0,.55);
-      --radius: 18px;
+      --a:#7C5CFF; --b:#00E0FF;
+      --good:#2EE59D; --warn:#FFCC66; --bad:#FF5C7A;
+      --r:18px; --r2:24px;
+      --shadow:0 24px 80px rgba(0,0,0,.45);
+      --max:1120px;
+      --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
     }
-
-    *{ box-sizing:border-box; }
-    html,body{ height:100%; }
+    *{box-sizing:border-box}
+    html,body{height:100%}
     body{
-      margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-      color:var(--text);
+      margin:0; font-family:var(--font); color:var(--text);
       background:
-        radial-gradient(1100px 700px at 20% 10%, rgba(124,92,255,.25), transparent 60%),
-        radial-gradient(1000px 700px at 80% 20%, rgba(0,224,255,.18), transparent 55%),
-        radial-gradient(900px 700px at 50% 100%, rgba(46,229,157,.10), transparent 55%),
-        linear-gradient(180deg, var(--bg), var(--bg2));
+        radial-gradient(1200px 600px at 10% 0%, rgba(124,92,255,.32), transparent 55%),
+        radial-gradient(900px 600px at 90% 10%, rgba(0,224,255,.22), transparent 60%),
+        radial-gradient(900px 700px at 50% 90%, rgba(46,229,157,.12), transparent 60%),
+        linear-gradient(180deg,var(--bg),var(--bg2));
       overflow-x:hidden;
     }
+    a{color:inherit;text-decoration:none}
+    .container{width:min(var(--max), calc(100% - 36px)); margin:0 auto}
 
-    .wrap{ max-width:1180px; margin:0 auto; padding:28px 16px 64px; }
-    .topbar{
-      display:flex; align-items:center; justify-content:space-between;
-      gap:12px; margin-bottom:18px;
+    /* Top */
+    .top{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(12px);
+      background: linear-gradient(180deg, rgba(7,10,18,.78), rgba(7,10,18,.35));
+      border-bottom:1px solid rgba(255,255,255,.10);
     }
-
-    .brand{
-      display:flex; align-items:center; gap:12px;
-      padding:12px 14px; border:1px solid var(--stroke); border-radius:999px;
-      background: rgba(255,255,255,.03);
-      backdrop-filter: blur(10px);
+    .top .row{
+      display:flex; align-items:center; justify-content:space-between; gap:12px;
+      padding:12px 0;
     }
-    .dot{
-      width:10px; height:10px; border-radius:50%;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      box-shadow: 0 0 0 6px rgba(124,92,255,.10);
+    .brand{display:flex; align-items:center; gap:10px}
+    .logo{
+      width:34px;height:34px;border-radius:12px;
+      background: radial-gradient(circle at 30% 30%, rgba(0,224,255,.9), rgba(124,92,255,.9));
+      border:1px solid rgba(255,255,255,.18);
+      box-shadow: 0 14px 36px rgba(124,92,255,.28);
     }
-    .brand b{ font-size:14px; letter-spacing:.2px; }
-    .brand span{ color:var(--muted); font-size:12px; }
-
-    .actions{ display:flex; gap:10px; flex-wrap:wrap; }
+    .title{line-height:1.1}
+    .title b{display:block;font-size:13px;letter-spacing:.2px}
+    .title small{display:block;font-size:12px;color:var(--muted2)}
+    .nav{display:flex; gap:10px; align-items:center; flex-wrap:wrap; justify-content:flex-end}
+    .nav a{font-size:13px;color:var(--muted);padding:8px 10px;border-radius:12px;border:1px solid transparent}
+    .nav a:hover{color:rgba(255,255,255,.92);border-color:rgba(255,255,255,.14);background:rgba(255,255,255,.04)}
     .btn{
-      appearance:none; border:1px solid var(--stroke); color:var(--text);
-      background: rgba(255,255,255,.03);
-      padding:10px 12px; border-radius:999px;
-      cursor:pointer; transition:.18s transform, .18s background, .18s border;
-      font-weight:600; font-size:13px; letter-spacing:.2px;
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      padding:11px 14px; border-radius:14px;
+      border:1px solid rgba(255,255,255,.16);
+      background: rgba(255,255,255,.05);
+      color:rgba(255,255,255,.92);
+      font-size:13px; font-weight:800; letter-spacing:.15px;
+      cursor:pointer; user-select:none; transition:.18s ease;
+      white-space:nowrap;
     }
-    .btn:hover{ transform: translateY(-1px); background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.20); }
-    .btn.primary{
-      border:0;
-      background: linear-gradient(135deg, rgba(124,92,255,.95), rgba(0,224,255,.70));
-      color:#081022;
+    .btn:hover{transform:translateY(-1px); background:rgba(255,255,255,.08); border-color:rgba(255,255,255,.22)}
+    .btn:active{transform:translateY(0)}
+    .primary{
+      border:1px solid rgba(124,92,255,.55);
+      background: linear-gradient(135deg, rgba(124,92,255,.95), rgba(0,224,255,.75));
+      box-shadow: 0 18px 46px rgba(124,92,255,.22);
     }
-    .btn.primary:hover{ filter:saturate(1.1); }
-    .btn.ghost{ background: transparent; }
-
-    .hero{
-      display:grid;
-      grid-template-columns: 1.1fr .9fr;
-      gap:16px;
-      align-items:stretch;
-      margin-top:10px;
+    .wa{
+      border:1px solid rgba(46,229,157,.45);
+      background: linear-gradient(135deg, rgba(46,229,157,.85), rgba(0,224,255,.42));
+      box-shadow: 0 18px 46px rgba(46,229,157,.16);
     }
-
-    @media (max-width: 980px){
-      .hero{ grid-template-columns: 1fr; }
+    .ghost{
+      border:1px solid rgba(255,255,255,.16);
+      background: rgba(255,255,255,.04);
     }
-
-    .card{
-      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
-      border:1px solid var(--stroke);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      overflow:hidden;
-    }
-    .card .hd{
-      padding:18px 18px 12px;
-      border-bottom:1px solid rgba(255,255,255,.08);
-      display:flex; align-items:flex-start; justify-content:space-between; gap:12px;
-    }
-    .card .hd h1, .card .hd h2{
-      margin:0;
-      font-size:18px;
-      letter-spacing:.2px;
-    }
-    .card .hd p{
-      margin:8px 0 0;
-      color:var(--muted);
-      font-size:13px;
-      line-height:1.35;
-    }
-    .card .bd{ padding:18px; }
 
     .pill{
       display:inline-flex; align-items:center; gap:8px;
-      padding:8px 10px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.04);
-      color:var(--muted);
-      font-size:12px; font-weight:700;
-      white-space:nowrap;
-    }
-    .pill .k{ color:var(--text); font-weight:800; }
-
-    .grid{
-      display:grid; gap:12px;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-    @media (max-width: 720px){ .grid{ grid-template-columns: 1fr; } }
-
-    .field{
-      background: rgba(255,255,255,.03);
-      border:1px solid rgba(255,255,255,.10);
-      border-radius: 14px;
-      padding:12px;
-    }
-    .field label{
-      display:flex; align-items:center; justify-content:space-between; gap:8px;
-      font-size:12px; font-weight:800; letter-spacing:.2px;
-      color:var(--muted);
-      margin-bottom:8px;
-    }
-    .field label small{ color:var(--muted2); font-weight:700; }
-    .field input, .field select{
-      width:100%;
-      background: rgba(0,0,0,.25);
+      padding:7px 10px; border-radius:999px;
       border:1px solid rgba(255,255,255,.12);
-      color:var(--text);
-      padding:12px 12px;
-      border-radius: 12px;
-      outline:none;
-      font-size:14px;
+      background: rgba(255,255,255,.06);
+      color:var(--muted); font-size:12px; font-weight:750;
     }
-    .field input:focus, .field select:focus{
-      border-color: rgba(124,92,255,.55);
-      box-shadow: 0 0 0 4px rgba(124,92,255,.15);
-    }
+    .dot{width:8px;height:8px;border-radius:50%; background:var(--good); box-shadow:0 0 0 6px rgba(46,229,157,.08)}
 
-    .split{
-      display:grid; gap:12px;
-      grid-template-columns: 1fr;
-    }
-
-    .steps{
-      display:flex; gap:8px; flex-wrap:wrap;
-      margin: 0 0 14px;
-    }
-    .step{
-      flex:1 1 160px;
-      padding:10px 10px;
-      border-radius: 14px;
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.03);
-      color:var(--muted);
-      font-size:12px;
-      font-weight:800;
-      display:flex; align-items:center; justify-content:space-between; gap:10px;
-    }
-    .step.on{
-      color:rgba(8,16,34,.95);
-      border-color: transparent;
-      background: linear-gradient(135deg, rgba(124,92,255,.88), rgba(0,224,255,.55));
-    }
-    .step .n{
-      width:22px; height:22px; border-radius:999px;
-      display:grid; place-items:center;
-      border:1px solid rgba(255,255,255,.14);
-      background: rgba(0,0,0,.20);
-      color:var(--text);
-      font-size:12px;
-    }
-    .step.on .n{ border-color: rgba(0,0,0,.12); background: rgba(255,255,255,.18); color: rgba(8,16,34,.95); }
-
-    .row{
-      display:flex; gap:10px; flex-wrap:wrap;
-      margin-top: 14px;
-    }
-
-    .kpis{
-      display:grid; gap:10px;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-    @media (max-width: 900px){ .kpis{ grid-template-columns: 1fr; } }
-
-    .kpi{
-      padding:14px 14px;
-      border-radius: 16px;
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.03);
-    }
-    .kpi .t{ color:var(--muted); font-size:12px; font-weight:900; letter-spacing:.25px; }
-    .kpi .v{ margin-top:10px; font-size:20px; font-weight:900; letter-spacing:.2px; }
-    .kpi .s{ margin-top:6px; color:var(--muted2); font-size:12px; line-height:1.35; }
-
-    .scoreWrap{
-      display:flex; align-items:center; gap:12px; flex-wrap:wrap;
-    }
-    .ring{
-      width:92px; height:92px; border-radius:50%;
-      display:grid; place-items:center;
-      background:
-        conic-gradient(var(--accent) calc(var(--p)*1%), rgba(255,255,255,.10) 0),
-        radial-gradient(circle at 30% 30%, rgba(0,224,255,.18), transparent 50%);
-      border:1px solid rgba(255,255,255,.10);
-      box-shadow: 0 10px 30px rgba(0,0,0,.35);
-    }
-    .ring .in{
-      width:76px; height:76px; border-radius:50%;
-      display:grid; place-items:center;
-      background: rgba(7,10,18,.80);
-      border:1px solid rgba(255,255,255,.10);
-      text-align:center;
-    }
-    .ring .in b{ display:block; font-size:22px; letter-spacing:.2px; }
-    .ring .in span{ display:block; font-size:11px; color:var(--muted); font-weight:800; margin-top:2px; }
-
-    .tag{
-      display:inline-flex; align-items:center;
-      padding:8px 10px; border-radius:999px;
-      font-size:12px; font-weight:900;
-      border:1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.03);
-    }
-    .tag.good{ color: var(--good); }
-    .tag.warn{ color: var(--warn); }
-    .tag.bad{ color: var(--bad); }
-
-    .list{
-      margin:0; padding-left: 18px;
-      color:var(--muted);
-      line-height:1.5;
-      font-size:13px;
-    }
-
-    .packs{
-      display:grid; gap:12px;
-      grid-template-columns: repeat(3, minmax(0,1fr));
-    }
-    @media (max-width: 980px){ .packs{ grid-template-columns: 1fr; } }
-
-    .pack{
-      border-radius: 18px;
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.03);
+    /* Layout */
+    header{padding:18px 0 10px}
+    .grid{display:grid; grid-template-columns: 1.05fr .95fr; gap:12px; align-items:stretch}
+    .card{
+      border-radius:var(--r2);
+      border:1px solid var(--stroke);
+      background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
+      box-shadow: var(--shadow);
       overflow:hidden;
       position:relative;
     }
-    .pack .phd{
-      padding:16px 16px 12px;
-      border-bottom:1px solid rgba(255,255,255,.08);
+    .card:before{
+      content:""; position:absolute; inset:-1px;
+      background:
+        radial-gradient(560px 220px at 12% 0%, rgba(0,224,255,.14), transparent 60%),
+        radial-gradient(560px 240px at 88% 20%, rgba(124,92,255,.16), transparent 65%);
+      opacity:.9; pointer-events:none;
     }
-    .pack .phd b{ display:block; font-size:15px; letter-spacing:.2px; }
-    .pack .phd span{ display:block; color:var(--muted); font-size:12px; margin-top:6px; line-height:1.35; }
-    .pack .pbd{ padding:16px; }
-    .price{
-      display:flex; align-items:baseline; gap:8px;
-      margin: 8px 0 12px;
+    .card > *{position:relative}
+
+    .hero{padding:18px}
+    .hero h1{margin:10px 0 10px; font-size:34px; line-height:1.06; letter-spacing:-.8px}
+    .grad{
+      background:linear-gradient(90deg, rgba(0,224,255,.95), rgba(124,92,255,.95));
+      -webkit-background-clip:text; background-clip:text; color:transparent;
     }
-    .price .big{ font-size:26px; font-weight:950; letter-spacing:.2px; }
-    .price .per{ color:var(--muted2); font-size:12px; font-weight:900; }
-    .badge{
-      position:absolute; top:12px; right:12px;
+    .hero p{margin:0 0 14px; color:var(--muted); line-height:1.6; font-size:14px; max-width:70ch}
+    .hero .row{display:flex; gap:10px; align-items:center; flex-wrap:wrap}
+
+    .mini-grid{display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap:10px; margin-top:12px}
+    .mini{
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+      border-radius:16px; padding:12px;
+    }
+    .mini b{display:block; font-size:13px; margin-bottom:4px}
+    .mini span{display:block; font-size:12px; color:var(--muted2); line-height:1.35}
+
+    /* Form */
+    .panel{padding:16px}
+    .panel h2{margin:0 0 6px; font-size:15px}
+    .panel p{margin:0 0 10px; color:var(--muted); font-size:12.8px; line-height:1.55}
+    form{display:grid; gap:10px}
+    label{display:grid; gap:6px; font-size:12px; color:var(--muted2); font-weight:800; letter-spacing:.15px}
+    input,select,textarea{
+      width:100%; padding:12px 12px; border-radius:14px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(0,0,0,.18);
+      color:rgba(255,255,255,.92);
+      outline:none; font:inherit; font-size:13px;
+      transition:.18s ease;
+    }
+    textarea{resize:vertical}
+    input:focus,select:focus,textarea:focus{border-color: rgba(0,224,255,.40); box-shadow:0 0 0 6px rgba(0,224,255,.10)}
+    .r2{display:grid; grid-template-columns: 1fr 1fr; gap:10px}
+
+    .toggle{
+      display:flex; gap:10px; align-items:flex-start;
+      padding:12px; border-radius:16px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+    }
+    .toggle b{display:block; font-size:13px}
+    .toggle span{display:block; font-size:12px; color:var(--muted2); line-height:1.4}
+    .toggle input{width:18px;height:18px; margin-top:2px; accent-color: var(--b)}
+    .chips{display:flex; gap:8px; flex-wrap:wrap; margin-top:8px}
+    .chip{
+      font-size:11px; font-weight:900;
       padding:7px 10px; border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(0,0,0,.14);
+      color:rgba(255,255,255,.82);
+    }
+
+    /* Simulation */
+    section{padding:10px 0 26px}
+    .sim{display:grid; grid-template-columns: .95fr 1.05fr; gap:12px; align-items:stretch}
+    .box{padding:16px}
+    .box h3{margin:0 0 10px; font-size:15px}
+    .muted{color:var(--muted); font-size:12.8px; line-height:1.55}
+
+    .score{
+      display:flex; align-items:flex-end; justify-content:space-between; gap:12px; flex-wrap:wrap;
+      margin:6px 0 10px;
+    }
+    .big{display:flex; align-items:flex-end; gap:10px}
+    .big .n{font-size:44px; line-height:1; letter-spacing:-1px}
+    .badge{
+      font-size:12px; font-weight:950;
+      padding:7px 10px; border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(0,0,0,.16);
+      color:rgba(255,255,255,.90);
+      white-space:nowrap;
+    }
+    .badge.good{border-color:rgba(46,229,157,.35); background:rgba(46,229,157,.10); color:var(--good)}
+    .badge.warn{border-color:rgba(255,204,102,.35); background:rgba(255,204,102,.10); color:var(--warn)}
+    .badge.bad{border-color:rgba(255,92,122,.35); background:rgba(255,92,122,.10); color:var(--bad)}
+
+    .meter{
+      width:160px; height:10px; border-radius:999px;
+      background: rgba(255,255,255,.10);
+      border:1px solid rgba(255,255,255,.12);
+      overflow:hidden;
+    }
+    .meter > div{
+      height:100%;
+      width:0%;
+      background: linear-gradient(90deg, rgba(255,92,122,.9), rgba(255,204,102,.9), rgba(46,229,157,.9));
+      border-radius:999px;
+      transition: width .6s ease;
+    }
+
+    .stack{display:grid; gap:10px; margin-top:10px}
+    .stack .item{
+      display:flex; gap:10px; align-items:flex-start;
+      padding:12px; border-radius:16px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+    }
+    .ic{
+      width:36px;height:36px;border-radius:14px;
+      background: linear-gradient(135deg, rgba(124,92,255,.95), rgba(0,224,255,.55));
+      border:1px solid rgba(255,255,255,.18);
+      display:flex; align-items:center; justify-content:center;
+      font-weight:950;
+      flex:0 0 auto;
+      box-shadow: 0 18px 40px rgba(124,92,255,.18);
+    }
+    .item b{display:block; font-size:13px; margin-bottom:4px}
+    .item span{display:block; font-size:12px; color:var(--muted2); line-height:1.4}
+
+    .deliver{
+      padding:14px; border-radius:18px;
+      border:1px dashed rgba(255,255,255,.18);
+      background: rgba(0,0,0,.16);
+      min-height:264px;
+      font-size:12.8px; line-height:1.6; color:rgba(255,255,255,.86);
+    }
+    .deliver b{color:rgba(255,255,255,.94)}
+    .hl{
+      display:inline-block; padding:2px 8px; border-radius:999px;
+      border:1px solid rgba(0,224,255,.25);
+      background: rgba(0,224,255,.08);
+      color:rgba(255,255,255,.92);
+      font-weight:950; letter-spacing:.15px;
+    }
+
+    /* Packs */
+    .packs{display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap:12px; margin-top:12px}
+    .pack{
+      padding:16px; border-radius:var(--r2);
+      border:1px solid rgba(255,255,255,.12);
+      background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
+      position:relative; overflow:hidden;
+    }
+    .pack:before{
+      content:""; position:absolute; inset:-1px;
+      background: radial-gradient(560px 260px at 10% 0%, rgba(0,224,255,.10), transparent 60%);
+      opacity:.9; pointer-events:none;
+    }
+    .pack > *{position:relative}
+    .pack .head{display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap}
+    .pack h4{margin:0; font-size:14px}
+    .pack .tag{font-size:11px; font-weight:950; padding:6px 10px; border-radius:999px; border:1px solid rgba(255,255,255,.14); background: rgba(0,0,0,.14); color:rgba(255,255,255,.85)}
+    .pack p{margin:10px 0 10px; color:var(--muted2); font-size:12.5px; line-height:1.55}
+    .list{margin:0; padding:0; list-style:none; display:grid; gap:8px}
+    .list li{display:flex; gap:10px; align-items:flex-start; font-size:12.5px; line-height:1.45; color:rgba(255,255,255,.82)}
+    .check{
+      width:18px;height:18px;border-radius:6px;
+      background: rgba(46,229,157,.14);
+      border:1px solid rgba(46,229,157,.35);
+      display:flex; align-items:center; justify-content:center;
+      color:var(--good);
+      font-weight:950; flex:0 0 auto;
+      margin-top:1px;
+    }
+    .highlight{border-color: rgba(124,92,255,.35); box-shadow: 0 22px 70px rgba(124,92,255,.18)}
+    .ribbon{
+      position:absolute; top:12px; right:12px;
       font-size:11px; font-weight:950;
-      background: linear-gradient(135deg, rgba(124,92,255,.88), rgba(0,224,255,.55));
-      color:#081022;
-    }
-    .pack.reco{
-      border-color: rgba(124,92,255,.35);
-      background: linear-gradient(180deg, rgba(124,92,255,.10), rgba(255,255,255,.03));
+      padding:7px 10px; border-radius:999px;
+      border:1px solid rgba(124,92,255,.45);
+      background: rgba(124,92,255,.18);
+      color:rgba(255,255,255,.9);
     }
 
-    .divider{ height:1px; background: rgba(255,255,255,.08); margin:14px 0; }
+    /* CTA */
+    .cta{
+      margin-top:12px;
+      padding:14px; border-radius:18px;
+      border:1px solid rgba(46,229,157,.22);
+      background: rgba(46,229,157,.06);
+    }
+    .cta .row{display:flex; gap:10px; flex-wrap:wrap; align-items:center; justify-content:space-between}
+    .cta .left b{display:block}
+    .cta .left span{display:block; color:rgba(255,255,255,.78); font-size:12.5px}
+    .cta .right{display:flex; gap:10px; flex-wrap:wrap}
 
-    .note{
-      color:var(--muted2);
+    footer{
+      padding:20px 0 34px;
+      color:rgba(255,255,255,.45);
       font-size:12px;
-      line-height:1.45;
+      border-top:1px solid rgba(255,255,255,.10);
     }
 
-    .footer{
-      margin-top:16px;
-      display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap;
-      color:var(--muted2); font-size:12px;
+    @media (max-width: 980px){
+      .grid{grid-template-columns:1fr}
+      .mini-grid{grid-template-columns:1fr}
+      .sim{grid-template-columns:1fr}
+      .packs{grid-template-columns:1fr}
     }
-
-    /* PRINT */
     @media print{
-      body{ background:#fff; color:#111; }
-      .btn, .actions{ display:none !important; }
-      .card{ box-shadow:none; border-color:#ddd; }
-      .field, .kpi, .pack{ border-color:#ddd; }
-      .brand{ border-color:#ddd; }
-      .pill, .tag{ border-color:#ddd; }
+      .top, #formCard, footer { display:none !important; }
+      body{background:#fff !important; color:#111 !important;}
+      .card,.pack{box-shadow:none !important; border:1px solid #ddd !important; background:#fff !important;}
+      .deliver{background:#fff !important; color:#111 !important;}
+      .badge,.pill,.chip{border-color:#ddd !important; background:#f6f6f6 !important; color:#111 !important;}
+      a{color:#111 !important; text-decoration:none !important;}
     }
   </style>
 </head>
 
 <body>
-  <div class="wrap">
-    <div class="topbar">
+  <div class="top">
+    <div class="container row">
       <div class="brand">
-        <div class="dot"></div>
-        <div>
-          <b>Audit IA — Conversion & Croissance</b>
-          <span>Score instantané • Plan d’action • Simulateur ROI • Packs & abonnement</span>
+        <div class="logo" aria-hidden="true"></div>
+        <div class="title">
+          <b>Mini-Audit Conversion-First</b>
+          <small>Simulation de valeur • plan 14 jours • RDV 15 min</small>
         </div>
       </div>
-
-      <div class="actions">
-        <button class="btn ghost" id="btnReset">Reset</button>
-        <button class="btn ghost" id="btnDemo">Demo data</button>
-        <button class="btn" id="btnPrint">Exporter PDF</button>
-        <button class="btn primary" id="btnNextTop">Continuer</button>
+      <div class="nav">
+        <a href="#audit">Audit</a>
+        <a href="#resultat">Résultat</a>
+        <a href="#packs">Solutions</a>
+        <button class="btn primary" type="button" id="goBtn">Lancer</button>
       </div>
-    </div>
-
-    <div class="hero">
-      <!-- LEFT: INPUT + STEPS -->
-      <section class="card" id="cardForm">
-        <div class="hd">
-          <div>
-            <h1>Audit express (2–4 min)</h1>
-            <p>On capte la situation actuelle, on calcule la marge d’optimisation, et on sort une reco “pack + roadmap” utilisable direct en appel.</p>
-          </div>
-          <div class="pill"><span class="k" id="stepLabel">Étape 1</span><span id="stepSub">/ 3</span></div>
-        </div>
-
-        <div class="bd">
-          <div class="steps" aria-label="progress">
-            <div class="step on" data-step="1"><span>Profil & pipeline</span><span class="n">1</span></div>
-            <div class="step" data-step="2"><span>Performance & coûts</span><span class="n">2</span></div>
-            <div class="step" data-step="3"><span>Objectif & contact</span><span class="n">3</span></div>
-          </div>
-
-          <!-- STEP 1 -->
-          <div class="split" data-panel="1">
-            <div class="grid">
-              <div class="field">
-                <label>Secteur <small>ex: e-commerce, B2B, services</small></label>
-                <select id="sector">
-                  <option value="ecom">E-commerce</option>
-                  <option value="leadgen">Leadgen (demande devis)</option>
-                  <option value="saas">SaaS / abonnement</option>
-                  <option value="local">Local / retail</option>
-                  <option value="b2b">B2B (cycle long)</option>
-                </select>
-              </div>
-              <div class="field">
-                <label>Maturité digitale <small>stack & process</small></label>
-                <select id="maturity">
-                  <option value="1">Début (pas d’analytics / pas de CRM)</option>
-                  <option value="2">Intermédiaire (tracking partiel)</option>
-                  <option value="3">Avancé (CRM + analytics + automatisations)</option>
-                </select>
-              </div>
-
-              <div class="field">
-                <label>Source principale <small>top canal</small></label>
-                <select id="topChannel">
-                  <option value="ads">Ads (Meta/Google/TikTok)</option>
-                  <option value="seo">SEO / contenu</option>
-                  <option value="social">Réseaux sociaux</option>
-                  <option value="referral">Partenariats / referral</option>
-                  <option value="mixed">Mix</option>
-                </select>
-              </div>
-
-              <div class="field">
-                <label>Trafic mensuel <small>visites / sessions</small></label>
-                <input id="traffic" type="number" min="0" step="1" placeholder="ex: 25000" />
-              </div>
-
-              <div class="field">
-                <label>Leads / commandes mensuelles <small>volume</small></label>
-                <input id="volume" type="number" min="0" step="1" placeholder="ex: 600" />
-              </div>
-
-              <div class="field">
-                <label>Taux de conversion <small>si inconnu, calc auto</small></label>
-                <input id="cr" type="number" min="0" step="0.01" placeholder="ex: 2.4" />
-              </div>
-            </div>
-
-            <div class="row">
-              <button class="btn primary" id="btnNext1">Next →</button>
-              <button class="btn" id="btnCalc1">Recalculer</button>
-            </div>
-          </div>
-
-          <!-- STEP 2 -->
-          <div class="split" data-panel="2" style="display:none;">
-            <div class="grid">
-              <div class="field">
-                <label>Panier moyen (AOV) <small>€</small></label>
-                <input id="aov" type="number" min="0" step="0.01" placeholder="ex: 79.90" />
-              </div>
-              <div class="field">
-                <label>Marge brute <small>%</small></label>
-                <input id="gm" type="number" min="0" max="100" step="0.1" placeholder="ex: 45" />
-              </div>
-
-              <div class="field">
-                <label>Dépense marketing mensuelle <small>€</small></label>
-                <input id="adspend" type="number" min="0" step="0.01" placeholder="ex: 5000" />
-              </div>
-              <div class="field">
-                <label>CAC actuel <small>€ (si inconnu, calc auto)</small></label>
-                <input id="cac" type="number" min="0" step="0.01" placeholder="ex: 18.50" />
-              </div>
-
-              <div class="field">
-                <label>Taux de conversion cible <small>%</small></label>
-                <input id="crTarget" type="number" min="0" step="0.01" placeholder="ex: 3.2" />
-              </div>
-              <div class="field">
-                <label>Gain AOV cible <small>€ (upsell / pricing)</small></label>
-                <input id="aovLift" type="number" min="0" step="0.01" placeholder="ex: 10" />
-              </div>
-            </div>
-
-            <div class="row">
-              <button class="btn" id="btnPrev2">← Back</button>
-              <button class="btn primary" id="btnNext2">Next →</button>
-              <button class="btn" id="btnCalc2">Recalculer</button>
-            </div>
-          </div>
-
-          <!-- STEP 3 -->
-          <div class="split" data-panel="3" style="display:none;">
-            <div class="grid">
-              <div class="field">
-                <label>Objectif principal <small>priorité</small></label>
-                <select id="goal">
-                  <option value="conv">Augmenter le taux de conversion</option>
-                  <option value="aov">Augmenter le panier moyen</option>
-                  <option value="cac">Réduire CAC / meilleure rentabilité</option>
-                  <option value="ret">Rétention / LTV</option>
-                  <option value="speed">Accélérer ventes (pipeline & closing)</option>
-                </select>
-              </div>
-
-              <div class="field">
-                <label>Horizon <small>temps</small></label>
-                <select id="horizon">
-                  <option value="30">30 jours</option>
-                  <option value="60">60 jours</option>
-                  <option value="90" selected>90 jours</option>
-                  <option value="180">180 jours</option>
-                </select>
-              </div>
-
-              <div class="field">
-                <label>Nom entreprise <small>optionnel</small></label>
-                <input id="company" type="text" placeholder="ex: Studio X" />
-              </div>
-              <div class="field">
-                <label>Site / Instagram <small>optionnel</small></label>
-                <input id="url" type="text" placeholder="ex: https://..." />
-              </div>
-
-              <div class="field">
-                <label>Contact <small>email ou téléphone</small></label>
-                <input id="contact" type="text" placeholder="ex: contact@..." />
-              </div>
-
-              <div class="field">
-                <label>Note rapide <small>douleur principale</small></label>
-                <input id="note" type="text" placeholder="ex: panier abandonné, leads froids..." />
-              </div>
-            </div>
-
-            <div class="row">
-              <button class="btn" id="btnPrev3">← Back</button>
-              <button class="btn primary" id="btnFinish">Générer l’audit</button>
-            </div>
-
-            <div class="divider"></div>
-            <div class="note">
-              En call : remplis vite les champs “approx” → l’IA calc une estimation et sort une reco instant.
-              Ensuite tu proposes le pack recommandé + un “quick win” à faire sous 7 jours.
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- RIGHT: RESULTS -->
-      <aside class="card" id="cardResult">
-        <div class="hd">
-          <div>
-            <h2>Résultats live</h2>
-            <p>Score + opportunité + roadmap + pack conseillé. Conçu pour claquer en démarchage (preuve + chiffres).</p>
-          </div>
-          <div class="pill"><span class="k" id="liveStatus">LIVE</span><span id="liveHint">auto-calcul</span></div>
-        </div>
-
-        <div class="bd">
-          <div class="scoreWrap">
-            <div class="ring" id="ring" style="--p:35">
-              <div class="in">
-                <b id="scoreVal">35</b>
-                <span>/ 100</span>
-              </div>
-            </div>
-            <div>
-              <div id="scoreTag" class="tag warn">Potentiel moyen</div>
-              <div style="margin-top:10px; color:var(--muted); font-size:13px; line-height:1.4;">
-                <b id="headline" style="color:var(--text)">Focus : tracking + conversion</b><br/>
-                <span id="subline">On peut sécuriser des gains rapides avec 3 actions “low effort / high impact”.</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="divider"></div>
-
-          <div class="kpis">
-            <div class="kpi">
-              <div class="t">CA mensuel estimé</div>
-              <div class="v" id="kpiRev">—</div>
-              <div class="s" id="kpiRevS">Basé sur volume × AOV (estimations)</div>
-            </div>
-            <div class="kpi">
-              <div class="t">Marge brute estimée</div>
-              <div class="v" id="kpiGross">—</div>
-              <div class="s" id="kpiGrossS">Basé sur marge brute %</div>
-            </div>
-            <div class="kpi">
-              <div class="t">Upside 90j (simulateur)</div>
-              <div class="v" id="kpiUpside">—</div>
-              <div class="s" id="kpiUpsideS">Delta CR + delta AOV (cible)</div>
-            </div>
-          </div>
-
-          <div class="divider"></div>
-
-          <div>
-            <div class="pill" style="margin-bottom:10px;">
-              <span class="k">Roadmap</span><span>quick wins + sprint</span>
-            </div>
-            <ul class="list" id="roadmap">
-              <li>Renseigne les champs pour générer une roadmap personnalisée.</li>
-            </ul>
-          </div>
-
-          <div class="divider"></div>
-
-          <div class="pill" style="margin-bottom:10px;">
-            <span class="k">Pack recommandé</span><span id="packRecoMini">—</span>
-          </div>
-
-          <div class="packs" id="packs">
-            <div class="pack" data-pack="starter">
-              <div class="phd">
-                <b>Starter — Audit + actions</b>
-                <span>Idéal pour démarrer propre : tracking, pages, quick wins conversion.</span>
-              </div>
-              <div class="pbd">
-                <div class="price"><div class="big">490€</div><div class="per">one-shot</div></div>
-                <ul class="list">
-                  <li>Score complet + plan 30 jours</li>
-                  <li>Checklist exécution (Notion)</li>
-                  <li>1 sprint quick wins (5 actions)</li>
-                  <li>Débrief 45 min</li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="pack reco" data-pack="growth">
-              <div class="badge">Best ROI</div>
-              <div class="phd">
-                <b>Growth — Conversion Sprint</b>
-                <span>Optimisation conversion + AOV + acquisition : sprints, tests, automatisations.</span>
-              </div>
-              <div class="pbd">
-                <div class="price"><div class="big">990€</div><div class="per">/ mois</div></div>
-                <ul class="list">
-                  <li>Roadmap 90 jours + KPI board</li>
-                  <li>2 sprints/mois (A/B, CRO, pages)</li>
-                  <li>Automations CRM (emails, relances)</li>
-                  <li>Support async + 1 call/sem</li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="pack" data-pack="scale">
-              <div class="phd">
-                <b>Scale — Full Pipeline</b>
-                <span>De “lead” à “cash” : tracking, ads, CRM, scripts, closing, rétention.</span>
-              </div>
-              <div class="pbd">
-                <div class="price"><div class="big">1990€</div><div class="per">/ mois</div></div>
-                <ul class="list">
-                  <li>Stack complet + tracking server-side</li>
-                  <li>Optimisation Ads + créas</li>
-                  <li>Sales scripts + séquences</li>
-                  <li>Rétention/LTV + upsell</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          <div class="divider"></div>
-
-          <div class="note" id="callScript">
-            Script call (1 phrase) : “Je vous génère un audit chiffré en 2 minutes, puis je vous montre exactement combien vous pouvez gagner sur 90 jours, et ce qu’on implémente pour y arriver.”
-          </div>
-
-          <div class="footer">
-            <div>Version : Ultra • Offline • 1 fichier (HTML)</div>
-            <div id="stamp">—</div>
-          </div>
-        </div>
-      </aside>
     </div>
   </div>
 
+  <header>
+    <div class="container grid">
+      <div class="card hero">
+        <span class="pill"><span class="dot" aria-hidden="true"></span> Objectif: + demandes qualifiées & image premium</span>
+        <h1>
+          Votre <span class="grad">image</span> + votre <span class="grad">visibilité</span> + votre <span class="grad">conversion</span>,
+          en un plan clair.
+        </h1>
+        <p>
+          En 60 secondes, vous obtenez une simulation: <b>ce qu’on améliore</b>, <b>ce qu’on installe</b> et <b>comment ça génère plus de demandes</b>.
+          Pensé pour être présenté pendant un appel.
+        </p>
+
+        <div class="mini-grid">
+          <div class="mini"><b>Visuels Premium</b><span>Drone + caméra + montage: crédibilité instant et différenciation.</span></div>
+          <div class="mini"><b>Machine à Demandes</b><span>Site/landing + tunnel + suivi + relances: zéro lead perdu.</span></div>
+          <div class="mini"><b>Acquisition</b><span>SEO local + Google + Ads Meta/Google: flux stable de prospects.</span></div>
+        </div>
+
+        <div class="row" style="margin-top:12px">
+          <span class="pill">Temps: <b style="color:rgba(255,255,255,.92)">60–90s</b></span>
+          <span class="pill">Résultat: <b style="color:rgba(255,255,255,.92)">Score + Stack + Pack conseillé</b></span>
+          <button class="btn ghost" type="button" id="pdfBtn">PDF</button>
+        </div>
+      </div>
+
+      <aside class="card panel" id="formCard">
+        <h2 id="audit">Générer votre simulation</h2>
+        <p>Quelques infos, puis on vous sort un plan d’actions + les solutions adaptées à votre entreprise.</p>
+
+        <form id="auditForm">
+          <label>
+            Entreprise *
+            <input name="company" required placeholder="Ex: Nom de l’entreprise" autocomplete="organization" />
+          </label>
+
+          <div class="r2">
+            <label>
+              Secteur *
+              <select name="sector" required>
+                <option value="" disabled selected>Choisir</option>
+                <option>Commerce local</option>
+                <option>Restauration</option>
+                <option>Sport / Club</option>
+                <option>Immobilier</option>
+                <option>Artisan / BTP</option>
+                <option>Services B2B</option>
+                <option>Services B2C</option>
+                <option>E-commerce</option>
+                <option>Autre</option>
+              </select>
+            </label>
+            <label>
+              Ville *
+              <input name="city" required placeholder="Ex: Montpellier" autocomplete="address-level2" />
+            </label>
+          </div>
+
+          <div class="r2">
+            <label>
+              Email pro *
+              <input name="email" required type="email" placeholder="contact@..." autocomplete="email" />
+            </label>
+            <label>
+              Objectif *
+              <select name="goal" required>
+                <option value="" disabled selected>Choisir</option>
+                <option>Plus d’appels / demandes</option>
+                <option>Plus de RDV qualifiés</option>
+                <option>Plus de ventes</option>
+                <option>Améliorer l’image & la confiance</option>
+                <option>Dominer localement</option>
+              </select>
+            </label>
+          </div>
+
+          <label>
+            Site (optionnel)
+            <input name="website" placeholder="https://..." inputmode="url" autocomplete="url" />
+          </label>
+
+          <label>
+            Frein principal (1 phrase) *
+            <textarea name="pain" rows="2" required placeholder="Ex: peu de demandes / visuels pas pro / pas d’avis / pas de pub / pas de suivi"></textarea>
+          </label>
+
+          <div class="toggle">
+            <input id="needVisual" type="checkbox" checked />
+            <div>
+              <b>Visuels Premium (Drone + Caméra + Montage)</b>
+              <span>Valorise l’image, augmente la confiance, améliore le taux de conversion.</span>
+              <div class="chips">
+                <span class="chip">Drone</span><span class="chip">Caméra</span><span class="chip">Mini-film</span><span class="chip">Reels/TikTok</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="toggle">
+            <input id="needDigital" type="checkbox" checked />
+            <div>
+              <b>Conversion Digitale (Site + SEO + Tunnel + Suivi)</b>
+              <span>Machine à demandes: pages qui convertissent + suivi + relance + Google.</span>
+              <div class="chips">
+                <span class="chip">Site</span><span class="chip">SEO</span><span class="chip">Landing</span><span class="chip">Tunnel</span><span class="chip">Avis</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="toggle">
+            <input id="needAds" type="checkbox" checked />
+            <div>
+              <b>Acquisition (Ads Meta/Google)</b>
+              <span>Flux stable de prospects + optimisation continue.</span>
+              <div class="chips">
+                <span class="chip">Meta Ads</span><span class="chip">Google Ads</span><span class="chip">Tracking</span><span class="chip">Optimisation</span>
+              </div>
+            </div>
+          </div>
+
+          <button class="btn primary" type="submit" id="submitBtn">Générer le résultat</button>
+        </form>
+      </aside>
+    </div>
+  </header>
+
+  <section id="resultat">
+    <div class="container sim">
+      <div class="card box">
+        <h3>Score & Priorités</h3>
+
+        <div class="score">
+          <div class="big">
+            <div class="n" id="scoreN">—</div>
+            <div style="padding-bottom:6px">
+              <div style="color:var(--muted2); font-size:13px">/100</div>
+              <div id="scoreTag" class="badge warn">Simulation</div>
+            </div>
+          </div>
+          <div class="meter"><div id="meterFill"></div></div>
+        </div>
+
+        <div class="stack" id="stack">
+          <div class="item">
+            <div class="ic" aria-hidden="true">⚡</div>
+            <div>
+              <b>Ce que vous allez voir ici</b>
+              <span>Une simulation claire: <b>priorités</b> + <b>stack recommandée</b> + <b>pack conseillé</b>.</span>
+              <div class="chips">
+                <span class="chip">Image</span><span class="chip">Conversion</span><span class="chip">Acquisition</span><span class="chip">Suivi</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="cta">
+          <div class="row">
+            <div class="left">
+              <b>Étape suivante: RDV 15 min</b>
+              <span>On valide l’objectif et on lance l’exécution du pack conseillé.</span>
+            </div>
+            <div class="right">
+              <a class="btn wa" id="waBtn" href="#" target="_blank" rel="noopener">WhatsApp</a>
+              <a class="btn primary" id="calBtn" href="#" target="_blank" rel="noopener">Réserver</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card box">
+        <h3>Plan 14 jours + Simulation de valeur</h3>
+        <div class="deliver" id="deliver">
+          Remplissez l’audit pour afficher votre plan personnalisé.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="packs">
+    <div class="container">
+      <div class="card box" style="margin-bottom:12px">
+        <h3>Solutions (packs)</h3>
+        <div class="muted">
+          Packs conçus pour répondre à 100% des besoins: image premium, conversion digitale, acquisition et suivi.
+        </div>
+      </div>
+
+      <div class="packs">
+        <div class="pack">
+          <div class="head">
+            <h4>Pack Fondation</h4>
+            <span class="tag">Conversion</span>
+          </div>
+          <p>Base solide: présence propre + pages qui convertissent + Google optimisé.</p>
+          <ul class="list">
+            <li><span class="check">✓</span> Site vitrine pro + sécurité + mises à jour</li>
+            <li><span class="check">✓</span> SEO local + Google Business (optimisé)</li>
+            <li><span class="check">✓</span> Landing “offre principale” + CTA unique</li>
+            <li><span class="check">✓</span> Avis + preuves + FAQ objections</li>
+          </ul>
+        </div>
+
+        <div class="pack highlight">
+          <span class="ribbon">Recommandé</span>
+          <div class="head">
+            <h4>Pack Impact</h4>
+            <span class="tag">Image + Conversion</span>
+          </div>
+          <p>Effet premium immédiat: visuels drone/caméra + montage + contenus + pages qui convertissent.</p>
+          <ul class="list">
+            <li><span class="check">✓</span> Drone + caméra (photos/vidéos) + mini-film</li>
+            <li><span class="check">✓</span> Montage + déclinaisons Reels/TikTok/Stories</li>
+            <li><span class="check">✓</span> Landing + tunnel simple + suivi leads</li>
+            <li><span class="check">✓</span> Optimisation mensuelle conversion</li>
+          </ul>
+        </div>
+
+        <div class="pack">
+          <div class="head">
+            <h4>Pack Dominance</h4>
+            <span class="tag">Acquisition</span>
+          </div>
+          <p>Flux stable de prospects: Ads + tracking + optimisation continue + suivi des leads.</p>
+          <ul class="list">
+            <li><span class="check">✓</span> Meta Ads / Google Ads (mise en place + réglages)</li>
+            <li><span class="check">✓</span> Tracking + événements + tableau de suivi</li>
+            <li><span class="check">✓</span> Relances J+1/J+3 + pipeline simple</li>
+            <li><span class="check">✓</span> Reporting clair + actions mensuelles</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      Mini-audit + simulateur de valeur. Présentable en appel. Export PDF disponible.
+    </div>
+  </footer>
+
   <script>
-    // ---------- UTIL ----------
-    const $ = (id) => document.getElementById(id);
-    const money = (n) => {
-      if (!isFinite(n)) return "—";
-      return new Intl.NumberFormat("fr-FR", { style:"currency", currency:"EUR", maximumFractionDigits:0 }).format(n);
-    };
-    const num = (v) => {
-      const x = parseFloat(String(v).replace(",", "."));
-      return isFinite(x) ? x : 0;
-    };
-    const clamp = (x, a, b) => Math.max(a, Math.min(b, x));
-    const nowStamp = () => {
-      const d = new Date();
-      return d.toLocaleString("fr-FR", { year:"numeric", month:"2-digit", day:"2-digit", hour:"2-digit", minute:"2-digit" });
+    const CONFIG = {
+      WHATSAPP_NUMBER: "33600000000",          // sans "+"
+      CALENDLY_URL: "https://calendly.com/votre-lien/15min",
+      WEBHOOK_URL: ""                          // optionnel
     };
 
-    // ---------- STATE ----------
-    let step = 1;
+    const $ = (s, r=document) => r.querySelector(s);
+    const clamp = (n, a, b) => Math.max(a, Math.min(b, n));
+    function safe(s){ return String(s||"").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
 
-    const els = {
-      sector: $("sector"),
-      maturity: $("maturity"),
-      topChannel: $("topChannel"),
-      traffic: $("traffic"),
-      volume: $("volume"),
-      cr: $("cr"),
-
-      aov: $("aov"),
-      gm: $("gm"),
-      adspend: $("adspend"),
-      cac: $("cac"),
-      crTarget: $("crTarget"),
-      aovLift: $("aovLift"),
-
-      goal: $("goal"),
-      horizon: $("horizon"),
-      company: $("company"),
-      url: $("url"),
-      contact: $("contact"),
-      note: $("note"),
-    };
-
-    // ---------- NAV STEPS ----------
-    function setStep(n){
-      step = clamp(n, 1, 3);
-      $("stepLabel").textContent = "Étape " + step;
-      $("stepSub").textContent = "/ 3";
-
-      document.querySelectorAll("[data-panel]").forEach(p => {
-        p.style.display = (parseInt(p.getAttribute("data-panel"),10) === step) ? "" : "none";
+    function waLink(message){
+      return `https://wa.me/${CONFIG.WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+    }
+    function labelFromScore(s){
+      if(s >= 82) return {txt:"Prêt à scaler", cls:"good"};
+      if(s >= 62) return {txt:"Gros potentiel", cls:"warn"};
+      return {txt:"Fuites importantes", cls:"bad"};
+    }
+    async function sendLead(payload){
+      try{ localStorage.setItem("last_audit", JSON.stringify(payload)); }catch(e){}
+      if(!CONFIG.WEBHOOK_URL) return { ok:true, skipped:true };
+      const res = await fetch(CONFIG.WEBHOOK_URL, {
+        method:"POST",
+        headers:{ "Content-Type":"application/json" },
+        body: JSON.stringify(payload)
       });
-
-      document.querySelectorAll(".step").forEach(s => {
-        const on = parseInt(s.getAttribute("data-step"),10) === step;
-        s.classList.toggle("on", on);
-      });
-
-      $("btnNextTop").textContent = (step < 3) ? "Continuer" : "Générer";
+      return { ok:res.ok, status:res.status };
     }
 
-    // ---------- CORE CALC ----------
-    function getInputs(){
-      const traffic = num(els.traffic.value);
-      const volume = num(els.volume.value);
-      let cr = num(els.cr.value);
+    function computeScore({hasSite, needVisual, needDigital, needAds, painText, goal}){
+      let s = 72;
 
-      // If CR empty and traffic+volume available, auto-calc
-      if ((!els.cr.value || cr === 0) && traffic > 0 && volume > 0){
-        cr = (volume / traffic) * 100;
-      }
+      if(!hasSite) s -= 14;
+      if(painText.includes("peu de demandes") || painText.includes("pas de demandes")) s -= 10;
+      if(painText.includes("avis") || painText.includes("confiance") || painText.includes("image")) s -= 8;
+      if(painText.includes("lent") || painText.includes("mobile")) s -= 6;
+      if(painText.includes("suivi") || painText.includes("relance") || painText.includes("crm")) s -= 8;
 
-      const aov = num(els.aov.value);
-      const gm = num(els.gm.value) / 100;
-      const adspend = num(els.adspend.value);
-      let cac = num(els.cac.value);
+      // Activation des leviers (signal d'engagement + adéquation)
+      if(needVisual) s += 6;
+      if(needDigital) s += 6;
+      if(needAds) s += 6;
 
-      // If CAC empty and volume+adspend available, auto-calc
-      if ((!els.cac.value || cac === 0) && volume > 0 && adspend > 0){
-        cac = adspend / volume;
-      }
+      if(goal.includes("Dominer")) s += 3;
+      if(goal.includes("confiance") || goal.includes("image")) s += 2;
 
-      const crTarget = num(els.crTarget.value);
-      const aovLift = num(els.aovLift.value);
-      const horizonDays = parseInt(els.horizon.value, 10) || 90;
-
-      return { traffic, volume, cr, aov, gm, adspend, cac, crTarget, aovLift, horizonDays };
+      return clamp(Math.round(s), 28, 92);
     }
 
-    function computeScore(i){
-      // score: 0..100 based on data completeness + efficiency + maturity + targets
-      // measurable levers: CR, CAC vs gross profit, maturity, tracking (proxy), channel mix (proxy)
-      const maturity = parseInt(els.maturity.value, 10) || 1;
-
-      const dataCompleteness =
-        (i.traffic>0) + (i.volume>0) + (i.aov>0) + (i.gm>0) + (i.adspend>0 || i.cac>0);
-
-      // Efficiency heuristics
-      // gross profit per order ~ aov*gm ; compare to cac
-      const gpPerOrder = i.aov * i.gm;
-      const unitProfitAfterAds = gpPerOrder - (i.cac || 0);
-      const profitRatio = gpPerOrder > 0 ? (unitProfitAfterAds / gpPerOrder) : 0;
-
-      // CR typical ranges depend on sector
-      const sector = els.sector.value;
-      let crBenchLow = 1.0, crBenchHigh = 3.0;
-      if (sector === "ecom"){ crBenchLow = 1.2; crBenchHigh = 3.2; }
-      if (sector === "leadgen"){ crBenchLow = 2.5; crBenchHigh = 8.0; }
-      if (sector === "saas"){ crBenchLow = 0.8; crBenchHigh = 2.2; }
-      if (sector === "local"){ crBenchLow = 1.5; crBenchHigh = 4.0; }
-      if (sector === "b2b"){ crBenchLow = 0.6; crBenchHigh = 1.8; }
-
-      const crScore = clamp(((i.cr - crBenchLow) / (crBenchHigh - crBenchLow)) * 25, 0, 25);
-      const profitScore = clamp((profitRatio) * 25, -10, 25); // can be negative if ads kill margin
-      const maturityScore = [0, 12, 18, 25][maturity] || 12;
-      const dataScore = clamp(dataCompleteness * 6, 0, 18);
-
-      // penalty if no data
-      const penalty = (dataCompleteness < 3) ? 15 : 0;
-
-      let score = crScore + profitScore + maturityScore + dataScore - penalty;
-      score = clamp(Math.round(score), 0, 100);
-
-      return { score, crBenchLow, crBenchHigh, profitRatio, unitProfitAfterAds, gpPerOrder };
-    }
-
-    function computeUpside(i){
-      // Baseline monthly revenue
-      const revM = i.volume * i.aov;
-      const grossM = revM * i.gm;
-
-      // Target scenario:
-      // if crTarget provided, estimate new volume = traffic * crTarget
-      // else if not provided, add +20% to volume as default improvement
-      let volTarget = i.volume;
-      if (i.traffic > 0 && i.crTarget > 0){
-        volTarget = i.traffic * (i.crTarget / 100);
-      } else {
-        volTarget = i.volume * 1.2;
-      }
-
-      const aovTarget = i.aov + (i.aovLift || 0);
-
-      const revTargetM = volTarget * aovTarget;
-      const grossTargetM = revTargetM * i.gm;
-
-      // We estimate upside over horizonDays, with linear ramp (conservative)
-      const months = i.horizonDays / 30;
-      const deltaGrossM = Math.max(0, grossTargetM - grossM);
-      const upside = deltaGrossM * months * 0.65; // ramp factor
-
-      return { revM, grossM, volTarget, aovTarget, revTargetM, grossTargetM, upside };
-    }
-
-    function roadmapFrom(i, s, u){
-      const sector = els.sector.value;
-      const goal = els.goal.value;
+    function buildStack({needVisual, needDigital, needAds, painText, hasSite}){
+      const leaks = [];
+      if(!hasSite || painText.includes("pas de site") || painText.includes("site")) leaks.push("Parcours client à renforcer (page offre + CTA + mobile)");
+      if(painText.includes("avis") || painText.includes("confiance") || painText.includes("image")) leaks.push("Confiance à augmenter (preuves, avis, visuels premium)");
+      if(painText.includes("suivi") || painText.includes("relance") || painText.includes("crm")) leaks.push("Leads perdus (réponse auto + relances J+1/J+3)");
+      if(painText.includes("pub") || painText.includes("ads") || painText.includes("meta") || painText.includes("google")) leaks.push("Acquisition à structurer (tracking + campagnes + optimisation)");
+      if(leaks.length === 0) leaks.push("Clarté de l’offre + preuves + vitesse (gros impact conversion)");
 
       const items = [];
-      // universal
-      items.push("Tracking clean (GA4/Pixel) + événements clés (view, add_to_cart, lead, purchase).");
-      items.push("Pages à fort impact : home + page produit/service + page preuve (cas, avis, garanties).");
-      items.push("Offre : packaging (starter / growth / premium) + angle “résultat mesurable”.");
-
-      // CR lever
-      if (goal === "conv" || i.cr < (s.crBenchLow + 0.3)){
-        items.push("CRO sprint : headlines, CTA, friction checkout/form, trust (livraison/retours/FAQ).");
-        items.push("Relances : email/SMS (abandons + post-lead) + séquences 7 jours.");
+      if(needVisual){
+        items.push({ic:"🎥", title:"Visuels Premium (Drone + Caméra + Montage)", desc:"Image premium + différenciation + hausse conversion.", chips:["Drone","Caméra","Mini-film","Reels/TikTok"]});
+      } else {
+        items.push({ic:"✅", title:"Crédibilité (preuves + avis + FAQ)", desc:"Réassurance instant pour accélérer la décision.", chips:["Avis","FAQ","Garanties","Portfolio"]});
       }
 
-      // AOV lever
-      if (goal === "aov" || (i.aovLift > 0)){
-        items.push("AOV : bundles, upsell one-click, seuil livraison offerte, pricing psychology.");
+      if(needDigital){
+        items.push({ic:"🧲", title:"Conversion (Site/Landing + Tunnel + SEO)", desc:"Pages qui convertissent + SEO local + Google optimisé.", chips:["Site","Landing","Tunnel","SEO","Google"]});
+        items.push({ic:"⚡", title:"Suivi (réponse auto + relances)", desc:"Zéro lead perdu: WhatsApp/email + pipeline simple.", chips:["Auto","Relance","WhatsApp","Pipeline"]});
       }
 
-      // CAC lever
-      if (goal === "cac" || s.profitRatio < 0.25){
-        items.push("Ads : restructure campagnes + créas (3 hooks) + page dédiée par angle.");
-        items.push("Qualif lead : formulaires intelligents + scoring + nurturing (CRM).");
+      if(needAds){
+        items.push({ic:"📈", title:"Acquisition (Meta Ads / Google Ads)", desc:"Flux stable de prospects + optimisation continue.", chips:["Meta Ads","Google Ads","Tracking","Optimisation"]});
+      } else {
+        items.push({ic:"📍", title:"Visibilité locale (SEO + Avis)", desc:"Capter la demande organique et sécuriser la position locale.", chips:["SEO","Local","Avis"]});
       }
 
-      // Retention
-      if (goal === "ret"){
-        items.push("Rétention : séquences post-achat, programme fidélité, offres récurrentes, NPS.");
-      }
-
-      // Sector-specific
-      if (sector === "leadgen" || sector === "b2b"){
-        items.push("Closing : script + objections + calendrier + preuve (before/after, ROI).");
-        items.push("Pipeline : CRM stages + SLAs + relances automatiques (J+1, J+3, J+7).");
-      }
-
-      // Prioritize 6 items max (call-friendly)
-      return items.slice(0, 6);
+      return { leaks, items };
     }
 
-    function pickPack(i, s, u){
-      // Heuristic: low maturity or missing tracking -> Starter
-      const maturity = parseInt(els.maturity.value, 10) || 1;
+    function renderStack(stack){
+      const root = $("#stack");
+      root.innerHTML = "";
 
-      const hasBasics = (i.traffic>0 && i.volume>0 && i.aov>0 && i.gm>0);
-      const bigUpside = u.upside >= 8000; // threshold
-      const marginUnderPressure = (s.profitRatio < 0.2);
+      const leakHTML = stack.leaks.map(x => `<span class="chip">${safe(x)}</span>`).join("");
 
-      let pack = "starter";
-      if (hasBasics && maturity >= 2) pack = "growth";
-      if (bigUpside && maturity >= 2) pack = "growth";
-      if (bigUpside && !marginUnderPressure && (i.adspend >= 8000 || i.volume >= 1500)) pack = "scale";
-      if (marginUnderPressure && maturity >= 2) pack = "scale";
+      root.innerHTML += `
+        <div class="item">
+          <div class="ic" aria-hidden="true">🧠</div>
+          <div>
+            <b>Priorités identifiées</b>
+            <span>Ce qui bloque le plus souvent la conversion et la prise de contact.</span>
+            <div class="chips">${leakHTML}</div>
+          </div>
+        </div>
+      `;
 
-      // Score override:
-      if (s.score <= 35) pack = "starter";
-      if (s.score >= 70 && (i.adspend >= 6000 || i.volume >= 1200)) pack = "scale";
-
-      return pack;
-    }
-
-    function paintPack(pack){
-      const cards = document.querySelectorAll(".pack");
-      cards.forEach(c => c.classList.remove("reco"));
-      const target = document.querySelector(`.pack[data-pack="${pack}"]`);
-      if (target) target.classList.add("reco");
-      const map = {
-        starter: "Starter (one-shot)",
-        growth: "Growth (abonnement)",
-        scale: "Scale (abonnement)"
-      };
-      $("packRecoMini").textContent = map[pack] || "—";
-    }
-
-    function updateUI(){
-      const i = getInputs();
-
-      // Stamp
-      $("stamp").textContent = "Généré : " + nowStamp();
-
-      // KPI baseline
-      const u = computeUpside(i);
-      $("kpiRev").textContent = money(u.revM);
-      $("kpiGross").textContent = money(u.grossM);
-      $("kpiUpside").textContent = money(u.upside);
-
-      // Score
-      const s = computeScore(i);
-      $("scoreVal").textContent = s.score;
-      $("ring").style.setProperty("--p", s.score);
-
-      // Tag + headline
-      const tag = $("scoreTag");
-      tag.classList.remove("good","warn","bad");
-
-      let label = "Potentiel moyen";
-      let cls = "warn";
-      let head = "Focus : tracking + conversion";
-      let sub = "On peut sécuriser des gains rapides avec 3 actions “low effort / high impact”.";
-
-      if (s.score >= 75){
-        label = "Potentiel élevé";
-        cls = "good";
-        head = "Focus : scale & optimisation";
-        sub = "La base est solide : on peut accélérer via sprints + automatisations + ads.";
-      } else if (s.score <= 35){
-        label = "Potentiel critique";
-        cls = "bad";
-        head = "Focus : foundations (preuve + tracking)";
-        sub = "On stoppe les fuites, on mesure tout, et on remet une offre qui convertit.";
-      }
-
-      tag.textContent = label;
-      tag.classList.add(cls);
-      $("headline").textContent = head;
-      $("subline").textContent = sub;
-
-      // Roadmap
-      const items = roadmapFrom(i, s, u);
-      const ul = $("roadmap");
-      ul.innerHTML = "";
-      items.forEach(x => {
-        const li = document.createElement("li");
-        li.textContent = x;
-        ul.appendChild(li);
+      stack.items.forEach(it=>{
+        const chips = it.chips.map(c=>`<span class="chip">${safe(c)}</span>`).join("");
+        root.innerHTML += `
+          <div class="item">
+            <div class="ic" aria-hidden="true">${safe(it.ic)}</div>
+            <div>
+              <b>${safe(it.title)}</b>
+              <span>${safe(it.desc)}</span>
+              <div class="chips">${chips}</div>
+            </div>
+          </div>
+        `;
       });
-
-      // Pack reco
-      const pack = pickPack(i, s, u);
-      paintPack(pack);
-
-      // Update CR/CAC fields if auto computed and empty
-      if ((!els.cr.value || num(els.cr.value) === 0) && i.traffic>0 && i.volume>0){
-        els.cr.value = (i.cr).toFixed(2);
-      }
-      if ((!els.cac.value || num(els.cac.value) === 0) && i.volume>0 && i.adspend>0){
-        els.cac.value = (i.cac).toFixed(2);
-      }
     }
 
-    // ---------- EVENTS ----------
-    function bindLive(){
-      const inputs = document.querySelectorAll("input, select");
-      inputs.forEach(el => el.addEventListener("input", updateUI));
-      inputs.forEach(el => el.addEventListener("change", updateUI));
+    function recommendPack({needVisual, needDigital, needAds, score, goal}){
+      // Reco simple et claire pour un appel
+      if(needAds || goal.includes("Dominer")) return "Pack Dominance";
+      if(needVisual && needDigital) return "Pack Impact";
+      if(score < 62) return "Pack Fondation";
+      return "Pack Impact";
     }
 
-    function resetAll(){
-      Object.values(els).forEach(el => { if (el && el.tagName === "INPUT") el.value = ""; });
-      els.sector.value = "ecom";
-      els.maturity.value = "1";
-      els.topChannel.value = "ads";
-      els.goal.value = "conv";
-      els.horizon.value = "90";
-      updateUI();
-      setStep(1);
+    function renderPlan(lead, score, stack, pack){
+      const plan14 = [
+        "J0–J1: Promesse claire + CTA unique + preuves (avis/portfolio) + optimisation mobile",
+        "J2–J4: Landing “offre principale” + formulaire court + tracking (événements)",
+        "J5–J7: Google Business + avis + SEO local + relances J+1/J+3 (zéro lead perdu)",
+        "J8–J14: Contenus réseaux (Reels/TikTok) + optimisation conversion + (option) Ads Meta/Google"
+      ];
+
+      const planHTML = plan14.map(x=>`<li>${safe(x)}</li>`).join("");
+
+      const visuelLine = lead.needVisual
+        ? "<b>Visuels premium:</b> drone + caméra + montage + formats réseaux (image premium immédiate)."
+        : "<b>Crédibilité:</b> preuves + avis + FAQ + portfolio (confiance immédiate).";
+
+      const digitalLine = lead.needDigital
+        ? "<b>Conversion digitale:</b> site/landing + SEO + Google + tunnel + suivi."
+        : "<b>Conversion:</b> page offre + CTA + preuves (version light).";
+
+      const adsLine = lead.needAds
+        ? "<b>Acquisition:</b> Meta/Google Ads + tracking + optimisation continue."
+        : "<b>Acquisition:</b> priorité SEO/avis/local (ads optionnelles).";
+
+      $("#deliver").innerHTML = `
+        <b>${safe(lead.company)}</b> — ${safe(lead.city)}<br>
+        <b>Objectif:</b> ${safe(lead.goal)}<br>
+        <b>Score:</b> <span class="hl">${score}/100</span> • ${safe(labelFromScore(score).txt)}<br><br>
+
+        ${visuelLine}<br>
+        ${digitalLine}<br>
+        ${adsLine}<br><br>
+
+        <b>Pack conseillé:</b> <span class="hl">${safe(pack)}</span><br><br>
+
+        <b>Plan 14 jours:</b>
+        <ul>${planHTML}</ul>
+
+        <b>Résultat attendu:</b> plus de demandes qualifiées via <b>image + confiance + parcours + suivi</b>.
+      `;
     }
 
-    function demo(){
-      els.sector.value = "ecom";
-      els.maturity.value = "2";
-      els.topChannel.value = "ads";
-      els.traffic.value = "42000";
-      els.volume.value = "820";
-      els.cr.value = ""; // let auto calc
-      els.aov.value = "78.5";
-      els.gm.value = "48";
-      els.adspend.value = "9000";
-      els.cac.value = ""; // auto calc
-      els.crTarget.value = "3.1";
-      els.aovLift.value = "9";
-      els.goal.value = "conv";
-      els.horizon.value = "90";
-      els.company.value = "Studio X";
-      els.url.value = "https://example.com";
-      els.contact.value = "contact@studiox.fr";
-      els.note.value = "Beaucoup d’abandons panier + trafic Ads";
-      updateUI();
+    function setScoreUI(score){
+      $("#scoreN").textContent = score;
+      $("#meterFill").style.width = clamp(score,0,100) + "%";
+      const lab = labelFromScore(score);
+      const tag = $("#scoreTag");
+      tag.textContent = lab.txt;
+      tag.className = "badge " + lab.cls;
     }
 
-    // Buttons
-    $("btnNext1").addEventListener("click", () => setStep(2));
-    $("btnNext2").addEventListener("click", () => setStep(3));
-    $("btnPrev2").addEventListener("click", () => setStep(1));
-    $("btnPrev3").addEventListener("click", () => setStep(2));
+    function updateCTA(lead, score, pack){
+      const msg =
+`Bonjour,
+Je viens de générer votre mini-audit pour ${lead.company} (${lead.city}).
 
-    $("btnCalc1").addEventListener("click", updateUI);
-    $("btnCalc2").addEventListener("click", updateUI);
+Score: ${score}/100 — ${labelFromScore(score).txt}
+Objectif: ${lead.goal}
+Pack conseillé: ${pack}
 
-    $("btnFinish").addEventListener("click", () => {
-      updateUI();
-      // UX: jump to results & highlight pack
-      document.getElementById("cardResult").scrollIntoView({ behavior:"smooth", block:"start" });
+Je vous propose 15 minutes pour valider l’objectif et lancer la mise en place (visuels premium + conversion + acquisition + suivi).`;
+
+      $("#waBtn").href = waLink(msg);
+      $("#calBtn").href = CONFIG.CALENDLY_URL || "#";
+    }
+
+    // Actions UI
+    $("#pdfBtn").addEventListener("click", () => window.print());
+    $("#goBtn").addEventListener("click", () => { location.hash = "#audit"; });
+
+    $("#auditForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const btn = $("#submitBtn");
+      btn.disabled = true;
+      btn.textContent = "Génération…";
+
+      const company = e.target.company.value.trim();
+      const sector  = e.target.sector.value;
+      const city    = e.target.city.value.trim();
+      const email   = e.target.email.value.trim();
+      const goal    = e.target.goal.value;
+      const website = e.target.website.value.trim();
+      const pain    = e.target.pain.value.trim();
+
+      const needVisual  = $("#needVisual").checked;
+      const needDigital = $("#needDigital").checked;
+      const needAds     = $("#needAds").checked;
+
+      const painText = pain.toLowerCase();
+      const hasSite = !!website && website.length > 6 && website.includes(".");
+
+      const score = computeScore({hasSite, needVisual, needDigital, needAds, painText, goal});
+      setScoreUI(score);
+
+      const stack = buildStack({needVisual, needDigital, needAds, painText, hasSite});
+      renderStack(stack);
+
+      const lead = {
+        created_at: new Date().toISOString(),
+        company, sector, city, email, goal, website, pain,
+        needVisual, needDigital, needAds,
+        score
+      };
+
+      const pack = recommendPack({needVisual, needDigital, needAds, score, goal});
+      renderPlan(lead, score, stack, pack);
+      updateCTA(lead, score, pack);
+
+      try{ await sendLead(lead); }catch(err){}
+
+      btn.disabled = false;
+      btn.textContent = "Générer le résultat";
+      location.hash = "#resultat";
     });
 
-    $("btnNextTop").addEventListener("click", () => {
-      if (step < 3) setStep(step + 1);
-      else {
-        updateUI();
-        document.getElementById("cardResult").scrollIntoView({ behavior:"smooth", block:"start" });
-      }
-    });
-
-    $("btnPrint").addEventListener("click", () => window.print());
-    $("btnReset").addEventListener("click", resetAll);
-    $("btnDemo").addEventListener("click", demo);
-
-    // init
-    bindLive();
-    setStep(1);
-    updateUI();
+    // init fallback
+    $("#waBtn").href = waLink("Bonjour, je souhaite un RDV 15 minutes.");
+    $("#calBtn").href = CONFIG.CALENDLY_URL || "#";
+    $("#meterFill").style.width = "0%";
   </script>
 </body>
 </html>
