@@ -3,48 +3,60 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Audit IA Conversion & Croissance — score propriétaire, simulateur ROI boardroom, preuve premium, proposition 1-page, packs & abonnement." />
-  <title>Audit IA Conversion & Croissance — Maximaliste</title>
+  <meta name="description" content="Audit IA Conversion & Croissance — score propriétaire, ROI boardroom, plan 7/30/90, proposition 1-page. Signature VISION." />
+  <title>VISION — Audit IA Conversion & Croissance</title>
 
   <style>
     :root{
       --bg:#070A12;
       --bg2:#0B1022;
+
       --card:rgba(255,255,255,.06);
       --card2:rgba(255,255,255,.10);
       --stroke:rgba(255,255,255,.12);
-      --text:rgba(255,255,255,.90);
-      --muted:rgba(255,255,255,.66);
-      --muted2:rgba(255,255,255,.52);
+
+      --text:rgba(255,255,255,.92);
+      --muted:rgba(255,255,255,.68);
+      --muted2:rgba(255,255,255,.54);
+
       --accent:#7C5CFF;
       --accent2:#00E0FF;
+
       --good:#2EE59D;
       --warn:#FFCC66;
       --bad:#FF5C7A;
-      --shadow: 0 18px 45px rgba(0,0,0,.55);
-      --radius: 18px;
+
+      --shadow: 0 18px 50px rgba(0,0,0,.58);
+      --radius: 20px;
 
       --grid: rgba(255,255,255,.035);
-      --glass: rgba(255,255,255,.04);
-      --glass2: rgba(255,255,255,.06);
-      --glow: 0 0 0 1px rgba(124,92,255,.15), 0 18px 60px rgba(124,92,255,.10);
+
+      --focus: 0 0 0 4px rgba(124,92,255,.18);
+
+      --maxw: 1240px;
+      --pad: 18px;
+
+      --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
     }
 
     *{ box-sizing:border-box; }
     html,body{ height:100%; }
     body{
       margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      font-family: var(--font);
       color:var(--text);
       background:
-        radial-gradient(1200px 700px at 15% 10%, rgba(124,92,255,.28), transparent 60%),
-        radial-gradient(1000px 700px at 85% 20%, rgba(0,224,255,.20), transparent 55%),
+        radial-gradient(1200px 700px at 12% 10%, rgba(124,92,255,.28), transparent 60%),
+        radial-gradient(1000px 700px at 88% 18%, rgba(0,224,255,.22), transparent 55%),
         radial-gradient(900px 700px at 50% 100%, rgba(46,229,157,.10), transparent 55%),
         linear-gradient(180deg, var(--bg), var(--bg2));
       overflow-x:hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: geometricPrecision;
     }
 
-    /* subtle grid */
+    /* grid overlay */
     body:before{
       content:"";
       position:fixed; inset:0;
@@ -52,69 +64,146 @@
         linear-gradient(var(--grid) 1px, transparent 1px),
         linear-gradient(90deg, var(--grid) 1px, transparent 1px);
       background-size: 42px 42px;
-      mask-image: radial-gradient(circle at 50% 20%, rgba(0,0,0,.85), rgba(0,0,0,.2) 55%, transparent 78%);
+      mask-image: radial-gradient(circle at 50% 18%, rgba(0,0,0,.90), rgba(0,0,0,.25) 55%, transparent 78%);
       pointer-events:none;
       opacity:.55;
     }
-    /* noise */
+
+    /* subtle noise */
     body:after{
       content:"";
       position:fixed; inset:0;
       background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='260' height='260' filter='url(%23n)' opacity='.12'/%3E%3C/svg%3E");
       mix-blend-mode:overlay;
       pointer-events:none;
-      opacity:.20;
+      opacity:.18;
     }
 
-    .wrap{ max-width:1240px; margin:0 auto; padding:26px 16px 64px; }
+    a{ color:inherit; }
+    button, input, select{ font-family: var(--font); }
+
+    .wrap{ max-width:var(--maxw); margin:0 auto; padding:22px 16px 62px; }
+
+    /* ====== TOPBAR (no overlaps) ====== */
     .topbar{
-      display:flex; align-items:center; justify-content:space-between;
-      gap:12px; margin-bottom:18px; flex-wrap:wrap;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-bottom:16px;
     }
 
     .brand{
-      display:flex; align-items:center; gap:12px;
-      padding:12px 14px; border:1px solid var(--stroke); border-radius:999px;
+      display:flex;
+      align-items:center;
+      gap:12px;
+      padding:12px 14px;
+      border:1px solid var(--stroke);
+      border-radius:999px;
       background: rgba(255,255,255,.03);
       backdrop-filter: blur(10px);
+      min-width: 260px;
+      flex: 1 1 420px;
     }
-    .dot{
-      width:10px; height:10px; border-radius:50%;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      box-shadow: 0 0 0 6px rgba(124,92,255,.10);
-    }
-    .brand b{ font-size:14px; letter-spacing:.2px; }
-    .brand span{ color:var(--muted); font-size:12px; }
 
-    .actions{ display:flex; gap:10px; flex-wrap:wrap; }
-    .btn{
-      appearance:none; border:1px solid var(--stroke); color:var(--text);
-      background: rgba(255,255,255,.03);
-      padding:10px 12px; border-radius:999px;
-      cursor:pointer; transition:.18s transform, .18s background, .18s border, .18s filter;
-      font-weight:700; font-size:13px; letter-spacing:.2px;
+    .visionMark{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      min-width:0;
     }
-    .btn:hover{ transform: translateY(-1px); background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.20); }
+
+    .visionLogo{
+      width:34px; height:34px;
+      flex: 0 0 auto;
+      filter: drop-shadow(0 10px 22px rgba(0,224,255,.08));
+    }
+
+    .brandText{
+      min-width:0;
+      display:flex;
+      flex-direction:column;
+      gap:3px;
+    }
+
+    .brandTitle{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      min-width:0;
+      flex-wrap:wrap;
+    }
+
+    .brandTitle b{
+      font-size:13px;
+      letter-spacing:.24px;
+      font-weight:950;
+      white-space:nowrap;
+    }
+
+    .brandTitle .sep{
+      width:6px; height:6px; border-radius:999px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      box-shadow: 0 0 0 5px rgba(124,92,255,.10);
+    }
+
+    .brandText span{
+      color:var(--muted);
+      font-size:12px;
+      line-height:1.25;
+      word-break: break-word;
+    }
+
+    .actions{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+      flex: 0 1 auto;
+    }
+
+    .btn{
+      appearance:none;
+      border:1px solid var(--stroke);
+      color:var(--text);
+      background: rgba(255,255,255,.03);
+      padding:10px 12px;
+      border-radius:999px;
+      cursor:pointer;
+      transition:.18s transform, .18s background, .18s border, .18s filter;
+      font-weight:900;
+      font-size:13px;
+      letter-spacing:.2px;
+      line-height:1;
+      white-space:nowrap;
+    }
+    .btn:hover{ transform: translateY(-1px); background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.22); }
+    .btn:active{ transform: translateY(0px); }
+    .btn:focus-visible{ outline:none; box-shadow: var(--focus); }
     .btn.primary{
       border:0;
-      background: linear-gradient(135deg, rgba(124,92,255,.95), rgba(0,224,255,.70));
-      color:#081022;
-      box-shadow: 0 12px 34px rgba(0,224,255,.08);
+      background: linear-gradient(135deg, rgba(124,92,255,.96), rgba(0,224,255,.74));
+      color:#071023;
+      box-shadow: 0 14px 36px rgba(0,224,255,.10);
     }
-    .btn.primary:hover{ filter:saturate(1.1); }
+    .btn.primary:hover{ filter:saturate(1.08); }
     .btn.ghost{ background: transparent; }
 
+    /* ====== LAYOUT ====== */
     .hero{
       display:grid;
       grid-template-columns: 1.05fr .95fr;
       gap:16px;
       align-items:start;
-      margin-top:10px;
     }
-    @media (max-width: 980px){
+    @media (max-width: 1040px){
       .hero{ grid-template-columns: 1fr; }
+      .actions{ justify-content:flex-start; }
+      .brand{ flex: 1 1 100%; }
     }
 
+    /* ====== CARDS ====== */
     .card{
       background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
       border:1px solid var(--stroke);
@@ -123,40 +212,93 @@
       overflow:hidden;
       position:relative;
     }
-    .card:hover{ box-shadow: var(--shadow), var(--glow); }
 
-    .card .hd{
-      padding:18px 18px 12px;
+    .hd{
+      padding: 18px 18px 12px;
       border-bottom:1px solid rgba(255,255,255,.08);
-      display:flex; align-items:flex-start; justify-content:space-between; gap:12px;
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
     }
-    .card .hd h1, .card .hd h2{
+
+    .hd h1, .hd h2{
       margin:0;
-      font-size:18px;
-      letter-spacing:.2px;
+      font-size: 18px;
+      letter-spacing:.18px;
+      font-weight:950;
+      line-height:1.2;
     }
-    .card .hd p{
+    .hd p{
       margin:8px 0 0;
       color:var(--muted);
       font-size:13px;
-      line-height:1.35;
+      line-height:1.45;
+      max-width: 62ch;
     }
-    .card .bd{ padding:18px; }
+    .bd{ padding: var(--pad); }
 
     .pill{
-      display:inline-flex; align-items:center; gap:8px;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
       padding:8px 10px;
       border-radius:999px;
       border:1px solid rgba(255,255,255,.14);
       background: rgba(255,255,255,.04);
       color:var(--muted);
-      font-size:12px; font-weight:800;
+      font-size:12px;
+      font-weight:900;
+      letter-spacing:.15px;
       white-space:nowrap;
+      line-height:1;
     }
-    .pill .k{ color:var(--text); font-weight:900; }
+    .pill .k{ color:var(--text); font-weight:950; }
+
+    /* ====== FORMS ====== */
+    .steps{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+      margin: 0 0 14px;
+    }
+    .step{
+      flex:1 1 170px;
+      padding:10px 10px;
+      border-radius: 14px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      color:var(--muted);
+      font-size:12px;
+      font-weight:950;
+      letter-spacing:.15px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      min-width: 170px;
+    }
+    .step.on{
+      color:rgba(7,16,34,.96);
+      border-color: transparent;
+      background: linear-gradient(135deg, rgba(124,92,255,.90), rgba(0,224,255,.56));
+    }
+    .step .n{
+      width:22px; height:22px; border-radius:999px;
+      display:grid; place-items:center;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(0,0,0,.20);
+      color:var(--text);
+      font-size:12px;
+      font-weight:950;
+      flex:0 0 auto;
+    }
+    .step.on .n{ border-color: rgba(0,0,0,.12); background: rgba(255,255,255,.18); color: rgba(7,16,34,.95); }
 
     .grid{
-      display:grid; gap:12px;
+      display:grid;
+      gap:12px;
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
     @media (max-width: 720px){ .grid{ grid-template-columns: 1fr; } }
@@ -166,14 +308,26 @@
       border:1px solid rgba(255,255,255,.10);
       border-radius: 14px;
       padding:12px;
+      min-width:0;
     }
     .field label{
-      display:flex; align-items:center; justify-content:space-between; gap:8px;
-      font-size:12px; font-weight:900; letter-spacing:.2px;
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:8px;
+      font-size:12px;
+      font-weight:950;
+      letter-spacing:.15px;
       color:var(--muted);
       margin-bottom:8px;
+      line-height:1.25;
     }
-    .field label small{ color:var(--muted2); font-weight:800; }
+    .field label small{
+      color:var(--muted2);
+      font-weight:900;
+      white-space:nowrap;
+      flex:0 0 auto;
+    }
     .field input, .field select{
       width:100%;
       background: rgba(0,0,0,.25);
@@ -183,48 +337,87 @@
       border-radius: 12px;
       outline:none;
       font-size:14px;
+      line-height:1.2;
     }
+    .field input::placeholder{ color: rgba(255,255,255,.40); }
     .field input:focus, .field select:focus{
-      border-color: rgba(124,92,255,.55);
-      box-shadow: 0 0 0 4px rgba(124,92,255,.15);
+      border-color: rgba(124,92,255,.60);
+      box-shadow: var(--focus);
     }
 
     .split{ display:grid; gap:12px; grid-template-columns: 1fr; }
 
-    .steps{
-      display:flex; gap:8px; flex-wrap:wrap;
-      margin: 0 0 14px;
+    .row{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top: 14px;
+      align-items:center;
     }
-    .step{
-      flex:1 1 160px;
-      padding:10px 10px;
-      border-radius: 14px;
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.03);
-      color:var(--muted);
-      font-size:12px;
-      font-weight:900;
-      display:flex; align-items:center; justify-content:space-between; gap:10px;
-    }
-    .step.on{
-      color:rgba(8,16,34,.95);
-      border-color: transparent;
-      background: linear-gradient(135deg, rgba(124,92,255,.88), rgba(0,224,255,.55));
-    }
-    .step .n{
-      width:22px; height:22px; border-radius:999px;
-      display:grid; place-items:center;
-      border:1px solid rgba(255,255,255,.14);
-      background: rgba(0,0,0,.20);
-      color:var(--text);
-      font-size:12px;
-    }
-    .step.on .n{ border-color: rgba(0,0,0,.12); background: rgba(255,255,255,.18); color: rgba(8,16,34,.95); }
 
-    .row{ display:flex; gap:10px; flex-wrap:wrap; margin-top: 14px; }
+    .divider{ height:1px; background: rgba(255,255,255,.08); margin:14px 0; }
+    .note{ color:var(--muted2); font-size:12px; line-height:1.5; }
+
+    /* ====== RESULTS ====== */
+    .scoreWrap{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      flex-wrap:wrap;
+      min-width:0;
+    }
+    .ring{
+      width:92px; height:92px; border-radius:50%;
+      display:grid; place-items:center;
+      background:
+        conic-gradient(var(--accent) calc(var(--p)*1%), rgba(255,255,255,.10) 0),
+        radial-gradient(circle at 30% 30%, rgba(0,224,255,.18), transparent 50%);
+      border:1px solid rgba(255,255,255,.10);
+      box-shadow: 0 10px 30px rgba(0,0,0,.35);
+      flex:0 0 auto;
+    }
+    .ring .in{
+      width:76px; height:76px; border-radius:50%;
+      display:grid; place-items:center;
+      background: rgba(7,10,18,.82);
+      border:1px solid rgba(255,255,255,.10);
+      text-align:center;
+    }
+    .ring .in b{
+      display:block;
+      font-size:22px;
+      letter-spacing:.2px;
+      font-weight:950;
+      line-height:1;
+    }
+    .ring .in span{
+      display:block;
+      font-size:11px;
+      color:var(--muted);
+      font-weight:950;
+      margin-top:3px;
+      line-height:1;
+    }
+
+    .tag{
+      display:inline-flex;
+      align-items:center;
+      padding:8px 10px;
+      border-radius:999px;
+      font-size:12px;
+      font-weight:950;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.03);
+      line-height:1;
+      white-space:nowrap;
+    }
+    .tag.good{ color: var(--good); }
+    .tag.warn{ color: var(--warn); }
+    .tag.bad{ color: var(--bad); }
 
     .kpis{
-      display:grid; gap:10px;
+      display:grid;
+      gap:10px;
       grid-template-columns: repeat(3, minmax(0, 1fr));
     }
     @media (max-width: 900px){ .kpis{ grid-template-columns: 1fr; } }
@@ -234,155 +427,31 @@
       border-radius: 16px;
       border:1px solid rgba(255,255,255,.10);
       background: rgba(255,255,255,.03);
+      min-width:0;
     }
-    .kpi .t{ color:var(--muted); font-size:12px; font-weight:950; letter-spacing:.25px; }
-    .kpi .v{ margin-top:10px; font-size:20px; font-weight:950; letter-spacing:.2px; }
-    .kpi .s{ margin-top:6px; color:var(--muted2); font-size:12px; line-height:1.35; }
-
-    .scoreWrap{ display:flex; align-items:center; gap:12px; flex-wrap:wrap; }
-    .ring{
-      width:92px; height:92px; border-radius:50%;
-      display:grid; place-items:center;
-      background:
-        conic-gradient(var(--accent) calc(var(--p)*1%), rgba(255,255,255,.10) 0),
-        radial-gradient(circle at 30% 30%, rgba(0,224,255,.18), transparent 50%);
-      border:1px solid rgba(255,255,255,.10);
-      box-shadow: 0 10px 30px rgba(0,0,0,.35);
-      transition: .25s;
-    }
-    .ring .in{
-      width:76px; height:76px; border-radius:50%;
-      display:grid; place-items:center;
-      background: rgba(7,10,18,.80);
-      border:1px solid rgba(255,255,255,.10);
-      text-align:center;
-    }
-    .ring .in b{ display:block; font-size:22px; letter-spacing:.2px; }
-    .ring .in span{ display:block; font-size:11px; color:var(--muted); font-weight:900; margin-top:2px; }
-
-    .tag{
-      display:inline-flex; align-items:center;
-      padding:8px 10px; border-radius:999px;
-      font-size:12px; font-weight:950;
-      border:1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.03);
-    }
-    .tag.good{ color: var(--good); }
-    .tag.warn{ color: var(--warn); }
-    .tag.bad{ color: var(--bad); }
-
-    .divider{ height:1px; background: rgba(255,255,255,.08); margin:14px 0; }
-
-    .note{ color:var(--muted2); font-size:12px; line-height:1.45; }
-
-    .footer{
-      margin-top:16px;
-      display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap;
-      color:var(--muted2); font-size:12px;
-    }
-
-    /* ===== Solutions personnalisées ===== */
-    .solGrid{ display:grid; gap:10px; grid-template-columns:1fr; }
-
-    .solCard{
-      border-radius: 16px;
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.03);
-      overflow:hidden;
-    }
-    .solCard .shd{
-      padding:12px 12px 10px;
-      border-bottom:1px solid rgba(255,255,255,.08);
-      display:flex; align-items:flex-start; justify-content:space-between; gap:10px;
-    }
-    .solCard .shd b{ font-size:13px; letter-spacing:.2px; }
-    .solCard .shd span{ color:var(--muted2); font-size:11px; font-weight:950; }
-
-    .chips{ display:flex; gap:8px; flex-wrap:wrap; padding:12px; }
-    .chip{
-      display:inline-flex; align-items:center; gap:7px;
-      padding:8px 10px;
-      border-radius:999px;
+    .kpi .t{
+      color:var(--muted);
       font-size:12px;
       font-weight:950;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(0,0,0,.20);
-      color:var(--text);
-      transition:.18s transform, .18s filter;
-    }
-    .chip:hover{ transform: translateY(-1px); filter:saturate(1.08); }
-    .chip small{ font-size:11px; font-weight:950; color:var(--muted); }
-    .chip .dot2{
-      width:8px; height:8px; border-radius:50%;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      box-shadow: 0 0 0 4px rgba(124,92,255,.12);
-    }
-    .chip.good{ border-color: rgba(46,229,157,.30); }
-    .chip.warn{ border-color: rgba(255,204,102,.35); }
-    .chip.bad{ border-color: rgba(255,92,122,.35); }
-
-    .plan{
-      padding:12px; padding-top:0;
-      display:grid; gap:10px;
-      grid-template-columns: repeat(3, minmax(0,1fr));
-    }
-    @media (max-width: 980px){ .plan{ grid-template-columns: 1fr; } }
-
-    .phase{
-      border-radius: 14px;
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.03);
-      padding:12px;
-    }
-    .phase .pt{
-      display:flex; align-items:center; justify-content:space-between; gap:10px;
-      color:var(--muted);
-      font-size:12px; font-weight:950;
       letter-spacing:.25px;
-      margin-bottom:10px;
+      line-height:1.2;
     }
-    .phase ul{
-      margin:0; padding-left:18px;
-      color:var(--muted);
-      font-size:13px;
-      line-height:1.5;
-    }
-
-    .deliver{
-      padding:12px;
-      border-top:1px solid rgba(255,255,255,.08);
-      color:var(--muted);
-      font-size:13px;
-      line-height:1.5;
-    }
-    .deliver b{ color:var(--text); }
-
-    .kv{
-      display:flex; gap:10px; flex-wrap:wrap;
-      padding:12px;
-      border-top:1px solid rgba(255,255,255,.08);
-    }
-    .kv .item{
-      flex:1 1 160px;
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(0,0,0,.18);
-      border-radius: 14px;
-      padding:10px 10px;
-    }
-    .kv .item .k{
-      color:var(--muted2);
-      font-size:11px;
+    .kpi .v{
+      margin-top:10px;
+      font-size:20px;
       font-weight:950;
-      letter-spacing:.25px;
+      letter-spacing:.2px;
+      line-height:1.15;
+      word-break: break-word;
     }
-    .kv .item .v{
+    .kpi .s{
       margin-top:6px;
-      font-weight:950;
-      font-size:13px;
-      color:var(--text);
+      color:var(--muted2);
+      font-size:12px;
+      line-height:1.45;
     }
 
-    /* ===== Boardroom ROI ===== */
+    /* ====== BOARD ====== */
     .board{
       border-radius:16px;
       border:1px solid rgba(255,255,255,.10);
@@ -390,35 +459,83 @@
       overflow:hidden;
     }
     .boardHd{
-      padding:12px 12px 10px;
+      padding:12px;
       border-bottom:1px solid rgba(255,255,255,.08);
-      display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      flex-wrap:wrap;
     }
     .seg{
-      display:flex; gap:8px; flex-wrap:wrap;
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
       padding:8px;
       border-radius:999px;
       border:1px solid rgba(255,255,255,.10);
       background: rgba(0,0,0,.18);
     }
     .seg button{
-      border:0; background:transparent; color:var(--muted);
-      font-weight:950; font-size:12px; letter-spacing:.2px;
-      padding:7px 10px; border-radius:999px;
-      cursor:pointer; transition:.18s background, .18s color, .18s transform;
+      border:0;
+      background:transparent;
+      color:var(--muted);
+      font-weight:950;
+      font-size:12px;
+      letter-spacing:.2px;
+      padding:7px 10px;
+      border-radius:999px;
+      cursor:pointer;
+      transition:.18s background, .18s color, .18s transform;
+      line-height:1;
+      white-space:nowrap;
     }
     .seg button:hover{ transform: translateY(-1px); }
     .seg button.on{
-      background: linear-gradient(135deg, rgba(124,92,255,.85), rgba(0,224,255,.55));
-      color:#081022;
+      background: linear-gradient(135deg, rgba(124,92,255,.86), rgba(0,224,255,.55));
+      color:#071023;
     }
+    .seg button:focus-visible{ outline:none; box-shadow: var(--focus); }
+
     .boardBd{
       padding:12px;
-      display:grid; gap:12px;
+      display:grid;
+      gap:12px;
       grid-template-columns: 1fr;
     }
+
+    .trust{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      padding:10px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      flex-wrap:wrap;
+    }
+    .trust b{ font-size:12px; letter-spacing:.2px; font-weight:950; line-height:1.2; }
+    .trust .meter{
+      height:10px;
+      width: 190px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.22);
+      overflow:hidden;
+      flex:0 0 auto;
+    }
+    .trust .bar{
+      height:100%;
+      width:40%;
+      background: linear-gradient(135deg, rgba(124,92,255,.92), rgba(0,224,255,.62));
+      border-radius:999px;
+      transition:.25s width;
+    }
+
     .charts{
-      display:grid; gap:12px;
+      display:grid;
+      gap:12px;
       grid-template-columns: 1fr 1fr;
     }
     @media (max-width: 980px){ .charts{ grid-template-columns: 1fr; } }
@@ -428,65 +545,74 @@
       border:1px solid rgba(255,255,255,.10);
       background: rgba(255,255,255,.03);
       padding:10px;
+      min-width:0;
     }
     .chartTop{
-      display:flex; align-items:center; justify-content:space-between; gap:10px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
       margin-bottom:8px;
       color:var(--muted);
       font-size:12px;
       font-weight:950;
       letter-spacing:.2px;
+      line-height:1.2;
+      flex-wrap:wrap;
     }
-    canvas{ width:100%; height:220px; display:block; }
+    .badge2{
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.20);
+      color:var(--text);
+      font-weight:950;
+      font-size:11px;
+      letter-spacing:.2px;
+      white-space:nowrap;
+      line-height:1;
+    }
+
+    canvas{
+      width:100%;
+      height:220px;
+      display:block;
+      border-radius:12px;
+    }
+
     .miniRow{
-      display:grid; gap:10px;
+      display:grid;
+      gap:10px;
       grid-template-columns: repeat(3, minmax(0,1fr));
     }
     @media (max-width: 900px){ .miniRow{ grid-template-columns: 1fr; } }
+
     .mini{
       border-radius:14px;
       border:1px solid rgba(255,255,255,.10);
       background: rgba(0,0,0,.18);
       padding:10px;
+      min-width:0;
     }
-    .mini .k{ color:var(--muted2); font-size:11px; font-weight:950; letter-spacing:.25px; }
-    .mini .v{ margin-top:6px; font-size:14px; font-weight:950; color:var(--text); }
-    .mini .s{ margin-top:6px; font-size:12px; color:var(--muted); line-height:1.4; }
+    .mini .k{ color:var(--muted2); font-size:11px; font-weight:950; letter-spacing:.25px; line-height:1.2; }
+    .mini .v{ margin-top:6px; font-size:14px; font-weight:950; color:var(--text); line-height:1.2; word-break:break-word; }
+    .mini .s{ margin-top:6px; font-size:12px; color:var(--muted); line-height:1.45; }
 
-    .trust{
-      display:flex; align-items:center; justify-content:space-between; gap:10px;
-      padding:10px;
-      border-radius:14px;
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.03);
-    }
-    .trust b{ font-size:12px; letter-spacing:.2px; }
-    .trust .meter{
-      height:10px; width:160px; border-radius:999px;
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(0,0,0,.22);
-      overflow:hidden;
-    }
-    .trust .bar{
-      height:100%;
-      width:40%;
-      background: linear-gradient(135deg, rgba(124,92,255,.9), rgba(0,224,255,.6));
-      border-radius:999px;
-      transition:.25s width;
-    }
-
-    /* ===== Proof premium ===== */
+    /* ====== PROOF ====== */
     .proofGrid{
-      display:grid; gap:10px;
+      display:grid;
+      gap:10px;
       grid-template-columns: repeat(3, minmax(0,1fr));
     }
     @media (max-width: 980px){ .proofGrid{ grid-template-columns:1fr; } }
+
     .proof{
       border-radius:16px;
       border:1px solid rgba(255,255,255,.10);
       background: rgba(255,255,255,.03);
       overflow:hidden;
       position:relative;
+      min-width:0;
     }
     .proof:before{
       content:"";
@@ -500,29 +626,22 @@
       position:relative;
       padding:12px;
       border-bottom:1px solid rgba(255,255,255,.08);
-      display:flex; align-items:center; justify-content:space-between; gap:10px;
+      display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap;
       color:var(--muted);
-      font-size:12px; font-weight:950;
+      font-size:12px;
+      font-weight:950;
+      line-height:1.2;
     }
     .proof .pb{
       position:relative;
       padding:12px;
       color:var(--muted);
       font-size:13px;
-      line-height:1.45;
+      line-height:1.5;
     }
-    .badge2{
-      padding:6px 10px; border-radius:999px;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(0,0,0,.20);
-      color:var(--text);
-      font-weight:950;
-      font-size:11px;
-      letter-spacing:.2px;
-    }
-    .proof .mock{
+    .mock{
       margin-top:10px;
-      height:82px;
+      height:84px;
       border-radius:14px;
       border:1px dashed rgba(255,255,255,.16);
       background:
@@ -530,14 +649,127 @@
         radial-gradient(circle at 30% 30%, rgba(255,255,255,.07), transparent 55%);
       display:flex; align-items:center; justify-content:center;
       color: rgba(255,255,255,.78);
-      font-weight:900;
+      font-weight:950;
       letter-spacing:.2px;
       font-size:12px;
+      text-align:center;
+      padding:10px;
     }
 
-    /* ===== Packs ===== */
+    /* ====== SOLUTIONS ====== */
+    .solCard{
+      border-radius: 16px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      overflow:hidden;
+      min-width:0;
+    }
+    .solCard .shd{
+      padding:12px;
+      border-bottom:1px solid rgba(255,255,255,.08);
+      display:flex; align-items:flex-start; justify-content:space-between; gap:10px; flex-wrap:wrap;
+    }
+    .solCard .shd b{ font-size:13px; letter-spacing:.2px; font-weight:950; line-height:1.2; }
+    .solCard .shd span{ color:var(--muted2); font-size:11px; font-weight:950; line-height:1.2; }
+
+    .chips{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+      padding:12px;
+      overflow:hidden;
+    }
+    .chip{
+      display:inline-flex;
+      align-items:center;
+      gap:7px;
+      padding:8px 10px;
+      border-radius:999px;
+      font-size:12px;
+      font-weight:950;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.20);
+      color:var(--text);
+      line-height:1;
+      max-width:100%;
+      white-space:nowrap;
+    }
+    .chip small{ font-size:11px; font-weight:950; color:var(--muted); }
+    .chip .dot2{
+      width:8px; height:8px; border-radius:50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      box-shadow: 0 0 0 4px rgba(124,92,255,.12);
+      flex:0 0 auto;
+    }
+    .chip.good{ border-color: rgba(46,229,157,.30); }
+    .chip.warn{ border-color: rgba(255,204,102,.35); }
+    .chip.bad{ border-color: rgba(255,92,122,.35); }
+
+    .plan{
+      padding:12px;
+      padding-top:0;
+      display:grid;
+      gap:10px;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+    }
+    @media (max-width: 980px){ .plan{ grid-template-columns: 1fr; } }
+
+    .phase{
+      border-radius: 14px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      padding:12px;
+      min-width:0;
+    }
+    .phase .pt{
+      display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap;
+      color:var(--muted);
+      font-size:12px;
+      font-weight:950;
+      letter-spacing:.25px;
+      margin-bottom:10px;
+      line-height:1.2;
+    }
+    .phase ul{
+      margin:0;
+      padding-left:18px;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.55;
+    }
+
+    .deliver{
+      padding:12px;
+      border-top:1px solid rgba(255,255,255,.08);
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.55;
+      word-break: break-word;
+    }
+    .deliver b{ color:var(--text); }
+
+    .kv{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      padding:12px;
+      border-top:1px solid rgba(255,255,255,.08);
+    }
+    .kv .item{
+      flex:1 1 200px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.18);
+      border-radius: 14px;
+      padding:10px;
+      min-width: 200px;
+    }
+    .kv .item .k{ color:var(--muted2); font-size:11px; font-weight:950; letter-spacing:.25px; line-height:1.2; }
+    .kv .item .v{ margin-top:6px; font-weight:950; font-size:13px; color:var(--text); line-height:1.3; }
+
+    /* ====== PACKS ====== */
     .packs{
-      display:grid; gap:12px;
+      display:grid;
+      gap:12px;
       grid-template-columns: repeat(3, minmax(0,1fr));
     }
     @media (max-width: 980px){ .packs{ grid-template-columns: 1fr; } }
@@ -549,37 +781,43 @@
       overflow:hidden;
       position:relative;
       transition:.18s transform, .18s box-shadow, .18s filter;
+      min-width:0;
     }
-    .pack:hover{ transform: translateY(-2px); filter:saturate(1.06); box-shadow: var(--shadow), var(--glow); }
+    .pack:hover{ transform: translateY(-2px); filter:saturate(1.05); box-shadow: var(--shadow); }
     .pack .phd{
       padding:16px 16px 12px;
       border-bottom:1px solid rgba(255,255,255,.08);
     }
-    .pack .phd b{ display:block; font-size:15px; letter-spacing:.2px; }
-    .pack .phd span{ display:block; color:var(--muted); font-size:12px; margin-top:6px; line-height:1.35; }
+    .pack .phd b{ display:block; font-size:15px; letter-spacing:.2px; font-weight:950; line-height:1.2; }
+    .pack .phd span{ display:block; color:var(--muted); font-size:12px; margin-top:6px; line-height:1.45; }
     .pack .pbd{ padding:16px; }
-    .price{ display:flex; align-items:baseline; gap:8px; margin: 8px 0 12px; }
-    .price .big{ font-size:26px; font-weight:950; letter-spacing:.2px; }
-    .price .per{ color:var(--muted2); font-size:12px; font-weight:900; }
+    .price{ display:flex; align-items:baseline; gap:8px; margin: 8px 0 12px; flex-wrap:wrap; }
+    .price .big{ font-size:26px; font-weight:950; letter-spacing:.2px; line-height:1.1; }
+    .price .per{ color:var(--muted2); font-size:12px; font-weight:950; line-height:1.1; }
     .badge{
       position:absolute; top:12px; right:12px;
-      padding:7px 10px; border-radius:999px;
-      font-size:11px; font-weight:950;
+      padding:7px 10px;
+      border-radius:999px;
+      font-size:11px;
+      font-weight:950;
       background: linear-gradient(135deg, rgba(124,92,255,.88), rgba(0,224,255,.55));
-      color:#081022;
+      color:#071023;
+      line-height:1;
+      white-space:nowrap;
     }
     .pack.reco{
       border-color: rgba(124,92,255,.35);
       background: linear-gradient(180deg, rgba(124,92,255,.10), rgba(255,255,255,.03));
     }
     .list{
-      margin:0; padding-left: 18px;
+      margin:0;
+      padding-left: 18px;
       color:var(--muted);
-      line-height:1.5;
+      line-height:1.55;
       font-size:13px;
     }
 
-    /* ===== CTA lead capture ===== */
+    /* ====== CTA ====== */
     .cta{
       border-radius:16px;
       border:1px solid rgba(255,255,255,.10);
@@ -588,13 +826,23 @@
       padding:12px;
     }
     .ctaTop{
-      display:flex; align-items:flex-start; justify-content:space-between; gap:10px; flex-wrap:wrap;
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:10px;
+      flex-wrap:wrap;
     }
-    .ctaTop b{ font-size:13px; letter-spacing:.2px; }
-    .ctaTop span{ color:var(--muted); font-size:12px; line-height:1.35; }
+    .ctaTop b{
+      font-size:13px;
+      letter-spacing:.2px;
+      font-weight:950;
+      line-height:1.25;
+    }
+    .ctaTop span{ color:var(--muted); font-size:12px; line-height:1.45; }
     .ctaForm{
       margin-top:10px;
-      display:grid; gap:10px;
+      display:grid;
+      gap:10px;
       grid-template-columns: 1fr 1fr;
     }
     @media (max-width: 720px){ .ctaForm{ grid-template-columns:1fr; } }
@@ -607,10 +855,11 @@
       border-radius: 12px;
       outline:none;
       font-size:14px;
+      line-height:1.2;
     }
     .ctaForm input:focus{
-      border-color: rgba(124,92,255,.55);
-      box-shadow: 0 0 0 4px rgba(124,92,255,.15);
+      border-color: rgba(124,92,255,.60);
+      box-shadow: var(--focus);
     }
     .ctaBtns{ display:flex; gap:10px; flex-wrap:wrap; margin-top:10px; }
     .toast{
@@ -622,10 +871,37 @@
       background: rgba(46,229,157,.08);
       color: rgba(255,255,255,.90);
       font-size:12px;
-      line-height:1.45;
+      line-height:1.5;
     }
 
-    /* ===== Modal proposition ===== */
+    /* ====== FOOTER SIGNATURE ====== */
+    .footer{
+      margin-top:16px;
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      flex-wrap:wrap;
+      color:var(--muted2);
+      font-size:12px;
+      line-height:1.2;
+    }
+    .sig{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      padding:8px 10px;
+      border-radius:999px;
+    }
+    .sig b{
+      letter-spacing:.3px;
+      font-weight:950;
+      color: rgba(255,255,255,.92);
+    }
+    .sig small{ color:var(--muted2); font-weight:900; }
+
+    /* ====== MODAL (proposal) ====== */
     .modal{
       position:fixed; inset:0;
       display:none;
@@ -646,12 +922,13 @@
       box-shadow: 0 24px 80px rgba(0,0,0,.65);
     }
     .modalHd{
-      padding:14px 14px;
+      padding:14px;
       border-bottom:1px solid rgba(255,255,255,.08);
       display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap;
     }
-    .modalHd b{ letter-spacing:.2px; }
+    .modalHd b{ letter-spacing:.2px; font-weight:950; }
     .modalBd{ padding:14px; }
+
     .onepager{
       border-radius:16px;
       border:1px solid rgba(255,255,255,.10);
@@ -659,7 +936,8 @@
       padding:14px;
     }
     .opGrid{
-      display:grid; gap:12px;
+      display:grid;
+      gap:12px;
       grid-template-columns: 1.1fr .9fr;
       align-items:start;
     }
@@ -674,27 +952,31 @@
       border:1px solid rgba(255,255,255,.10);
       background: rgba(0,0,0,.18);
       padding:10px;
+      min-width:0;
     }
-    .opKpi .k{ color:var(--muted2); font-size:11px; font-weight:950; letter-spacing:.25px; }
-    .opKpi .v{ margin-top:6px; font-weight:950; font-size:14px; }
-    .opKpi .s{ margin-top:6px; color:var(--muted); font-size:12px; line-height:1.4; }
+    .opKpi .k{ color:var(--muted2); font-size:11px; font-weight:950; letter-spacing:.25px; line-height:1.2; }
+    .opKpi .v{ margin-top:6px; font-weight:950; font-size:14px; line-height:1.2; word-break:break-word; }
+    .opKpi .s{ margin-top:6px; color:var(--muted); font-size:12px; line-height:1.45; }
+
     .opList{
-      margin:10px 0 0; padding-left:18px;
+      margin:10px 0 0;
+      padding-left:18px;
       color:var(--muted);
       font-size:13px;
-      line-height:1.5;
+      line-height:1.55;
     }
 
-    /* ===== PRINT (one-pager only) ===== */
+    /* ====== PRINT (proposal only) ====== */
     @media print{
       body{ background:#fff; color:#111; }
       body:before, body:after{ display:none !important; }
-      .wrap, .topbar, #cardForm, #cardResult, .modalHd .btn, .modalHd .actions { display:none !important; }
+      .wrap, .topbar, #cardForm, #cardResult { display:none !important; }
       .modal{ display:block !important; position:static !important; inset:auto !important; background:#fff !important; padding:0 !important; }
       .modalCard{ border:0 !important; box-shadow:none !important; background:#fff !important; }
       .modalBd{ padding:0 !important; }
       .onepager, .opKpi{ border-color:#ddd !important; background:#fff !important; }
       .opList{ color:#111 !important; }
+      .btn{ display:none !important; }
     }
   </style>
 </head>
@@ -703,10 +985,57 @@
   <div class="wrap">
     <div class="topbar">
       <div class="brand">
-        <div class="dot"></div>
-        <div>
-          <b>Audit IA — Conversion & Croissance</b>
-          <span>Score propriétaire • Simulation boardroom • Preuve premium • Proposition 1-page</span>
+        <div class="visionMark">
+          <!-- VISION Eye Logo (inline SVG, premium, crisp) -->
+          <svg class="visionLogo" viewBox="0 0 64 64" aria-label="VISION logo" role="img">
+            <defs>
+              <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#7C5CFF"/>
+                <stop offset="1" stop-color="#00E0FF"/>
+              </linearGradient>
+              <radialGradient id="g2" cx="35%" cy="35%" r="70%">
+                <stop offset="0" stop-color="rgba(255,255,255,.95)"/>
+                <stop offset="1" stop-color="rgba(255,255,255,.0)"/>
+              </radialGradient>
+              <filter id="soft" x="-30%" y="-30%" width="160%" height="160%">
+                <feGaussianBlur stdDeviation="2.2" result="b"/>
+                <feColorMatrix in="b" type="matrix"
+                  values="1 0 0 0 0
+                          0 1 0 0 0
+                          0 0 1 0 0
+                          0 0 0 0.55 0"/>
+                <feMerge>
+                  <feMergeNode/>
+                  <feMergeNode in="SourceGraphic"/>
+                </feMerge>
+              </filter>
+            </defs>
+
+            <!-- outer halo -->
+            <circle cx="32" cy="32" r="22" fill="url(#g1)" opacity="0.18"/>
+            <circle cx="32" cy="32" r="18" fill="url(#g1)" opacity="0.10"/>
+
+            <!-- eye outline -->
+            <path d="M6 32c6.8-10.5 16.8-16 26-16s19.2 5.5 26 16c-6.8 10.5-16.8 16-26 16S12.8 42.5 6 32Z"
+                  fill="rgba(0,0,0,.35)" stroke="rgba(255,255,255,.18)" stroke-width="1.2"/>
+
+            <!-- iris -->
+            <circle cx="32" cy="32" r="10.5" fill="url(#g1)" filter="url(#soft)"/>
+            <circle cx="32" cy="32" r="6.2" fill="rgba(7,10,18,.85)" stroke="rgba(255,255,255,.20)" stroke-width="1"/>
+            <circle cx="29" cy="29" r="4.8" fill="url(#g2)" opacity="0.55"/>
+
+            <!-- highlight -->
+            <circle cx="28.5" cy="28" r="2" fill="rgba(255,255,255,.9)"/>
+          </svg>
+
+          <div class="brandText">
+            <div class="brandTitle">
+              <b>VISION</b>
+              <span class="sep"></span>
+              <b>Audit IA — Conversion & Croissance</b>
+            </div>
+            <span>Score propriétaire • Simulation ROI boardroom • Plan 7/30/90 • Proposition 1-page</span>
+          </div>
         </div>
       </div>
 
@@ -719,12 +1048,12 @@
     </div>
 
     <div class="hero">
-      <!-- LEFT: INPUT + STEPS -->
+      <!-- LEFT -->
       <section class="card" id="cardForm">
         <div class="hd">
           <div>
             <h1>Audit express (2–4 min)</h1>
-            <p>On prend vos chiffres → on calcule le coût d’inaction → on projette un plan 7/30/90 jours + une proposition claire.</p>
+            <p>On transforme vos chiffres en décision : coût d’inaction + ROI 90 jours + plan d’exécution. Objectif : plus de clients, avec un système mesurable.</p>
           </div>
           <div class="pill"><span class="k" id="stepLabel">Étape 1</span><span id="stepSub">/ 3</span></div>
         </div>
@@ -740,7 +1069,7 @@
           <div class="split" data-panel="1">
             <div class="grid">
               <div class="field">
-                <label>Secteur <small>e-commerce, B2B, services</small></label>
+                <label>Secteur <small>business model</small></label>
                 <select id="sector">
                   <option value="ecom">E-commerce</option>
                   <option value="leadgen">Leadgen (demande devis)</option>
@@ -770,7 +1099,7 @@
               </div>
 
               <div class="field">
-                <label>Trafic mensuel <small>visites / sessions</small></label>
+                <label>Trafic mensuel <small>sessions</small></label>
                 <input id="traffic" type="number" min="0" step="1" placeholder="ex: 25000" />
               </div>
 
@@ -780,8 +1109,8 @@
               </div>
 
               <div class="field">
-                <label>Taux de conversion <small>si inconnu, calc auto</small></label>
-                <input id="cr" type="number" min="0" step="0.01" placeholder="ex: 2.4" />
+                <label>Taux de conversion <small>% (auto si vide)</small></label>
+                <input id="cr" type="number" min="0" step="0.01" placeholder="ex: 2.40" />
               </div>
             </div>
 
@@ -808,16 +1137,16 @@
                 <input id="adspend" type="number" min="0" step="0.01" placeholder="ex: 5000" />
               </div>
               <div class="field">
-                <label>CAC actuel <small>€ (si inconnu, calc auto)</small></label>
+                <label>CAC actuel <small>€ (auto si vide)</small></label>
                 <input id="cac" type="number" min="0" step="0.01" placeholder="ex: 18.50" />
               </div>
 
               <div class="field">
                 <label>Taux de conversion cible <small>%</small></label>
-                <input id="crTarget" type="number" min="0" step="0.01" placeholder="ex: 3.2" />
+                <input id="crTarget" type="number" min="0" step="0.01" placeholder="ex: 3.20" />
               </div>
               <div class="field">
-                <label>Gain AOV cible <small>€ (upsell / pricing)</small></label>
+                <label>Gain AOV cible <small>€</small></label>
                 <input id="aovLift" type="number" min="0" step="0.01" placeholder="ex: 10" />
               </div>
             </div>
@@ -844,7 +1173,7 @@
               </div>
 
               <div class="field">
-                <label>Horizon <small>temps</small></label>
+                <label>Horizon <small>jours</small></label>
                 <select id="horizon">
                   <option value="30">30 jours</option>
                   <option value="60">60 jours</option>
@@ -868,7 +1197,7 @@
               </div>
 
               <div class="field">
-                <label>Note rapide <small>douleur principale</small></label>
+                <label>Note rapide <small>douleur</small></label>
                 <input id="note" type="text" placeholder="ex: panier abandonné, leads froids..." />
               </div>
             </div>
@@ -881,13 +1210,13 @@
 
             <div class="divider"></div>
             <div class="note">
-              En call : remplis vite les champs → tu montres “coût d’inaction” + “ROI 90j” + “ce qu’on installe en 7 jours”. Ensuite tu proposes le pack recommandé.
+              En call : tu montres “coût d’inaction” + “gain net 90j” + “plan 7 jours”. Ensuite pack recommandé.
             </div>
           </div>
         </div>
       </section>
 
-      <!-- RIGHT: RESULTS -->
+      <!-- RIGHT -->
       <aside class="card" id="cardResult">
         <div class="hd">
           <div>
@@ -898,7 +1227,7 @@
         </div>
 
         <div class="bd">
-          <!-- Score global -->
+          <!-- Score -->
           <div class="scoreWrap">
             <div class="ring" id="ring" style="--p:35">
               <div class="in">
@@ -906,10 +1235,10 @@
                 <span>/ 100</span>
               </div>
             </div>
-            <div>
+            <div style="min-width:0;">
               <div id="scoreTag" class="tag warn">Potentiel moyen</div>
-              <div style="margin-top:10px; color:var(--muted); font-size:13px; line-height:1.4;">
-                <b id="headline" style="color:var(--text)">Focus : preuve + conversion</b><br/>
+              <div style="margin-top:10px; color:var(--muted); font-size:13px; line-height:1.5;">
+                <b id="headline" style="color:var(--text); font-weight:950;">Focus : preuve + conversion</b><br/>
                 <span id="subline">On installe le système qui transforme la visibilité en clients (mesurable, pilotable).</span>
               </div>
             </div>
@@ -917,7 +1246,7 @@
 
           <div class="divider"></div>
 
-          <!-- KPI baseline -->
+          <!-- KPI -->
           <div class="kpis">
             <div class="kpi">
               <div class="t">CA mensuel estimé</div>
@@ -930,7 +1259,7 @@
               <div class="s">Basé sur marge brute %</div>
             </div>
             <div class="kpi">
-              <div class="t">Upside 90j (ROI)</div>
+              <div class="t">Upside (ROI)</div>
               <div class="v" id="kpiUpside">—</div>
               <div class="s">Delta CR + Delta AOV + efficacité</div>
             </div>
@@ -938,7 +1267,7 @@
 
           <div class="divider"></div>
 
-          <!-- Boardroom simulation -->
+          <!-- Boardroom -->
           <div class="board">
             <div class="boardHd">
               <div class="pill"><span class="k">Simulation boardroom</span><span id="scenarioLbl">Réaliste</span></div>
@@ -951,13 +1280,14 @@
 
             <div class="boardBd">
               <div class="trust">
-                <div>
+                <div style="min-width:220px;">
                   <b>Qualité des hypothèses</b>
-                  <div style="color:var(--muted); font-size:12px; margin-top:4px;" id="assumptionsTxt">
+                  <div style="color:var(--muted); font-size:12px; margin-top:4px; line-height:1.45;" id="assumptionsTxt">
                     Plus vous renseignez, plus la projection est précise.
                   </div>
                 </div>
-                <div style="display:flex; align-items:center; gap:10px;">
+
+                <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
                   <div class="meter"><div class="bar" id="trustBar" style="width:40%"></div></div>
                   <div class="pill"><span class="k" id="trustLbl">Confiance: moyenne</span></div>
                 </div>
@@ -965,12 +1295,12 @@
 
               <div class="charts">
                 <div class="chartCard">
-                  <div class="chartTop"><span>Waterfall ROI (marge)</span><span class="badge2" id="wfHint">+ leviers</span></div>
-                  <canvas id="canvasWater" width="900" height="420"></canvas>
+                  <div class="chartTop"><span>Waterfall ROI (marge mensuelle)</span><span class="badge2" id="wfHint">leviers</span></div>
+                  <canvas id="canvasWater"></canvas>
                 </div>
                 <div class="chartCard">
                   <div class="chartTop"><span>Digital Leverage Score</span><span class="badge2" id="radHint">4 piliers</span></div>
-                  <canvas id="canvasRadar" width="900" height="420"></canvas>
+                  <canvas id="canvasRadar"></canvas>
                 </div>
               </div>
 
@@ -983,7 +1313,7 @@
                 <div class="mini">
                   <div class="k">Gain net estimé (90 jours)</div>
                   <div class="v" id="net90">—</div>
-                  <div class="s" id="net90S">Projection nette après ramp + frais marketing.</div>
+                  <div class="s" id="net90S">Projection nette après ramp + friction.</div>
                 </div>
                 <div class="mini">
                   <div class="k">Effort vs Impact</div>
@@ -996,30 +1326,30 @@
 
           <div class="divider"></div>
 
-          <!-- Proof premium -->
+          <!-- Proof -->
           <div>
             <div class="pill" style="margin-bottom:10px;">
-              <span class="k">Proof premium</span><span>ce que vous obtenez visuellement</span>
+              <span class="k">Proof premium</span><span>assets qui crédibilisent</span>
             </div>
             <div class="proofGrid">
               <div class="proof">
-                <div class="ph"><span>Avant → Après</span><span class="badge2">Site / Landing</span></div>
+                <div class="ph"><span>Avant → Après</span><span class="badge2">Landing</span></div>
                 <div class="pb">
                   Une page “preuve + offre” qui convertit (CTA, objections, garanties).
                   <div class="mock">Mockup landing (exemple)</div>
                 </div>
               </div>
               <div class="proof">
-                <div class="ph"><span>Avant → Après</span><span class="badge2">Visuel drone</span></div>
+                <div class="ph"><span>Avant → Après</span><span class="badge2">Visuel</span></div>
                 <div class="pb">
-                  Mini-film 15–30s + déclinaisons pub. Autorité instantanée.
+                  Mini-film 15–30s + déclinaisons pub : autorité instantanée.
                   <div class="mock">Mockup vidéo (exemple)</div>
                 </div>
               </div>
               <div class="proof">
                 <div class="ph"><span>Avant → Après</span><span class="badge2">Réputation</span></div>
                 <div class="pb">
-                  Système avis + réponses + relances. La confiance devient un actif.
+                  Système avis + réponses + relances : la confiance devient un actif.
                   <div class="mock">Mockup avis (exemple)</div>
                 </div>
               </div>
@@ -1031,55 +1361,53 @@
           <!-- Solutions -->
           <div>
             <div class="pill" style="margin-bottom:10px;">
-              <span class="k">Solutions personnalisées</span><span id="solHint">7/30/90 + livrables</span>
+              <span class="k">Solutions personnalisées</span><span>7/30/90 + livrables</span>
             </div>
 
-            <div class="solGrid" id="solutionsBlock">
-              <div class="solCard">
-                <div class="shd">
-                  <div>
-                    <b id="solTitle">Blueprint valeur + acquisition</b><br/>
-                    <span id="solSubtitle">Mix visuel + web + tunnel + CRM selon votre objectif.</span>
-                  </div>
-                  <span id="solFit">fit: —</span>
+            <div class="solCard">
+              <div class="shd">
+                <div>
+                  <b id="solTitle">Blueprint valeur + acquisition</b><br/>
+                  <span id="solSubtitle">Mix visuel + web + tunnel + CRM selon votre objectif.</span>
                 </div>
+                <span id="solFit">fit: —</span>
+              </div>
 
-                <div class="chips" id="solChips">
-                  <span class="chip"><span class="dot2"></span> Remplis les champs <small>pour générer</small></span>
+              <div class="chips" id="solChips">
+                <span class="chip"><span class="dot2"></span> Remplis les champs <small>pour générer</small></span>
+              </div>
+
+              <div class="plan">
+                <div class="phase">
+                  <div class="pt"><span>J+7 • Impact rapide</span><span class="pill" style="padding:6px 8px;">Proof</span></div>
+                  <ul id="plan7"><li>—</li></ul>
                 </div>
-
-                <div class="plan">
-                  <div class="phase">
-                    <div class="pt"><span>J+7 • Impact rapide</span><span class="pill" style="padding:6px 8px;">Proof</span></div>
-                    <ul id="plan7"><li>—</li></ul>
-                  </div>
-                  <div class="phase">
-                    <div class="pt"><span>J+30 • Système stable</span><span class="pill" style="padding:6px 8px;">Pipeline</span></div>
-                    <ul id="plan30"><li>—</li></ul>
-                  </div>
-                  <div class="phase">
-                    <div class="pt"><span>J+90 • Scale</span><span class="pill" style="padding:6px 8px;">Growth</span></div>
-                    <ul id="plan90"><li>—</li></ul>
-                  </div>
+                <div class="phase">
+                  <div class="pt"><span>J+30 • Système stable</span><span class="pill" style="padding:6px 8px;">Pipeline</span></div>
+                  <ul id="plan30"><li>—</li></ul>
                 </div>
-
-                <div class="deliver" id="deliverables">
-                  <b>Livrables:</b> — (audit + assets + setup + automatisations).
+                <div class="phase">
+                  <div class="pt"><span>J+90 • Scale</span><span class="pill" style="padding:6px 8px;">Growth</span></div>
+                  <ul id="plan90"><li>—</li></ul>
                 </div>
+              </div>
 
-                <div class="kv">
-                  <div class="item">
-                    <div class="k">Preuve installée</div>
-                    <div class="v" id="proofKpi">—</div>
-                  </div>
-                  <div class="item">
-                    <div class="k">Acquisition</div>
-                    <div class="v" id="acqKpi">—</div>
-                  </div>
-                  <div class="item">
-                    <div class="k">Conversion</div>
-                    <div class="v" id="convKpi">—</div>
-                  </div>
+              <div class="deliver" id="deliverables">
+                <b>Livrables:</b> — (audit + assets + setup + automatisations).
+              </div>
+
+              <div class="kv">
+                <div class="item">
+                  <div class="k">Preuve installée</div>
+                  <div class="v" id="proofKpi">—</div>
+                </div>
+                <div class="item">
+                  <div class="k">Acquisition</div>
+                  <div class="v" id="acqKpi">—</div>
+                </div>
+                <div class="item">
+                  <div class="k">Conversion</div>
+                  <div class="v" id="convKpi">—</div>
                 </div>
               </div>
             </div>
@@ -1092,11 +1420,11 @@
             <span class="k">Pack recommandé</span><span id="packRecoMini">—</span>
           </div>
 
-          <div class="packs" id="packs">
+          <div class="packs">
             <div class="pack" data-pack="starter">
               <div class="phd">
                 <b>Starter — Proof + base clean</b>
-                <span>On pose le socle : preuve premium + landing + tracking + quick wins.</span>
+                <span>Socle : preuve premium + landing + tracking + quick wins.</span>
               </div>
               <div class="pbd">
                 <div class="price"><div class="big">490€</div><div class="per">one-shot</div></div>
@@ -1113,7 +1441,7 @@
               <div class="badge">Best ROI</div>
               <div class="phd">
                 <b>Growth — Sprints + pipeline</b>
-                <span>Conversion + relances + création de valeur visible (preuve + contenu + funnel).</span>
+                <span>Conversion + relances + créas + funnel (effet cumulatif).</span>
               </div>
               <div class="pbd">
                 <div class="price"><div class="big">990€</div><div class="per">/ mois</div></div>
@@ -1129,7 +1457,7 @@
             <div class="pack" data-pack="scale">
               <div class="phd">
                 <b>Scale — Full system</b>
-                <span>De la visibilité au cash : tracking avancé, ads, créas, closing, rétention.</span>
+                <span>De la visibilité au cash : tracking, ads, créas, closing, rétention.</span>
               </div>
               <div class="pbd">
                 <div class="price"><div class="big">1990€</div><div class="per">/ mois</div></div>
@@ -1145,12 +1473,12 @@
 
           <div class="divider"></div>
 
-          <!-- CTA lead capture -->
+          <!-- CTA -->
           <div class="cta">
             <div class="ctaTop">
               <div>
-                <b>Passer de “visibilité” à “clients” (mesurable)</b><br/>
-                <span>2 options : <b>plan exact en 15 min</b> ou <b>proposition 1-page</b> immédiatement.</span>
+                <b>Transformer la visibilité en clients (mesurable)</b><br/>
+                <span>Option rapide : <b>plan exact en 15 min</b> ou <b>proposition 1-page</b> instant.</span>
               </div>
               <span class="badge2" id="ctaBadge">Low friction</span>
             </div>
@@ -1160,7 +1488,7 @@
             </div>
             <div class="ctaBtns">
               <button class="btn primary" id="btnCall">Je veux le plan exact (15 min)</button>
-              <button class="btn" id="btnSendProposal">Envoyez-moi la proposition</button>
+              <button class="btn" id="btnSendProposal">Générer la proposition</button>
               <button class="btn ghost" id="btnCopySummary">Copier résumé (call)</button>
             </div>
             <div class="toast" id="toast"></div>
@@ -1169,11 +1497,29 @@
           <div class="divider"></div>
 
           <div class="note" id="callScript">
-            Script call : “Je vous montre votre coût d’inaction mensuel + votre ROI 90 jours, puis ce qu’on installe en 7 jours pour transformer la visibilité en clients.”
+            Script call : “Je calcule votre coût d’inaction mensuel + votre ROI 90 jours, puis je vous montre ce qu’on installe en 7 jours.”
           </div>
 
           <div class="footer">
-            <div>Version : Maximaliste • Offline • 1 fichier (HTML)</div>
+            <div class="sig">
+              <!-- small signature eye -->
+              <svg width="18" height="18" viewBox="0 0 64 64" aria-hidden="true" style="opacity:.95">
+                <defs>
+                  <linearGradient id="sg" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0" stop-color="#7C5CFF"/>
+                    <stop offset="1" stop-color="#00E0FF"/>
+                  </linearGradient>
+                </defs>
+                <path d="M6 32c6.8-10.5 16.8-16 26-16s19.2 5.5 26 16c-6.8 10.5-16.8 16-26 16S12.8 42.5 6 32Z"
+                      fill="rgba(0,0,0,.35)" stroke="rgba(255,255,255,.18)" stroke-width="1.2"/>
+                <circle cx="32" cy="32" r="10.5" fill="url(#sg)"/>
+                <circle cx="32" cy="32" r="6.2" fill="rgba(7,10,18,.85)" stroke="rgba(255,255,255,.20)" stroke-width="1"/>
+                <circle cx="28.5" cy="28" r="2" fill="rgba(255,255,255,.9)"/>
+              </svg>
+              <div>
+                <b>VISION</b> <small>• Audit IA Conversion & Croissance</small>
+              </div>
+            </div>
             <div id="stamp">—</div>
           </div>
         </div>
@@ -1181,7 +1527,7 @@
     </div>
   </div>
 
-  <!-- MODAL: ONE-PAGER PROPOSAL -->
+  <!-- MODAL: ONE-PAGER -->
   <div class="modal" id="modal">
     <div class="modalCard">
       <div class="modalHd">
@@ -1196,7 +1542,7 @@
           <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:12px; flex-wrap:wrap;">
             <div>
               <div style="font-weight:950; font-size:16px; letter-spacing:.2px;" id="opTitle">Proposition —</div>
-              <div style="color:var(--muted); font-size:12px; margin-top:6px; line-height:1.4;" id="opSub">—</div>
+              <div style="color:var(--muted); font-size:12px; margin-top:6px; line-height:1.5;" id="opSub">—</div>
             </div>
             <div class="pill"><span class="k" id="opDate">—</span><span>timestamp</span></div>
           </div>
@@ -1227,23 +1573,20 @@
               <div class="divider"></div>
 
               <div class="pill"><span class="k">Plan 7/30/90</span><span>exécution</span></div>
-              <ul class="opList" id="opPlan">
-                <li>—</li>
-              </ul>
+              <ul class="opList" id="opPlan"><li>—</li></ul>
 
               <div class="divider"></div>
 
               <div class="pill"><span class="k">Livrables</span><span>preuve + système</span></div>
-              <ul class="opList" id="opDeliver">
-                <li>—</li>
-              </ul>
+              <ul class="opList" id="opDeliver"><li>—</li></ul>
             </div>
 
             <div>
               <div class="pill"><span class="k">Pack recommandé</span><span id="opPack">—</span></div>
+
               <div style="margin-top:10px; border:1px solid rgba(255,255,255,.10); background:rgba(0,0,0,.18); border-radius:14px; padding:12px;">
                 <div style="color:var(--muted2); font-size:11px; font-weight:950; letter-spacing:.25px;">Pourquoi ce pack</div>
-                <div style="margin-top:8px; font-weight:950; font-size:13px; line-height:1.45;" id="opWhy">—</div>
+                <div style="margin-top:8px; font-weight:950; font-size:13px; line-height:1.55;" id="opWhy">—</div>
               </div>
 
               <div class="divider"></div>
@@ -1252,24 +1595,26 @@
               <div style="margin-top:10px; border:1px solid rgba(255,255,255,.10); background:rgba(0,0,0,.18); border-radius:14px; padding:12px;">
                 <div style="color:var(--muted2); font-size:11px; font-weight:950; letter-spacing:.25px;">Entreprise</div>
                 <div style="margin-top:6px; font-weight:950;" id="opCompany">—</div>
+
                 <div style="margin-top:10px; color:var(--muted2); font-size:11px; font-weight:950; letter-spacing:.25px;">Contact</div>
                 <div style="margin-top:6px; font-weight:950;" id="opContact">—</div>
+
                 <div style="margin-top:10px; color:var(--muted2); font-size:11px; font-weight:950; letter-spacing:.25px;">Note</div>
-                <div style="margin-top:6px; color:var(--muted); font-size:12px; line-height:1.45;" id="opNote">—</div>
+                <div style="margin-top:6px; color:var(--muted); font-size:12px; line-height:1.55;" id="opNote">—</div>
               </div>
 
               <div class="divider"></div>
 
-              <div style="color:var(--muted); font-size:12px; line-height:1.45;">
-                <b>Engagement :</b> exécution orientée résultats, pilotage par KPI, preuves livrées rapidement.
+              <div style="color:var(--muted); font-size:12px; line-height:1.55;">
+                <b>Engagement VISION :</b> exécution orientée résultats, pilotage KPI, preuves livrées rapidement.
               </div>
             </div>
           </div>
 
           <div class="divider"></div>
 
-          <div style="display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap; color:var(--muted2); font-size:12px;">
-            <div id="opFooterL">—</div>
+          <div style="display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap; color:var(--muted2); font-size:12px; line-height:1.2;">
+            <div id="opFooterL">VISION • Proposition 1-page</div>
             <div id="opFooterR">—</div>
           </div>
         </div>
@@ -1293,13 +1638,21 @@
       const d = new Date();
       return d.toLocaleString("fr-FR", { year:"numeric", month:"2-digit", day:"2-digit", hour:"2-digit", minute:"2-digit" });
     };
+    const getCssVar = (name) => getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+    const hexToRgba = (hex, a) => {
+      const h = hex.replace("#","");
+      const r = parseInt(h.slice(0,2),16);
+      const g = parseInt(h.slice(2,4),16);
+      const b = parseInt(h.slice(4,6),16);
+      return `rgba(${r},${g},${b},${a})`;
+    };
 
-    // Canvas helpers (no external libs)
+    // DPR canvas (crisp)
     function dprCanvas(c){
       const dpr = window.devicePixelRatio || 1;
       const rect = c.getBoundingClientRect();
-      const w = Math.floor(rect.width * dpr);
-      const h = Math.floor(rect.height * dpr);
+      const w = Math.max(1, Math.floor(rect.width * dpr));
+      const h = Math.max(1, Math.floor(rect.height * dpr));
       if (c.width !== w || c.height !== h){
         c.width = w; c.height = h;
       }
@@ -1308,22 +1661,10 @@
       return ctx;
     }
 
-    function hexToRgba(hex, a){
-      // supports #RRGGBB
-      const h = hex.replace("#","");
-      const r = parseInt(h.slice(0,2),16);
-      const g = parseInt(h.slice(2,4),16);
-      const b = parseInt(h.slice(4,6),16);
-      return `rgba(${r},${g},${b},${a})`;
-    }
-
-    function getCssVar(name){
-      return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
-    }
-
     // ---------- STATE ----------
     let step = 1;
-    let scenario = "conservative"; // default visual; will set button
+    let scenario = "conservative";
+
     const els = {
       sector: $("sector"),
       maturity: $("maturity"),
@@ -1331,14 +1672,12 @@
       traffic: $("traffic"),
       volume: $("volume"),
       cr: $("cr"),
-
       aov: $("aov"),
       gm: $("gm"),
       adspend: $("adspend"),
       cac: $("cac"),
       crTarget: $("crTarget"),
       aovLift: $("aovLift"),
-
       goal: $("goal"),
       horizon: $("horizon"),
       company: $("company"),
@@ -1347,7 +1686,7 @@
       note: $("note"),
     };
 
-    // ---------- NAV STEPS ----------
+    // ---------- NAV ----------
     function setStep(n){
       step = clamp(n, 1, 3);
       $("stepLabel").textContent = "Étape " + step;
@@ -1365,7 +1704,7 @@
       $("btnNextTop").textContent = (step < 3) ? "Continuer" : "Générer";
     }
 
-    // ---------- CORE CALC ----------
+    // ---------- INPUTS ----------
     function getInputs(){
       const traffic = num(els.traffic.value);
       const volume = num(els.volume.value);
@@ -1393,7 +1732,6 @@
 
     function computeScore(i){
       const maturity = parseInt(els.maturity.value, 10) || 1;
-
       const dataCompleteness =
         (i.traffic>0) + (i.volume>0) + (i.aov>0) + (i.gm>0) + (i.adspend>0 || i.cac>0);
 
@@ -1413,107 +1751,78 @@
       const profitScore = clamp((profitRatio) * 25, -10, 25);
       const maturityScore = [0, 12, 18, 25][maturity] || 12;
       const dataScore = clamp(dataCompleteness * 6, 0, 18);
-
       const penalty = (dataCompleteness < 3) ? 15 : 0;
 
       let score = crScore + profitScore + maturityScore + dataScore - penalty;
       score = clamp(Math.round(score), 0, 100);
 
-      return { score, crBenchLow, crBenchHigh, profitRatio, unitProfitAfterAds, gpPerOrder, dataCompleteness };
+      return { score, crBenchLow, crBenchHigh, profitRatio, dataCompleteness };
     }
 
     function computeUpside(i, scn){
-      // baseline
       const revM = i.volume * i.aov;
       const grossM = revM * i.gm;
 
-      // scenario multipliers (impact + ramp)
       const sc = {
-        conservative: { ramp:0.55, crBonus:0.60, aovBonus:0.60, effBonus:0.70 },
-        realistic:    { ramp:0.65, crBonus:1.00, aovBonus:1.00, effBonus:1.00 },
-        aggressive:   { ramp:0.75, crBonus:1.25, aovBonus:1.25, effBonus:1.20 },
-      }[scn] || { ramp:0.65, crBonus:1.0, aovBonus:1.0, effBonus:1.0 };
+        conservative: { ramp:0.55, aovBonus:0.60, effBonus:0.70, volFallback:1.10, cacImprove:0.06 },
+        realistic:    { ramp:0.65, aovBonus:1.00, effBonus:1.00, volFallback:1.20, cacImprove:0.10 },
+        aggressive:   { ramp:0.75, aovBonus:1.25, effBonus:1.20, volFallback:1.30, cacImprove:0.14 },
+      }[scn] || { ramp:0.65, aovBonus:1.0, effBonus:1.0, volFallback:1.2, cacImprove:0.10 };
 
-      // target volume
       let volTarget = i.volume;
       if (i.traffic > 0 && i.crTarget > 0){
         volTarget = i.traffic * (i.crTarget / 100);
       } else {
-        // scenario if no explicit target: +10 / +20 / +30%
-        const base = (scn === "conservative") ? 1.10 : (scn === "aggressive" ? 1.30 : 1.20);
-        volTarget = i.volume * base;
+        volTarget = i.volume * sc.volFallback;
       }
 
-      // AOV target
       const aovTarget = i.aov + ((i.aovLift || 0) * sc.aovBonus);
 
-      // ad efficiency (proxy): if ads exist, assume CAC improves slightly by scenario and maturity
       let cacEff = i.cac || 0;
       const maturity = parseInt(els.maturity.value,10) || 1;
-      const cacImprovement = (i.adspend>0 || cacEff>0) ? ( (scn==="conservative")? 0.06 : (scn==="aggressive")? 0.14 : 0.10 ) : 0;
       const maturityFactor = (maturity>=3) ? 1.15 : (maturity===2 ? 1.0 : 0.9);
-      const cacTarget = Math.max(0, cacEff * (1 - cacImprovement*maturityFactor*sc.effBonus));
+      const cacTarget = Math.max(0, cacEff * (1 - sc.cacImprove*maturityFactor*sc.effBonus));
 
-      // compute target
       const revTargetM = volTarget * aovTarget;
       const grossTargetM = revTargetM * i.gm;
 
-      // baseline ad cost (use adspend if provided)
       const adCostBase = i.adspend || (i.volume>0 ? (i.cac * i.volume) : 0);
       const adCostTarget = (i.adspend>0) ? (cacTarget * volTarget) : 0;
 
-      // delta gross + delta ad cost => delta net (simplified)
       const deltaGrossM = Math.max(0, grossTargetM - grossM);
-      const deltaAdsM = Math.max(0, adCostBase - adCostTarget); // savings
+      const deltaAdsM = Math.max(0, adCostBase - adCostTarget);
+
       const months = i.horizonDays / 30;
+      const upside = (deltaGrossM + deltaAdsM) * months * sc.ramp;
 
-      const upsideGross = (deltaGrossM * months * sc.ramp);
-      const upsideAds = (deltaAdsM * months * sc.ramp);
-
-      const upside = upsideGross + upsideAds;
-
-      return {
-        revM, grossM,
-        volTarget, aovTarget, cacTarget,
-        revTargetM, grossTargetM,
-        upside,
-        upsideGross, upsideAds,
-        adCostBase, adCostTarget
-      };
+      return { revM, grossM, grossTargetM, upside, adCostBase, adCostTarget, deltaGrossM, deltaAdsM, ramp: sc.ramp };
     }
 
-    // ---------- Digital Leverage Score (4 pillars) ----------
     function computePillars(i, s){
-      // 0..100 each pillar
       const maturity = parseInt(els.maturity.value,10) || 1;
       const ch = els.topChannel.value;
       const goal = els.goal.value;
       const hasSite = (els.url.value || "").trim().length > 0;
       const note = (els.note.value || "").toLowerCase();
 
-      // Proxy signals
-      const hasTracking = (maturity >= 2) ? 1 : 0;
-      const hasCRM = (maturity >= 3) ? 1 : 0;
+      const hasTracking = (maturity >= 2);
+      const hasCRM = (maturity >= 3);
       const hasAds = (ch === "ads" || ch === "mixed" || i.adspend > 0);
       const hasData = (s.dataCompleteness >= 4);
 
-      // Proof & Authority
       let proof = 40;
       proof += hasSite ? 10 : -5;
-      proof += (note.includes("avis") || note.includes("preuve") || note.includes("créd") || note.includes("cred")) ? -5 : 5;
+      proof += (note.includes("avis") || note.includes("preuve") || note.includes("cred") || note.includes("créd")) ? -5 : 5;
       proof += (els.sector.value === "local" || els.sector.value === "b2b") ? 10 : 5;
       proof += (goal === "speed") ? 10 : 0;
       proof = clamp(proof, 15, 92);
 
-      // Acquisition
       let acq = 45;
       acq += hasAds ? 10 : 5;
       acq += hasData ? 8 : -6;
       acq += (ch === "seo" || ch === "social") ? 6 : 0;
-      acq += (goal === "cac") ? -3 : 0;
       acq = clamp(acq, 15, 92);
 
-      // Conversion
       let conv = 42;
       conv += (i.cr > (s.crBenchLow + 0.3)) ? 8 : -6;
       conv += (i.aov > 0) ? 6 : -4;
@@ -1521,7 +1830,6 @@
       conv += (goal === "conv" || goal === "aov") ? 8 : 0;
       conv = clamp(conv, 12, 92);
 
-      // Retention / Pipeline
       let ret = 38;
       ret += hasCRM ? 12 : -4;
       ret += (els.sector.value === "leadgen" || els.sector.value === "b2b") ? 10 : 4;
@@ -1532,153 +1840,7 @@
       return { proof, acq, conv, ret };
     }
 
-    // ---------- Solutions personnalisées ----------
-    function buildSolutions(i, s, u){
-      const sector = els.sector.value;
-      const goal = els.goal.value;
-      const maturity = parseInt(els.maturity.value, 10) || 1;
-      const ch = els.topChannel.value;
-      const note = (els.note.value || "").toLowerCase();
-
-      const hasSite = (els.url.value || "").trim().length > 0;
-      const needProof = note.includes("avis") || note.includes("créd") || note.includes("cred") || note.includes("preuve") || !hasSite;
-
-      const modules = [];
-
-      if (sector === "local" || sector === "b2b" || goal === "speed" || needProof){
-        modules.push({ key:"visual", label:"Visuels drone + mini-film", tag:"Preuve & autorité", level:"good" });
-        modules.push({ key:"content", label:"Contenus réseaux + pubs", tag:"Acquisition", level:"good" });
-      }
-
-      if (!hasSite || maturity <= 2 || goal === "conv" || goal === "aov"){
-        modules.push({ key:"web", label:"Site/landing + tunnel", tag:"Conversion", level:"good" });
-        modules.push({ key:"ops", label:"MAJ & sécurité + perf", tag:"Opérationnel", level:"warn" });
-      }
-
-      if (sector === "leadgen" || sector === "b2b" || goal === "ret" || goal === "speed" || goal === "cac"){
-        modules.push({ key:"crm", label:"CRM + relances auto", tag:"Pipeline", level:"good" });
-        modules.push({ key:"reviews", label:"Gestion avis + réputation", tag:"Crédibilité", level:"warn" });
-      }
-
-      if (ch === "ads" || ch === "mixed" || i.adspend > 0 || goal === "cac"){
-        modules.push({ key:"track", label:"Tracking GA4/Pixel + events", tag:"Mesure", level:(maturity>=2 ? "warn" : "bad") });
-        modules.push({ key:"ads", label:"Optimisation ads + créas", tag:"ROI", level:"warn" });
-      }
-
-      if (modules.length === 0){
-        modules.push({ key:"visual", label:"Visuels premium (drone/mini-film)", tag:"Preuve", level:"warn" });
-        modules.push({ key:"web", label:"Landing + tunnel conversion", tag:"Conversion", level:"warn" });
-        modules.push({ key:"crm", label:"Relances prospects + avis", tag:"Pipeline", level:"warn" });
-      }
-
-      const seen = new Set();
-      const finalModules = modules.filter(m => (seen.has(m.key) ? false : seen.add(m.key)));
-
-      const plan7 = [];
-      const plan30 = [];
-      const plan90 = [];
-
-      plan7.push("Audit + KPI baseline + coût d’inaction (1 page).");
-      plan7.push("Page ‘preuve’ + CTA + objections + garanties.");
-      if (finalModules.some(m => m.key === "visual")){
-        plan7.push("Shooting drone + mini-film 15–30s + déclinaisons.");
-      } else {
-        plan7.push("Pack créa : 3 visuels + 2 hooks + 1 script vidéo.");
-      }
-      if (finalModules.some(m => m.key === "track")){
-        plan7.push("Tracking events clés + dashboard KPI simple.");
-      }
-
-      plan30.push("Landing dédiée à l’offre + tunnel (RDV/checkout).");
-      plan30.push("Relances auto (email/SMS/WhatsApp) : abandons + post-lead (7j).");
-      if (finalModules.some(m => m.key === "reviews")){
-        plan30.push("Système avis : collecte + réponses + templates + push Google.");
-      } else {
-        plan30.push("Optimisation conversion : copy, CTA, FAQ, friction (2 itérations).");
-      }
-      plan30.push("MAJ site : sécurité + perf + corrections UX.");
-
-      if (finalModules.some(m => m.key === "ads")){
-        plan90.push("Optimisation campagnes + itérations créas (hebdo).");
-      } else {
-        plan90.push("Acquisition organique : calendrier contenu + formats récurrents.");
-      }
-      plan90.push("A/B test : 2 variations landing + 2 variations offre.");
-      plan90.push("Pipeline : scoring + scripts closing + relances multi-étapes.");
-      plan90.push("Dashboard KPI mensuel + pilotage ROI.");
-
-      const deliver = [];
-      deliver.push("Audit PDF (score + KPI + coût d’inaction)");
-      deliver.push("Board KPI + tracking events");
-      if (finalModules.some(m => m.key === "visual")) deliver.push("Pack visuel (drone + mini-film + déclinaisons)");
-      deliver.push("Landing + tunnel (formulaire / RDV / checkout)");
-      deliver.push("CRM + relances + templates (email/SMS/WhatsApp)");
-      deliver.push("Avis & réputation + scripts");
-
-      const proofKpi = finalModules.some(m => m.key === "visual")
-        ? "Mini-film + visuels premium livrés"
-        : "Page preuve + pack créa livré";
-
-      const acqKpi = (ch === "ads" || i.adspend > 0)
-        ? "Créa + ads optimisées (ROI)"
-        : "Plan contenu + hooks + calendrier";
-
-      const convKpi = (goal === "conv" || goal === "aov")
-        ? "Landing + tunnel + relances auto"
-        : "Pipeline + CRM + relances";
-
-      let fit = "fit: solide";
-      if (s.score <= 35) fit = "fit: foundations";
-      if (s.score >= 75) fit = "fit: scale-ready";
-
-      let title = "Blueprint valeur + acquisition";
-      let subtitle = "Mix visuel + web + tunnel + CRM selon votre objectif (prêt à déployer).";
-      if (goal === "speed"){ title = "Blueprint closing & pipeline"; subtitle = "On transforme les leads en RDV + ventes avec CRM, scripts, relances et preuve."; }
-      if (goal === "ret"){ title = "Blueprint rétention & LTV"; subtitle = "On augmente le revenu sans plus de trafic : relances, avis, offres récurrentes."; }
-      if (goal === "cac"){ title = "Blueprint ROI & CAC"; subtitle = "On nettoie le tracking, on optimise ads/créas et on remonte la marge."; }
-
-      return {
-        title, subtitle, fit,
-        modules: finalModules,
-        plan7: plan7.slice(0,4),
-        plan30: plan30.slice(0,4),
-        plan90: plan90.slice(0,4),
-        deliverables: deliver,
-        proofKpi, acqKpi, convKpi
-      };
-    }
-
-    // ---------- Pack selection ----------
-    function pickPack(i, s, u){
-      const maturity = parseInt(els.maturity.value, 10) || 1;
-      const hasBasics = (i.traffic>0 && i.volume>0 && i.aov>0 && i.gm>0);
-      const bigUpside = u.upside >= 8000;
-      const marginUnderPressure = (s.profitRatio < 0.2);
-
-      let pack = "starter";
-      if (hasBasics && maturity >= 2) pack = "growth";
-      if (bigUpside && maturity >= 2) pack = "growth";
-      if (bigUpside && !marginUnderPressure && (i.adspend >= 8000 || i.volume >= 1500)) pack = "scale";
-      if (marginUnderPressure && maturity >= 2) pack = "scale";
-
-      if (s.score <= 35) pack = "starter";
-      if (s.score >= 70 && (i.adspend >= 6000 || i.volume >= 1200)) pack = "scale";
-
-      return pack;
-    }
-
-    function paintPack(pack){
-      const cards = document.querySelectorAll(".pack");
-      cards.forEach(c => c.classList.remove("reco"));
-      const target = document.querySelector(`.pack[data-pack="${pack}"]`);
-      if (target) target.classList.add("reco");
-      const map = { starter:"Starter (one-shot)", growth:"Growth (abonnement)", scale:"Scale (abonnement)" };
-      $("packRecoMini").textContent = map[pack] || "—";
-    }
-
-    // ---------- Assumptions confidence ----------
-    function computeTrust(s){
-      // 0..6
+    function computeTrust(){
       const filled =
         (num(els.traffic.value)>0) +
         (num(els.volume.value)>0) +
@@ -1695,47 +1857,37 @@
       $("trustBar").style.width = pct + "%";
       $("trustLbl").textContent = lbl;
 
-      const txt =
-        (pct >= 70) ? "Hypothèses solides : projection très exploitable en décision."
+      $("assumptionsTxt").textContent =
+        (pct >= 70) ? "Hypothèses solides : projection exploitable en décision."
         : (pct >= 45) ? "Hypothèses correctes : projection exploitable (à affiner en onboarding)."
         : "Hypothèses partielles : projection indicative (remplir AOV, marge, ads pour précision).";
 
-      $("assumptionsTxt").textContent = txt;
-      return { filled, pct };
+      return { pct };
     }
 
-    // ---------- Cost of inaction ----------
-    function computeInaction(i, u, pillars){
-      // fuites estimées : panier + relances + preuve + tracking (proxy)
-      const revM = u.revM || 0;
-      const grossM = u.grossM || 0;
-
-      // leak factors from pillars (lower pillar => more leak)
+    function computeInaction(grossM, pillars){
       const leakProof = clamp((70 - pillars.proof) / 100, 0, 0.35);
       const leakConv  = clamp((70 - pillars.conv) / 100, 0, 0.35);
       const leakRet   = clamp((70 - pillars.ret)  / 100, 0, 0.30);
       const leakAcq   = clamp((70 - pillars.acq)  / 100, 0, 0.25);
 
-      // weighted leak on gross
       const leak = (leakProof*0.25 + leakConv*0.35 + leakRet*0.25 + leakAcq*0.15);
-      const cost = grossM * leak;
-
+      const cost = (grossM || 0) * leak;
       return { cost, leak };
     }
 
-    // ---------- Charts ----------
+    // ---------- CHARTS (crisp, no overlap) ----------
     function drawRadar(pillars){
       const c = $("canvasRadar");
       const ctx = dprCanvas(c);
       const w = c.getBoundingClientRect().width;
       const h = c.getBoundingClientRect().height;
-
       ctx.clearRect(0,0,w,h);
 
       const accent = getCssVar("--accent");
       const accent2 = getCssVar("--accent2");
-      const grid = "rgba(255,255,255,.08)";
-      const text = "rgba(255,255,255,.75)";
+      const grid = "rgba(255,255,255,.10)";
+      const text = "rgba(255,255,255,.76)";
       const muted = "rgba(255,255,255,.55)";
 
       const cx = w/2;
@@ -1765,7 +1917,7 @@
         ctx.stroke();
       }
 
-      // axis lines + labels
+      // axes + labels
       axes.forEach((ax, i) => {
         const a = (-Math.PI/2) + i*(2*Math.PI/axes.length);
         const x = cx + Math.cos(a)*R;
@@ -1773,14 +1925,13 @@
         ctx.beginPath();
         ctx.moveTo(cx,cy);
         ctx.lineTo(x,y);
-        ctx.strokeStyle = "rgba(255,255,255,.10)";
+        ctx.strokeStyle = "rgba(255,255,255,.12)";
         ctx.stroke();
 
-        // labels
         ctx.fillStyle = text;
-        ctx.font = "12px ui-sans-serif, system-ui";
-        const lx = cx + Math.cos(a)*(R + 20);
-        const ly = cy + Math.sin(a)*(R + 20);
+        ctx.font = "12px " + getCssVar("--font") || "12px ui-sans-serif";
+        const lx = cx + Math.cos(a)*(R + 18);
+        const ly = cy + Math.sin(a)*(R + 18);
         ctx.textAlign = (Math.cos(a) > 0.3) ? "left" : (Math.cos(a) < -0.3) ? "right" : "center";
         ctx.textBaseline = "middle";
         ctx.fillText(ax.label, lx, ly);
@@ -1814,19 +1965,16 @@
         const y = cy + Math.sin(a)*(R*v);
         ctx.beginPath();
         ctx.arc(x,y,4,0,2*Math.PI);
-        ctx.fillStyle = "rgba(255,255,255,.85)";
+        ctx.fillStyle = "rgba(255,255,255,.86)";
         ctx.fill();
-        ctx.beginPath();
-        ctx.arc(x,y,7,0,2*Math.PI);
-        ctx.strokeStyle = hexToRgba(accent2, .35);
-        ctx.stroke();
       });
 
-      // small legend
+      // legend
       ctx.fillStyle = muted;
       ctx.font = "11px ui-sans-serif, system-ui";
       ctx.textAlign = "left";
-      ctx.fillText("Plus c’est haut, plus votre levier digital est exploitable.", 10, 16);
+      ctx.textBaseline = "top";
+      ctx.fillText("Plus c’est haut, plus le levier digital est exploitable.", 10, 10);
     }
 
     function drawWaterfall(baseGrossM, deltaGrossM, deltaAdsM){
@@ -1834,34 +1982,32 @@
       const ctx = dprCanvas(c);
       const w = c.getBoundingClientRect().width;
       const h = c.getBoundingClientRect().height;
-
       ctx.clearRect(0,0,w,h);
 
       const accent = getCssVar("--accent");
       const accent2 = getCssVar("--accent2");
-      const grid = "rgba(255,255,255,.08)";
-      const text = "rgba(255,255,255,.75)";
+      const grid = "rgba(255,255,255,.10)";
+      const text = "rgba(255,255,255,.74)";
       const muted = "rgba(255,255,255,.55)";
 
-      const pad = 26;
-      const top = 28;
+      const pad = 24;
+      const top = 24;
       const bottom = 34;
 
       const maxVal = Math.max(1, baseGrossM + deltaGrossM + deltaAdsM);
-      const minVal = 0;
-
       const scaleY = (v) => {
-        const t = (v - minVal) / (maxVal - minVal);
+        const t = v / maxVal;
         return top + (h - top - bottom) * (1 - t);
       };
 
-      // grid lines
+      // grid lines + labels
       for (let i=0;i<=4;i++){
         const y = top + (h - top - bottom) * (i/4);
         ctx.beginPath();
         ctx.moveTo(pad, y);
         ctx.lineTo(w-pad, y);
         ctx.strokeStyle = grid;
+        ctx.lineWidth = 1;
         ctx.stroke();
 
         const val = (maxVal * (1 - i/4));
@@ -1873,10 +2019,10 @@
       }
 
       const bars = [
-        { label:"Marge actuelle", start:0, end:baseGrossM, color:hexToRgba(accent, .45) },
-        { label:"+ Conversion", start:baseGrossM, end:baseGrossM + deltaGrossM, color:hexToRgba(accent2, .32) },
-        { label:"+ Efficacité ads", start:baseGrossM + deltaGrossM, end:baseGrossM + deltaGrossM + deltaAdsM, color:"rgba(46,229,157,.22)" },
-        { label:"Marge cible", start:0, end:baseGrossM + deltaGrossM + deltaAdsM, color:"rgba(255,255,255,.08)", outline:true },
+        { label:"Marge actuelle", start:0, end:baseGrossM, color:hexToRgba(accent, .44) },
+        { label:"+ Conversion", start:baseGrossM, end:baseGrossM + deltaGrossM, color:hexToRgba(accent2, .30) },
+        { label:"+ Efficacité", start:baseGrossM + deltaGrossM, end:baseGrossM + deltaGrossM + deltaAdsM, color:"rgba(46,229,157,.22)" },
+        { label:"Marge cible", start:0, end:baseGrossM + deltaGrossM + deltaAdsM, color:"rgba(255,255,255,.06)", outline:true },
       ];
 
       const bw = (w - pad*2) / (bars.length + 1);
@@ -1888,11 +2034,10 @@
         const y0 = scaleY(b.start);
         const barH = Math.max(2, y0 - y1);
 
-        // bar
-        ctx.beginPath();
-        const r = 10;
         const rx = x, ry = y1, rw = bw - gap, rh = barH;
-        // rounded rect
+        const r = 10;
+
+        ctx.beginPath();
         ctx.moveTo(rx+r, ry);
         ctx.arcTo(rx+rw, ry, rx+rw, ry+rh, r);
         ctx.arcTo(rx+rw, ry+rh, rx, ry+rh, r);
@@ -1904,6 +2049,7 @@
           ctx.fillStyle = "rgba(255,255,255,.04)";
           ctx.fill();
           ctx.strokeStyle = "rgba(255,255,255,.14)";
+          ctx.lineWidth = 1;
           ctx.stroke();
         } else {
           const grad = ctx.createLinearGradient(rx, ry, rx+rw, ry+rh);
@@ -1922,7 +2068,7 @@
         ctx.textBaseline = "top";
         ctx.fillText(b.label, rx + rw/2, h - 26);
 
-        // value
+        // values
         const val = (i === 1) ? deltaGrossM : (i === 2 ? deltaAdsM : b.end);
         ctx.fillStyle = muted;
         ctx.font = "11px ui-sans-serif, system-ui";
@@ -1930,15 +2076,193 @@
         ctx.fillText(money(val), rx + rw/2, y1 - 8);
       });
 
-      // headline
       ctx.fillStyle = muted;
       ctx.font = "11px ui-sans-serif, system-ui";
       ctx.textAlign = "left";
       ctx.textBaseline = "top";
-      ctx.fillText("Décomposition de la marge (mensuelle) : conversion + efficacité + cible.", 10, 10);
+      ctx.fillText("Décomposition de la marge : conversion + efficacité + cible.", 10, 10);
     }
 
-    // ---------- UI Update ----------
+    // ---------- SOLUTIONS ----------
+    function buildSolutions(i, s){
+      const sector = els.sector.value;
+      const goal = els.goal.value;
+      const maturity = parseInt(els.maturity.value, 10) || 1;
+      const ch = els.topChannel.value;
+      const note = (els.note.value || "").toLowerCase();
+
+      const hasSite = (els.url.value || "").trim().length > 0;
+      const needProof = note.includes("avis") || note.includes("preuve") || note.includes("cred") || note.includes("créd") || !hasSite;
+
+      const modules = [];
+      if (sector === "local" || sector === "b2b" || goal === "speed" || needProof){
+        modules.push({ key:"visual", label:"Visuels premium (drone/mini-film)", tag:"Preuve", level:"good" });
+        modules.push({ key:"content", label:"Créa & contenus (hooks / formats)", tag:"Acquisition", level:"good" });
+      }
+      if (!hasSite || maturity <= 2 || goal === "conv" || goal === "aov"){
+        modules.push({ key:"web", label:"Landing + offre + tunnel", tag:"Conversion", level:"good" });
+        modules.push({ key:"ops", label:"Perf UX + corrections", tag:"Système", level:"warn" });
+      }
+      if (sector === "leadgen" || sector === "b2b" || goal === "ret" || goal === "speed" || goal === "cac"){
+        modules.push({ key:"crm", label:"CRM + relances auto", tag:"Pipeline", level:"good" });
+        modules.push({ key:"reviews", label:"Avis & réputation", tag:"Confiance", level:"warn" });
+      }
+      if (ch === "ads" || ch === "mixed" || i.adspend > 0 || goal === "cac"){
+        modules.push({ key:"track", label:"Tracking events + dashboard", tag:"Mesure", level:(maturity>=2 ? "warn" : "bad") });
+        modules.push({ key:"ads", label:"Optimisation ads + itérations", tag:"ROI", level:"warn" });
+      }
+
+      const seen = new Set();
+      const finalModules = modules.filter(m => (seen.has(m.key) ? false : seen.add(m.key)));
+
+      const plan7 = [
+        "Audit + KPI baseline + coût d’inaction (1 page).",
+        "Page preuve + CTA + objections + garanties.",
+        finalModules.some(m => m.key === "visual")
+          ? "Visuels premium : mini-film 15–30s + déclinaisons."
+          : "Pack créa : 3 visuels + 2 hooks + 1 script vidéo.",
+        finalModules.some(m => m.key === "track")
+          ? "Tracking events clés + dashboard KPI simple."
+          : "Checklist mesure + quick fixes de tracking."
+      ].slice(0,4);
+
+      const plan30 = [
+        "Landing dédiée à l’offre + tunnel (RDV/checkout).",
+        "Relances auto (email/SMS/WhatsApp) : post-lead (7j).",
+        finalModules.some(m => m.key === "reviews")
+          ? "Système avis : collecte + réponses + templates."
+          : "Optimisation conversion : copy, CTA, FAQ, friction (2 itérations).",
+        "MAJ UX : perf, vitesse, clarté, preuve."
+      ].slice(0,4);
+
+      const plan90 = [
+        finalModules.some(m => m.key === "ads")
+          ? "Optimisation campagnes + itérations créas (hebdo)."
+          : "Acquisition organique : calendrier contenu + formats récurrents.",
+        "A/B test : 2 variations landing + 2 variations offre.",
+        "Pipeline : scoring + scripts closing + relances multi-étapes.",
+        "Dashboard KPI + pilotage ROI mensuel."
+      ].slice(0,4);
+
+      const deliver = [
+        "Audit PDF (score + KPI + coût d’inaction)",
+        "Dashboard KPI + tracking events",
+        finalModules.some(m => m.key === "visual") ? "Pack visuel premium" : "Pack créa (hooks/visuels/scripts)",
+        "Landing + tunnel conversion",
+        "CRM + relances + templates",
+        "Avis & réputation (si applicable)"
+      ];
+
+      let title = "Blueprint valeur + acquisition";
+      let subtitle = "Preuve + tunnel + relances + mesure. Objectif : plus de clients, de manière pilotable.";
+      if (goal === "speed"){ title = "Blueprint closing & pipeline"; subtitle = "On transforme leads → RDV → ventes avec preuve + relances + scripts."; }
+      if (goal === "ret"){ title = "Blueprint rétention & LTV"; subtitle = "On augmente le revenu sans plus de trafic : relances, offres, avis."; }
+      if (goal === "cac"){ title = "Blueprint ROI & CAC"; subtitle = "Tracking clean + créas + optimisation pour remonter la marge."; }
+
+      let fit = "fit: solide";
+      if (s.score <= 35) fit = "fit: foundations";
+      if (s.score >= 75) fit = "fit: scale-ready";
+
+      return {
+        title, subtitle, fit,
+        modules: finalModules.length ? finalModules : [{ key:"web", label:"Landing + tunnel conversion", tag:"Conversion", level:"warn" }],
+        plan7, plan30, plan90,
+        deliverables: deliver
+      };
+    }
+
+    function pickPack(i, s, u){
+      const maturity = parseInt(els.maturity.value, 10) || 1;
+      const hasBasics = (i.traffic>0 && i.volume>0 && i.aov>0 && i.gm>0);
+      const bigUpside = u.upside >= 8000;
+      const marginUnderPressure = (s.profitRatio < 0.2);
+
+      let pack = "starter";
+      if (hasBasics && maturity >= 2) pack = "growth";
+      if (bigUpside && maturity >= 2) pack = "growth";
+      if (bigUpside && !marginUnderPressure && (i.adspend >= 8000 || i.volume >= 1500)) pack = "scale";
+      if (marginUnderPressure && maturity >= 2) pack = "scale";
+
+      if (s.score <= 35) pack = "starter";
+      if (s.score >= 70 && (i.adspend >= 6000 || i.volume >= 1200)) pack = "scale";
+      return pack;
+    }
+
+    function paintPack(pack){
+      document.querySelectorAll(".pack").forEach(c => c.classList.remove("reco"));
+      const target = document.querySelector(`.pack[data-pack="${pack}"]`);
+      if (target) target.classList.add("reco");
+      const map = { starter:"Starter (one-shot)", growth:"Growth (abonnement)", scale:"Scale (abonnement)" };
+      $("packRecoMini").textContent = map[pack] || "—";
+    }
+
+    function animateNumber(from, to, ms, cb){
+      const start = performance.now();
+      const diff = to - from;
+      const ease = (t) => 1 - Math.pow(1 - t, 3);
+      function tick(now){
+        const t = clamp((now - start) / ms, 0, 1);
+        cb(Math.round(from + diff * ease(t)));
+        if (t < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    }
+
+    // ---------- ONE-PAGER ----------
+    function buildOnePager(pack, sol, u, net90, inactionCost){
+      const company = (els.company.value || "").trim() || "—";
+      const contact = (els.contact.value || "").trim() || "—";
+      const note = (els.note.value || "").trim() || "—";
+      const url = (els.url.value || "").trim();
+
+      const packLabel = pack==="starter" ? "Starter" : (pack==="scale" ? "Scale" : "Growth");
+      const why =
+        pack==="starter" ? `Priorité : preuve + landing + mesure. Coût d’inaction estimé: ${money(inactionCost)}/mois.`
+        : pack==="growth" ? `Priorité : sprints conversion + relances + créas (effet cumulatif). Objectif : gains mesurables sous 30 jours.`
+        : `Priorité : pilotage complet (tracking/ads/créas/pipeline). Objectif : scalabilité & ROI maximal.`;
+
+      $("opTitle").textContent = `Proposition — ${company}`;
+      $("opSub").textContent = `Scénario: ${scenario==="conservative"?"Conservateur":scenario==="aggressive"?"Agressif":"Réaliste"} • Coût d’inaction: ${money(inactionCost)}/mois • ${url ? ("Source: " + url) : "Source: non renseignée"}`;
+      $("opDate").textContent = nowStamp();
+
+      $("opRev").textContent = money(u.revM);
+      $("opGross").textContent = money(u.grossM);
+      $("opNet90").textContent = money(net90);
+
+      const plan = []
+        .concat(sol.plan7.map(x => "J+7: " + x))
+        .concat(sol.plan30.map(x => "J+30: " + x))
+        .concat(sol.plan90.map(x => "J+90: " + x));
+
+      const opPlan = $("opPlan");
+      opPlan.innerHTML = "";
+      plan.slice(0, 12).forEach(t => {
+        const li = document.createElement("li");
+        li.textContent = t;
+        opPlan.appendChild(li);
+      });
+
+      const opDel = $("opDeliver");
+      opDel.innerHTML = "";
+      sol.deliverables.forEach(t => {
+        const li = document.createElement("li");
+        li.textContent = t;
+        opDel.appendChild(li);
+      });
+
+      $("opPack").textContent = packLabel;
+      $("opWhy").textContent = why;
+      $("opCompany").textContent = company;
+      $("opContact").textContent = contact;
+      $("opNote").textContent = note;
+
+      $("opFooterR").textContent = "Généré: " + nowStamp();
+    }
+
+    function openModal(){ $("modal").classList.add("on"); document.body.style.overflow = "hidden"; }
+    function closeModal(){ $("modal").classList.remove("on"); document.body.style.overflow = ""; }
+
+    // ---------- UI UPDATE ----------
     function updateScenarioButtons(){
       $("scCon").classList.toggle("on", scenario==="conservative");
       $("scReal").classList.toggle("on", scenario==="realistic");
@@ -1948,20 +2272,19 @@
 
     function updateUI(){
       const i = getInputs();
-
-      $("stamp").textContent = "Généré : " + nowStamp();
-
       const s = computeScore(i);
 
-      // score ring animate
+      $("stamp").textContent = "Généré : " + nowStamp();
+      updateScenarioButtons();
+
+      // Score ring animate
       const prev = parseInt($("scoreVal").textContent || "0", 10);
-      const target = s.score;
-      animateNumber(prev, target, 280, (v) => {
+      animateNumber(prev, s.score, 240, (v) => {
         $("scoreVal").textContent = v;
         $("ring").style.setProperty("--p", v);
       });
 
-      // Tag + headline
+      // Tag + copy
       const tag = $("scoreTag");
       tag.classList.remove("good","warn","bad");
 
@@ -1971,13 +2294,11 @@
       let sub = "On installe le système qui transforme la visibilité en clients (mesurable, pilotable).";
 
       if (s.score >= 75){
-        label = "Potentiel élevé";
-        cls = "good";
+        label = "Potentiel élevé"; cls = "good";
         head = "Focus : scale & pilotage";
-        sub = "Base solide : on accélère via sprints, créas, funnel, CRM et tracking avancé.";
+        sub = "Base solide : on accélère via sprints, créas, funnel, CRM et optimisation continue.";
       } else if (s.score <= 35){
-        label = "Potentiel critique";
-        cls = "bad";
+        label = "Potentiel critique"; cls = "bad";
         head = "Focus : foundations (preuve + mesure)";
         sub = "On stoppe les fuites, on installe la preuve, on mesure tout, puis on scale.";
       }
@@ -1987,42 +2308,36 @@
       $("headline").textContent = head;
       $("subline").textContent = sub;
 
-      // trust meter
-      const trust = computeTrust(s);
+      // Trust
+      const trust = computeTrust();
 
-      // scenario-based upside
-      updateScenarioButtons();
+      // Upside
       const u = computeUpside(i, scenario);
 
-      // KPI baseline
       $("kpiRev").textContent = money(u.revM);
       $("kpiGross").textContent = money(u.grossM);
       $("kpiUpside").textContent = money(u.upside);
 
-      // pillars
+      // Pillars & inaction
       const pillars = computePillars(i, s);
+      const inact = computeInaction(u.grossM, pillars);
 
-      // inaction cost
-      const inact = computeInaction(i, u, pillars);
       $("inactionCost").textContent = money(inact.cost);
       $("inactionS").textContent = "Fuites estimées : " + Math.round(inact.leak*100) + "% de la marge brute mensuelle.";
 
-      // net 90 estimate (use upside but with conservative “delivery cost” proxy)
+      // Net 90 (after friction)
       const deliveryCost = (scenario==="aggressive") ? 0.18 : (scenario==="conservative" ? 0.12 : 0.15);
       const net90 = Math.max(0, u.upside * (1 - deliveryCost));
       $("net90").textContent = money(net90);
-      $("net90S").textContent = "Après ramp (" + (scenario==="conservative"?"55%":scenario==="aggressive"?"75%":"65%") + ") + friction d’exécution.";
+      $("net90S").textContent = `Ramp ${(u.ramp*100).toFixed(0)}% • friction exécution ${(deliveryCost*100).toFixed(0)}% (modèle prudent).`;
 
-      // effort vs impact heuristic
-      const effort = (trust.pct < 45) ? "Effort: moyen →" : "Effort: faible →";
-      const impact = (s.score <= 35) ? "Impact: très fort" : (s.score >= 75 ? "Impact: fort" : "Impact: fort");
-      $("effImpact").textContent = effort + " " + impact;
+      $("effImpact").textContent = (trust.pct < 45) ? "Effort: moyen → Impact: très fort" : "Effort: faible → Impact: fort";
       $("effImpactS").textContent = (s.score<=35)
         ? "Priorité #1 : preuve + tracking + landing (gains rapides)."
-        : "Priorité #1 : funnel + relances + créas (gains mesurables).";
+        : "Priorité #1 : tunnel + relances + créas (gains mesurables).";
 
       // Solutions
-      const sol = buildSolutions(i, s, u);
+      const sol = buildSolutions(i, s);
       $("solTitle").textContent = sol.title;
       $("solSubtitle").textContent = sol.subtitle;
       $("solFit").textContent = sol.fit;
@@ -2050,15 +2365,17 @@
       fill("plan90", sol.plan90);
 
       $("deliverables").innerHTML = "<b>Livrables:</b> " + sol.deliverables.join(" • ");
-      $("proofKpi").textContent = sol.proofKpi;
-      $("acqKpi").textContent = sol.acqKpi;
-      $("convKpi").textContent = sol.convKpi;
+
+      // KPI blocks in solution
+      $("proofKpi").textContent = sol.modules.some(m => m.key === "visual") ? "Visuels premium livrés" : "Page preuve + pack créa livré";
+      $("acqKpi").textContent = (els.topChannel.value === "ads" || i.adspend > 0) ? "Créa + optimisation acquisition" : "Plan contenu + hooks";
+      $("convKpi").textContent = (els.goal.value === "conv" || els.goal.value === "aov") ? "Landing + tunnel + relances" : "Pipeline + relances";
 
       // Pack
       const pack = pickPack(i, s, u);
       paintPack(pack);
 
-      // Auto-fill CR/CAC if computed
+      // Autocomplete CR/CAC if empty
       if ((!els.cr.value || num(els.cr.value) === 0) && i.traffic>0 && i.volume>0){
         els.cr.value = (i.cr).toFixed(2);
       }
@@ -2068,104 +2385,26 @@
 
       // Charts
       drawRadar(pillars);
-      // waterfall uses monthly margin deltas: deltaGrossM (monthly) + deltaAdsM (monthly)
-      const baseGrossM = u.grossM || 0;
-      const deltaGrossM = Math.max(0, (u.grossTargetM || 0) - (u.grossM || 0));
       const deltaAdsM = Math.max(0, (u.adCostBase || 0) - (u.adCostTarget || 0));
-      drawWaterfall(baseGrossM, deltaGrossM, deltaAdsM);
+      drawWaterfall(u.grossM || 0, u.deltaGrossM || 0, deltaAdsM);
 
-      // Update call script summary
-      const comp = (els.company.value || "").trim() || "votre entreprise";
+      // Script
       $("callScript").textContent =
-        `Script call : “En 2 minutes je calcule votre coût d’inaction (${money(inact.cost)}/mois) + votre gain net 90 jours (${money(net90)}), puis je vous montre ce qu’on installe en 7 jours pour convertir la visibilité en clients.”`;
+        `Script call : “Je calcule votre coût d’inaction (${money(inact.cost)}/mois) + votre gain net 90 jours (${money(net90)}), puis je vous montre ce qu’on installe en 7 jours pour convertir la visibilité en clients.”`;
 
-      // Update modal (if open)
+      // If modal open, refresh
       if ($("modal").classList.contains("on")){
-        buildOnePager(pack, sol, u, net90, inact.cost);
+        const sol2 = buildSolutions(i, s);
+        buildOnePager(pack, sol2, u, net90, inact.cost);
       }
-    }
-
-    // ---------- Animation number ----------
-    function animateNumber(from, to, ms, cb){
-      const start = performance.now();
-      const diff = to - from;
-      const ease = (t) => 1 - Math.pow(1 - t, 3);
-      function tick(now){
-        const t = clamp((now - start) / ms, 0, 1);
-        const v = Math.round(from + diff * ease(t));
-        cb(v);
-        if (t < 1) requestAnimationFrame(tick);
-      }
-      requestAnimationFrame(tick);
-    }
-
-    // ---------- One-pager ----------
-    function buildOnePager(pack, sol, u, net90, inactionCost){
-      const company = (els.company.value || "").trim() || "—";
-      const contact = (els.contact.value || "").trim() || "—";
-      const note = (els.note.value || "").trim() || "—";
-      const url = (els.url.value || "").trim();
-      const packLabel = pack==="starter" ? "Starter" : (pack==="scale" ? "Scale" : "Growth");
-
-      const why =
-        pack==="starter" ? `Priorité : installer la preuve + la mesure + une landing qui convertit. Coût d’inaction estimé: ${money(inactionCost)}/mois.`
-        : pack==="growth" ? `Priorité : sprints conversion + relances + créas (effet cumulatif). Objectif : gains mesurables sous 30 jours.`
-        : `Priorité : pilotage complet (tracking/ads/créas/pipeline). On vise la maximisation du ROI et la scalabilité.`;
-
-      $("opTitle").textContent = `Proposition — ${company}`;
-      $("opSub").textContent = `Scénario: ${scenario==="conservative"?"Conservateur":scenario==="aggressive"?"Agressif":"Réaliste"} • Coût d’inaction estimé: ${money(inactionCost)}/mois • ${url ? "Source: " + url : "Source: non renseignée"}`;
-      $("opDate").textContent = nowStamp();
-
-      $("opRev").textContent = money(u.revM);
-      $("opGross").textContent = money(u.grossM);
-      $("opNet90").textContent = money(net90);
-
-      const plan = []
-        .concat(sol.plan7.map(x => "J+7: " + x))
-        .concat(sol.plan30.map(x => "J+30: " + x))
-        .concat(sol.plan90.map(x => "J+90: " + x));
-
-      const opPlan = $("opPlan");
-      opPlan.innerHTML = "";
-      plan.slice(0, 10).forEach(t => {
-        const li = document.createElement("li");
-        li.textContent = t;
-        opPlan.appendChild(li);
-      });
-
-      const opDel = $("opDeliver");
-      opDel.innerHTML = "";
-      sol.deliverables.forEach(t => {
-        const li = document.createElement("li");
-        li.textContent = t;
-        opDel.appendChild(li);
-      });
-
-      $("opPack").textContent = packLabel;
-      $("opWhy").textContent = why;
-
-      $("opCompany").textContent = company;
-      $("opContact").textContent = contact;
-      $("opNote").textContent = note;
-
-      $("opFooterL").textContent = "Audit IA Conversion & Croissance • Proposition 1-page";
-      $("opFooterR").textContent = "Généré: " + nowStamp();
-    }
-
-    function openModal(){
-      $("modal").classList.add("on");
-      document.body.style.overflow = "hidden";
-    }
-    function closeModal(){
-      $("modal").classList.remove("on");
-      document.body.style.overflow = "";
     }
 
     // ---------- EVENTS ----------
     function bindLive(){
-      const inputs = document.querySelectorAll("input, select");
-      inputs.forEach(el => el.addEventListener("input", updateUI));
-      inputs.forEach(el => el.addEventListener("change", updateUI));
+      document.querySelectorAll("input, select").forEach(el => {
+        el.addEventListener("input", updateUI);
+        el.addEventListener("change", updateUI);
+      });
       window.addEventListener("resize", () => updateUI());
     }
 
@@ -2177,8 +2416,8 @@
       els.goal.value = "conv";
       els.horizon.value = "90";
       scenario = "conservative";
-      updateUI();
       setStep(1);
+      updateUI();
     }
 
     function demo(){
@@ -2201,72 +2440,62 @@
       els.contact.value = "contact@studiox.fr";
       els.note.value = "Manque de preuve visuelle + avis, relances inexistantes, leads froids.";
       scenario = "realistic";
-      updateUI();
       setStep(3);
+      updateUI();
     }
 
-    // Scenario buttons
+    // Scenario
     document.querySelectorAll("[data-scn]").forEach(btn => {
-      btn.addEventListener("click", () => {
-        scenario = btn.getAttribute("data-scn");
-        updateUI();
-      });
+      btn.addEventListener("click", () => { scenario = btn.getAttribute("data-scn"); updateUI(); });
     });
 
-    // Buttons navigation
+    // Step nav
     $("btnNext1").addEventListener("click", () => setStep(2));
     $("btnNext2").addEventListener("click", () => setStep(3));
     $("btnPrev2").addEventListener("click", () => setStep(1));
     $("btnPrev3").addEventListener("click", () => setStep(2));
-
     $("btnCalc1").addEventListener("click", updateUI);
     $("btnCalc2").addEventListener("click", updateUI);
 
     $("btnFinish").addEventListener("click", () => {
       updateUI();
-      document.getElementById("cardResult").scrollIntoView({ behavior:"smooth", block:"start" });
+      $("cardResult").scrollIntoView({ behavior:"smooth", block:"start" });
     });
 
     $("btnNextTop").addEventListener("click", () => {
       if (step < 3) setStep(step + 1);
       else {
         updateUI();
-        document.getElementById("cardResult").scrollIntoView({ behavior:"smooth", block:"start" });
+        $("cardResult").scrollIntoView({ behavior:"smooth", block:"start" });
       }
     });
 
-    // Proposal
+    // Modal
     $("btnProposal").addEventListener("click", () => {
       updateUI();
       const i = getInputs();
       const s = computeScore(i);
       const u = computeUpside(i, scenario);
       const pillars = computePillars(i, s);
-      const inact = computeInaction(i, u, pillars);
+      const inact = computeInaction(u.grossM, pillars);
       const deliveryCost = (scenario==="aggressive") ? 0.18 : (scenario==="conservative" ? 0.12 : 0.15);
       const net90 = Math.max(0, u.upside * (1 - deliveryCost));
-      const sol = buildSolutions(i, s, u);
+      const sol = buildSolutions(i, s);
       const pack = pickPack(i, s, u);
       buildOnePager(pack, sol, u, net90, inact.cost);
       openModal();
     });
 
     $("btnPrint").addEventListener("click", () => {
-      // open proposal then print onepager (print css hides rest)
       $("btnProposal").click();
-      setTimeout(() => window.print(), 50);
+      setTimeout(() => window.print(), 80);
     });
 
     $("btnPrintModal").addEventListener("click", () => window.print());
     $("btnCloseModal").addEventListener("click", closeModal);
-    $("modal").addEventListener("click", (e) => {
-      if (e.target === $("modal")) closeModal();
-    });
+    $("modal").addEventListener("click", (e) => { if (e.target === $("modal")) closeModal(); });
 
-    $("btnReset").addEventListener("click", resetAll);
-    $("btnDemo").addEventListener("click", demo);
-
-    // CTA actions (offline): copy + toast
+    // CTA tools (offline)
     function toast(msg){
       const t = $("toast");
       t.style.display = "block";
@@ -2280,18 +2509,18 @@
       const s = computeScore(i);
       const u = computeUpside(i, scenario);
       const pillars = computePillars(i, s);
-      const inact = computeInaction(i, u, pillars);
+      const inact = computeInaction(u.grossM, pillars);
       const deliveryCost = (scenario==="aggressive") ? 0.18 : (scenario==="conservative" ? 0.12 : 0.15);
       const net90 = Math.max(0, u.upside * (1 - deliveryCost));
       const comp = (els.company.value || "").trim() || "Votre entreprise";
 
       return [
-        `Résumé Audit — ${comp}`,
+        `VISION — Résumé Audit (${comp})`,
         `• Score: ${s.score}/100 | Scénario: ${scenario==="conservative"?"Conservateur":scenario==="aggressive"?"Agressif":"Réaliste"}`,
-        `• CA mensuel estimé: ${money(u.revM)} | Marge brute: ${money(u.grossM)}`,
+        `• CA mensuel: ${money(u.revM)} | Marge brute: ${money(u.grossM)}`,
         `• Coût d’inaction: ${money(inact.cost)}/mois`,
-        `• Gain net 90 jours estimé: ${money(net90)}`,
-        `• Next: installer preuve + tunnel + relances + tracking (7 jours).`,
+        `• Gain net 90 jours: ${money(net90)}`,
+        `• Next: preuve + tunnel + relances + mesure (7 jours).`
       ].join("\n");
     }
 
@@ -2301,7 +2530,6 @@
         await navigator.clipboard.writeText(text);
         toast("Résumé copié. Colle-le dans ton CRM / WhatsApp / email.");
       }catch(e){
-        // fallback
         const ta = document.createElement("textarea");
         ta.value = text;
         document.body.appendChild(ta);
@@ -2316,10 +2544,9 @@
       const name = ($("leadName").value || "").trim();
       const email = ($("leadEmail").value || "").trim();
       if (!name || !email){
-        toast("Ajoute au minimum Nom/Entreprise + Email/Téléphone pour envoyer la proposition.");
+        toast("Ajoute Nom/Entreprise + Email/Téléphone pour générer la proposition.");
         return;
       }
-      // Offline: we generate and open proposal
       $("btnProposal").click();
       toast("Proposition générée. Imprime en PDF puis envoie-la au prospect.");
     });
@@ -2327,11 +2554,14 @@
     $("btnCall").addEventListener("click", () => {
       const name = ($("leadName").value || "").trim();
       const email = ($("leadEmail").value || "").trim();
-      const msg = name && email
-        ? `OK. Next step: call 15 min avec ${name} (${email}). Utilise le résumé copié + la proposition 1-page.`
-        : "OK. Next step: call 15 min. Copie le résumé et génère la proposition 1-page.";
-      toast(msg);
+      toast(name && email
+        ? `OK. Next: call 15 min avec ${name} (${email}).`
+        : "OK. Next: call 15 min. Copie le résumé + génère la proposition."
+      );
     });
+
+    $("btnReset").addEventListener("click", resetAll);
+    $("btnDemo").addEventListener("click", demo);
 
     // init
     bindLive();
