@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Audit IA Conversion & Croissance — score, simulateur ROI, solutions personnalisées, packs & abonnement." />
+  <meta name="description" content="Audit IA Conversion & Croissance — score, plan d'action, simulateur ROI, packs & abonnement." />
   <title>Audit IA Conversion & Croissance — Ultra</title>
 
   <style>
@@ -248,6 +248,13 @@
     .tag.warn{ color: var(--warn); }
     .tag.bad{ color: var(--bad); }
 
+    .list{
+      margin:0; padding-left: 18px;
+      color:var(--muted);
+      line-height:1.5;
+      font-size:13px;
+    }
+
     .packs{
       display:grid; gap:12px;
       grid-template-columns: repeat(3, minmax(0,1fr));
@@ -300,113 +307,14 @@
       color:var(--muted2); font-size:12px;
     }
 
-    /* ====== NEW: Solutions personnalisées (remplace Roadmap) ====== */
-    .solGrid{ display:grid; gap:10px; grid-template-columns:1fr; }
-
-    .solCard{
-      border-radius: 16px;
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.03);
-      overflow:hidden;
-    }
-    .solCard .shd{
-      padding:12px 12px 10px;
-      border-bottom:1px solid rgba(255,255,255,.08);
-      display:flex; align-items:flex-start; justify-content:space-between; gap:10px;
-    }
-    .solCard .shd b{ font-size:13px; letter-spacing:.2px; }
-    .solCard .shd span{ color:var(--muted2); font-size:11px; font-weight:900; }
-
-    .chips{ display:flex; gap:8px; flex-wrap:wrap; padding:12px; }
-    .chip{
-      display:inline-flex; align-items:center; gap:7px;
-      padding:8px 10px;
-      border-radius:999px;
-      font-size:12px;
-      font-weight:900;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(0,0,0,.20);
-      color:var(--text);
-    }
-    .chip small{ font-size:11px; font-weight:900; color:var(--muted); }
-    .chip .dot2{
-      width:8px; height:8px; border-radius:50%;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      box-shadow: 0 0 0 4px rgba(124,92,255,.12);
-    }
-    .chip.good{ border-color: rgba(46,229,157,.30); }
-    .chip.warn{ border-color: rgba(255,204,102,.35); }
-    .chip.bad{ border-color: rgba(255,92,122,.35); }
-
-    .plan{
-      padding:12px; padding-top:0;
-      display:grid; gap:10px;
-      grid-template-columns: repeat(3, minmax(0,1fr));
-    }
-    @media (max-width: 980px){ .plan{ grid-template-columns: 1fr; } }
-
-    .phase{
-      border-radius: 14px;
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.03);
-      padding:12px;
-    }
-    .phase .pt{
-      display:flex; align-items:center; justify-content:space-between; gap:10px;
-      color:var(--muted);
-      font-size:12px; font-weight:950;
-      letter-spacing:.25px;
-      margin-bottom:10px;
-    }
-    .phase ul{
-      margin:0; padding-left:18px;
-      color:var(--muted);
-      font-size:13px;
-      line-height:1.5;
-    }
-
-    .deliver{
-      padding:12px;
-      border-top:1px solid rgba(255,255,255,.08);
-      color:var(--muted);
-      font-size:13px;
-      line-height:1.5;
-    }
-    .deliver b{ color:var(--text); }
-
-    .kv{
-      display:flex; gap:10px; flex-wrap:wrap;
-      padding:12px;
-      border-top:1px solid rgba(255,255,255,.08);
-    }
-    .kv .item{
-      flex:1 1 160px;
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(0,0,0,.18);
-      border-radius: 14px;
-      padding:10px 10px;
-    }
-    .kv .item .k{
-      color:var(--muted2);
-      font-size:11px;
-      font-weight:950;
-      letter-spacing:.25px;
-    }
-    .kv .item .v{
-      margin-top:6px;
-      font-weight:950;
-      font-size:13px;
-      color:var(--text);
-    }
-
     /* PRINT */
     @media print{
       body{ background:#fff; color:#111; }
       .btn, .actions{ display:none !important; }
       .card{ box-shadow:none; border-color:#ddd; }
-      .field, .kpi, .pack, .solCard, .phase, .kv .item{ border-color:#ddd; }
+      .field, .kpi, .pack{ border-color:#ddd; }
       .brand{ border-color:#ddd; }
-      .pill, .tag, .chip{ border-color:#ddd; }
+      .pill, .tag{ border-color:#ddd; }
     }
   </style>
 </head>
@@ -418,7 +326,7 @@
         <div class="dot"></div>
         <div>
           <b>Audit IA — Conversion & Croissance</b>
-          <span>Score instantané • Simulateur ROI • Solutions personnalisées • Packs & abonnement</span>
+          <span>Score instantané • Plan d’action • Simulateur ROI • Packs & abonnement</span>
         </div>
       </div>
 
@@ -436,7 +344,7 @@
         <div class="hd">
           <div>
             <h1>Audit express (2–4 min)</h1>
-            <p>On capte la situation actuelle, on calcule la marge d’optimisation, et on sort une reco “pack + solutions” utilisable direct en appel.</p>
+            <p>On capte la situation actuelle, on calcule la marge d’optimisation, et on sort une reco “pack + roadmap” utilisable direct en appel.</p>
           </div>
           <div class="pill"><span class="k" id="stepLabel">Étape 1</span><span id="stepSub">/ 3</span></div>
         </div>
@@ -604,7 +512,7 @@
         <div class="hd">
           <div>
             <h2>Résultats live</h2>
-            <p>Score + opportunité + solutions personnalisées + pack conseillé. Conçu pour claquer en démarchage (preuve + chiffres).</p>
+            <p>Score + opportunité + roadmap + pack conseillé. Conçu pour claquer en démarchage (preuve + chiffres).</p>
           </div>
           <div class="pill"><span class="k" id="liveStatus">LIVE</span><span id="liveHint">auto-calcul</span></div>
         </div>
@@ -648,61 +556,13 @@
 
           <div class="divider"></div>
 
-          <!-- ✅ Solutions personnalisées (remplace Roadmap) -->
           <div>
             <div class="pill" style="margin-bottom:10px;">
-              <span class="k">Solutions personnalisées</span><span id="solHint">reco IA + livrables</span>
+              <span class="k">Roadmap</span><span>quick wins + sprint</span>
             </div>
-
-            <div class="solGrid" id="solutionsBlock">
-              <div class="solCard">
-                <div class="shd">
-                  <div>
-                    <b id="solTitle">Blueprint valeur + acquisition</b><br/>
-                    <span id="solSubtitle">On assemble le meilleur mix “visuel + web + tunnel + CRM” selon votre objectif.</span>
-                  </div>
-                  <span id="solFit">fit: —</span>
-                </div>
-
-                <div class="chips" id="solChips">
-                  <span class="chip"><span class="dot2"></span> Remplis les champs <small>pour générer</small></span>
-                </div>
-
-                <div class="plan">
-                  <div class="phase">
-                    <div class="pt"><span>J+7 • Impact rapide</span><span class="pill" style="padding:6px 8px;">Proof</span></div>
-                    <ul id="plan7"><li>—</li></ul>
-                  </div>
-                  <div class="phase">
-                    <div class="pt"><span>J+30 • Système stable</span><span class="pill" style="padding:6px 8px;">Pipeline</span></div>
-                    <ul id="plan30"><li>—</li></ul>
-                  </div>
-                  <div class="phase">
-                    <div class="pt"><span>J+90 • Scale</span><span class="pill" style="padding:6px 8px;">Growth</span></div>
-                    <ul id="plan90"><li>—</li></ul>
-                  </div>
-                </div>
-
-                <div class="deliver" id="deliverables">
-                  <b>Livrables:</b> — (audit + assets + setup + automatisations).
-                </div>
-
-                <div class="kv">
-                  <div class="item">
-                    <div class="k">Preuve installée</div>
-                    <div class="v" id="proofKpi">—</div>
-                  </div>
-                  <div class="item">
-                    <div class="k">Acquisition</div>
-                    <div class="v" id="acqKpi">—</div>
-                  </div>
-                  <div class="item">
-                    <div class="k">Conversion</div>
-                    <div class="v" id="convKpi">—</div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <ul class="list" id="roadmap">
+              <li>Renseigne les champs pour générer une roadmap personnalisée.</li>
+            </ul>
           </div>
 
           <div class="divider"></div>
@@ -719,7 +579,7 @@
               </div>
               <div class="pbd">
                 <div class="price"><div class="big">490€</div><div class="per">one-shot</div></div>
-                <ul style="margin:0; padding-left: 18px; color:var(--muted); line-height:1.5; font-size:13px;">
+                <ul class="list">
                   <li>Score complet + plan 30 jours</li>
                   <li>Checklist exécution (Notion)</li>
                   <li>1 sprint quick wins (5 actions)</li>
@@ -736,7 +596,7 @@
               </div>
               <div class="pbd">
                 <div class="price"><div class="big">990€</div><div class="per">/ mois</div></div>
-                <ul style="margin:0; padding-left: 18px; color:var(--muted); line-height:1.5; font-size:13px;">
+                <ul class="list">
                   <li>Roadmap 90 jours + KPI board</li>
                   <li>2 sprints/mois (A/B, CRO, pages)</li>
                   <li>Automations CRM (emails, relances)</li>
@@ -752,7 +612,7 @@
               </div>
               <div class="pbd">
                 <div class="price"><div class="big">1990€</div><div class="per">/ mois</div></div>
-                <ul style="margin:0; padding-left: 18px; color:var(--muted); line-height:1.5; font-size:13px;">
+                <ul class="list">
                   <li>Stack complet + tracking server-side</li>
                   <li>Optimisation Ads + créas</li>
                   <li>Sales scripts + séquences</li>
@@ -844,6 +704,7 @@
       const volume = num(els.volume.value);
       let cr = num(els.cr.value);
 
+      // If CR empty and traffic+volume available, auto-calc
       if ((!els.cr.value || cr === 0) && traffic > 0 && volume > 0){
         cr = (volume / traffic) * 100;
       }
@@ -853,6 +714,7 @@
       const adspend = num(els.adspend.value);
       let cac = num(els.cac.value);
 
+      // If CAC empty and volume+adspend available, auto-calc
       if ((!els.cac.value || cac === 0) && volume > 0 && adspend > 0){
         cac = adspend / volume;
       }
@@ -865,15 +727,20 @@
     }
 
     function computeScore(i){
+      // score: 0..100 based on data completeness + efficiency + maturity + targets
+      // measurable levers: CR, CAC vs gross profit, maturity, tracking (proxy), channel mix (proxy)
       const maturity = parseInt(els.maturity.value, 10) || 1;
 
       const dataCompleteness =
         (i.traffic>0) + (i.volume>0) + (i.aov>0) + (i.gm>0) + (i.adspend>0 || i.cac>0);
 
+      // Efficiency heuristics
+      // gross profit per order ~ aov*gm ; compare to cac
       const gpPerOrder = i.aov * i.gm;
       const unitProfitAfterAds = gpPerOrder - (i.cac || 0);
       const profitRatio = gpPerOrder > 0 ? (unitProfitAfterAds / gpPerOrder) : 0;
 
+      // CR typical ranges depend on sector
       const sector = els.sector.value;
       let crBenchLow = 1.0, crBenchHigh = 3.0;
       if (sector === "ecom"){ crBenchLow = 1.2; crBenchHigh = 3.2; }
@@ -883,10 +750,11 @@
       if (sector === "b2b"){ crBenchLow = 0.6; crBenchHigh = 1.8; }
 
       const crScore = clamp(((i.cr - crBenchLow) / (crBenchHigh - crBenchLow)) * 25, 0, 25);
-      const profitScore = clamp((profitRatio) * 25, -10, 25);
+      const profitScore = clamp((profitRatio) * 25, -10, 25); // can be negative if ads kill margin
       const maturityScore = [0, 12, 18, 25][maturity] || 12;
       const dataScore = clamp(dataCompleteness * 6, 0, 18);
 
+      // penalty if no data
       const penalty = (dataCompleteness < 3) ? 15 : 0;
 
       let score = crScore + profitScore + maturityScore + dataScore - penalty;
@@ -896,9 +764,13 @@
     }
 
     function computeUpside(i){
+      // Baseline monthly revenue
       const revM = i.volume * i.aov;
       const grossM = revM * i.gm;
 
+      // Target scenario:
+      // if crTarget provided, estimate new volume = traffic * crTarget
+      // else if not provided, add +20% to volume as default improvement
       let volTarget = i.volume;
       if (i.traffic > 0 && i.crTarget > 0){
         volTarget = i.traffic * (i.crTarget / 100);
@@ -911,141 +783,62 @@
       const revTargetM = volTarget * aovTarget;
       const grossTargetM = revTargetM * i.gm;
 
+      // We estimate upside over horizonDays, with linear ramp (conservative)
       const months = i.horizonDays / 30;
       const deltaGrossM = Math.max(0, grossTargetM - grossM);
-      const upside = deltaGrossM * months * 0.65;
+      const upside = deltaGrossM * months * 0.65; // ramp factor
 
       return { revM, grossM, volTarget, aovTarget, revTargetM, grossTargetM, upside };
     }
 
-    // ---------- NEW: SOLUTIONS PERSONNALISÉES ----------
-    function buildSolutions(i, s, u){
+    function roadmapFrom(i, s, u){
       const sector = els.sector.value;
       const goal = els.goal.value;
-      const maturity = parseInt(els.maturity.value, 10) || 1;
-      const ch = els.topChannel.value;
-      const note = (els.note.value || "").toLowerCase();
 
-      const hasSite = (els.url.value || "").trim().length > 0;
-      const needProof = note.includes("avis") || note.includes("créd") || note.includes("cred") || note.includes("preuve") || !hasSite;
+      const items = [];
+      // universal
+      items.push("Tracking clean (GA4/Pixel) + événements clés (view, add_to_cart, lead, purchase).");
+      items.push("Pages à fort impact : home + page produit/service + page preuve (cas, avis, garanties).");
+      items.push("Offre : packaging (starter / growth / premium) + angle “résultat mesurable”.");
 
-      const modules = [];
-
-      // Signature: VISUEL / PREUVE (drone + mini-film + pubs)
-      if (sector === "local" || sector === "b2b" || goal === "speed" || needProof){
-        modules.push({ key:"visual", label:"Visuels drone + mini-film", tag:"Preuve & autorité", level:"good" });
-        modules.push({ key:"content", label:"Contenus réseaux + pubs", tag:"Acquisition", level:"good" });
+      // CR lever
+      if (goal === "conv" || i.cr < (s.crBenchLow + 0.3)){
+        items.push("CRO sprint : headlines, CTA, friction checkout/form, trust (livraison/retours/FAQ).");
+        items.push("Relances : email/SMS (abandons + post-lead) + séquences 7 jours.");
       }
 
-      // WEB / FUNNEL (landing, site, maintenance, sécurité)
-      if (!hasSite || maturity <= 2 || goal === "conv" || goal === "aov"){
-        modules.push({ key:"web", label:"Site/landing + tunnel", tag:"Conversion", level:"good" });
-        modules.push({ key:"ops", label:"MAJ & sécurité + perf", tag:"Opérationnel", level:"warn" });
+      // AOV lever
+      if (goal === "aov" || (i.aovLift > 0)){
+        items.push("AOV : bundles, upsell one-click, seuil livraison offerte, pricing psychology.");
       }
 
-      // CRM / RELANCES / AVIS
-      if (sector === "leadgen" || sector === "b2b" || goal === "ret" || goal === "speed" || goal === "cac"){
-        modules.push({ key:"crm", label:"CRM + relances auto", tag:"Pipeline", level:"good" });
-        modules.push({ key:"reviews", label:"Gestion avis + réputation", tag:"Crédibilité", level:"warn" });
+      // CAC lever
+      if (goal === "cac" || s.profitRatio < 0.25){
+        items.push("Ads : restructure campagnes + créas (3 hooks) + page dédiée par angle.");
+        items.push("Qualif lead : formulaires intelligents + scoring + nurturing (CRM).");
       }
 
-      // ADS / TRACKING
-      if (ch === "ads" || ch === "mixed" || i.adspend > 0 || goal === "cac"){
-        modules.push({ key:"track", label:"Tracking GA4/Pixel + events", tag:"Mesure", level:(maturity>=2 ? "warn" : "bad") });
-        modules.push({ key:"ads", label:"Optimisation ads + créas", tag:"ROI", level:"warn" });
+      // Retention
+      if (goal === "ret"){
+        items.push("Rétention : séquences post-achat, programme fidélité, offres récurrentes, NPS.");
       }
 
-      if (modules.length === 0){
-        modules.push({ key:"visual", label:"Visuels premium (drone/mini-film)", tag:"Preuve", level:"warn" });
-        modules.push({ key:"web", label:"Landing + tunnel conversion", tag:"Conversion", level:"warn" });
-        modules.push({ key:"crm", label:"Relances prospects + avis", tag:"Pipeline", level:"warn" });
+      // Sector-specific
+      if (sector === "leadgen" || sector === "b2b"){
+        items.push("Closing : script + objections + calendrier + preuve (before/after, ROI).");
+        items.push("Pipeline : CRM stages + SLAs + relances automatiques (J+1, J+3, J+7).");
       }
 
-      const seen = new Set();
-      const finalModules = modules.filter(m => (seen.has(m.key) ? false : seen.add(m.key)));
-
-      const plan7 = [];
-      const plan30 = [];
-      const plan90 = [];
-
-      // J+7
-      plan7.push("Audit + KPI baseline + priorités (1 page claire).");
-      plan7.push("1 page ‘preuve’ (avis/cas/garanties) + CTA.");
-      if (finalModules.some(m => m.key === "visual")){
-        plan7.push("1 shooting drone + 1 mini-film 15–30s (site + ads).");
-      } else {
-        plan7.push("Pack créa : 3 visuels + 2 hooks pub + 1 script vidéo.");
-      }
-      if (finalModules.some(m => m.key === "track")){
-        plan7.push("Tracking events clés + mini-dashboard KPI.");
-      }
-
-      // J+30
-      plan30.push("Landing dédiée à l’offre + tunnel (RDV/checkout).");
-      plan30.push("Relances auto (email/SMS/WhatsApp) : abandons + post-lead (7j).");
-      if (finalModules.some(m => m.key === "reviews")){
-        plan30.push("Système avis : collecte + réponses + templates + push Google.");
-      } else {
-        plan30.push("Optimisation conversion : copy, CTA, FAQ, objections (2 itérations).");
-      }
-      plan30.push("MAJ site : sécurité + perf + corrections UX.");
-
-      // J+90
-      if (finalModules.some(m => m.key === "ads")){
-        plan90.push("Optimisation campagnes + itérations créas (rythme hebdo).");
-      } else {
-        plan90.push("Acquisition organique : calendrier contenu + formats récurrents.");
-      }
-      plan90.push("A/B test : 2 variations landing + 2 variations offre.");
-      plan90.push("Pipeline : scoring + scripts closing + relances multi-étapes.");
-      plan90.push("Dashboard KPI mensuel + pilotage ROI.");
-
-      const deliver = [];
-      deliver.push("Audit PDF (score + KPI + opportunité chiffrée)");
-      deliver.push("Board KPI (Notion/Sheets) + tracking events");
-      if (finalModules.some(m => m.key === "visual")) deliver.push("Pack visuel (drone + mini-film + déclinaisons)");
-      deliver.push("Landing + tunnel (formulaire / RDV / checkout)");
-      deliver.push("CRM + relances + templates (email/SMS/WhatsApp)");
-      deliver.push("Process avis & réputation + scripts");
-
-      const proofKpi = finalModules.some(m => m.key === "visual")
-        ? "Mini-film + visuels premium déployés"
-        : "Pack créa + page preuve déployée";
-
-      const acqKpi = (ch === "ads" || i.adspend > 0)
-        ? "Créa + itérations Ads orientées ROI"
-        : "Plan contenu + hooks + calendrier";
-
-      const convKpi = (goal === "conv" || goal === "aov")
-        ? "Landing + tunnel + relances auto"
-        : "Pipeline + CRM + relances";
-
-      let fit = "fit: solide";
-      if (s.score <= 35) fit = "fit: foundations";
-      if (s.score >= 75) fit = "fit: scale-ready";
-
-      let title = "Blueprint valeur + acquisition";
-      let subtitle = "Mix visuel + web + tunnel + CRM selon votre objectif (prêt à déployer).";
-      if (goal === "speed"){ title = "Blueprint closing & pipeline"; subtitle = "On transforme les leads en RDV + ventes avec CRM, scripts, relances et preuve."; }
-      if (goal === "ret"){ title = "Blueprint rétention & LTV"; subtitle = "On augmente le revenu sans plus de trafic : relances, avis, offres récurrentes."; }
-      if (goal === "cac"){ title = "Blueprint ROI & CAC"; subtitle = "On nettoie le tracking, on optimise ads/créas et on remonte la marge."; }
-
-      return {
-        title, subtitle, fit,
-        modules: finalModules,
-        plan7: plan7.slice(0,4),
-        plan30: plan30.slice(0,4),
-        plan90: plan90.slice(0,4),
-        deliverables: deliver,
-        proofKpi, acqKpi, convKpi
-      };
+      // Prioritize 6 items max (call-friendly)
+      return items.slice(0, 6);
     }
 
     function pickPack(i, s, u){
+      // Heuristic: low maturity or missing tracking -> Starter
       const maturity = parseInt(els.maturity.value, 10) || 1;
 
       const hasBasics = (i.traffic>0 && i.volume>0 && i.aov>0 && i.gm>0);
-      const bigUpside = u.upside >= 8000;
+      const bigUpside = u.upside >= 8000; // threshold
       const marginUnderPressure = (s.profitRatio < 0.2);
 
       let pack = "starter";
@@ -1054,6 +847,7 @@
       if (bigUpside && !marginUnderPressure && (i.adspend >= 8000 || i.volume >= 1500)) pack = "scale";
       if (marginUnderPressure && maturity >= 2) pack = "scale";
 
+      // Score override:
       if (s.score <= 35) pack = "starter";
       if (s.score >= 70 && (i.adspend >= 6000 || i.volume >= 1200)) pack = "scale";
 
@@ -1076,17 +870,21 @@
     function updateUI(){
       const i = getInputs();
 
+      // Stamp
       $("stamp").textContent = "Généré : " + nowStamp();
 
+      // KPI baseline
       const u = computeUpside(i);
       $("kpiRev").textContent = money(u.revM);
       $("kpiGross").textContent = money(u.grossM);
       $("kpiUpside").textContent = money(u.upside);
 
+      // Score
       const s = computeScore(i);
       $("scoreVal").textContent = s.score;
       $("ring").style.setProperty("--p", s.score);
 
+      // Tag + headline
       const tag = $("scoreTag");
       tag.classList.remove("good","warn","bad");
 
@@ -1112,43 +910,21 @@
       $("headline").textContent = head;
       $("subline").textContent = sub;
 
-      // ✅ Solutions personnalisées
-      const sol = buildSolutions(i, s, u);
-      $("solTitle").textContent = sol.title;
-      $("solSubtitle").textContent = sol.subtitle;
-      $("solFit").textContent = sol.fit;
-
-      const chips = $("solChips");
-      chips.innerHTML = "";
-      sol.modules.forEach(m => {
-        const span = document.createElement("span");
-        span.className = "chip " + (m.level || "");
-        span.innerHTML = '<span class="dot2"></span>' + m.label + ' <small>' + m.tag + '</small>';
-        chips.appendChild(span);
+      // Roadmap
+      const items = roadmapFrom(i, s, u);
+      const ul = $("roadmap");
+      ul.innerHTML = "";
+      items.forEach(x => {
+        const li = document.createElement("li");
+        li.textContent = x;
+        ul.appendChild(li);
       });
-
-      const fill = (id, arr) => {
-        const ul = $(id);
-        ul.innerHTML = "";
-        arr.forEach(t => {
-          const li = document.createElement("li");
-          li.textContent = t;
-          ul.appendChild(li);
-        });
-      };
-      fill("plan7", sol.plan7);
-      fill("plan30", sol.plan30);
-      fill("plan90", sol.plan90);
-
-      $("deliverables").innerHTML = "<b>Livrables:</b> " + sol.deliverables.join(" • ");
-      $("proofKpi").textContent = sol.proofKpi;
-      $("acqKpi").textContent = sol.acqKpi;
-      $("convKpi").textContent = sol.convKpi;
 
       // Pack reco
       const pack = pickPack(i, s, u);
       paintPack(pack);
 
+      // Update CR/CAC fields if auto computed and empty
       if ((!els.cr.value || num(els.cr.value) === 0) && i.traffic>0 && i.volume>0){
         els.cr.value = (i.cr).toFixed(2);
       }
@@ -1176,24 +952,24 @@
     }
 
     function demo(){
-      els.sector.value = "local";
+      els.sector.value = "ecom";
       els.maturity.value = "2";
       els.topChannel.value = "ads";
       els.traffic.value = "42000";
       els.volume.value = "820";
-      els.cr.value = "";
+      els.cr.value = ""; // let auto calc
       els.aov.value = "78.5";
       els.gm.value = "48";
       els.adspend.value = "9000";
-      els.cac.value = "";
+      els.cac.value = ""; // auto calc
       els.crTarget.value = "3.1";
       els.aovLift.value = "9";
-      els.goal.value = "speed";
+      els.goal.value = "conv";
       els.horizon.value = "90";
       els.company.value = "Studio X";
       els.url.value = "https://example.com";
       els.contact.value = "contact@studiox.fr";
-      els.note.value = "On manque de preuve visuelle + avis et les prospects ne répondent pas.";
+      els.note.value = "Beaucoup d’abandons panier + trafic Ads";
       updateUI();
     }
 
@@ -1208,6 +984,7 @@
 
     $("btnFinish").addEventListener("click", () => {
       updateUI();
+      // UX: jump to results & highlight pack
       document.getElementById("cardResult").scrollIntoView({ behavior:"smooth", block:"start" });
     });
 
