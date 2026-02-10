@@ -3,387 +3,179 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Audit IA ultra premium pour augmenter la valeur, la visibilité et les clients d'une entreprise. Score + plan d'action + opportunités de croissance." />
-  <title>Audit IA Conversion & Croissance — Version Max (Prospection)</title>
+  <meta name="description" content="Audit IA Conversion-First — simulation de valeur instantanée: visuels, site, SEO, avis, tunnels, ads, contenu. Objectif: déclencher un appel." />
+  <title>Audit IA — Simulation de Valeur (Conversion-First)</title>
 
   <style>
     :root{
-      --bg:#070A12;
-      --bg2:#0B1022;
+      --bg:#070A12; --bg2:#0B1022;
       --card:rgba(255,255,255,.06);
-      --card2:rgba(255,255,255,.09);
       --stroke:rgba(255,255,255,.12);
-      --text:rgba(255,255,255,.88);
-      --muted:rgba(255,255,255,.66);
-      --muted2:rgba(255,255,255,.52);
-      --accent:#7C5CFF;
-      --accent2:#00E0FF;
-      --good:#2EE59D;
-      --warn:#FFCC66;
-      --bad:#FF5C7A;
-      --shadow: 0 24px 80px rgba(0,0,0,.45);
-      --radius:18px;
-      --radius2:26px;
-      --max:1140px;
-      --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      --text:rgba(255,255,255,.90);
+      --muted:rgba(255,255,255,.68);
+      --muted2:rgba(255,255,255,.50);
+      --a:#7C5CFF; --b:#00E0FF;
+      --good:#2EE59D; --warn:#FFCC66; --bad:#FF5C7A;
+      --r:18px; --r2:24px;
+      --shadow:0 24px 80px rgba(0,0,0,.45);
+      --max:1120px;
+      --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
     }
-
     *{box-sizing:border-box}
     html,body{height:100%}
     body{
-      margin:0;
-      font-family:var(--font);
-      color:var(--text);
+      margin:0; font-family:var(--font); color:var(--text);
       background:
-        radial-gradient(1200px 600px at 10% 0%, rgba(124,92,255,.35), transparent 55%),
+        radial-gradient(1200px 600px at 10% 0%, rgba(124,92,255,.32), transparent 55%),
         radial-gradient(900px 600px at 90% 10%, rgba(0,224,255,.22), transparent 60%),
-        radial-gradient(900px 700px at 50% 90%, rgba(46,229,157,.14), transparent 60%),
-        linear-gradient(180deg, var(--bg), var(--bg2));
+        radial-gradient(900px 700px at 50% 90%, rgba(46,229,157,.12), transparent 60%),
+        linear-gradient(180deg,var(--bg),var(--bg2));
       overflow-x:hidden;
     }
-
     a{color:inherit;text-decoration:none}
-    .container{width:min(var(--max), calc(100% - 40px)); margin:0 auto}
-
-    /* Topbar */
-    .topbar{
+    .container{width:min(var(--max), calc(100% - 36px)); margin:0 auto}
+    .top{
       position:sticky; top:0; z-index:50;
       backdrop-filter: blur(12px);
-      background: linear-gradient(180deg, rgba(7,10,18,.78), rgba(7,10,18,.40));
+      background: linear-gradient(180deg, rgba(7,10,18,.78), rgba(7,10,18,.35));
       border-bottom:1px solid rgba(255,255,255,.10);
     }
-    .topbar-inner{
-      display:flex; align-items:center; justify-content:space-between;
-      padding:14px 0;
-      gap:14px;
+    .top .row{
+      display:flex; align-items:center; justify-content:space-between; gap:12px;
+      padding:12px 0;
     }
-    .brand{display:flex; align-items:center; gap:10px; min-width:220px;}
+    .brand{display:flex; align-items:center; gap:10px}
     .logo{
-      width:34px; height:34px; border-radius:12px;
+      width:34px;height:34px;border-radius:12px;
       background: radial-gradient(circle at 30% 30%, rgba(0,224,255,.9), rgba(124,92,255,.9));
-      box-shadow: 0 12px 30px rgba(124,92,255,.35);
       border:1px solid rgba(255,255,255,.18);
+      box-shadow: 0 14px 36px rgba(124,92,255,.28);
     }
-    .brand h1{
-      margin:0; font-size:13px; line-height:1.15; letter-spacing:.2px;
-      color:rgba(255,255,255,.92);
-    }
-    .brand small{display:block;color:var(--muted2); font-weight:500}
-    .nav{display:flex; align-items:center; gap:14px; flex-wrap:wrap; justify-content:flex-end;}
-    .nav a{
-      font-size:13px; color:var(--muted);
-      padding:8px 10px; border-radius:12px;
-      border:1px solid transparent;
-      transition:.2s ease;
-    }
-    .nav a:hover{color:rgba(255,255,255,.9); border-color:rgba(255,255,255,.14); background:rgba(255,255,255,.04)}
+    .title{line-height:1.1}
+    .title b{display:block;font-size:13px;letter-spacing:.2px}
+    .title small{display:block;font-size:12px;color:var(--muted2)}
+    .nav{display:flex; gap:10px; align-items:center; flex-wrap:wrap; justify-content:flex-end}
+    .nav a{font-size:13px;color:var(--muted);padding:8px 10px;border-radius:12px;border:1px solid transparent}
+    .nav a:hover{color:rgba(255,255,255,.92);border-color:rgba(255,255,255,.14);background:rgba(255,255,255,.04)}
     .btn{
-      display:inline-flex; align-items:center; justify-content:center;
-      gap:10px;
-      padding:11px 14px;
-      border-radius:14px;
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      padding:11px 14px; border-radius:14px;
       border:1px solid rgba(255,255,255,.16);
       background: rgba(255,255,255,.05);
       color:rgba(255,255,255,.92);
-      font-size:13px;
-      font-weight:650;
-      letter-spacing:.2px;
-      transition:.18s ease;
-      cursor:pointer;
-      user-select:none;
-      white-space:nowrap;
+      font-size:13px; font-weight:750; letter-spacing:.15px;
+      cursor:pointer; user-select:none; transition:.18s ease;
     }
     .btn:hover{transform:translateY(-1px); background:rgba(255,255,255,.08); border-color:rgba(255,255,255,.22)}
-    .btn:active{transform:translateY(0px)}
-    .btn-primary{
+    .btn:active{transform:translateY(0)}
+    .primary{
       border:1px solid rgba(124,92,255,.55);
       background: linear-gradient(135deg, rgba(124,92,255,.95), rgba(0,224,255,.75));
-      box-shadow: 0 18px 40px rgba(124,92,255,.25);
+      box-shadow: 0 18px 46px rgba(124,92,255,.22);
     }
-    .btn-primary:hover{filter:saturate(1.05); box-shadow: 0 22px 54px rgba(124,92,255,.30)}
-    .btn-whatsapp{
+    .wa{
       border:1px solid rgba(46,229,157,.45);
-      background: linear-gradient(135deg, rgba(46,229,157,.85), rgba(0,224,255,.45));
-      box-shadow: 0 18px 40px rgba(46,229,157,.18);
+      background: linear-gradient(135deg, rgba(46,229,157,.85), rgba(0,224,255,.42));
+      box-shadow: 0 18px 46px rgba(46,229,157,.16);
     }
-    .btn-danger{
-      border:1px solid rgba(255,92,122,.45);
-      background: rgba(255,92,122,.10);
-      color:rgba(255,255,255,.9);
-    }
-
     .pill{
       display:inline-flex; align-items:center; gap:8px;
-      padding:7px 10px;
-      border-radius:999px;
-      background:rgba(255,255,255,.06);
+      padding:7px 10px; border-radius:999px;
       border:1px solid rgba(255,255,255,.12);
-      color:var(--muted);
-      font-size:12px;
-      font-weight:600;
-      letter-spacing:.2px;
+      background: rgba(255,255,255,.06);
+      color:var(--muted); font-size:12px; font-weight:700;
     }
-    .dot{
-      width:8px;height:8px;border-radius:50%;
-      background: radial-gradient(circle at 30% 30%, var(--good), rgba(46,229,157,.3));
-      box-shadow: 0 0 0 6px rgba(46,229,157,.08);
-    }
-
-    /* Hero */
-    header.hero{padding:54px 0 20px; position:relative;}
-    .grid-hero{
-      display:grid;
-      grid-template-columns: 1.05fr .95fr;
-      gap:22px;
-      align-items:stretch;
-    }
-    .hero-left{
-      padding:26px;
-      border-radius:var(--radius2);
-      background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
-      border:1px solid rgba(255,255,255,.12);
-      box-shadow: var(--shadow);
-      position:relative;
-      overflow:hidden;
-    }
-    .hero-left:before{
-      content:"";
-      position:absolute; inset:-2px;
-      background:
-        radial-gradient(600px 200px at 12% 12%, rgba(0,224,255,.16), transparent 60%),
-        radial-gradient(500px 220px at 70% 0%, rgba(124,92,255,.22), transparent 60%),
-        radial-gradient(500px 260px at 60% 100%, rgba(46,229,157,.10), transparent 60%);
-      pointer-events:none;
-      opacity:.95;
-    }
-    .hero-left > *{position:relative}
-    .kicker{display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:12px;}
-    .kicker .badge{
-      display:inline-flex; align-items:center; gap:8px;
-      padding:8px 12px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,.14);
-      background:rgba(0,0,0,.18);
-      color:rgba(255,255,255,.85);
-      font-size:12px; font-weight:700;
-      letter-spacing:.25px;
-    }
-    .spark{
-      width:10px;height:10px;border-radius:3px;
-      background:linear-gradient(135deg, var(--accent2), var(--accent));
-      transform:rotate(18deg);
-      box-shadow: 0 0 0 6px rgba(0,224,255,.08);
-    }
-    .hero-left h2{
-      margin:0 0 12px;
-      font-size:40px;
-      line-height:1.06;
-      letter-spacing:-.8px;
-      color:rgba(255,255,255,.94);
-    }
-    .hero-left p{
-      margin:0 0 18px;
-      font-size:15px;
-      line-height:1.65;
-      color:var(--muted);
-      max-width:62ch;
-    }
-    .value-points{
-      display:grid;
-      grid-template-columns: repeat(3, minmax(0,1fr));
-      gap:10px;
-      margin-top:14px;
-    }
-    .vp{
-      padding:12px 12px;
-      border-radius:16px;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.05);
-    }
-    .vp strong{display:block;font-size:13px;color:rgba(255,255,255,.92); margin-bottom:4px}
-    .vp span{display:block;font-size:12px;color:var(--muted2); line-height:1.35}
-    .hero-cta{display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-top:18px;}
-    .hero-trust{display:flex; gap:10px; flex-wrap:wrap; margin-top:16px; color:var(--muted2); font-size:12px;}
-    .hero-trust .lock{
-      display:inline-flex; gap:8px; align-items:center;
-      padding:8px 10px; border-radius:999px;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.04);
-    }
-
-    /* Right panel: form */
-    .panel{
-      padding:18px;
-      border-radius:var(--radius2);
-      background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
-      border:1px solid rgba(255,255,255,.12);
-      box-shadow: var(--shadow);
-      overflow:hidden;
-      position:relative;
-    }
-    .panel:before{
-      content:"";
-      position:absolute; inset:-1px;
-      background: radial-gradient(550px 220px at 20% 0%, rgba(124,92,255,.16), transparent 60%),
-                  radial-gradient(500px 260px at 90% 35%, rgba(0,224,255,.12), transparent 65%);
-      pointer-events:none;
-      opacity:.9;
-    }
-    .panel > *{position:relative}
-    .panel h3{margin:0 0 6px; font-size:16px; letter-spacing:.2px; color:rgba(255,255,255,.92);}
-    .panel p{margin:0 0 14px; font-size:13px; color:var(--muted); line-height:1.55;}
-    .form{display:grid; gap:10px;}
-    label{
-      display:grid; gap:6px;
-      font-size:12px;
-      color:var(--muted2);
-      font-weight:650;
-      letter-spacing:.2px;
-    }
-    input, select, textarea{
-      width:100%;
-      padding:12px 12px;
-      border-radius:14px;
-      border:1px solid rgba(255,255,255,.14);
-      background: rgba(0,0,0,.18);
-      color:rgba(255,255,255,.9);
-      outline:none;
-      transition:.18s ease;
-      font: inherit;
-      font-size:13px;
-    }
-    input::placeholder, textarea::placeholder{color:rgba(255,255,255,.35)}
-    input:focus, select:focus, textarea:focus{
-      border-color: rgba(0,224,255,.40);
-      box-shadow: 0 0 0 6px rgba(0,224,255,.10);
-    }
-    .row2{display:grid; grid-template-columns: 1fr 1fr; gap:10px;}
-    .mini{
-      display:flex; gap:10px; align-items:flex-start;
-      padding:12px;
-      border-radius:16px;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.05);
-      margin-top:2px;
-    }
-    .mini .icon{
-      width:36px; height:36px; border-radius:14px;
-      background: linear-gradient(135deg, rgba(124,92,255,.95), rgba(0,224,255,.55));
-      border:1px solid rgba(255,255,255,.18);
-      box-shadow: 0 18px 40px rgba(124,92,255,.20);
-      display:flex; align-items:center; justify-content:center;
-      font-weight:900;
-    }
-    .mini strong{display:block;font-size:13px;color:rgba(255,255,255,.92);margin-bottom:4px}
-    .mini span{display:block;font-size:12px;color:var(--muted2);line-height:1.4}
-    .hint{font-size:12px; color:var(--muted2); line-height:1.45; margin-top:10px;}
-    .fineprint{font-size:11px;color:rgba(255,255,255,.45); line-height:1.5; margin-top:10px;}
-
-    /* Sections */
-    section{padding:26px 0}
-    .section-title{
-      display:flex; align-items:flex-end; justify-content:space-between;
-      gap:16px; flex-wrap:wrap;
-      margin-bottom:14px;
-    }
-    .section-title h3{margin:0; font-size:18px; color:rgba(255,255,255,.92); letter-spacing:.2px;}
-    .section-title p{margin:0; color:var(--muted2); font-size:13px; line-height:1.45; max-width:62ch;}
-
-    .cards{display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap:12px;}
+    .dot{width:8px;height:8px;border-radius:50%; background:var(--good); box-shadow:0 0 0 6px rgba(46,229,157,.08)}
+    header{padding:22px 0 10px}
+    .grid{display:grid; grid-template-columns: 1.05fr .95fr; gap:12px; align-items:stretch}
     .card{
-      padding:16px;
-      border-radius:var(--radius);
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.05);
+      border-radius:var(--r2);
+      border:1px solid var(--stroke);
+      background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
+      box-shadow: var(--shadow);
       overflow:hidden;
       position:relative;
     }
     .card:before{
-      content:"";
-      position:absolute; inset:-1px;
-      background: radial-gradient(500px 200px at 30% 0%, rgba(0,224,255,.10), transparent 60%);
-      opacity:.8;
-      pointer-events:none;
+      content:""; position:absolute; inset:-1px;
+      background:
+        radial-gradient(560px 220px at 12% 0%, rgba(0,224,255,.14), transparent 60%),
+        radial-gradient(560px 240px at 88% 20%, rgba(124,92,255,.16), transparent 65%);
+      opacity:.9; pointer-events:none;
     }
     .card > *{position:relative}
-    .card .tag{
-      display:inline-flex; align-items:center; gap:8px;
-      font-size:11px;
-      font-weight:750;
-      letter-spacing:.25px;
-      color:rgba(255,255,255,.86);
-      padding:7px 10px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,.14);
-      background: rgba(0,0,0,.16);
-      margin-bottom:10px;
+    .hero{padding:18px}
+    .hero h1{margin:0 0 10px; font-size:34px; line-height:1.06; letter-spacing:-.8px}
+    .grad{
+      background:linear-gradient(90deg, rgba(0,224,255,.95), rgba(124,92,255,.95));
+      -webkit-background-clip:text; background-clip:text; color:transparent;
     }
-    .card h4{margin:0 0 8px; font-size:14px; color:rgba(255,255,255,.92)}
-    .card p{margin:0; font-size:12.5px; color:var(--muted2); line-height:1.55}
-    .list{margin:12px 0 0; padding:0; list-style:none; display:grid; gap:8px;}
-    .list li{
-      display:flex; gap:10px; align-items:flex-start;
-      font-size:12.5px; color:rgba(255,255,255,.78);
-      line-height:1.45;
-    }
-    .check{
-      width:18px;height:18px;border-radius:6px;
-      background: rgba(46,229,157,.14);
-      border:1px solid rgba(46,229,157,.35);
-      display:flex; align-items:center; justify-content:center;
-      color:var(--good);
-      font-weight:900;
-      flex:0 0 auto;
-      margin-top:1px;
-    }
-
-    /* Demo cards */
-    .demos{display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap:12px;}
-    .shot{
-      height:140px;
-      border-radius:18px;
+    .hero p{margin:0 0 14px; color:var(--muted); line-height:1.6; font-size:14px; max-width:70ch}
+    .hero .row{display:flex; gap:10px; align-items:center; flex-wrap:wrap}
+    .mini-grid{display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap:10px; margin-top:12px}
+    .mini{
       border:1px solid rgba(255,255,255,.12);
-      background:
-        radial-gradient(600px 220px at 10% 0%, rgba(0,224,255,.18), transparent 60%),
-        radial-gradient(560px 220px at 90% 30%, rgba(124,92,255,.18), transparent 65%),
-        linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
-      box-shadow: 0 20px 60px rgba(0,0,0,.25);
-      position:relative;
-      overflow:hidden;
+      background: rgba(255,255,255,.05);
+      border-radius:16px; padding:12px;
     }
-    .shot:after{
-      content:"Démo (remplace par screenshot réel)";
-      position:absolute; left:12px; bottom:10px;
-      font-size:11px; color:rgba(255,255,255,.70);
-      padding:7px 10px; border-radius:999px;
+    .mini b{display:block; font-size:13px; margin-bottom:4px}
+    .mini span{display:block; font-size:12px; color:var(--muted2); line-height:1.35}
+
+    .panel{padding:16px}
+    .panel h2{margin:0 0 6px; font-size:15px}
+    .panel p{margin:0 0 10px; color:var(--muted); font-size:12.8px; line-height:1.55}
+    form{display:grid; gap:10px}
+    label{display:grid; gap:6px; font-size:12px; color:var(--muted2); font-weight:750; letter-spacing:.15px}
+    input,select,textarea{
+      width:100%; padding:12px 12px; border-radius:14px;
       border:1px solid rgba(255,255,255,.14);
       background: rgba(0,0,0,.18);
+      color:rgba(255,255,255,.92);
+      outline:none; font:inherit; font-size:13px;
+      transition:.18s ease;
     }
-
-    /* Audit preview + score */
-    .preview{display:grid; grid-template-columns: 1fr 1fr; gap:12px; align-items:stretch;}
-    .scorebox{
-      padding:18px;
-      border-radius:var(--radius2);
+    textarea{resize:vertical}
+    input:focus,select:focus,textarea:focus{border-color: rgba(0,224,255,.40); box-shadow:0 0 0 6px rgba(0,224,255,.10)}
+    .r2{display:grid; grid-template-columns: 1fr 1fr; gap:10px}
+    .toggle{
+      display:flex; gap:10px; align-items:flex-start;
+      padding:12px; border-radius:16px;
       border:1px solid rgba(255,255,255,.12);
-      background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
-      position:relative;
-      overflow:hidden;
-      box-shadow: var(--shadow);
+      background: rgba(255,255,255,.05);
     }
-    .scorebox:before{
-      content:"";
-      position:absolute; inset:-1px;
-      background: radial-gradient(550px 220px at 20% 0%, rgba(46,229,157,.10), transparent 60%),
-                  radial-gradient(520px 240px at 90% 40%, rgba(124,92,255,.12), transparent 60%);
-      pointer-events:none;
-      opacity:.9;
+    .toggle b{display:block; font-size:13px}
+    .toggle span{display:block; font-size:12px; color:var(--muted2); line-height:1.4}
+    .toggle input{width:18px;height:18px; margin-top:2px; accent-color: var(--b)}
+    .fine{font-size:11px; color:rgba(255,255,255,.50); line-height:1.45}
+
+    section{padding:12px 0 26px}
+    .sim{
+      display:grid; grid-template-columns: .95fr 1.05fr; gap:12px; align-items:stretch;
     }
-    .scorebox > *{position:relative}
-    .score-top{display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; margin-bottom:10px;}
-    .score-top strong{font-size:14px; color:rgba(255,255,255,.92)}
+    .box{padding:16px}
+    .box h3{margin:0 0 10px; font-size:15px}
+    .muted{color:var(--muted); font-size:12.8px; line-height:1.55}
+    .score{
+      display:flex; align-items:flex-end; justify-content:space-between; gap:12px; flex-wrap:wrap;
+      margin:6px 0 10px;
+    }
+    .big{
+      display:flex; align-items:flex-end; gap:10px;
+    }
+    .big .n{font-size:44px; line-height:1; letter-spacing:-1px}
+    .badge{
+      font-size:12px; font-weight:900;
+      padding:7px 10px; border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(0,0,0,.16);
+      color:rgba(255,255,255,.88);
+      white-space:nowrap;
+    }
+    .badge.good{border-color:rgba(46,229,157,.35); background:rgba(46,229,157,.10); color:var(--good)}
+    .badge.warn{border-color:rgba(255,204,102,.35); background:rgba(255,204,102,.10); color:var(--warn)}
+    .badge.bad{border-color:rgba(255,92,122,.35); background:rgba(255,92,122,.10); color:var(--bad)}
     .meter{
-      width:140px; height:10px; border-radius:999px;
+      width:160px; height:10px; border-radius:999px;
       background: rgba(255,255,255,.10);
       border:1px solid rgba(255,255,255,.12);
       overflow:hidden;
@@ -395,924 +187,300 @@
       border-radius:999px;
       transition: width .6s ease;
     }
-    .bigscore{display:flex; align-items:flex-end; gap:10px; flex-wrap:wrap; margin:12px 0 8px;}
-    .bigscore .n{font-size:44px; line-height:1; letter-spacing:-1px; color:rgba(255,255,255,.94);}
-    .bigscore .outof{color:var(--muted2); font-size:13px; padding-bottom:6px;}
-    .subscores{display:grid; gap:10px; margin-top:12px;}
-    .sub{
-      display:flex; align-items:center; justify-content:space-between;
-      gap:10px;
-      padding:10px 12px;
-      border-radius:16px;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.05);
-    }
-    .sub span{font-size:12.5px; color:rgba(255,255,255,.78)}
-    .badgeScore{
-      font-size:12px;
-      font-weight:800;
-      padding:7px 10px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,.14);
-      background: rgba(0,0,0,.16);
-      color:rgba(255,255,255,.88);
-      white-space:nowrap;
-    }
-    .badgeScore.good{border-color:rgba(46,229,157,.35); background:rgba(46,229,157,.10); color:var(--good)}
-    .badgeScore.warn{border-color:rgba(255,204,102,.35); background:rgba(255,204,102,.10); color:var(--warn)}
-    .badgeScore.bad{border-color:rgba(255,92,122,.35); background:rgba(255,92,122,.10); color:var(--bad)}
-    .reportbox{
-      padding:18px;
-      border-radius:var(--radius2);
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.05);
-      box-shadow: var(--shadow);
-      position:relative;
-      overflow:hidden;
-    }
-    .reportbox:before{
-      content:"";
-      position:absolute; inset:-1px;
-      background: radial-gradient(560px 260px at 10% 0%, rgba(0,224,255,.12), transparent 60%);
-      opacity:.9;
-      pointer-events:none;
-    }
-    .reportbox > *{position:relative}
-    .report-head{display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; margin-bottom:10px;}
-    .report-head strong{color:rgba(255,255,255,.92)}
-    .chips{display:flex; gap:8px; flex-wrap:wrap}
-    .chip{
-      font-size:11px;
-      font-weight:800;
-      letter-spacing:.2px;
-      padding:7px 10px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,.14);
-      background: rgba(0,0,0,.14);
-      color:rgba(255,255,255,.82);
-    }
-    .report{
-      margin-top:10px;
-      padding:14px;
-      border-radius:18px;
-      border:1px dashed rgba(255,255,255,.18);
-      background: rgba(0,0,0,.16);
-      color:rgba(255,255,255,.82);
-      font-size:12.5px;
-      line-height:1.55;
-      min-height:240px;
-    }
-    .report b{color:rgba(255,255,255,.92)}
-    .report .hl{
-      display:inline-block;
-      padding:2px 8px;
-      border-radius:999px;
-      border:1px solid rgba(0,224,255,.25);
-      background: rgba(0,224,255,.08);
-      color:rgba(255,255,255,.9);
-      font-weight:800;
-      letter-spacing:.2px;
-    }
 
-    /* Next step */
-    .nextstep{
-      margin-top:12px;
-      padding:14px;
-      border-radius:18px;
-      border:1px solid rgba(46,229,157,.20);
-      background: rgba(46,229,157,.06);
-    }
-    .nextstep h4{margin:0 0 8px; font-size:14px; color:rgba(255,255,255,.92)}
-    .nextstep p{margin:0 0 10px; font-size:12.8px; color:rgba(255,255,255,.80); line-height:1.55}
-    .nextgrid{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap:10px;
-      margin-top:10px;
-    }
-    .miniCard{
-      padding:12px;
-      border-radius:16px;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(0,0,0,.14);
-    }
-    .miniCard strong{display:block; font-size:12.8px; color:rgba(255,255,255,.92); margin-bottom:6px}
-    .miniCard span{display:block; font-size:12px; color:var(--muted2); line-height:1.45}
-
-    /* ROI Calculator */
-    .roi{display:grid; grid-template-columns: 1fr 1fr 1fr; gap:12px; align-items:stretch;}
-    .roi .card{min-height:100%}
-    .kpi{display:grid; gap:8px; margin-top:10px;}
-    .kpi .line{
-      display:flex; align-items:center; justify-content:space-between; gap:10px;
-      padding:10px 12px;
-      border-radius:16px;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.05);
-      font-size:12.5px;
-      color:rgba(255,255,255,.80);
-    }
-    .kpi .line strong{color:rgba(255,255,255,.92)}
-    .kpi .line em{font-style:normal; color:var(--muted2)}
-
-    /* Testimonials */
-    .quotes{display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap:12px;}
-    .quote{
-      padding:16px;
-      border-radius:var(--radius);
+    .stack{display:grid; gap:10px; margin-top:10px}
+    .stack .item{
+      display:flex; gap:10px; align-items:flex-start;
+      padding:12px; border-radius:16px;
       border:1px solid rgba(255,255,255,.12);
       background: rgba(255,255,255,.05);
     }
-    .quote p{margin:0 0 12px; color:rgba(255,255,255,.80); font-size:12.8px; line-height:1.55}
-    .who{display:flex; align-items:center; gap:10px}
-    .avatar{
-      width:34px;height:34px;border-radius:14px;
-      background: linear-gradient(135deg, rgba(46,229,157,.9), rgba(0,224,255,.55));
+    .ic{
+      width:36px;height:36px;border-radius:14px;
+      background: linear-gradient(135deg, rgba(124,92,255,.95), rgba(0,224,255,.55));
       border:1px solid rgba(255,255,255,.18);
+      display:flex; align-items:center; justify-content:center;
+      font-weight:950;
+      flex:0 0 auto;
+      box-shadow: 0 18px 40px rgba(124,92,255,.18);
     }
-    .who strong{display:block; font-size:12.8px; color:rgba(255,255,255,.92)}
-    .who span{display:block; font-size:11.5px; color:var(--muted2)}
-
-    /* Pricing */
-    .pricing{display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap:12px;}
-    .price{
-      padding:16px;
-      border-radius:var(--radius2);
-      border:1px solid rgba(255,255,255,.12);
-      background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
-      box-shadow: 0 18px 60px rgba(0,0,0,.26);
-      position:relative;
-      overflow:hidden;
-    }
-    .price:before{
-      content:"";
-      position:absolute; inset:-1px;
-      background: radial-gradient(560px 260px at 10% 0%, rgba(0,224,255,.10), transparent 60%);
-      opacity:.9;
-      pointer-events:none;
-    }
-    .price > *{position:relative}
-    .price .head{display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap; margin-bottom:8px;}
-    .price h4{margin:0; font-size:14px; color:rgba(255,255,255,.92)}
-    .price .from{font-weight:900; font-size:18px; letter-spacing:-.2px;}
-    .price .sub{margin:8px 0 10px; color:var(--muted2); font-size:12.5px; line-height:1.55;}
-    .price .cta{display:flex; gap:10px; flex-wrap:wrap; margin-top:12px;}
-    .highlight{
-      border-color: rgba(124,92,255,.35);
-      box-shadow: 0 22px 70px rgba(124,92,255,.22);
-    }
-    .ribbon{
-      position:absolute; top:12px; right:12px;
+    .item b{display:block; font-size:13px; margin-bottom:4px}
+    .item span{display:block; font-size:12px; color:var(--muted2); line-height:1.4}
+    .chips{display:flex; gap:8px; flex-wrap:wrap; margin-top:8px}
+    .chip{
       font-size:11px; font-weight:900;
       padding:7px 10px; border-radius:999px;
-      border:1px solid rgba(124,92,255,.45);
-      background: rgba(124,92,255,.18);
-      color:rgba(255,255,255,.9);
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(0,0,0,.14);
+      color:rgba(255,255,255,.82);
     }
 
-    /* FAQ */
-    .faq{display:grid; gap:10px;}
-    details{
-      padding:12px 14px;
-      border-radius:16px;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.05);
+    .deliver{
+      padding:14px; border-radius:18px;
+      border:1px dashed rgba(255,255,255,.18);
+      background: rgba(0,0,0,.16);
+      min-height:240px;
+      font-size:12.8px; line-height:1.6; color:rgba(255,255,255,.84);
     }
-    summary{
-      cursor:pointer;
-      font-weight:850;
+    .deliver b{color:rgba(255,255,255,.94)}
+    .hl{
+      display:inline-block; padding:2px 8px; border-radius:999px;
+      border:1px solid rgba(0,224,255,.25);
+      background: rgba(0,224,255,.08);
       color:rgba(255,255,255,.92);
-      font-size:13px;
-      outline:none;
+      font-weight:900; letter-spacing:.15px;
     }
-    details p{margin:10px 0 0; color:rgba(255,255,255,.78); font-size:12.8px; line-height:1.6}
-
-    /* Sticky bottom CTA */
-    .bottom-cta{
-      position:fixed; left:0; right:0; bottom:0; z-index:60;
-      padding:12px 0;
-      background: linear-gradient(180deg, rgba(7,10,18,0), rgba(7,10,18,.85));
-      border-top:1px solid rgba(255,255,255,.10);
-      backdrop-filter: blur(10px);
+    .cta{
+      margin-top:12px;
+      padding:14px; border-radius:18px;
+      border:1px solid rgba(46,229,157,.22);
+      background: rgba(46,229,157,.06);
     }
-    .bottom-cta .bar{
-      display:flex; align-items:center; justify-content:space-between;
-      gap:12px; flex-wrap:wrap;
-      padding:10px 12px;
-      border-radius:18px;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.05);
-      box-shadow: 0 20px 60px rgba(0,0,0,.35);
-    }
-    .bottom-cta .bar .txt{display:flex; align-items:center; gap:12px; flex-wrap:wrap;}
-    .bottom-cta .bar .txt strong{color:rgba(255,255,255,.92)}
-    .bottom-cta .bar .txt span{color:var(--muted2); font-size:12.5px}
-    .hide{display:none}
+    .cta .row{display:flex; gap:10px; flex-wrap:wrap; align-items:center; justify-content:space-between}
+    .cta .row .left b{display:block}
+    .cta .row .left span{display:block; color:rgba(255,255,255,.78); font-size:12.5px}
+    .cta .row .right{display:flex; gap:10px; flex-wrap:wrap}
 
     footer{
-      padding:34px 0 92px;
+      padding:22px 0 36px;
       color:rgba(255,255,255,.45);
       font-size:12px;
       border-top:1px solid rgba(255,255,255,.10);
     }
-    .footgrid{display:grid; grid-template-columns: 1.2fr .8fr; gap:16px; align-items:start;}
-    .links{display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end;}
-    .links a{
-      padding:8px 10px; border-radius:12px;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.04);
-      color:rgba(255,255,255,.55);
-      font-size:12px;
-    }
 
-    /* Responsive */
     @media (max-width: 980px){
-      .grid-hero{grid-template-columns:1fr}
-      .value-points{grid-template-columns:1fr}
-      .cards{grid-template-columns:1fr}
-      .preview{grid-template-columns:1fr}
-      .roi{grid-template-columns:1fr}
-      .quotes{grid-template-columns:1fr}
-      .pricing{grid-template-columns:1fr}
-      .demos{grid-template-columns:1fr}
-      .footgrid{grid-template-columns:1fr}
-      .links{justify-content:flex-start}
-      .hero-left h2{font-size:32px}
-      .brand{min-width:auto}
-      .nextgrid{grid-template-columns:1fr}
+      .grid{grid-template-columns:1fr}
+      .mini-grid{grid-template-columns:1fr}
+      .sim{grid-template-columns:1fr}
     }
 
-    /* Small anim */
-    @media (prefers-reduced-motion: no-preference){
-      .floaty{animation: floaty 6.5s ease-in-out infinite}
-      @keyframes floaty {0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)}}
-    }
-
-    /* Print / PDF */
     @media print{
-      .topbar, .bottom-cta, #demarrer, #methode, #roi, #preuves, #packs, #faq, footer { display:none !important; }
+      .top, #formCard, footer { display:none !important; }
       body{background:#fff !important; color:#111 !important;}
-      .scorebox, .reportbox{box-shadow:none !important; border:1px solid #ddd !important; background:#fff !important;}
-      .report{background:#fff !important; color:#111 !important;}
-      .badgeScore{border-color:#ddd !important; background:#f6f6f6 !important; color:#111 !important;}
-      .chip, .pill{border-color:#ddd !important; background:#f6f6f6 !important; color:#111 !important;}
+      .card{box-shadow:none !important; border:1px solid #ddd !important; background:#fff !important;}
+      .deliver{background:#fff !important; color:#111 !important;}
+      .badge,.pill,.chip{border-color:#ddd !important; background:#f6f6f6 !important; color:#111 !important;}
       a{color:#111 !important; text-decoration:none !important;}
-      .container{width:100% !important; margin:0 !important;}
-      section{padding:0 !important;}
-      #preview{padding-top:10px !important;}
     }
   </style>
 </head>
 
 <body>
-  <!-- Topbar -->
-  <div class="topbar">
-    <div class="container topbar-inner">
+  <div class="top">
+    <div class="container row">
       <div class="brand">
         <div class="logo" aria-hidden="true"></div>
-        <div>
-          <h1>Audit IA Conversion & Valeur <small>Version Max — preuve instant → audit → closing</small></h1>
+        <div class="title">
+          <b>Audit IA — Simulation de Valeur</b>
+          <small>Preuve instant → appel 15 min → exécution 14 jours</small>
         </div>
       </div>
-
-      <nav class="nav" aria-label="Navigation">
-        <a href="#methode">Méthode</a>
-        <a href="#demos">Démos</a>
-        <a href="#preview">Score</a>
-        <a href="#packs">Collaboration</a>
-        <a href="#faq">FAQ</a>
-        <a class="btn btn-primary" href="#demarrer">Lancer l’audit</a>
-      </nav>
+      <div class="nav">
+        <a href="#audit">Audit</a>
+        <a href="#simulation">Simulation</a>
+        <button class="btn primary" type="button" id="goBtn">Lancer</button>
+      </div>
     </div>
   </div>
 
-  <!-- Hero -->
-  <header class="hero">
-    <div class="container grid-hero">
-      <div class="hero-left">
-        <div class="kicker">
-          <span class="badge"><span class="spark" aria-hidden="true"></span> Audit IA en 2 min • Score + Plan 7 jours</span>
-          <span class="pill"><span class="dot" aria-hidden="true"></span> Objectif: + demandes entrantes</span>
-        </div>
-
-        <h2>
-          Plus de <span style="background:linear-gradient(90deg, rgba(255,204,102,.95), rgba(255,92,122,.85)); -webkit-background-clip:text; background-clip:text; color:transparent;">clients</span>
-          en <span style="background:linear-gradient(90deg, rgba(0,224,255,.95), rgba(124,92,255,.95)); -webkit-background-clip:text; background-clip:text; color:transparent;">14 jours</span> :
-          visuels + site + preuves + suivi.
-        </h2>
-
+  <header>
+    <div class="container grid">
+      <div class="card hero">
+        <div class="pill"><span class="dot" aria-hidden="true"></span> Conversion-first • ultra concret</div>
+        <h1 style="margin-top:12px">
+          Faites monter l’<span class="grad">image</span> + la <span class="grad">confiance</span> + les <span class="grad">demandes</span>.
+        </h1>
         <p>
-          Audit “conversion-first” pour identifier les frictions qui te font perdre des demandes. Tu obtiens un <b>score</b>, des <b>priorités</b>,
-          un <b>plan exécutable</b> et une option <b>démo au nom de ton entreprise</b> (preuve instant).
+          Ce mini-audit n’est pas “un rapport”. C’est une <b>simulation</b> : vous voyez exactement ce qu’on met en place
+          (drone/caméra, site, SEO, avis, landing, tunnel, montage, contenus, ads) et l’impact business attendu.
         </p>
-
-        <div class="value-points">
-          <div class="vp">
-            <strong>Score & Risques</strong>
-            <span>Ce qui bloque tes leads + où tu perds des demandes.</span>
-          </div>
-          <div class="vp">
-            <strong>Plan 7 jours</strong>
-            <span>Quick wins + multiplicateurs + suivi/relance.</span>
-          </div>
-          <div class="vp">
-            <strong>Preuve instant</strong>
-            <span>Démo IA (mini-site + page offre) pour déclencher le “oui”.</span>
-          </div>
+        <div class="row">
+          <span class="pill">Temps: <b style="color:rgba(255,255,255,.9)">60–90s</b></span>
+          <span class="pill">Output: <b style="color:rgba(255,255,255,.9)">Score + Plan + Stack</b></span>
+          <button class="btn" type="button" id="pdfBtn">PDF</button>
         </div>
 
-        <div class="hero-cta">
-          <a class="btn btn-primary" href="#demarrer">Obtenir mon audit</a>
-          <a class="btn" href="#demos">Voir des démos</a>
-          <span class="pill">Temps estimé: <b style="color:rgba(255,255,255,.9)">2 min</b></span>
-        </div>
-
-        <div class="hero-trust">
-          <span class="lock">🔒 Données minimales • pas de spam</span>
-          <span class="lock">⚡ Démo possible en 24h</span>
-          <span class="lock">🎯 Focus: leads + marge</span>
+        <div class="mini-grid">
+          <div class="mini"><b>Proof Engine</b><span>Visuels premium + avis + pages qui rassurent.</span></div>
+          <div class="mini"><b>Demand Engine</b><span>Landing + tunnel + suivi + relances.</span></div>
+          <div class="mini"><b>Growth Engine</b><span>SEO local + Ads Meta/Google + itérations.</span></div>
         </div>
       </div>
 
-      <!-- Right Panel (Lead Form) -->
-      <aside class="panel floaty" id="demarrer">
-        <h3>Recevez votre audit IA personnalisé</h3>
-        <p>
-          Remplissez les champs. Vous obtenez un score + un mini-plan.
-          Ensuite: <b>WhatsApp / appel 15 min</b> pour activer la démo.
-        </p>
+      <aside class="card panel" id="formCard">
+        <h2 id="audit">Générer la simulation (1 minute)</h2>
+        <p>Minimum de champs. Maximum de valeur. Objectif: déclencher un appel et lancer la démo.</p>
 
-        <form class="form" id="auditForm">
+        <form id="auditForm">
           <label>
-            Nom de l’entreprise *
-            <input required name="company" placeholder="Ex: Padel Club Montpellier" autocomplete="organization"/>
+            Entreprise *
+            <input name="company" required placeholder="Ex: Padel Club Montpellier" autocomplete="organization" />
           </label>
 
-          <div class="row2">
+          <div class="r2">
             <label>
               Secteur *
-              <select required name="sector">
+              <select name="sector" required>
                 <option value="" disabled selected>Choisir</option>
                 <option>Commerce local</option>
                 <option>Restauration</option>
-                <option>Services B2C</option>
-                <option>Services B2B</option>
                 <option>Sport / Club</option>
                 <option>Immobilier</option>
                 <option>Artisan / BTP</option>
+                <option>Services B2B</option>
+                <option>Services B2C</option>
                 <option>E-commerce</option>
                 <option>Autre</option>
               </select>
             </label>
-
             <label>
-              Zone *
-              <input required name="city" placeholder="Ex: Montpellier" autocomplete="address-level2"/>
+              Ville *
+              <input name="city" required placeholder="Ex: Montpellier" autocomplete="address-level2" />
             </label>
           </div>
 
-          <div class="row2">
+          <div class="r2">
             <label>
               Email pro *
-              <input required name="email" type="email" placeholder="ex: contact@entreprise.fr" autocomplete="email"/>
+              <input name="email" required type="email" placeholder="contact@..." autocomplete="email" />
             </label>
             <label>
-              Téléphone (recommandé)
-              <input name="phone" type="tel" placeholder="06 00 00 00 00" autocomplete="tel"/>
-            </label>
-          </div>
-
-          <label>
-            Site web (optionnel mais recommandé)
-            <input name="website" placeholder="https://..." inputmode="url" autocomplete="url"/>
-          </label>
-
-          <div class="row2">
-            <label>
-              Objectif principal *
-              <select required name="goal">
+              Objectif *
+              <select name="goal" required>
                 <option value="" disabled selected>Choisir</option>
                 <option>Plus d’appels / demandes</option>
                 <option>Plus de RDV qualifiés</option>
                 <option>Plus de ventes</option>
-                <option>Plus de trafic</option>
                 <option>Améliorer la confiance</option>
-              </select>
-            </label>
-
-            <label>
-              CA mensuel (approx.) *
-              <select required name="revenue">
-                <option value="" disabled selected>Choisir</option>
-                <option value="1">< 5k€</option>
-                <option value="2">5k€ – 20k€</option>
-                <option value="3">20k€ – 60k€</option>
-                <option value="4">60k€ – 150k€</option>
-                <option value="5">150k€+</option>
+                <option>Dominer localement</option>
               </select>
             </label>
           </div>
 
           <label>
-            Frein actuel (1 phrase) *
-            <textarea required name="pain" rows="3" placeholder="Ex: on a du trafic mais peu de demandes / pas de suivi / pas de pub / site pas pro"></textarea>
+            Site (optionnel)
+            <input name="website" placeholder="https://..." inputmode="url" autocomplete="url" />
           </label>
 
-          <div class="mini">
-            <div class="icon" aria-hidden="true">AI</div>
+          <label>
+            Frein #1 (1 phrase) *
+            <textarea name="pain" rows="2" required placeholder="Ex: peu de demandes / pas d’avis / images pas pro / pas de pub / pas de suivi"></textarea>
+          </label>
+
+          <div class="toggle">
+            <input id="needVisual" type="checkbox" checked />
             <div>
-              <strong>Démo au nom de votre entreprise</strong>
-              <span>On prépare une page offre + mini-site “brandfit” pour vous montrer la valeur avant devis (taux de signature ↑).</span>
-              <div style="margin-top:10px; display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
-                <label style="display:flex; align-items:center; gap:10px; margin:0; font-size:12px; color:rgba(255,255,255,.78); font-weight:800;">
-                  <input id="prototypeToggle" type="checkbox" style="width:18px;height:18px; accent-color: var(--accent2);"/>
-                  Je veux la démo (recommandé)
-                </label>
-                <span class="pill">Livraison: <b style="color:rgba(255,255,255,.9)">24h</b></span>
+              <b>Activer “Visuels Premium”</b>
+              <span>Drone + caméra + montage + formats réseaux (preuve instant).</span>
+              <div class="chips">
+                <span class="chip">Drone</span><span class="chip">Caméra</span><span class="chip">Montage</span><span class="chip">Reels/TikTok</span>
               </div>
             </div>
           </div>
 
-          <label style="display:flex; gap:10px; align-items:flex-start; margin-top:6px;">
-            <input required id="consent" type="checkbox" style="width:18px;height:18px; margin-top:2px; accent-color: var(--accent2);"/>
-            <span style="font-size:11.5px; color:rgba(255,255,255,.55); line-height:1.45;">
-              J’accepte d’être recontacté pour recevoir l’audit et la démo. Aucune revente de données.
-            </span>
-          </label>
-
-          <button class="btn btn-primary" type="submit" id="submitBtn">Générer mon audit</button>
-
-          <div class="fineprint">
-            Conseil: après le score, cliquez sur <b>WhatsApp</b> pour activer votre démo et booker 15 min.
+          <div class="toggle">
+            <input id="needAcq" type="checkbox" checked />
+            <div>
+              <b>Activer “Acquisition”</b>
+              <span>SEO local + Google Business + Ads Meta/Google + suivi leads.</span>
+              <div class="chips">
+                <span class="chip">SEO</span><span class="chip">Avis</span><span class="chip">Ads</span><span class="chip">Suivi</span>
+              </div>
+            </div>
           </div>
-        </form>
 
-        <div class="hint" id="formHint" aria-live="polite"></div>
+          <button class="btn primary" type="submit" id="submitBtn">Générer la simulation</button>
+          <div class="fine" id="hint" aria-live="polite"></div>
+        </form>
       </aside>
     </div>
   </header>
 
-  <!-- Method (UPGRADED) -->
-  <section id="methode">
-    <div class="container">
-      <div class="section-title">
-        <div>
-          <h3>Méthode “Conversion-First” (Ultra concrète)</h3>
-          <p>
-            Le but n’est pas “faire beau”. Le but est d’augmenter le <b>volume de demandes qualifiées</b> et la <b>capacité à closer</b>.
-            On applique une chaîne simple, mesurable, et exécutable.
-          </p>
-        </div>
-        <span class="pill">Système: <b style="color:rgba(255,255,255,.9)">Leak Map → Fix → Proof → Follow-up</b></span>
-      </div>
-
-      <div class="cards">
-        <!-- 01 -->
-        <div class="card">
-          <span class="tag">01 • Leak Map (où tu perds de l’argent)</span>
-          <h4>Cartographie des fuites de conversion</h4>
-          <p>
-            On identifie <b>les 3 frictions</b> qui font chuter tes demandes (mobile, message, confiance, vitesse).
-            Résultat: une liste priorisée “à corriger en premier”.
-          </p>
-          <ul class="list">
-            <li><span class="check">✓</span> <b>Clarté de l’offre</b> (promesse en 5 secondes + qui c’est pour + résultat)</li>
-            <li><span class="check">✓</span> <b>CTA unique</b> (1 action principale, pas 6 boutons qui se cannibalisent)</li>
-            <li><span class="check">✓</span> <b>Mobile-first</b> (lisibilité, vitesse, formulaire court, zones cliquables)</li>
-            <li><span class="check">✓</span> <b>Présence locale</b> (Google Business, avis, cohérence NAP, photos)</li>
-          </ul>
-        </div>
-
-        <!-- 02 -->
-        <div class="card">
-          <span class="tag">02 • Fix Sprint (7 jours, pas 7 semaines)</span>
-          <h4>Plan d’attaque exécutable + quick wins</h4>
-          <p>
-            Tu reçois une <b>roadmap en 7 jours</b> avec des actions “copier-coller” qui font bouger le score.
-            Chaque action a un <b>objectif</b> + un <b>impact</b> + une <b>preuve attendue</b>.
-          </p>
-          <ul class="list">
-            <li><span class="check">✓</span> <b>J0–J1</b> : header (promesse + CTA) + section preuves + FAQ objections</li>
-            <li><span class="check">✓</span> <b>J2–J3</b> : page “offre principale” (prix/pack, garanties, cas, CTA)</li>
-            <li><span class="check">✓</span> <b>J4–J5</b> : formulaire ultra court + réponse auto + relance J+1/J+3</li>
-            <li><span class="check">✓</span> <b>J6–J7</b> : tracking + tableau simple (demandes, sources, taux de closing)</li>
-          </ul>
-        </div>
-
-        <!-- 03 -->
-        <div class="card">
-          <span class="tag">03 • Proof Engine (on vend par la preuve)</span>
-          <h4>Preuves qui déclenchent le “OK, je te fais confiance”</h4>
-          <p>
-            Les entreprises ne signent pas quand c’est “intéressant”. Elles signent quand c’est <b>évident</b>.
-            On installe une couche preuve + réassurance qui réduit les objections.
-          </p>
-          <ul class="list">
-            <li><span class="check">✓</span> <b>Social proof</b> : avis, résultats, photos, avant/après, logos (même petits)</li>
-            <li><span class="check">✓</span> <b>Risk reversal</b> : garanties, délais, process, “ce que vous recevez exactement”</li>
-            <li><span class="check">✓</span> <b>Offre lisible</b> : packs, périmètre, livrables, calendrier, next step</li>
-            <li><span class="check">✓</span> <b>Objection-killer</b> : FAQ stratégique (prix, temps, “j’ai déjà un site”, etc.)</li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- Added: chain diagram -->
-      <div class="card" style="margin-top:12px">
-        <span class="tag">Chaîne de conversion (de “visiteur” à “client”)</span>
-        <h4>Pipeline complet — simple, scalable, mesurable</h4>
-        <p style="margin-bottom:10px">
-          L’entreprise doit comprendre <b>le mécanisme</b> : vous ne vendez pas “du web”, vous vendez <b>un système de demandes</b>.
-          Cette chaîne rassure et accélère le closing.
-        </p>
-        <ul class="list">
-          <li><span class="check">✓</span> <b>Entrée</b> : Google / réseaux / pub / bouche-à-oreille → landing claire</li>
-          <li><span class="check">✓</span> <b>Conversion</b> : CTA unique → formulaire court (ou WhatsApp) → confirmation instant</li>
-          <li><span class="check">✓</span> <b>Qualification</b> : 2–3 questions clés → tri “chaud / tiède / froid”</li>
-          <li><span class="check">✓</span> <b>Suivi</b> : relances J+1 / J+3 → rappel d’offre + preuve + lien RDV</li>
-          <li><span class="check">✓</span> <b>Closing</b> : 15 min cadrage → démo au nom de l’entreprise → décision simple</li>
-          <li><span class="check">✓</span> <b>Optimisation</b> : reporting mensuel → itérations → score qui monte</li>
-        </ul>
-      </div>
-
-      <!-- Added: deliverables clarity -->
-      <div class="cards" style="margin-top:12px">
-        <div class="card">
-          <span class="tag">Livrables (ce que l’entreprise reçoit)</span>
-          <h4>Pack “preuve immédiate”</h4>
-          <p>Ce bloc est conçu pour rassurer un dirigeant en 30 secondes.</p>
-          <ul class="list">
-            <li><span class="check">✓</span> Score /100 + sous-scores (visibilité, conversion, confiance, suivi)</li>
-            <li><span class="check">✓</span> Top 3 freins + estimation des demandes perdues</li>
-            <li><span class="check">✓</span> Roadmap 7 jours (actions + priorités)</li>
-            <li><span class="check">✓</span> Option: démo “brandfit” en 24h (mini-site + page offre)</li>
-          </ul>
-        </div>
-
-        <div class="card">
-          <span class="tag">KPI (ce qu’on mesure)</span>
-          <h4>Mesures simples, orientées business</h4>
-          <p>On parle langage direction: performance, pas vanity metrics.</p>
-          <ul class="list">
-            <li><span class="check">✓</span> Volume de demandes / semaine</li>
-            <li><span class="check">✓</span> Taux de conversion landing → demande</li>
-            <li><span class="check">✓</span> Délai de réponse + taux de relance</li>
-            <li><span class="check">✓</span> Taux de closing (RDV → client)</li>
-          </ul>
-        </div>
-
-        <div class="card">
-          <span class="tag">Sécurité décisionnelle</span>
-          <h4>Pourquoi ça se signe vite</h4>
-          <p>Parce que tu montres avant de vendre et tu réduis le risque perçu.</p>
-          <ul class="list">
-            <li><span class="check">✓</span> Démo au nom de l’entreprise (preuve “avant devis”)</li>
-            <li><span class="check">✓</span> Périmètre clair + délai + next step</li>
-            <li><span class="check">✓</span> Process transparent (audit → fix → suivi)</li>
-            <li><span class="check">✓</span> Option WhatsApp (zéro friction)</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Demos -->
-  <section id="demos">
-    <div class="container">
-      <div class="section-title">
-        <div>
-          <h3>Exemples de transformations (démos)</h3>
-          <p>À remplacer par tes screenshots réels. L’objectif: “je vois la valeur” → “je signe”.</p>
-        </div>
-        <a class="btn btn-primary" href="#demarrer">Je veux ma démo</a>
-      </div>
-
-      <div class="demos">
-        <div class="card">
-          <span class="tag">Restauration</span>
-          <div class="shot" aria-hidden="true"></div>
-          <h4 style="margin-top:12px;">Avant/Après</h4>
-          <p>Promesse claire + preuves (avis) + bouton unique “Réserver / Appeler”.</p>
-          <ul class="list">
-            <li><span class="check">✓</span> Page offre</li>
-            <li><span class="check">✓</span> Google Business</li>
-            <li><span class="check">✓</span> Relance WhatsApp</li>
-          </ul>
-        </div>
-
-        <div class="card">
-          <span class="tag">Immobilier</span>
-          <div class="shot" aria-hidden="true"></div>
-          <h4 style="margin-top:12px;">Avant/Après</h4>
-          <p>Page “estimation” + formulaire court + preuve + suivi.</p>
-          <ul class="list">
-            <li><span class="check">✓</span> Landing</li>
-            <li><span class="check">✓</span> Tracking</li>
-            <li><span class="check">✓</span> Calendrier RDV</li>
-          </ul>
-        </div>
-
-        <div class="card">
-          <span class="tag">Artisan / BTP</span>
-          <div class="shot" aria-hidden="true"></div>
-          <h4 style="margin-top:12px;">Avant/Après</h4>
-          <p>Visuels + preuves + FAQ objections + devis express.</p>
-          <ul class="list">
-            <li><span class="check">✓</span> Portfolio</li>
-            <li><span class="check">✓</span> Formulaire</li>
-            <li><span class="check">✓</span> Relance J+1</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Audit Preview -->
-  <section id="preview">
-    <div class="container">
-      <div class="section-title">
-        <div>
-          <h3>Score & rapport (format qui convertit)</h3>
-          <p>Quand le dirigeant voit le score + les actions + la démo, la décision devient simple.</p>
-        </div>
-        <div style="display:flex; gap:10px; flex-wrap:wrap;">
-          <button class="btn" type="button" id="pdfBtn">Télécharger PDF</button>
-          <a class="btn btn-primary" href="#demarrer">Refaire un audit</a>
-        </div>
-      </div>
-
-      <div class="preview">
-        <div class="scorebox">
-          <div class="score-top">
-            <strong id="scoreTitle">Score Global — Exemple</strong>
-            <div class="meter" aria-label="Progression du score"><div id="meterFill" style="width:52%"></div></div>
-          </div>
-
-          <div class="bigscore">
-            <div class="n" id="bigScore">52</div>
-            <div class="outof">/ 100 • <span id="scoreLabel" class="badgeScore warn">À optimiser</span></div>
-          </div>
-
-          <div class="subscores">
-            <div class="sub">
-              <span>Visibilité & Présence</span>
-              <span id="s1" class="badgeScore warn">5.8/10</span>
-            </div>
-            <div class="sub">
-              <span>Conversion & Parcours client</span>
-              <span id="s2" class="badgeScore bad">4.1/10</span>
-            </div>
-            <div class="sub">
-              <span>Confiance (preuves, avis, clarté)</span>
-              <span id="s3" class="badgeScore warn">5.2/10</span>
-            </div>
-            <div class="sub">
-              <span>Automatisation & Suivi</span>
-              <span id="s4" class="badgeScore bad">2.7/10</span>
+  <section id="simulation">
+    <div class="container sim">
+      <div class="card box">
+        <h3>Score & potentiel</h3>
+        <div class="score">
+          <div class="big">
+            <div class="n" id="scoreN">—</div>
+            <div style="padding-bottom:6px">
+              <div style="color:var(--muted2); font-size:13px">/100</div>
+              <div id="scoreTag" class="badge warn">Simulation</div>
             </div>
           </div>
-
-          <div class="hint" style="margin-top:12px">
-            Objectif: passer de <b>“site vitrine”</b> à <b>“machine à demandes”</b>.
-          </div>
+          <div class="meter" aria-label="Progression"><div id="meterFill" style="width:0%"></div></div>
         </div>
 
-        <div class="reportbox">
-          <div class="report-head">
-            <strong>Mini-rapport</strong>
-            <div class="chips">
-              <span class="chip">Quick wins</span>
-              <span class="chip">Roadmap 7j</span>
-              <span class="chip">Décision</span>
+        <div class="stack" id="stack">
+          <div class="item">
+            <div class="ic" aria-hidden="true">⚡</div>
+            <div>
+              <b>Ce que l’audit va prouver</b>
+              <span>On transforme votre présence en <b>machine à demandes</b> (preuve visuelle + parcours + suivi).</span>
+              <div class="chips"><span class="chip">Proof</span><span class="chip">Demand</span><span class="chip">Growth</span></div>
             </div>
           </div>
+        </div>
 
-          <div class="report" id="reportText">
-            <b>Problème principal :</b> parcours client trop long + manque de preuve sociale ⇒ perte de demandes.<br><br>
-            <b>Quick win #1 (24h) :</b> promesse claire + CTA unique (mobile prioritaire).<br>
-            <b>Quick win #2 (24h) :</b> section <span class="hl">preuves</span> (avis, résultats, logos).<br>
-            <b>Quick win #3 (48h) :</b> formulaire court + réponse auto + relance.<br><br>
-            <b>Multiplicateur :</b> page dédiée “offre principale” avec FAQ + garanties.<br>
-            <b>Automatisation :</b> suivi leads + relance J+1/J+3.
-          </div>
-
-          <div class="nextstep" id="nextStepBox">
-            <h4>Étape 2 — Activer la démo (15 min)</h4>
-            <p>
-              Le score te donne la direction. La démo te montre la valeur <b>avant</b> devis.
-              Clique WhatsApp ou réserve 15 minutes.
-            </p>
-            <div class="nextgrid">
-              <div class="miniCard">
-                <strong>Option rapide</strong>
-                <span>WhatsApp — on valide l’objectif + on déclenche la démo.</span>
-                <div class="hero-cta" style="margin-top:10px">
-                  <a class="btn btn-whatsapp" id="waBtn" href="#" target="_blank" rel="noopener">WhatsApp</a>
-                </div>
-              </div>
-              <div class="miniCard">
-                <strong>Option cadrée</strong>
-                <span>Appel 15 min — diagnostic + plan de mise en place.</span>
-                <div class="hero-cta" style="margin-top:10px">
-                  <a class="btn btn-primary" id="calBtn" href="#" target="_blank" rel="noopener">Réserver 15 min</a>
-                </div>
-              </div>
+        <div class="cta">
+          <div class="row">
+            <div class="left">
+              <b>Next step: appel 15 min</b>
+              <span>On valide l’objectif → on lance la démo au nom de l’entreprise.</span>
             </div>
-            <div class="hero-cta" style="margin-top:12px">
-              <button class="btn" type="button" id="emailBtn">Recevoir par email</button>
-              <a class="btn" href="#packs">Voir les packs</a>
+            <div class="right">
+              <a class="btn wa" id="waBtn" href="#" target="_blank" rel="noopener">WhatsApp</a>
+              <a class="btn primary" id="calBtn" href="#" target="_blank" rel="noopener">Réserver</a>
             </div>
           </div>
-
         </div>
       </div>
-    </div>
-  </section>
 
-  <!-- Packs -->
-  <section id="packs">
-    <div class="container">
-      <div class="section-title">
-        <div>
-          <h3>Collaboration (abonnement)</h3>
-          <p>Tu ne payes pas “un site”. Tu investis dans une présence digitale + acquisition + optimisation continue.</p>
-        </div>
-        <span class="pill">Objectif: <b style="color:rgba(255,255,255,.9)">leads récurrents</b></span>
-      </div>
-
-      <div class="pricing">
-        <div class="price">
-          <div class="head">
-            <h4>Starter</h4>
-            <span class="pill">Maintenance</span>
-          </div>
-          <div class="from">à partir de 149€ / mois</div>
-          <div class="sub">Pour être propre, à jour, et ne plus perdre des leads “bêtement”.</div>
-          <ul class="list">
-            <li><span class="check">✓</span> Mises à jour site + sécurité</li>
-            <li><span class="check">✓</span> Modifs mineures (texte/offre)</li>
-            <li><span class="check">✓</span> Support + monitoring</li>
+      <div class="card box">
+        <h3>Livrables (ce que vous recevez exactement)</h3>
+        <div class="deliver" id="deliver">
+          <b>Générez la simulation</b> pour voir votre plan personnalisé.<br><br>
+          Vous verrez:
+          <ul>
+            <li><b>La stack recommandée</b> (visuels, site, SEO, avis, landing, tunnel, ads).</li>
+            <li><b>Le plan 14 jours</b> (quick wins + démo + acquisition + suivi).</li>
+            <li><b>Le “pack preuve”</b> : ce qui fait dire “OK, je vous fais confiance”.</li>
           </ul>
-          <div class="cta">
-            <a class="btn btn-primary" href="#demarrer">Je veux l’audit</a>
-            <a class="btn" href="#faq">Questions</a>
-          </div>
+          Objectif: déclencher un <span class="hl">appel 15 min</span> et lancer l’exécution.
         </div>
-
-        <div class="price highlight">
-          <span class="ribbon">Recommandé</span>
-          <div class="head">
-            <h4>Growth</h4>
-            <span class="pill">Contenu + Google</span>
-          </div>
-          <div class="from">à partir de 299€ / mois</div>
-          <div class="sub">Pour devenir visible, crédible, et déclencher plus de demandes entrantes.</div>
-          <ul class="list">
-            <li><span class="check">✓</span> Contenus réseaux (x4/mois)</li>
-            <li><span class="check">✓</span> Optimisation Google Business + avis</li>
-            <li><span class="check">✓</span> Optimisation conversion (mensuel)</li>
-          </ul>
-          <div class="cta">
-            <a class="btn btn-whatsapp" href="#" id="waBtn2" target="_blank" rel="noopener">Activer via WhatsApp</a>
-            <a class="btn" href="#demos">Voir démos</a>
-          </div>
-        </div>
-
-        <div class="price">
-          <div class="head">
-            <h4>Dominance</h4>
-            <span class="pill">Acquisition</span>
-          </div>
-          <div class="from">à partir de 499€ / mois</div>
-          <div class="sub">Pour capter le marché local: Ads + suivi + optimisation continue.</div>
-          <ul class="list">
-            <li><span class="check">✓</span> Ads locales (Meta/Google) + réglages</li>
-            <li><span class="check">✓</span> Suivi leads + relance J+1/J+3</li>
-            <li><span class="check">✓</span> Reporting simple + actions</li>
-          </ul>
-          <div class="cta">
-            <a class="btn btn-primary" href="#demarrer">Calculer le potentiel</a>
-            <a class="btn" href="#faq">FAQ</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="card" style="margin-top:12px">
-        <span class="tag">Option visuels (drone / photo)</span>
-        <h4>Pack image (one-shot ou récurrent)</h4>
-        <p>Ajoute un effet “premium” immédiat : meilleur taux de conversion, meilleure confiance.</p>
-        <ul class="list">
-          <li><span class="check">✓</span> Vidéo drone + photos pro</li>
-          <li><span class="check">✓</span> Formats réseaux (Reels/TikTok/Stories)</li>
-          <li><span class="check">✓</span> Mise à jour visuelle sur site + Google</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- FAQ -->
-  <section id="faq">
-    <div class="container">
-      <div class="section-title">
-        <div>
-          <h3>FAQ (anti-objections)</h3>
-          <p>Les questions que les dirigeants posent avant de dire oui.</p>
-        </div>
-        <a class="btn btn-primary" href="#demarrer">Je fais l’audit</a>
-      </div>
-
-      <div class="faq">
-        <details>
-          <summary>“J’ai déjà un site.”</summary>
-          <p>Parfait. On ne “refait” pas pour refaire. On transforme ton site en <b>machine à demandes</b> : promesse, preuves, CTA, suivi, relance, vitesse, mobile. Souvent, c’est de l’optimisation à fort ROI.</p>
-        </details>
-        <details>
-          <summary>“On a déjà quelqu’un (agence/alternant).”</summary>
-          <p>On peut rester en complément : <b>audit + démo + plan</b> pour cadrer les priorités. Ou on prend un périmètre clair (conversion, suivi, landing, Google) et on livre vite.</p>
-        </details>
-        <details>
-          <summary>“Je n’ai pas le temps.”</summary>
-          <p>Justement. Le système est conçu pour minimiser ton temps : audit 2 min, puis 15 min de cadrage. Ensuite on exécute, on te livre, et on optimise mensuellement.</p>
-        </details>
-        <details>
-          <summary>“En combien de temps je vois des résultats ?”</summary>
-          <p>Quick wins en <b>7 jours</b> (CTA, preuves, formulaire, relance). Sur l’acquisition payante, on observe généralement des signaux en <b>10–21 jours</b> selon secteur et budget.</p>
-        </details>
-        <details>
-          <summary>“Ça marche dans mon secteur ?”</summary>
-          <p>Le mécanisme est universel : plus de confiance + parcours simple + suivi + relance + preuve. On adapte les pages, les angles, et les offres à ton secteur.</p>
-        </details>
       </div>
     </div>
   </section>
 
   <footer>
-    <div class="container footgrid">
-      <div>
-        <div style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
-          <div class="logo" aria-hidden="true"></div>
-          <div>
-            <div style="font-weight:900; color:rgba(255,255,255,.85)">Audit IA Conversion & Valeur</div>
-            <div style="color:rgba(255,255,255,.45)">Vercel-ready • endpoint + WhatsApp + calendrier</div>
-          </div>
-        </div>
-        <div style="max-width:75ch; line-height:1.6">
-          Objectif: <b>preuve instant → audit → closing</b>. Branche le formulaire vers ton endpoint (Formspree/Make/Zapier/n8n/Google Sheets).
-        </div>
-      </div>
-
-      <div class="links">
-        <a href="#demarrer">Audit</a>
-        <a href="#demos">Démos</a>
-        <a href="#preview">Score</a>
-        <a href="#packs">Packs</a>
-        <a href="#faq">FAQ</a>
-      </div>
+    <div class="container">
+      Vercel-ready. Branchez un webhook si vous voulez logger les leads (Formspree / Make / Zapier / n8n).
     </div>
   </footer>
 
-  <!-- Bottom sticky CTA -->
-  <div class="bottom-cta" id="bottomCTA">
-    <div class="container">
-      <div class="bar">
-        <div class="txt">
-          <strong id="ctaStrong">Audit IA prêt</strong>
-          <span id="ctaSpan">Score + plan 7 jours + option démo en 24h.</span>
-        </div>
-        <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
-          <a class="btn" href="#demos">Voir démos</a>
-          <a class="btn btn-primary" href="#demarrer">Lancer l’audit</a>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <script>
     /***********************
-     * CONFIG (À REMPLIR)
+     * CONFIG
      ***********************/
     const CONFIG = {
-      WHATSAPP_NUMBER: "33600000000",
+      WHATSAPP_NUMBER: "33600000000",     // sans "+"
       CALENDLY_URL: "https://calendly.com/votre-lien/15min",
-      WEBHOOK_URL: "",
+      WEBHOOK_URL: "",                   // optionnel
       OWNER_LABEL: "Équipe Growth"
     };
 
-    const $ = (sel, root=document) => root.querySelector(sel);
-    const clamp = (n, min, max) => Math.max(min, Math.min(max, n));
-
-    function safe(s){ return String(s || "").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
-
-    function scoreBadge(el, v10){
-      el.classList.remove("good","warn","bad");
-      if(v10 >= 7) el.classList.add("good");
-      else if(v10 >= 4.5) el.classList.add("warn");
-      else el.classList.add("bad");
-    }
+    const $ = (s, r=document) => r.querySelector(s);
+    const clamp = (n, a, b) => Math.max(a, Math.min(b, n));
+    function safe(s){ return String(s||"").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
 
     function labelFromScore(s){
-      if(s >= 80) return {txt:"Excellent", cls:"good"};
-      if(s >= 60) return {txt:"Bon potentiel", cls:"warn"};
-      return {txt:"À optimiser", cls:"bad"};
+      if(s >= 82) return {txt:"Prêt à scaler", cls:"good"};
+      if(s >= 62) return {txt:"Gros potentiel", cls:"warn"};
+      return {txt:"Fuites importantes", cls:"bad"};
+    }
+
+    function waLink(message){
+      return `https://wa.me/${CONFIG.WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
     }
 
     function parseUTM(){
@@ -1323,211 +491,250 @@
       return out;
     }
 
-    function track(){}
-
-    function waLink(message){
-      const text = encodeURIComponent(message);
-      return `https://wa.me/${CONFIG.WHATSAPP_NUMBER}?text=${text}`;
-    }
-
     async function sendLead(payload){
-      try{ localStorage.setItem("last_audit_lead", JSON.stringify(payload)); }catch(e){}
+      try{ localStorage.setItem("last_sim_lead", JSON.stringify(payload)); }catch(e){}
       if(!CONFIG.WEBHOOK_URL) return { ok:true, skipped:true };
-
       const res = await fetch(CONFIG.WEBHOOK_URL, {
-        method: "POST",
-        headers: { "Content-Type":"application/json" },
+        method:"POST",
+        headers:{ "Content-Type":"application/json" },
         body: JSON.stringify(payload)
       });
-      return { ok: res.ok, status: res.status };
+      return { ok:res.ok, status:res.status };
     }
 
-    function buildEmailBody(lead){
-      const lines = [
-        `Entreprise: ${lead.company} (${lead.city})`,
-        `Secteur: ${lead.sector}`,
-        `Objectif: ${lead.goal}`,
-        `Site: ${lead.website || "Non renseigné"}`,
-        `Email: ${lead.email}`,
-        `Téléphone: ${lead.phone || "Non renseigné"}`,
-        `Score: ${lead.score}/100`,
-        `Sous-scores: Visibilité ${lead.subscores.visibility}/10 | Conversion ${lead.subscores.conversion}/10 | Confiance ${lead.subscores.trust}/10 | Suivi ${lead.subscores.automation}/10`,
-        `Frein: ${lead.pain}`,
-        `Prototype demandé: ${lead.wantProto ? "OUI" : "NON"}`,
-        `UTM: ${JSON.stringify(lead.utm)}`
+    function setScoreUI(score){
+      $("#scoreN").textContent = score;
+      $("#meterFill").style.width = clamp(score,0,100) + "%";
+      const lab = labelFromScore(score);
+      const tag = $("#scoreTag");
+      tag.textContent = lab.txt;
+      tag.className = "badge " + lab.cls;
+    }
+
+    function buildStack({needVisual, needAcq, sector, painText, goal, hasSite}){
+      const items = [];
+      const leak = [];
+      if(!hasSite || painText.includes("site") || painText.includes("pas de site")) leak.push("Parcours absent/fragile");
+      if(painText.includes("avis") || painText.includes("confiance") || painText.includes("image")) leak.push("Preuve sociale faible");
+      if(painText.includes("pub") || painText.includes("ads") || painText.includes("meta") || painText.includes("google")) leak.push("Acquisition non optimisée");
+      if(painText.includes("suivi") || painText.includes("relance") || painText.includes("crm")) leak.push("Fuite de leads (follow-up)");
+      if(leak.length === 0) leak.push("Clarté offre / CTA / conversion mobile");
+
+      // Proof Engine
+      if(needVisual){
+        items.push({
+          ic:"🎥",
+          title:"Proof Engine — Visuels Premium",
+          desc:"Drone + caméra + montage + formats réseaux. Objectif: crédibilité instant + différenciation + hausse du taux de conversion.",
+          chips:["Drone","Caméra","Montage","Reels/TikTok","Avant/Après"]
+        });
+      } else {
+        items.push({
+          ic:"✅",
+          title:"Proof Engine — Confiance",
+          desc:"Photos/UGC + preuves + section avis + FAQ objections. Objectif: réduire les freins et accélérer la décision.",
+          chips:["Avis","FAQ","Garanties","Portfolio"]
+        });
+      }
+
+      // Demand Engine
+      items.push({
+        ic:"🧲",
+        title:"Demand Engine — Landing + Tunnel",
+        desc:"Page “offre principale” + CTA unique + formulaire court + tracking. Objectif: transformer le trafic en demandes.",
+        chips:["Landing","Tunnel","CTA","Tracking"]
+      });
+
+      // Growth Engine
+      if(needAcq){
+        items.push({
+          ic:"📈",
+          title:"Growth Engine — SEO + Ads + Local",
+          desc:"Google Business + avis + SEO local + campagnes Meta/Google + optimisation continue. Objectif: volume stable de demandes.",
+          chips:["SEO","Google Business","Meta Ads","Google Ads","Reporting"]
+        });
+      } else {
+        items.push({
+          ic:"📍",
+          title:"Growth Engine — Dominance locale",
+          desc:"Google Business + avis + SEO local + contenus. Objectif: capter la demande organique et sécuriser la visibilité.",
+          chips:["SEO","Local","Avis","Contenus"]
+        });
+      }
+
+      // Follow-up
+      items.push({
+        ic:"⚡",
+        title:"Follow-up — Zéro lead perdu",
+        desc:"Réponse auto + relances J+1/J+3 + WhatsApp + pipeline simple. Objectif: augmenter le taux de closing sans plus de budget.",
+        chips:["Auto","Relance","WhatsApp","Pipeline"]
+      });
+
+      const promise = sector.includes("Restauration")
+        ? "Plus de réservations + appels"
+        : (sector.includes("Immobilier") ? "Plus d’estimations + RDV"
+        : (sector.includes("Artisan") ? "Plus de demandes de devis"
+        : "Plus de demandes qualifiées"));
+
+      const timeline = [
+        "J0–J1: promesse + CTA unique + preuves + vitesse mobile",
+        "J2–J4: landing + offre + tunnel + tracking",
+        "J5–J7: follow-up (auto + relances) + Google Business/avis",
+        "J8–J14: contenus + Ads/SEO + itérations (score qui monte)"
       ];
-      return lines.join("\n");
+
+      const estUplift = (() => {
+        // uplift simple mais “ressenti business”
+        let u = 18;
+        if(!hasSite) u += 10;
+        if(needVisual) u += 8;
+        if(needAcq) u += 10;
+        if(goal.includes("Dominer")) u += 6;
+        if(painText.includes("peu") || painText.includes("pas de demandes")) u += 8;
+        return clamp(u, 18, 55);
+      })();
+
+      return { items, leak, promise, timeline, estUplift };
     }
 
-    function updateCTAButtons(lead){
+    function renderStack(stack){
+      const root = $("#stack");
+      root.innerHTML = "";
+      stack.items.forEach(it=>{
+        const chips = it.chips.map(c=>`<span class="chip">${safe(c)}</span>`).join("");
+        root.innerHTML += `
+          <div class="item">
+            <div class="ic" aria-hidden="true">${safe(it.ic)}</div>
+            <div>
+              <b>${safe(it.title)}</b>
+              <span>${safe(it.desc)}</span>
+              <div class="chips">${chips}</div>
+            </div>
+          </div>
+        `;
+      });
+    }
+
+    function renderDeliverable(lead, stack){
+      const leaks = stack.leak.map(x=>`<li><b>${safe(x)}</b></li>`).join("");
+      const tl = stack.timeline.map(x=>`<li>${safe(x)}</li>`).join("");
+      const demo = lead.needVisual
+        ? `Démo: <span class="hl">visuel premium</span> (drone/caméra) + page offre + formats réseaux.`
+        : `Démo: page offre + preuves + optimisation conversion (impact immédiat).`;
+
+      $("#deliver").innerHTML = `
+        <b>Entreprise:</b> ${safe(lead.company)} — <b>Ville:</b> ${safe(lead.city)} — <b>Secteur:</b> ${safe(lead.sector)}<br>
+        <b>Objectif:</b> ${safe(lead.goal)}<br><br>
+
+        <b>Ce qui bloque aujourd’hui (Leak Map):</b>
+        <ul>${leaks}</ul>
+
+        <b>Promesse attendue:</b> ${safe(stack.promise)}<br>
+        <b>Projection impact:</b> +<b>${stack.estUplift}%</b> de demandes (par conversion + preuve + suivi).<br><br>
+
+        <b>Plan 14 jours:</b>
+        <ul>${tl}</ul>
+
+        <b>Simulation activée:</b> ${demo}<br>
+        <b>Next step:</b> appel <span class="hl">15 min</span> pour valider + lancer l’exécution.
+      `;
+    }
+
+    function updateCTA(lead, stack, score){
       const msg =
 `Bonjour, ici ${CONFIG.OWNER_LABEL}.
-Je viens de générer votre audit pour ${lead.company} (${lead.city}).
+Simulation générée pour ${lead.company} (${lead.city}).
 
-Score: ${lead.score}/100.
-Objectif: ${lead.goal}.
+Score: ${score}/100 — ${labelFromScore(score).txt}
+Objectif: ${lead.goal}
 Frein: ${lead.pain}
 
-Prochaine étape: 15 minutes pour activer la démo (mini-site + page offre) et lancer le plan 7 jours.`;
+Stack recommandée: ${stack.items.map(i=>i.title.replace(" — ","/")).slice(0,3).join(" | ")}
+Prochaine étape: 15 minutes pour valider et lancer la démo (preuve + landing + suivi).`;
 
       $("#waBtn").href = waLink(msg);
-      $("#waBtn2").href = waLink(msg);
       $("#calBtn").href = CONFIG.CALENDLY_URL || "#";
-
-      $("#emailBtn").onclick = () => {
-        const subject = encodeURIComponent(`Audit IA — ${lead.company} (${lead.score}/100)`);
-        const body = encodeURIComponent(buildEmailBody(lead));
-        window.location.href = `mailto:${lead.email}?subject=${subject}&body=${body}`;
-      };
     }
 
-    $("#pdfBtn")?.addEventListener("click", () => window.print());
+    function computeScore({hasSite, needVisual, needAcq, painText, goal}){
+      // Score “conversion-first” (simple, rapide, orienté closing)
+      let s = 70;
 
-    $("#auditForm")?.addEventListener("submit", async (e) => {
+      // fuites
+      if(!hasSite) s -= 14;
+      if(painText.includes("peu de demandes") || painText.includes("pas de demandes")) s -= 10;
+      if(painText.includes("avis") || painText.includes("confiance") || painText.includes("image")) s -= 8;
+      if(painText.includes("lent") || painText.includes("mobile")) s -= 6;
+      if(painText.includes("suivi") || painText.includes("relance") || painText.includes("crm")) s -= 8;
+
+      // intent / activation
+      if(needVisual) s += 6;
+      if(needAcq) s += 6;
+      if(goal.includes("Dominer")) s += 3;
+
+      // clamp
+      return clamp(Math.round(s), 28, 92);
+    }
+
+    $("#pdfBtn").addEventListener("click", () => window.print());
+    $("#goBtn").addEventListener("click", () => { location.hash = "#audit"; });
+
+    $("#auditForm").addEventListener("submit", async (e) => {
       e.preventDefault();
       const btn = $("#submitBtn");
       btn.disabled = true;
-      btn.textContent = "Génération…";
+      btn.textContent = "Simulation…";
 
       const company = e.target.company.value.trim();
       const sector  = e.target.sector.value;
       const city    = e.target.city.value.trim();
-      const goal    = e.target.goal.value;
-      const revenueTier = Number(e.target.revenue.value || 1);
-      const pain    = e.target.pain.value.trim();
-      const website = e.target.website.value.trim();
       const email   = e.target.email.value.trim();
-      const phone   = e.target.phone.value.trim();
-      const wantProto = $("#prototypeToggle")?.checked;
-      const utm = parseUTM();
+      const goal    = e.target.goal.value;
+      const website = e.target.website.value.trim();
+      const pain    = e.target.pain.value.trim();
+
+      const needVisual = $("#needVisual").checked;
+      const needAcq    = $("#needAcq").checked;
 
       const painText = pain.toLowerCase();
-      const hasNoSite = (!website || website.length < 6) || painText.includes("pas de site");
-      const mentionsTracking = painText.includes("suivi") || painText.includes("relance") || painText.includes("crm");
-      const mentionsAds = painText.includes("pub") || painText.includes("ads") || painText.includes("meta") || painText.includes("google");
+      const hasSite = !!website && website.length > 6 && website.includes(".");
 
-      let visibility = 5.2 + (revenueTier-1)*0.35;
-      let conversion = 4.3 + (revenueTier-1)*0.25;
-      let trust = 5.0 + (revenueTier-1)*0.22;
-      let automation = 2.8 + (revenueTier-1)*0.28;
+      const score = computeScore({hasSite, needVisual, needAcq, painText, goal});
+      setScoreUI(score);
 
-      if(hasNoSite){ conversion -= 1.1; trust -= 0.6; visibility -= 0.4; }
-      if(mentionsTracking){ automation += 0.8; conversion += 0.3; }
-      if(mentionsAds){ visibility += 0.5; }
-      if(painText.includes("peu de demandes") || painText.includes("pas de demandes")) conversion -= 0.6;
-      if(painText.includes("avis") || painText.includes("confiance")) trust -= 0.3;
-
-      if(goal.includes("RDV")) conversion += 0.2;
-      if(goal.includes("trafic")) visibility += 0.3;
-      if(goal.includes("confiance")) trust += 0.2;
-
-      if(wantProto){ trust += 0.15; automation += 0.10; }
-
-      visibility = clamp(visibility, 1.5, 9.5);
-      conversion = clamp(conversion, 1.5, 9.5);
-      trust = clamp(trust, 1.5, 9.5);
-      automation = clamp(automation, 1.0, 9.5);
-
-      const score = Math.round((visibility*0.22 + conversion*0.33 + trust*0.25 + automation*0.20) * 10);
-
-      $("#scoreTitle").textContent = `Score Global — ${company} (${city})`;
-      $("#bigScore").textContent = score;
-      $("#meterFill").style.width = clamp(score, 0, 100) + "%";
-
-      const label = labelFromScore(score);
-      const scoreLabel = $("#scoreLabel");
-      scoreLabel.textContent = label.txt;
-      scoreLabel.className = "badgeScore " + label.cls;
-
-      $("#s1").textContent = visibility.toFixed(1) + "/10";
-      $("#s2").textContent = conversion.toFixed(1) + "/10";
-      $("#s3").textContent = trust.toFixed(1) + "/10";
-      $("#s4").textContent = automation.toFixed(1) + "/10";
-      scoreBadge($("#s1"), visibility);
-      scoreBadge($("#s2"), conversion);
-      scoreBadge($("#s3"), trust);
-      scoreBadge($("#s4"), automation);
-
-      const estimatedLostLeads = clamp(Math.round((10 - conversion) * 3), 2, 30);
-      const riskLine = score < 60
-        ? `Risque: vous perdez potentiellement <b>${estimatedLostLeads}+</b> demandes/mois à cause de friction + manque de preuve/suivi.`
-        : `Potentiel: vous pouvez capter plus de demandes sans augmenter le budget pub, juste via parcours + preuve + suivi.`;
-
-      const quick1 = hasNoSite
-        ? "Créer une landing page 1-offre (CTA unique) + preuve sociale — mobile prioritaire."
-        : "Optimiser header (promesse + CTA) + réduire le parcours à 1 action principale.";
-      const quick2 = "Ajouter une section preuves (avis, résultats, logos partenaires) + FAQ objections.";
-      const quick3 = "Mettre un formulaire ultra court + réponse auto + relance J+1/J+3.";
-      const mult = "Créer une page dédiée “offre principale” (comparaison, garanties, FAQ, CTA) + tracking.";
-      const auto = "Brancher un suivi leads (email/WhatsApp/CRM) pour ne perdre aucun prospect.";
-
-      const protoLine = wantProto
-        ? "✅ <span class='hl'>Démo activée</span> : mini-site + page offre (au nom de l’entreprise) — livraison 24h."
-        : "Option recommandée : <span class='hl'>démo au nom de l’entreprise</span> (preuve instant) — livraison 24h.";
-
-      $("#reportText").innerHTML =
-        `<b>Entreprise :</b> ${safe(company)} — <b>Secteur :</b> ${safe(sector)} — <b>Objectif :</b> ${safe(goal)}<br>` +
-        (website ? `<b>Site :</b> ${safe(website)}<br>` : `<b>Site :</b> non renseigné<br>`) +
-        `<br><b>Frein :</b> ${safe(pain)}<br>` +
-        `<br><b>${riskLine}</b><br><br>` +
-        `<b>Quick win #1 (24h) :</b> ${safe(quick1)}<br>` +
-        `<b>Quick win #2 (24h) :</b> ${safe(quick2)}<br>` +
-        `<b>Quick win #3 (48h) :</b> ${safe(quick3)}<br><br>` +
-        `<b>Multiplicateur :</b> ${safe(mult)}<br>` +
-        `<b>Automatisation :</b> ${safe(auto)}<br><br>` +
-        `${protoLine}`;
+      const stack = buildStack({needVisual, needAcq, sector, painText, goal, hasSite});
+      renderStack(stack);
 
       const lead = {
         created_at: new Date().toISOString(),
-        company, sector, city, goal,
-        revenue_tier: revenueTier,
-        website, email, phone,
-        pain,
-        wantProto: !!wantProto,
+        company, sector, city, email, goal, website, pain,
+        needVisual, needAcq,
         score,
-        subscores: {
-          visibility: Number(visibility.toFixed(1)),
-          conversion: Number(conversion.toFixed(1)),
-          trust: Number(trust.toFixed(1)),
-          automation: Number(automation.toFixed(1))
-        },
-        utm,
+        utm: parseUTM(),
         page_url: location.href,
         user_agent: navigator.userAgent
       };
 
-      updateCTAButtons(lead);
+      renderDeliverable(lead, stack);
+      updateCTA(lead, stack, score);
 
       try{
         const sent = await sendLead(lead);
-        $("#formHint").innerHTML = sent.ok
-          ? `Audit généré pour <b>${safe(company)}</b>. Étape suivante: cliquez <b>WhatsApp</b> pour activer la démo et booker 15 minutes.`
-          : `Audit généré pour <b>${safe(company)}</b>. (Note: l’envoi serveur a échoué, statut ${sent.status}).`;
+        $("#hint").innerHTML = sent.ok
+          ? `Simulation prête. Cliquez <b>WhatsApp</b> ou <b>Réserver</b> pour activer la démo.`
+          : `Simulation prête. (Note: envoi serveur KO, statut ${sent.status}).`;
       }catch(err){
-        $("#formHint").innerHTML =
-          `Audit généré pour <b>${safe(company)}</b>. (Note: envoi serveur non disponible).`;
+        $("#hint").innerHTML = `Simulation prête. (Note: envoi serveur indisponible).`;
       }finally{
         btn.disabled = false;
-        btn.textContent = "Générer mon audit";
-        document.location.hash = "#preview";
+        btn.textContent = "Générer la simulation";
+        location.hash = "#simulation";
       }
     });
 
-    const bottomCTA = $("#bottomCTA");
-    const footer = document.querySelector("footer");
-    if(footer && bottomCTA){
-      const obs = new IntersectionObserver((entries)=>{
-        entries.forEach(e=>{
-          if(e.isIntersecting) bottomCTA.classList.add("hide");
-          else bottomCTA.classList.remove("hide");
-        })
-      }, { threshold: 0.2 });
-      obs.observe(footer);
-    }
-
-    const fallbackMsg = `Bonjour, je veux activer la démo (audit + mini-site) et booker 15 minutes.`;
-    $("#waBtn").href = waLink(fallbackMsg);
-    $("#waBtn2").href = waLink(fallbackMsg);
+    // init CTA fallback
+    const fallback = "Bonjour, je veux la démo et un appel 15 minutes.";
+    $("#waBtn").href = waLink(fallback);
     $("#calBtn").href = CONFIG.CALENDLY_URL || "#";
   </script>
 </body>
