@@ -3,17 +3,17 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Audit IA Conversion-First — simulation de valeur instantanée: visuels, site, SEO, avis, tunnels, ads, contenu. Objectif: déclencher un appel." />
-  <title>Audit IA — Simulation de Valeur (Conversion-First)</title>
+  <meta name="description" content="Mini-audit conversion-first + simulateur de valeur. Objectif: déclencher un RDV / appel 15 min." />
+  <title>Mini-Audit Conversion-First — Simulation de Valeur</title>
 
   <style>
     :root{
       --bg:#070A12; --bg2:#0B1022;
       --card:rgba(255,255,255,.06);
       --stroke:rgba(255,255,255,.12);
-      --text:rgba(255,255,255,.90);
-      --muted:rgba(255,255,255,.68);
-      --muted2:rgba(255,255,255,.50);
+      --text:rgba(255,255,255,.92);
+      --muted:rgba(255,255,255,.70);
+      --muted2:rgba(255,255,255,.52);
       --a:#7C5CFF; --b:#00E0FF;
       --good:#2EE59D; --warn:#FFCC66; --bad:#FF5C7A;
       --r:18px; --r2:24px;
@@ -34,6 +34,8 @@
     }
     a{color:inherit;text-decoration:none}
     .container{width:min(var(--max), calc(100% - 36px)); margin:0 auto}
+
+    /* Top */
     .top{
       position:sticky; top:0; z-index:50;
       backdrop-filter: blur(12px);
@@ -63,8 +65,9 @@
       border:1px solid rgba(255,255,255,.16);
       background: rgba(255,255,255,.05);
       color:rgba(255,255,255,.92);
-      font-size:13px; font-weight:750; letter-spacing:.15px;
+      font-size:13px; font-weight:800; letter-spacing:.15px;
       cursor:pointer; user-select:none; transition:.18s ease;
+      white-space:nowrap;
     }
     .btn:hover{transform:translateY(-1px); background:rgba(255,255,255,.08); border-color:rgba(255,255,255,.22)}
     .btn:active{transform:translateY(0)}
@@ -78,15 +81,22 @@
       background: linear-gradient(135deg, rgba(46,229,157,.85), rgba(0,224,255,.42));
       box-shadow: 0 18px 46px rgba(46,229,157,.16);
     }
+    .ghost{
+      border:1px solid rgba(255,255,255,.16);
+      background: rgba(255,255,255,.04);
+    }
+
     .pill{
       display:inline-flex; align-items:center; gap:8px;
       padding:7px 10px; border-radius:999px;
       border:1px solid rgba(255,255,255,.12);
       background: rgba(255,255,255,.06);
-      color:var(--muted); font-size:12px; font-weight:700;
+      color:var(--muted); font-size:12px; font-weight:750;
     }
     .dot{width:8px;height:8px;border-radius:50%; background:var(--good); box-shadow:0 0 0 6px rgba(46,229,157,.08)}
-    header{padding:22px 0 10px}
+
+    /* Layout */
+    header{padding:18px 0 10px}
     .grid{display:grid; grid-template-columns: 1.05fr .95fr; gap:12px; align-items:stretch}
     .card{
       border-radius:var(--r2);
@@ -104,14 +114,16 @@
       opacity:.9; pointer-events:none;
     }
     .card > *{position:relative}
+
     .hero{padding:18px}
-    .hero h1{margin:0 0 10px; font-size:34px; line-height:1.06; letter-spacing:-.8px}
+    .hero h1{margin:10px 0 10px; font-size:34px; line-height:1.06; letter-spacing:-.8px}
     .grad{
       background:linear-gradient(90deg, rgba(0,224,255,.95), rgba(124,92,255,.95));
       -webkit-background-clip:text; background-clip:text; color:transparent;
     }
     .hero p{margin:0 0 14px; color:var(--muted); line-height:1.6; font-size:14px; max-width:70ch}
     .hero .row{display:flex; gap:10px; align-items:center; flex-wrap:wrap}
+
     .mini-grid{display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap:10px; margin-top:12px}
     .mini{
       border:1px solid rgba(255,255,255,.12);
@@ -121,11 +133,12 @@
     .mini b{display:block; font-size:13px; margin-bottom:4px}
     .mini span{display:block; font-size:12px; color:var(--muted2); line-height:1.35}
 
+    /* Form */
     .panel{padding:16px}
     .panel h2{margin:0 0 6px; font-size:15px}
     .panel p{margin:0 0 10px; color:var(--muted); font-size:12.8px; line-height:1.55}
     form{display:grid; gap:10px}
-    label{display:grid; gap:6px; font-size:12px; color:var(--muted2); font-weight:750; letter-spacing:.15px}
+    label{display:grid; gap:6px; font-size:12px; color:var(--muted2); font-weight:800; letter-spacing:.15px}
     input,select,textarea{
       width:100%; padding:12px 12px; border-radius:14px;
       border:1px solid rgba(255,255,255,.14);
@@ -137,6 +150,7 @@
     textarea{resize:vertical}
     input:focus,select:focus,textarea:focus{border-color: rgba(0,224,255,.40); box-shadow:0 0 0 6px rgba(0,224,255,.10)}
     .r2{display:grid; grid-template-columns: 1fr 1fr; gap:10px}
+
     .toggle{
       display:flex; gap:10px; align-items:flex-start;
       padding:12px; border-radius:16px;
@@ -146,34 +160,40 @@
     .toggle b{display:block; font-size:13px}
     .toggle span{display:block; font-size:12px; color:var(--muted2); line-height:1.4}
     .toggle input{width:18px;height:18px; margin-top:2px; accent-color: var(--b)}
-    .fine{font-size:11px; color:rgba(255,255,255,.50); line-height:1.45}
-
-    section{padding:12px 0 26px}
-    .sim{
-      display:grid; grid-template-columns: .95fr 1.05fr; gap:12px; align-items:stretch;
+    .chips{display:flex; gap:8px; flex-wrap:wrap; margin-top:8px}
+    .chip{
+      font-size:11px; font-weight:900;
+      padding:7px 10px; border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(0,0,0,.14);
+      color:rgba(255,255,255,.82);
     }
+
+    /* Simulation */
+    section{padding:10px 0 26px}
+    .sim{display:grid; grid-template-columns: .95fr 1.05fr; gap:12px; align-items:stretch}
     .box{padding:16px}
     .box h3{margin:0 0 10px; font-size:15px}
     .muted{color:var(--muted); font-size:12.8px; line-height:1.55}
+
     .score{
       display:flex; align-items:flex-end; justify-content:space-between; gap:12px; flex-wrap:wrap;
       margin:6px 0 10px;
     }
-    .big{
-      display:flex; align-items:flex-end; gap:10px;
-    }
+    .big{display:flex; align-items:flex-end; gap:10px}
     .big .n{font-size:44px; line-height:1; letter-spacing:-1px}
     .badge{
-      font-size:12px; font-weight:900;
+      font-size:12px; font-weight:950;
       padding:7px 10px; border-radius:999px;
       border:1px solid rgba(255,255,255,.14);
       background: rgba(0,0,0,.16);
-      color:rgba(255,255,255,.88);
+      color:rgba(255,255,255,.90);
       white-space:nowrap;
     }
     .badge.good{border-color:rgba(46,229,157,.35); background:rgba(46,229,157,.10); color:var(--good)}
     .badge.warn{border-color:rgba(255,204,102,.35); background:rgba(255,204,102,.10); color:var(--warn)}
     .badge.bad{border-color:rgba(255,92,122,.35); background:rgba(255,92,122,.10); color:var(--bad)}
+
     .meter{
       width:160px; height:10px; border-radius:999px;
       background: rgba(255,255,255,.10);
@@ -182,7 +202,7 @@
     }
     .meter > div{
       height:100%;
-      width:52%;
+      width:0%;
       background: linear-gradient(90deg, rgba(255,92,122,.9), rgba(255,204,102,.9), rgba(46,229,157,.9));
       border-radius:999px;
       transition: width .6s ease;
@@ -206,21 +226,13 @@
     }
     .item b{display:block; font-size:13px; margin-bottom:4px}
     .item span{display:block; font-size:12px; color:var(--muted2); line-height:1.4}
-    .chips{display:flex; gap:8px; flex-wrap:wrap; margin-top:8px}
-    .chip{
-      font-size:11px; font-weight:900;
-      padding:7px 10px; border-radius:999px;
-      border:1px solid rgba(255,255,255,.14);
-      background: rgba(0,0,0,.14);
-      color:rgba(255,255,255,.82);
-    }
 
     .deliver{
       padding:14px; border-radius:18px;
       border:1px dashed rgba(255,255,255,.18);
       background: rgba(0,0,0,.16);
-      min-height:240px;
-      font-size:12.8px; line-height:1.6; color:rgba(255,255,255,.84);
+      min-height:264px;
+      font-size:12.8px; line-height:1.6; color:rgba(255,255,255,.86);
     }
     .deliver b{color:rgba(255,255,255,.94)}
     .hl{
@@ -228,8 +240,49 @@
       border:1px solid rgba(0,224,255,.25);
       background: rgba(0,224,255,.08);
       color:rgba(255,255,255,.92);
-      font-weight:900; letter-spacing:.15px;
+      font-weight:950; letter-spacing:.15px;
     }
+
+    /* Packs */
+    .packs{display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap:12px; margin-top:12px}
+    .pack{
+      padding:16px; border-radius:var(--r2);
+      border:1px solid rgba(255,255,255,.12);
+      background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
+      position:relative; overflow:hidden;
+    }
+    .pack:before{
+      content:""; position:absolute; inset:-1px;
+      background: radial-gradient(560px 260px at 10% 0%, rgba(0,224,255,.10), transparent 60%);
+      opacity:.9; pointer-events:none;
+    }
+    .pack > *{position:relative}
+    .pack .head{display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap}
+    .pack h4{margin:0; font-size:14px}
+    .pack .tag{font-size:11px; font-weight:950; padding:6px 10px; border-radius:999px; border:1px solid rgba(255,255,255,.14); background: rgba(0,0,0,.14); color:rgba(255,255,255,.85)}
+    .pack p{margin:10px 0 10px; color:var(--muted2); font-size:12.5px; line-height:1.55}
+    .list{margin:0; padding:0; list-style:none; display:grid; gap:8px}
+    .list li{display:flex; gap:10px; align-items:flex-start; font-size:12.5px; line-height:1.45; color:rgba(255,255,255,.82)}
+    .check{
+      width:18px;height:18px;border-radius:6px;
+      background: rgba(46,229,157,.14);
+      border:1px solid rgba(46,229,157,.35);
+      display:flex; align-items:center; justify-content:center;
+      color:var(--good);
+      font-weight:950; flex:0 0 auto;
+      margin-top:1px;
+    }
+    .highlight{border-color: rgba(124,92,255,.35); box-shadow: 0 22px 70px rgba(124,92,255,.18)}
+    .ribbon{
+      position:absolute; top:12px; right:12px;
+      font-size:11px; font-weight:950;
+      padding:7px 10px; border-radius:999px;
+      border:1px solid rgba(124,92,255,.45);
+      background: rgba(124,92,255,.18);
+      color:rgba(255,255,255,.9);
+    }
+
+    /* CTA */
     .cta{
       margin-top:12px;
       padding:14px; border-radius:18px;
@@ -237,12 +290,12 @@
       background: rgba(46,229,157,.06);
     }
     .cta .row{display:flex; gap:10px; flex-wrap:wrap; align-items:center; justify-content:space-between}
-    .cta .row .left b{display:block}
-    .cta .row .left span{display:block; color:rgba(255,255,255,.78); font-size:12.5px}
-    .cta .row .right{display:flex; gap:10px; flex-wrap:wrap}
+    .cta .left b{display:block}
+    .cta .left span{display:block; color:rgba(255,255,255,.78); font-size:12.5px}
+    .cta .right{display:flex; gap:10px; flex-wrap:wrap}
 
     footer{
-      padding:22px 0 36px;
+      padding:20px 0 34px;
       color:rgba(255,255,255,.45);
       font-size:12px;
       border-top:1px solid rgba(255,255,255,.10);
@@ -252,12 +305,12 @@
       .grid{grid-template-columns:1fr}
       .mini-grid{grid-template-columns:1fr}
       .sim{grid-template-columns:1fr}
+      .packs{grid-template-columns:1fr}
     }
-
     @media print{
       .top, #formCard, footer { display:none !important; }
       body{background:#fff !important; color:#111 !important;}
-      .card{box-shadow:none !important; border:1px solid #ddd !important; background:#fff !important;}
+      .card,.pack{box-shadow:none !important; border:1px solid #ddd !important; background:#fff !important;}
       .deliver{background:#fff !important; color:#111 !important;}
       .badge,.pill,.chip{border-color:#ddd !important; background:#f6f6f6 !important; color:#111 !important;}
       a{color:#111 !important; text-decoration:none !important;}
@@ -271,13 +324,14 @@
       <div class="brand">
         <div class="logo" aria-hidden="true"></div>
         <div class="title">
-          <b>Audit IA — Simulation de Valeur</b>
-          <small>Preuve instant → appel 15 min → exécution 14 jours</small>
+          <b>Mini-Audit Conversion-First</b>
+          <small>Simulation de valeur • plan 14 jours • RDV 15 min</small>
         </div>
       </div>
       <div class="nav">
         <a href="#audit">Audit</a>
-        <a href="#simulation">Simulation</a>
+        <a href="#resultat">Résultat</a>
+        <a href="#packs">Solutions</a>
         <button class="btn primary" type="button" id="goBtn">Lancer</button>
       </div>
     </div>
@@ -286,35 +340,37 @@
   <header>
     <div class="container grid">
       <div class="card hero">
-        <div class="pill"><span class="dot" aria-hidden="true"></span> Conversion-first • ultra concret</div>
-        <h1 style="margin-top:12px">
-          Faites monter l’<span class="grad">image</span> + la <span class="grad">confiance</span> + les <span class="grad">demandes</span>.
+        <span class="pill"><span class="dot" aria-hidden="true"></span> Objectif: + demandes qualifiées & image premium</span>
+        <h1>
+          Votre <span class="grad">image</span> + votre <span class="grad">visibilité</span> + votre <span class="grad">conversion</span>,
+          en un plan clair.
         </h1>
         <p>
-          Ce mini-audit n’est pas “un rapport”. C’est une <b>simulation</b> : vous voyez exactement ce qu’on met en place
-          (drone/caméra, site, SEO, avis, landing, tunnel, montage, contenus, ads) et l’impact business attendu.
+          En 60 secondes, vous obtenez une simulation: <b>ce qu’on améliore</b>, <b>ce qu’on installe</b> et <b>comment ça génère plus de demandes</b>.
+          Pensé pour être présenté pendant un appel.
         </p>
-        <div class="row">
-          <span class="pill">Temps: <b style="color:rgba(255,255,255,.9)">60–90s</b></span>
-          <span class="pill">Output: <b style="color:rgba(255,255,255,.9)">Score + Plan + Stack</b></span>
-          <button class="btn" type="button" id="pdfBtn">PDF</button>
-        </div>
 
         <div class="mini-grid">
-          <div class="mini"><b>Proof Engine</b><span>Visuels premium + avis + pages qui rassurent.</span></div>
-          <div class="mini"><b>Demand Engine</b><span>Landing + tunnel + suivi + relances.</span></div>
-          <div class="mini"><b>Growth Engine</b><span>SEO local + Ads Meta/Google + itérations.</span></div>
+          <div class="mini"><b>Visuels Premium</b><span>Drone + caméra + montage: crédibilité instant et différenciation.</span></div>
+          <div class="mini"><b>Machine à Demandes</b><span>Site/landing + tunnel + suivi + relances: zéro lead perdu.</span></div>
+          <div class="mini"><b>Acquisition</b><span>SEO local + Google + Ads Meta/Google: flux stable de prospects.</span></div>
+        </div>
+
+        <div class="row" style="margin-top:12px">
+          <span class="pill">Temps: <b style="color:rgba(255,255,255,.92)">60–90s</b></span>
+          <span class="pill">Résultat: <b style="color:rgba(255,255,255,.92)">Score + Stack + Pack conseillé</b></span>
+          <button class="btn ghost" type="button" id="pdfBtn">PDF</button>
         </div>
       </div>
 
       <aside class="card panel" id="formCard">
-        <h2 id="audit">Générer la simulation (1 minute)</h2>
-        <p>Minimum de champs. Maximum de valeur. Objectif: déclencher un appel et lancer la démo.</p>
+        <h2 id="audit">Générer votre simulation</h2>
+        <p>Quelques infos, puis on vous sort un plan d’actions + les solutions adaptées à votre entreprise.</p>
 
         <form id="auditForm">
           <label>
             Entreprise *
-            <input name="company" required placeholder="Ex: Padel Club Montpellier" autocomplete="organization" />
+            <input name="company" required placeholder="Ex: Nom de l’entreprise" autocomplete="organization" />
           </label>
 
           <div class="r2">
@@ -351,7 +407,7 @@
                 <option>Plus d’appels / demandes</option>
                 <option>Plus de RDV qualifiés</option>
                 <option>Plus de ventes</option>
-                <option>Améliorer la confiance</option>
+                <option>Améliorer l’image & la confiance</option>
                 <option>Dominer localement</option>
               </select>
             </label>
@@ -363,43 +419,54 @@
           </label>
 
           <label>
-            Frein #1 (1 phrase) *
-            <textarea name="pain" rows="2" required placeholder="Ex: peu de demandes / pas d’avis / images pas pro / pas de pub / pas de suivi"></textarea>
+            Frein principal (1 phrase) *
+            <textarea name="pain" rows="2" required placeholder="Ex: peu de demandes / visuels pas pro / pas d’avis / pas de pub / pas de suivi"></textarea>
           </label>
 
           <div class="toggle">
             <input id="needVisual" type="checkbox" checked />
             <div>
-              <b>Activer “Visuels Premium”</b>
-              <span>Drone + caméra + montage + formats réseaux (preuve instant).</span>
+              <b>Visuels Premium (Drone + Caméra + Montage)</b>
+              <span>Valorise l’image, augmente la confiance, améliore le taux de conversion.</span>
               <div class="chips">
-                <span class="chip">Drone</span><span class="chip">Caméra</span><span class="chip">Montage</span><span class="chip">Reels/TikTok</span>
+                <span class="chip">Drone</span><span class="chip">Caméra</span><span class="chip">Mini-film</span><span class="chip">Reels/TikTok</span>
               </div>
             </div>
           </div>
 
           <div class="toggle">
-            <input id="needAcq" type="checkbox" checked />
+            <input id="needDigital" type="checkbox" checked />
             <div>
-              <b>Activer “Acquisition”</b>
-              <span>SEO local + Google Business + Ads Meta/Google + suivi leads.</span>
+              <b>Conversion Digitale (Site + SEO + Tunnel + Suivi)</b>
+              <span>Machine à demandes: pages qui convertissent + suivi + relance + Google.</span>
               <div class="chips">
-                <span class="chip">SEO</span><span class="chip">Avis</span><span class="chip">Ads</span><span class="chip">Suivi</span>
+                <span class="chip">Site</span><span class="chip">SEO</span><span class="chip">Landing</span><span class="chip">Tunnel</span><span class="chip">Avis</span>
               </div>
             </div>
           </div>
 
-          <button class="btn primary" type="submit" id="submitBtn">Générer la simulation</button>
-          <div class="fine" id="hint" aria-live="polite"></div>
+          <div class="toggle">
+            <input id="needAds" type="checkbox" checked />
+            <div>
+              <b>Acquisition (Ads Meta/Google)</b>
+              <span>Flux stable de prospects + optimisation continue.</span>
+              <div class="chips">
+                <span class="chip">Meta Ads</span><span class="chip">Google Ads</span><span class="chip">Tracking</span><span class="chip">Optimisation</span>
+              </div>
+            </div>
+          </div>
+
+          <button class="btn primary" type="submit" id="submitBtn">Générer le résultat</button>
         </form>
       </aside>
     </div>
   </header>
 
-  <section id="simulation">
+  <section id="resultat">
     <div class="container sim">
       <div class="card box">
-        <h3>Score & potentiel</h3>
+        <h3>Score & Priorités</h3>
+
         <div class="score">
           <div class="big">
             <div class="n" id="scoreN">—</div>
@@ -408,16 +475,18 @@
               <div id="scoreTag" class="badge warn">Simulation</div>
             </div>
           </div>
-          <div class="meter" aria-label="Progression"><div id="meterFill" style="width:0%"></div></div>
+          <div class="meter"><div id="meterFill"></div></div>
         </div>
 
         <div class="stack" id="stack">
           <div class="item">
             <div class="ic" aria-hidden="true">⚡</div>
             <div>
-              <b>Ce que l’audit va prouver</b>
-              <span>On transforme votre présence en <b>machine à demandes</b> (preuve visuelle + parcours + suivi).</span>
-              <div class="chips"><span class="chip">Proof</span><span class="chip">Demand</span><span class="chip">Growth</span></div>
+              <b>Ce que vous allez voir ici</b>
+              <span>Une simulation claire: <b>priorités</b> + <b>stack recommandée</b> + <b>pack conseillé</b>.</span>
+              <div class="chips">
+                <span class="chip">Image</span><span class="chip">Conversion</span><span class="chip">Acquisition</span><span class="chip">Suivi</span>
+              </div>
             </div>
           </div>
         </div>
@@ -425,8 +494,8 @@
         <div class="cta">
           <div class="row">
             <div class="left">
-              <b>Next step: appel 15 min</b>
-              <span>On valide l’objectif → on lance la démo au nom de l’entreprise.</span>
+              <b>Étape suivante: RDV 15 min</b>
+              <span>On valide l’objectif et on lance l’exécution du pack conseillé.</span>
             </div>
             <div class="right">
               <a class="btn wa" id="waBtn" href="#" target="_blank" rel="noopener">WhatsApp</a>
@@ -437,16 +506,65 @@
       </div>
 
       <div class="card box">
-        <h3>Livrables (ce que vous recevez exactement)</h3>
+        <h3>Plan 14 jours + Simulation de valeur</h3>
         <div class="deliver" id="deliver">
-          <b>Générez la simulation</b> pour voir votre plan personnalisé.<br><br>
-          Vous verrez:
-          <ul>
-            <li><b>La stack recommandée</b> (visuels, site, SEO, avis, landing, tunnel, ads).</li>
-            <li><b>Le plan 14 jours</b> (quick wins + démo + acquisition + suivi).</li>
-            <li><b>Le “pack preuve”</b> : ce qui fait dire “OK, je vous fais confiance”.</li>
+          Remplissez l’audit pour afficher votre plan personnalisé.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="packs">
+    <div class="container">
+      <div class="card box" style="margin-bottom:12px">
+        <h3>Solutions (packs)</h3>
+        <div class="muted">
+          Packs conçus pour répondre à 100% des besoins: image premium, conversion digitale, acquisition et suivi.
+        </div>
+      </div>
+
+      <div class="packs">
+        <div class="pack">
+          <div class="head">
+            <h4>Pack Fondation</h4>
+            <span class="tag">Conversion</span>
+          </div>
+          <p>Base solide: présence propre + pages qui convertissent + Google optimisé.</p>
+          <ul class="list">
+            <li><span class="check">✓</span> Site vitrine pro + sécurité + mises à jour</li>
+            <li><span class="check">✓</span> SEO local + Google Business (optimisé)</li>
+            <li><span class="check">✓</span> Landing “offre principale” + CTA unique</li>
+            <li><span class="check">✓</span> Avis + preuves + FAQ objections</li>
           </ul>
-          Objectif: déclencher un <span class="hl">appel 15 min</span> et lancer l’exécution.
+        </div>
+
+        <div class="pack highlight">
+          <span class="ribbon">Recommandé</span>
+          <div class="head">
+            <h4>Pack Impact</h4>
+            <span class="tag">Image + Conversion</span>
+          </div>
+          <p>Effet premium immédiat: visuels drone/caméra + montage + contenus + pages qui convertissent.</p>
+          <ul class="list">
+            <li><span class="check">✓</span> Drone + caméra (photos/vidéos) + mini-film</li>
+            <li><span class="check">✓</span> Montage + déclinaisons Reels/TikTok/Stories</li>
+            <li><span class="check">✓</span> Landing + tunnel simple + suivi leads</li>
+            <li><span class="check">✓</span> Optimisation mensuelle conversion</li>
+          </ul>
+        </div>
+
+        <div class="pack">
+          <div class="head">
+            <h4>Pack Dominance</h4>
+            <span class="tag">Acquisition</span>
+          </div>
+          <p>Flux stable de prospects: Ads + tracking + optimisation continue + suivi des leads.</p>
+          <ul class="list">
+            <li><span class="check">✓</span> Meta Ads / Google Ads (mise en place + réglages)</li>
+            <li><span class="check">✓</span> Tracking + événements + tableau de suivi</li>
+            <li><span class="check">✓</span> Relances J+1/J+3 + pipeline simple</li>
+            <li><span class="check">✓</span> Reporting clair + actions mensuelles</li>
+          </ul>
         </div>
       </div>
     </div>
@@ -454,45 +572,31 @@
 
   <footer>
     <div class="container">
-      Vercel-ready. Branchez un webhook si vous voulez logger les leads (Formspree / Make / Zapier / n8n).
+      Mini-audit + simulateur de valeur. Présentable en appel. Export PDF disponible.
     </div>
   </footer>
 
   <script>
-    /***********************
-     * CONFIG
-     ***********************/
     const CONFIG = {
-      WHATSAPP_NUMBER: "33600000000",     // sans "+"
+      WHATSAPP_NUMBER: "33600000000",          // sans "+"
       CALENDLY_URL: "https://calendly.com/votre-lien/15min",
-      WEBHOOK_URL: "",                   // optionnel
-      OWNER_LABEL: "Équipe Growth"
+      WEBHOOK_URL: ""                          // optionnel
     };
 
     const $ = (s, r=document) => r.querySelector(s);
     const clamp = (n, a, b) => Math.max(a, Math.min(b, n));
     function safe(s){ return String(s||"").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
 
+    function waLink(message){
+      return `https://wa.me/${CONFIG.WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+    }
     function labelFromScore(s){
       if(s >= 82) return {txt:"Prêt à scaler", cls:"good"};
       if(s >= 62) return {txt:"Gros potentiel", cls:"warn"};
       return {txt:"Fuites importantes", cls:"bad"};
     }
-
-    function waLink(message){
-      return `https://wa.me/${CONFIG.WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
-    }
-
-    function parseUTM(){
-      const u = new URL(location.href);
-      const keys = ["utm_source","utm_medium","utm_campaign","utm_term","utm_content"];
-      const out = {};
-      keys.forEach(k => out[k] = u.searchParams.get(k) || "");
-      return out;
-    }
-
     async function sendLead(payload){
-      try{ localStorage.setItem("last_sim_lead", JSON.stringify(payload)); }catch(e){}
+      try{ localStorage.setItem("last_audit", JSON.stringify(payload)); }catch(e){}
       if(!CONFIG.WEBHOOK_URL) return { ok:true, skipped:true };
       const res = await fetch(CONFIG.WEBHOOK_URL, {
         method:"POST",
@@ -502,104 +606,72 @@
       return { ok:res.ok, status:res.status };
     }
 
-    function setScoreUI(score){
-      $("#scoreN").textContent = score;
-      $("#meterFill").style.width = clamp(score,0,100) + "%";
-      const lab = labelFromScore(score);
-      const tag = $("#scoreTag");
-      tag.textContent = lab.txt;
-      tag.className = "badge " + lab.cls;
+    function computeScore({hasSite, needVisual, needDigital, needAds, painText, goal}){
+      let s = 72;
+
+      if(!hasSite) s -= 14;
+      if(painText.includes("peu de demandes") || painText.includes("pas de demandes")) s -= 10;
+      if(painText.includes("avis") || painText.includes("confiance") || painText.includes("image")) s -= 8;
+      if(painText.includes("lent") || painText.includes("mobile")) s -= 6;
+      if(painText.includes("suivi") || painText.includes("relance") || painText.includes("crm")) s -= 8;
+
+      // Activation des leviers (signal d'engagement + adéquation)
+      if(needVisual) s += 6;
+      if(needDigital) s += 6;
+      if(needAds) s += 6;
+
+      if(goal.includes("Dominer")) s += 3;
+      if(goal.includes("confiance") || goal.includes("image")) s += 2;
+
+      return clamp(Math.round(s), 28, 92);
     }
 
-    function buildStack({needVisual, needAcq, sector, painText, goal, hasSite}){
+    function buildStack({needVisual, needDigital, needAds, painText, hasSite}){
+      const leaks = [];
+      if(!hasSite || painText.includes("pas de site") || painText.includes("site")) leaks.push("Parcours client à renforcer (page offre + CTA + mobile)");
+      if(painText.includes("avis") || painText.includes("confiance") || painText.includes("image")) leaks.push("Confiance à augmenter (preuves, avis, visuels premium)");
+      if(painText.includes("suivi") || painText.includes("relance") || painText.includes("crm")) leaks.push("Leads perdus (réponse auto + relances J+1/J+3)");
+      if(painText.includes("pub") || painText.includes("ads") || painText.includes("meta") || painText.includes("google")) leaks.push("Acquisition à structurer (tracking + campagnes + optimisation)");
+      if(leaks.length === 0) leaks.push("Clarté de l’offre + preuves + vitesse (gros impact conversion)");
+
       const items = [];
-      const leak = [];
-      if(!hasSite || painText.includes("site") || painText.includes("pas de site")) leak.push("Parcours absent/fragile");
-      if(painText.includes("avis") || painText.includes("confiance") || painText.includes("image")) leak.push("Preuve sociale faible");
-      if(painText.includes("pub") || painText.includes("ads") || painText.includes("meta") || painText.includes("google")) leak.push("Acquisition non optimisée");
-      if(painText.includes("suivi") || painText.includes("relance") || painText.includes("crm")) leak.push("Fuite de leads (follow-up)");
-      if(leak.length === 0) leak.push("Clarté offre / CTA / conversion mobile");
-
-      // Proof Engine
       if(needVisual){
-        items.push({
-          ic:"🎥",
-          title:"Proof Engine — Visuels Premium",
-          desc:"Drone + caméra + montage + formats réseaux. Objectif: crédibilité instant + différenciation + hausse du taux de conversion.",
-          chips:["Drone","Caméra","Montage","Reels/TikTok","Avant/Après"]
-        });
+        items.push({ic:"🎥", title:"Visuels Premium (Drone + Caméra + Montage)", desc:"Image premium + différenciation + hausse conversion.", chips:["Drone","Caméra","Mini-film","Reels/TikTok"]});
       } else {
-        items.push({
-          ic:"✅",
-          title:"Proof Engine — Confiance",
-          desc:"Photos/UGC + preuves + section avis + FAQ objections. Objectif: réduire les freins et accélérer la décision.",
-          chips:["Avis","FAQ","Garanties","Portfolio"]
-        });
+        items.push({ic:"✅", title:"Crédibilité (preuves + avis + FAQ)", desc:"Réassurance instant pour accélérer la décision.", chips:["Avis","FAQ","Garanties","Portfolio"]});
       }
 
-      // Demand Engine
-      items.push({
-        ic:"🧲",
-        title:"Demand Engine — Landing + Tunnel",
-        desc:"Page “offre principale” + CTA unique + formulaire court + tracking. Objectif: transformer le trafic en demandes.",
-        chips:["Landing","Tunnel","CTA","Tracking"]
-      });
-
-      // Growth Engine
-      if(needAcq){
-        items.push({
-          ic:"📈",
-          title:"Growth Engine — SEO + Ads + Local",
-          desc:"Google Business + avis + SEO local + campagnes Meta/Google + optimisation continue. Objectif: volume stable de demandes.",
-          chips:["SEO","Google Business","Meta Ads","Google Ads","Reporting"]
-        });
-      } else {
-        items.push({
-          ic:"📍",
-          title:"Growth Engine — Dominance locale",
-          desc:"Google Business + avis + SEO local + contenus. Objectif: capter la demande organique et sécuriser la visibilité.",
-          chips:["SEO","Local","Avis","Contenus"]
-        });
+      if(needDigital){
+        items.push({ic:"🧲", title:"Conversion (Site/Landing + Tunnel + SEO)", desc:"Pages qui convertissent + SEO local + Google optimisé.", chips:["Site","Landing","Tunnel","SEO","Google"]});
+        items.push({ic:"⚡", title:"Suivi (réponse auto + relances)", desc:"Zéro lead perdu: WhatsApp/email + pipeline simple.", chips:["Auto","Relance","WhatsApp","Pipeline"]});
       }
 
-      // Follow-up
-      items.push({
-        ic:"⚡",
-        title:"Follow-up — Zéro lead perdu",
-        desc:"Réponse auto + relances J+1/J+3 + WhatsApp + pipeline simple. Objectif: augmenter le taux de closing sans plus de budget.",
-        chips:["Auto","Relance","WhatsApp","Pipeline"]
-      });
+      if(needAds){
+        items.push({ic:"📈", title:"Acquisition (Meta Ads / Google Ads)", desc:"Flux stable de prospects + optimisation continue.", chips:["Meta Ads","Google Ads","Tracking","Optimisation"]});
+      } else {
+        items.push({ic:"📍", title:"Visibilité locale (SEO + Avis)", desc:"Capter la demande organique et sécuriser la position locale.", chips:["SEO","Local","Avis"]});
+      }
 
-      const promise = sector.includes("Restauration")
-        ? "Plus de réservations + appels"
-        : (sector.includes("Immobilier") ? "Plus d’estimations + RDV"
-        : (sector.includes("Artisan") ? "Plus de demandes de devis"
-        : "Plus de demandes qualifiées"));
-
-      const timeline = [
-        "J0–J1: promesse + CTA unique + preuves + vitesse mobile",
-        "J2–J4: landing + offre + tunnel + tracking",
-        "J5–J7: follow-up (auto + relances) + Google Business/avis",
-        "J8–J14: contenus + Ads/SEO + itérations (score qui monte)"
-      ];
-
-      const estUplift = (() => {
-        // uplift simple mais “ressenti business”
-        let u = 18;
-        if(!hasSite) u += 10;
-        if(needVisual) u += 8;
-        if(needAcq) u += 10;
-        if(goal.includes("Dominer")) u += 6;
-        if(painText.includes("peu") || painText.includes("pas de demandes")) u += 8;
-        return clamp(u, 18, 55);
-      })();
-
-      return { items, leak, promise, timeline, estUplift };
+      return { leaks, items };
     }
 
     function renderStack(stack){
       const root = $("#stack");
       root.innerHTML = "";
+
+      const leakHTML = stack.leaks.map(x => `<span class="chip">${safe(x)}</span>`).join("");
+
+      root.innerHTML += `
+        <div class="item">
+          <div class="ic" aria-hidden="true">🧠</div>
+          <div>
+            <b>Priorités identifiées</b>
+            <span>Ce qui bloque le plus souvent la conversion et la prise de contact.</span>
+            <div class="chips">${leakHTML}</div>
+          </div>
+        </div>
+      `;
+
       stack.items.forEach(it=>{
         const chips = it.chips.map(c=>`<span class="chip">${safe(c)}</span>`).join("");
         root.innerHTML += `
@@ -615,67 +687,79 @@
       });
     }
 
-    function renderDeliverable(lead, stack){
-      const leaks = stack.leak.map(x=>`<li><b>${safe(x)}</b></li>`).join("");
-      const tl = stack.timeline.map(x=>`<li>${safe(x)}</li>`).join("");
-      const demo = lead.needVisual
-        ? `Démo: <span class="hl">visuel premium</span> (drone/caméra) + page offre + formats réseaux.`
-        : `Démo: page offre + preuves + optimisation conversion (impact immédiat).`;
+    function recommendPack({needVisual, needDigital, needAds, score, goal}){
+      // Reco simple et claire pour un appel
+      if(needAds || goal.includes("Dominer")) return "Pack Dominance";
+      if(needVisual && needDigital) return "Pack Impact";
+      if(score < 62) return "Pack Fondation";
+      return "Pack Impact";
+    }
+
+    function renderPlan(lead, score, stack, pack){
+      const plan14 = [
+        "J0–J1: Promesse claire + CTA unique + preuves (avis/portfolio) + optimisation mobile",
+        "J2–J4: Landing “offre principale” + formulaire court + tracking (événements)",
+        "J5–J7: Google Business + avis + SEO local + relances J+1/J+3 (zéro lead perdu)",
+        "J8–J14: Contenus réseaux (Reels/TikTok) + optimisation conversion + (option) Ads Meta/Google"
+      ];
+
+      const planHTML = plan14.map(x=>`<li>${safe(x)}</li>`).join("");
+
+      const visuelLine = lead.needVisual
+        ? "<b>Visuels premium:</b> drone + caméra + montage + formats réseaux (image premium immédiate)."
+        : "<b>Crédibilité:</b> preuves + avis + FAQ + portfolio (confiance immédiate).";
+
+      const digitalLine = lead.needDigital
+        ? "<b>Conversion digitale:</b> site/landing + SEO + Google + tunnel + suivi."
+        : "<b>Conversion:</b> page offre + CTA + preuves (version light).";
+
+      const adsLine = lead.needAds
+        ? "<b>Acquisition:</b> Meta/Google Ads + tracking + optimisation continue."
+        : "<b>Acquisition:</b> priorité SEO/avis/local (ads optionnelles).";
 
       $("#deliver").innerHTML = `
-        <b>Entreprise:</b> ${safe(lead.company)} — <b>Ville:</b> ${safe(lead.city)} — <b>Secteur:</b> ${safe(lead.sector)}<br>
-        <b>Objectif:</b> ${safe(lead.goal)}<br><br>
+        <b>${safe(lead.company)}</b> — ${safe(lead.city)}<br>
+        <b>Objectif:</b> ${safe(lead.goal)}<br>
+        <b>Score:</b> <span class="hl">${score}/100</span> • ${safe(labelFromScore(score).txt)}<br><br>
 
-        <b>Ce qui bloque aujourd’hui (Leak Map):</b>
-        <ul>${leaks}</ul>
+        ${visuelLine}<br>
+        ${digitalLine}<br>
+        ${adsLine}<br><br>
 
-        <b>Promesse attendue:</b> ${safe(stack.promise)}<br>
-        <b>Projection impact:</b> +<b>${stack.estUplift}%</b> de demandes (par conversion + preuve + suivi).<br><br>
+        <b>Pack conseillé:</b> <span class="hl">${safe(pack)}</span><br><br>
 
         <b>Plan 14 jours:</b>
-        <ul>${tl}</ul>
+        <ul>${planHTML}</ul>
 
-        <b>Simulation activée:</b> ${demo}<br>
-        <b>Next step:</b> appel <span class="hl">15 min</span> pour valider + lancer l’exécution.
+        <b>Résultat attendu:</b> plus de demandes qualifiées via <b>image + confiance + parcours + suivi</b>.
       `;
     }
 
-    function updateCTA(lead, stack, score){
+    function setScoreUI(score){
+      $("#scoreN").textContent = score;
+      $("#meterFill").style.width = clamp(score,0,100) + "%";
+      const lab = labelFromScore(score);
+      const tag = $("#scoreTag");
+      tag.textContent = lab.txt;
+      tag.className = "badge " + lab.cls;
+    }
+
+    function updateCTA(lead, score, pack){
       const msg =
-`Bonjour, ici ${CONFIG.OWNER_LABEL}.
-Simulation générée pour ${lead.company} (${lead.city}).
+`Bonjour,
+Je viens de générer votre mini-audit pour ${lead.company} (${lead.city}).
 
 Score: ${score}/100 — ${labelFromScore(score).txt}
 Objectif: ${lead.goal}
-Frein: ${lead.pain}
+Pack conseillé: ${pack}
 
-Stack recommandée: ${stack.items.map(i=>i.title.replace(" — ","/")).slice(0,3).join(" | ")}
-Prochaine étape: 15 minutes pour valider et lancer la démo (preuve + landing + suivi).`;
+Je vous propose 15 minutes pour valider l’objectif et lancer la mise en place (visuels premium + conversion + acquisition + suivi).`;
 
       $("#waBtn").href = waLink(msg);
       $("#calBtn").href = CONFIG.CALENDLY_URL || "#";
     }
 
-    function computeScore({hasSite, needVisual, needAcq, painText, goal}){
-      // Score “conversion-first” (simple, rapide, orienté closing)
-      let s = 70;
-
-      // fuites
-      if(!hasSite) s -= 14;
-      if(painText.includes("peu de demandes") || painText.includes("pas de demandes")) s -= 10;
-      if(painText.includes("avis") || painText.includes("confiance") || painText.includes("image")) s -= 8;
-      if(painText.includes("lent") || painText.includes("mobile")) s -= 6;
-      if(painText.includes("suivi") || painText.includes("relance") || painText.includes("crm")) s -= 8;
-
-      // intent / activation
-      if(needVisual) s += 6;
-      if(needAcq) s += 6;
-      if(goal.includes("Dominer")) s += 3;
-
-      // clamp
-      return clamp(Math.round(s), 28, 92);
-    }
-
+    // Actions UI
     $("#pdfBtn").addEventListener("click", () => window.print());
     $("#goBtn").addEventListener("click", () => { location.hash = "#audit"; });
 
@@ -683,7 +767,7 @@ Prochaine étape: 15 minutes pour valider et lancer la démo (preuve + landing +
       e.preventDefault();
       const btn = $("#submitBtn");
       btn.disabled = true;
-      btn.textContent = "Simulation…";
+      btn.textContent = "Génération…";
 
       const company = e.target.company.value.trim();
       const sector  = e.target.sector.value;
@@ -693,49 +777,41 @@ Prochaine étape: 15 minutes pour valider et lancer la démo (preuve + landing +
       const website = e.target.website.value.trim();
       const pain    = e.target.pain.value.trim();
 
-      const needVisual = $("#needVisual").checked;
-      const needAcq    = $("#needAcq").checked;
+      const needVisual  = $("#needVisual").checked;
+      const needDigital = $("#needDigital").checked;
+      const needAds     = $("#needAds").checked;
 
       const painText = pain.toLowerCase();
       const hasSite = !!website && website.length > 6 && website.includes(".");
 
-      const score = computeScore({hasSite, needVisual, needAcq, painText, goal});
+      const score = computeScore({hasSite, needVisual, needDigital, needAds, painText, goal});
       setScoreUI(score);
 
-      const stack = buildStack({needVisual, needAcq, sector, painText, goal, hasSite});
+      const stack = buildStack({needVisual, needDigital, needAds, painText, hasSite});
       renderStack(stack);
 
       const lead = {
         created_at: new Date().toISOString(),
         company, sector, city, email, goal, website, pain,
-        needVisual, needAcq,
-        score,
-        utm: parseUTM(),
-        page_url: location.href,
-        user_agent: navigator.userAgent
+        needVisual, needDigital, needAds,
+        score
       };
 
-      renderDeliverable(lead, stack);
-      updateCTA(lead, stack, score);
+      const pack = recommendPack({needVisual, needDigital, needAds, score, goal});
+      renderPlan(lead, score, stack, pack);
+      updateCTA(lead, score, pack);
 
-      try{
-        const sent = await sendLead(lead);
-        $("#hint").innerHTML = sent.ok
-          ? `Simulation prête. Cliquez <b>WhatsApp</b> ou <b>Réserver</b> pour activer la démo.`
-          : `Simulation prête. (Note: envoi serveur KO, statut ${sent.status}).`;
-      }catch(err){
-        $("#hint").innerHTML = `Simulation prête. (Note: envoi serveur indisponible).`;
-      }finally{
-        btn.disabled = false;
-        btn.textContent = "Générer la simulation";
-        location.hash = "#simulation";
-      }
+      try{ await sendLead(lead); }catch(err){}
+
+      btn.disabled = false;
+      btn.textContent = "Générer le résultat";
+      location.hash = "#resultat";
     });
 
-    // init CTA fallback
-    const fallback = "Bonjour, je veux la démo et un appel 15 minutes.";
-    $("#waBtn").href = waLink(fallback);
+    // init fallback
+    $("#waBtn").href = waLink("Bonjour, je souhaite un RDV 15 minutes.");
     $("#calBtn").href = CONFIG.CALENDLY_URL || "#";
+    $("#meterFill").style.width = "0%";
   </script>
 </body>
 </html>
