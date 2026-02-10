@@ -3,815 +3,2340 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Mini-audit conversion-first + simulateur de valeur. Objectif: déclencher un RDV / appel 15 min." />
-  <title>Mini-Audit Conversion-First — Simulation de Valeur</title>
+  <meta name="description" content="Audit IA Conversion & Croissance — score propriétaire, simulateur ROI boardroom, preuve premium, proposition 1-page, packs & abonnement." />
+  <title>Audit IA Conversion & Croissance — Maximaliste</title>
 
   <style>
     :root{
-      --bg:#070A12; --bg2:#0B1022;
+      --bg:#070A12;
+      --bg2:#0B1022;
       --card:rgba(255,255,255,.06);
+      --card2:rgba(255,255,255,.10);
       --stroke:rgba(255,255,255,.12);
-      --text:rgba(255,255,255,.92);
-      --muted:rgba(255,255,255,.70);
+      --text:rgba(255,255,255,.90);
+      --muted:rgba(255,255,255,.66);
       --muted2:rgba(255,255,255,.52);
-      --a:#7C5CFF; --b:#00E0FF;
-      --good:#2EE59D; --warn:#FFCC66; --bad:#FF5C7A;
-      --r:18px; --r2:24px;
-      --shadow:0 24px 80px rgba(0,0,0,.45);
-      --max:1120px;
-      --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      --accent:#7C5CFF;
+      --accent2:#00E0FF;
+      --good:#2EE59D;
+      --warn:#FFCC66;
+      --bad:#FF5C7A;
+      --shadow: 0 18px 45px rgba(0,0,0,.55);
+      --radius: 18px;
+
+      --grid: rgba(255,255,255,.035);
+      --glass: rgba(255,255,255,.04);
+      --glass2: rgba(255,255,255,.06);
+      --glow: 0 0 0 1px rgba(124,92,255,.15), 0 18px 60px rgba(124,92,255,.10);
     }
-    *{box-sizing:border-box}
-    html,body{height:100%}
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
     body{
-      margin:0; font-family:var(--font); color:var(--text);
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color:var(--text);
       background:
-        radial-gradient(1200px 600px at 10% 0%, rgba(124,92,255,.32), transparent 55%),
-        radial-gradient(900px 600px at 90% 10%, rgba(0,224,255,.22), transparent 60%),
-        radial-gradient(900px 700px at 50% 90%, rgba(46,229,157,.12), transparent 60%),
-        linear-gradient(180deg,var(--bg),var(--bg2));
+        radial-gradient(1200px 700px at 15% 10%, rgba(124,92,255,.28), transparent 60%),
+        radial-gradient(1000px 700px at 85% 20%, rgba(0,224,255,.20), transparent 55%),
+        radial-gradient(900px 700px at 50% 100%, rgba(46,229,157,.10), transparent 55%),
+        linear-gradient(180deg, var(--bg), var(--bg2));
       overflow-x:hidden;
     }
-    a{color:inherit;text-decoration:none}
-    .container{width:min(var(--max), calc(100% - 36px)); margin:0 auto}
 
-    /* Top */
-    .top{
-      position:sticky; top:0; z-index:50;
-      backdrop-filter: blur(12px);
-      background: linear-gradient(180deg, rgba(7,10,18,.78), rgba(7,10,18,.35));
-      border-bottom:1px solid rgba(255,255,255,.10);
+    /* subtle grid */
+    body:before{
+      content:"";
+      position:fixed; inset:0;
+      background:
+        linear-gradient(var(--grid) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+      background-size: 42px 42px;
+      mask-image: radial-gradient(circle at 50% 20%, rgba(0,0,0,.85), rgba(0,0,0,.2) 55%, transparent 78%);
+      pointer-events:none;
+      opacity:.55;
     }
-    .top .row{
-      display:flex; align-items:center; justify-content:space-between; gap:12px;
-      padding:12px 0;
+    /* noise */
+    body:after{
+      content:"";
+      position:fixed; inset:0;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='260' height='260' filter='url(%23n)' opacity='.12'/%3E%3C/svg%3E");
+      mix-blend-mode:overlay;
+      pointer-events:none;
+      opacity:.20;
     }
-    .brand{display:flex; align-items:center; gap:10px}
-    .logo{
-      width:34px;height:34px;border-radius:12px;
-      background: radial-gradient(circle at 30% 30%, rgba(0,224,255,.9), rgba(124,92,255,.9));
-      border:1px solid rgba(255,255,255,.18);
-      box-shadow: 0 14px 36px rgba(124,92,255,.28);
+
+    .wrap{ max-width:1240px; margin:0 auto; padding:26px 16px 64px; }
+    .topbar{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:12px; margin-bottom:18px; flex-wrap:wrap;
     }
-    .title{line-height:1.1}
-    .title b{display:block;font-size:13px;letter-spacing:.2px}
-    .title small{display:block;font-size:12px;color:var(--muted2)}
-    .nav{display:flex; gap:10px; align-items:center; flex-wrap:wrap; justify-content:flex-end}
-    .nav a{font-size:13px;color:var(--muted);padding:8px 10px;border-radius:12px;border:1px solid transparent}
-    .nav a:hover{color:rgba(255,255,255,.92);border-color:rgba(255,255,255,.14);background:rgba(255,255,255,.04)}
+
+    .brand{
+      display:flex; align-items:center; gap:12px;
+      padding:12px 14px; border:1px solid var(--stroke); border-radius:999px;
+      background: rgba(255,255,255,.03);
+      backdrop-filter: blur(10px);
+    }
+    .dot{
+      width:10px; height:10px; border-radius:50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      box-shadow: 0 0 0 6px rgba(124,92,255,.10);
+    }
+    .brand b{ font-size:14px; letter-spacing:.2px; }
+    .brand span{ color:var(--muted); font-size:12px; }
+
+    .actions{ display:flex; gap:10px; flex-wrap:wrap; }
     .btn{
-      display:inline-flex; align-items:center; justify-content:center; gap:10px;
-      padding:11px 14px; border-radius:14px;
-      border:1px solid rgba(255,255,255,.16);
-      background: rgba(255,255,255,.05);
-      color:rgba(255,255,255,.92);
-      font-size:13px; font-weight:800; letter-spacing:.15px;
-      cursor:pointer; user-select:none; transition:.18s ease;
-      white-space:nowrap;
+      appearance:none; border:1px solid var(--stroke); color:var(--text);
+      background: rgba(255,255,255,.03);
+      padding:10px 12px; border-radius:999px;
+      cursor:pointer; transition:.18s transform, .18s background, .18s border, .18s filter;
+      font-weight:700; font-size:13px; letter-spacing:.2px;
     }
-    .btn:hover{transform:translateY(-1px); background:rgba(255,255,255,.08); border-color:rgba(255,255,255,.22)}
-    .btn:active{transform:translateY(0)}
-    .primary{
-      border:1px solid rgba(124,92,255,.55);
-      background: linear-gradient(135deg, rgba(124,92,255,.95), rgba(0,224,255,.75));
-      box-shadow: 0 18px 46px rgba(124,92,255,.22);
+    .btn:hover{ transform: translateY(-1px); background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.20); }
+    .btn.primary{
+      border:0;
+      background: linear-gradient(135deg, rgba(124,92,255,.95), rgba(0,224,255,.70));
+      color:#081022;
+      box-shadow: 0 12px 34px rgba(0,224,255,.08);
     }
-    .wa{
-      border:1px solid rgba(46,229,157,.45);
-      background: linear-gradient(135deg, rgba(46,229,157,.85), rgba(0,224,255,.42));
-      box-shadow: 0 18px 46px rgba(46,229,157,.16);
+    .btn.primary:hover{ filter:saturate(1.1); }
+    .btn.ghost{ background: transparent; }
+
+    .hero{
+      display:grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap:16px;
+      align-items:start;
+      margin-top:10px;
     }
-    .ghost{
-      border:1px solid rgba(255,255,255,.16);
-      background: rgba(255,255,255,.04);
+    @media (max-width: 980px){
+      .hero{ grid-template-columns: 1fr; }
     }
 
-    .pill{
-      display:inline-flex; align-items:center; gap:8px;
-      padding:7px 10px; border-radius:999px;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.06);
-      color:var(--muted); font-size:12px; font-weight:750;
-    }
-    .dot{width:8px;height:8px;border-radius:50%; background:var(--good); box-shadow:0 0 0 6px rgba(46,229,157,.08)}
-
-    /* Layout */
-    header{padding:18px 0 10px}
-    .grid{display:grid; grid-template-columns: 1.05fr .95fr; gap:12px; align-items:stretch}
     .card{
-      border-radius:var(--r2);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
       border:1px solid var(--stroke);
-      background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
+      border-radius: var(--radius);
       box-shadow: var(--shadow);
       overflow:hidden;
       position:relative;
     }
-    .card:before{
-      content:""; position:absolute; inset:-1px;
-      background:
-        radial-gradient(560px 220px at 12% 0%, rgba(0,224,255,.14), transparent 60%),
-        radial-gradient(560px 240px at 88% 20%, rgba(124,92,255,.16), transparent 65%);
-      opacity:.9; pointer-events:none;
-    }
-    .card > *{position:relative}
+    .card:hover{ box-shadow: var(--shadow), var(--glow); }
 
-    .hero{padding:18px}
-    .hero h1{margin:10px 0 10px; font-size:34px; line-height:1.06; letter-spacing:-.8px}
-    .grad{
-      background:linear-gradient(90deg, rgba(0,224,255,.95), rgba(124,92,255,.95));
-      -webkit-background-clip:text; background-clip:text; color:transparent;
+    .card .hd{
+      padding:18px 18px 12px;
+      border-bottom:1px solid rgba(255,255,255,.08);
+      display:flex; align-items:flex-start; justify-content:space-between; gap:12px;
     }
-    .hero p{margin:0 0 14px; color:var(--muted); line-height:1.6; font-size:14px; max-width:70ch}
-    .hero .row{display:flex; gap:10px; align-items:center; flex-wrap:wrap}
-
-    .mini-grid{display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap:10px; margin-top:12px}
-    .mini{
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.05);
-      border-radius:16px; padding:12px;
+    .card .hd h1, .card .hd h2{
+      margin:0;
+      font-size:18px;
+      letter-spacing:.2px;
     }
-    .mini b{display:block; font-size:13px; margin-bottom:4px}
-    .mini span{display:block; font-size:12px; color:var(--muted2); line-height:1.35}
+    .card .hd p{
+      margin:8px 0 0;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.35;
+    }
+    .card .bd{ padding:18px; }
 
-    /* Form */
-    .panel{padding:16px}
-    .panel h2{margin:0 0 6px; font-size:15px}
-    .panel p{margin:0 0 10px; color:var(--muted); font-size:12.8px; line-height:1.55}
-    form{display:grid; gap:10px}
-    label{display:grid; gap:6px; font-size:12px; color:var(--muted2); font-weight:800; letter-spacing:.15px}
-    input,select,textarea{
-      width:100%; padding:12px 12px; border-radius:14px;
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:8px 10px;
+      border-radius:999px;
       border:1px solid rgba(255,255,255,.14);
-      background: rgba(0,0,0,.18);
-      color:rgba(255,255,255,.92);
-      outline:none; font:inherit; font-size:13px;
-      transition:.18s ease;
-    }
-    textarea{resize:vertical}
-    input:focus,select:focus,textarea:focus{border-color: rgba(0,224,255,.40); box-shadow:0 0 0 6px rgba(0,224,255,.10)}
-    .r2{display:grid; grid-template-columns: 1fr 1fr; gap:10px}
-
-    .toggle{
-      display:flex; gap:10px; align-items:flex-start;
-      padding:12px; border-radius:16px;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.05);
-    }
-    .toggle b{display:block; font-size:13px}
-    .toggle span{display:block; font-size:12px; color:var(--muted2); line-height:1.4}
-    .toggle input{width:18px;height:18px; margin-top:2px; accent-color: var(--b)}
-    .chips{display:flex; gap:8px; flex-wrap:wrap; margin-top:8px}
-    .chip{
-      font-size:11px; font-weight:900;
-      padding:7px 10px; border-radius:999px;
-      border:1px solid rgba(255,255,255,.14);
-      background: rgba(0,0,0,.14);
-      color:rgba(255,255,255,.82);
-    }
-
-    /* Simulation */
-    section{padding:10px 0 26px}
-    .sim{display:grid; grid-template-columns: .95fr 1.05fr; gap:12px; align-items:stretch}
-    .box{padding:16px}
-    .box h3{margin:0 0 10px; font-size:15px}
-    .muted{color:var(--muted); font-size:12.8px; line-height:1.55}
-
-    .score{
-      display:flex; align-items:flex-end; justify-content:space-between; gap:12px; flex-wrap:wrap;
-      margin:6px 0 10px;
-    }
-    .big{display:flex; align-items:flex-end; gap:10px}
-    .big .n{font-size:44px; line-height:1; letter-spacing:-1px}
-    .badge{
-      font-size:12px; font-weight:950;
-      padding:7px 10px; border-radius:999px;
-      border:1px solid rgba(255,255,255,.14);
-      background: rgba(0,0,0,.16);
-      color:rgba(255,255,255,.90);
+      background: rgba(255,255,255,.04);
+      color:var(--muted);
+      font-size:12px; font-weight:800;
       white-space:nowrap;
     }
-    .badge.good{border-color:rgba(46,229,157,.35); background:rgba(46,229,157,.10); color:var(--good)}
-    .badge.warn{border-color:rgba(255,204,102,.35); background:rgba(255,204,102,.10); color:var(--warn)}
-    .badge.bad{border-color:rgba(255,92,122,.35); background:rgba(255,92,122,.10); color:var(--bad)}
+    .pill .k{ color:var(--text); font-weight:900; }
 
-    .meter{
-      width:160px; height:10px; border-radius:999px;
-      background: rgba(255,255,255,.10);
+    .grid{
+      display:grid; gap:12px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    @media (max-width: 720px){ .grid{ grid-template-columns: 1fr; } }
+
+    .field{
+      background: rgba(255,255,255,.03);
+      border:1px solid rgba(255,255,255,.10);
+      border-radius: 14px;
+      padding:12px;
+    }
+    .field label{
+      display:flex; align-items:center; justify-content:space-between; gap:8px;
+      font-size:12px; font-weight:900; letter-spacing:.2px;
+      color:var(--muted);
+      margin-bottom:8px;
+    }
+    .field label small{ color:var(--muted2); font-weight:800; }
+    .field input, .field select{
+      width:100%;
+      background: rgba(0,0,0,.25);
       border:1px solid rgba(255,255,255,.12);
+      color:var(--text);
+      padding:12px 12px;
+      border-radius: 12px;
+      outline:none;
+      font-size:14px;
+    }
+    .field input:focus, .field select:focus{
+      border-color: rgba(124,92,255,.55);
+      box-shadow: 0 0 0 4px rgba(124,92,255,.15);
+    }
+
+    .split{ display:grid; gap:12px; grid-template-columns: 1fr; }
+
+    .steps{
+      display:flex; gap:8px; flex-wrap:wrap;
+      margin: 0 0 14px;
+    }
+    .step{
+      flex:1 1 160px;
+      padding:10px 10px;
+      border-radius: 14px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      color:var(--muted);
+      font-size:12px;
+      font-weight:900;
+      display:flex; align-items:center; justify-content:space-between; gap:10px;
+    }
+    .step.on{
+      color:rgba(8,16,34,.95);
+      border-color: transparent;
+      background: linear-gradient(135deg, rgba(124,92,255,.88), rgba(0,224,255,.55));
+    }
+    .step .n{
+      width:22px; height:22px; border-radius:999px;
+      display:grid; place-items:center;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(0,0,0,.20);
+      color:var(--text);
+      font-size:12px;
+    }
+    .step.on .n{ border-color: rgba(0,0,0,.12); background: rgba(255,255,255,.18); color: rgba(8,16,34,.95); }
+
+    .row{ display:flex; gap:10px; flex-wrap:wrap; margin-top: 14px; }
+
+    .kpis{
+      display:grid; gap:10px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    @media (max-width: 900px){ .kpis{ grid-template-columns: 1fr; } }
+
+    .kpi{
+      padding:14px 14px;
+      border-radius: 16px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+    }
+    .kpi .t{ color:var(--muted); font-size:12px; font-weight:950; letter-spacing:.25px; }
+    .kpi .v{ margin-top:10px; font-size:20px; font-weight:950; letter-spacing:.2px; }
+    .kpi .s{ margin-top:6px; color:var(--muted2); font-size:12px; line-height:1.35; }
+
+    .scoreWrap{ display:flex; align-items:center; gap:12px; flex-wrap:wrap; }
+    .ring{
+      width:92px; height:92px; border-radius:50%;
+      display:grid; place-items:center;
+      background:
+        conic-gradient(var(--accent) calc(var(--p)*1%), rgba(255,255,255,.10) 0),
+        radial-gradient(circle at 30% 30%, rgba(0,224,255,.18), transparent 50%);
+      border:1px solid rgba(255,255,255,.10);
+      box-shadow: 0 10px 30px rgba(0,0,0,.35);
+      transition: .25s;
+    }
+    .ring .in{
+      width:76px; height:76px; border-radius:50%;
+      display:grid; place-items:center;
+      background: rgba(7,10,18,.80);
+      border:1px solid rgba(255,255,255,.10);
+      text-align:center;
+    }
+    .ring .in b{ display:block; font-size:22px; letter-spacing:.2px; }
+    .ring .in span{ display:block; font-size:11px; color:var(--muted); font-weight:900; margin-top:2px; }
+
+    .tag{
+      display:inline-flex; align-items:center;
+      padding:8px 10px; border-radius:999px;
+      font-size:12px; font-weight:950;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.03);
+    }
+    .tag.good{ color: var(--good); }
+    .tag.warn{ color: var(--warn); }
+    .tag.bad{ color: var(--bad); }
+
+    .divider{ height:1px; background: rgba(255,255,255,.08); margin:14px 0; }
+
+    .note{ color:var(--muted2); font-size:12px; line-height:1.45; }
+
+    .footer{
+      margin-top:16px;
+      display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap;
+      color:var(--muted2); font-size:12px;
+    }
+
+    /* ===== Solutions personnalisées ===== */
+    .solGrid{ display:grid; gap:10px; grid-template-columns:1fr; }
+
+    .solCard{
+      border-radius: 16px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
       overflow:hidden;
     }
-    .meter > div{
-      height:100%;
-      width:0%;
-      background: linear-gradient(90deg, rgba(255,92,122,.9), rgba(255,204,102,.9), rgba(46,229,157,.9));
-      border-radius:999px;
-      transition: width .6s ease;
+    .solCard .shd{
+      padding:12px 12px 10px;
+      border-bottom:1px solid rgba(255,255,255,.08);
+      display:flex; align-items:flex-start; justify-content:space-between; gap:10px;
     }
+    .solCard .shd b{ font-size:13px; letter-spacing:.2px; }
+    .solCard .shd span{ color:var(--muted2); font-size:11px; font-weight:950; }
 
-    .stack{display:grid; gap:10px; margin-top:10px}
-    .stack .item{
-      display:flex; gap:10px; align-items:flex-start;
-      padding:12px; border-radius:16px;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.05);
-    }
-    .ic{
-      width:36px;height:36px;border-radius:14px;
-      background: linear-gradient(135deg, rgba(124,92,255,.95), rgba(0,224,255,.55));
-      border:1px solid rgba(255,255,255,.18);
-      display:flex; align-items:center; justify-content:center;
+    .chips{ display:flex; gap:8px; flex-wrap:wrap; padding:12px; }
+    .chip{
+      display:inline-flex; align-items:center; gap:7px;
+      padding:8px 10px;
+      border-radius:999px;
+      font-size:12px;
       font-weight:950;
-      flex:0 0 auto;
-      box-shadow: 0 18px 40px rgba(124,92,255,.18);
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.20);
+      color:var(--text);
+      transition:.18s transform, .18s filter;
     }
-    .item b{display:block; font-size:13px; margin-bottom:4px}
-    .item span{display:block; font-size:12px; color:var(--muted2); line-height:1.4}
+    .chip:hover{ transform: translateY(-1px); filter:saturate(1.08); }
+    .chip small{ font-size:11px; font-weight:950; color:var(--muted); }
+    .chip .dot2{
+      width:8px; height:8px; border-radius:50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      box-shadow: 0 0 0 4px rgba(124,92,255,.12);
+    }
+    .chip.good{ border-color: rgba(46,229,157,.30); }
+    .chip.warn{ border-color: rgba(255,204,102,.35); }
+    .chip.bad{ border-color: rgba(255,92,122,.35); }
+
+    .plan{
+      padding:12px; padding-top:0;
+      display:grid; gap:10px;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+    }
+    @media (max-width: 980px){ .plan{ grid-template-columns: 1fr; } }
+
+    .phase{
+      border-radius: 14px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      padding:12px;
+    }
+    .phase .pt{
+      display:flex; align-items:center; justify-content:space-between; gap:10px;
+      color:var(--muted);
+      font-size:12px; font-weight:950;
+      letter-spacing:.25px;
+      margin-bottom:10px;
+    }
+    .phase ul{
+      margin:0; padding-left:18px;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.5;
+    }
 
     .deliver{
-      padding:14px; border-radius:18px;
-      border:1px dashed rgba(255,255,255,.18);
-      background: rgba(0,0,0,.16);
-      min-height:264px;
-      font-size:12.8px; line-height:1.6; color:rgba(255,255,255,.86);
+      padding:12px;
+      border-top:1px solid rgba(255,255,255,.08);
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.5;
     }
-    .deliver b{color:rgba(255,255,255,.94)}
-    .hl{
-      display:inline-block; padding:2px 8px; border-radius:999px;
-      border:1px solid rgba(0,224,255,.25);
-      background: rgba(0,224,255,.08);
-      color:rgba(255,255,255,.92);
-      font-weight:950; letter-spacing:.15px;
+    .deliver b{ color:var(--text); }
+
+    .kv{
+      display:flex; gap:10px; flex-wrap:wrap;
+      padding:12px;
+      border-top:1px solid rgba(255,255,255,.08);
+    }
+    .kv .item{
+      flex:1 1 160px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.18);
+      border-radius: 14px;
+      padding:10px 10px;
+    }
+    .kv .item .k{
+      color:var(--muted2);
+      font-size:11px;
+      font-weight:950;
+      letter-spacing:.25px;
+    }
+    .kv .item .v{
+      margin-top:6px;
+      font-weight:950;
+      font-size:13px;
+      color:var(--text);
     }
 
-    /* Packs */
-    .packs{display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap:12px; margin-top:12px}
-    .pack{
-      padding:16px; border-radius:var(--r2);
-      border:1px solid rgba(255,255,255,.12);
-      background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
-      position:relative; overflow:hidden;
+    /* ===== Boardroom ROI ===== */
+    .board{
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,.10);
+      background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(0,0,0,.18));
+      overflow:hidden;
     }
-    .pack:before{
-      content:""; position:absolute; inset:-1px;
-      background: radial-gradient(560px 260px at 10% 0%, rgba(0,224,255,.10), transparent 60%);
-      opacity:.9; pointer-events:none;
+    .boardHd{
+      padding:12px 12px 10px;
+      border-bottom:1px solid rgba(255,255,255,.08);
+      display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap;
     }
-    .pack > *{position:relative}
-    .pack .head{display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap}
-    .pack h4{margin:0; font-size:14px}
-    .pack .tag{font-size:11px; font-weight:950; padding:6px 10px; border-radius:999px; border:1px solid rgba(255,255,255,.14); background: rgba(0,0,0,.14); color:rgba(255,255,255,.85)}
-    .pack p{margin:10px 0 10px; color:var(--muted2); font-size:12.5px; line-height:1.55}
-    .list{margin:0; padding:0; list-style:none; display:grid; gap:8px}
-    .list li{display:flex; gap:10px; align-items:flex-start; font-size:12.5px; line-height:1.45; color:rgba(255,255,255,.82)}
-    .check{
-      width:18px;height:18px;border-radius:6px;
-      background: rgba(46,229,157,.14);
-      border:1px solid rgba(46,229,157,.35);
-      display:flex; align-items:center; justify-content:center;
-      color:var(--good);
-      font-weight:950; flex:0 0 auto;
-      margin-top:1px;
+    .seg{
+      display:flex; gap:8px; flex-wrap:wrap;
+      padding:8px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.18);
     }
-    .highlight{border-color: rgba(124,92,255,.35); box-shadow: 0 22px 70px rgba(124,92,255,.18)}
-    .ribbon{
-      position:absolute; top:12px; right:12px;
-      font-size:11px; font-weight:950;
+    .seg button{
+      border:0; background:transparent; color:var(--muted);
+      font-weight:950; font-size:12px; letter-spacing:.2px;
       padding:7px 10px; border-radius:999px;
-      border:1px solid rgba(124,92,255,.45);
-      background: rgba(124,92,255,.18);
-      color:rgba(255,255,255,.9);
+      cursor:pointer; transition:.18s background, .18s color, .18s transform;
     }
-
-    /* CTA */
-    .cta{
-      margin-top:12px;
-      padding:14px; border-radius:18px;
-      border:1px solid rgba(46,229,157,.22);
-      background: rgba(46,229,157,.06);
+    .seg button:hover{ transform: translateY(-1px); }
+    .seg button.on{
+      background: linear-gradient(135deg, rgba(124,92,255,.85), rgba(0,224,255,.55));
+      color:#081022;
     }
-    .cta .row{display:flex; gap:10px; flex-wrap:wrap; align-items:center; justify-content:space-between}
-    .cta .left b{display:block}
-    .cta .left span{display:block; color:rgba(255,255,255,.78); font-size:12.5px}
-    .cta .right{display:flex; gap:10px; flex-wrap:wrap}
+    .boardBd{
+      padding:12px;
+      display:grid; gap:12px;
+      grid-template-columns: 1fr;
+    }
+    .charts{
+      display:grid; gap:12px;
+      grid-template-columns: 1fr 1fr;
+    }
+    @media (max-width: 980px){ .charts{ grid-template-columns: 1fr; } }
 
-    footer{
-      padding:20px 0 34px;
-      color:rgba(255,255,255,.45);
+    .chartCard{
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      padding:10px;
+    }
+    .chartTop{
+      display:flex; align-items:center; justify-content:space-between; gap:10px;
+      margin-bottom:8px;
+      color:var(--muted);
       font-size:12px;
-      border-top:1px solid rgba(255,255,255,.10);
+      font-weight:950;
+      letter-spacing:.2px;
+    }
+    canvas{ width:100%; height:220px; display:block; }
+    .miniRow{
+      display:grid; gap:10px;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+    }
+    @media (max-width: 900px){ .miniRow{ grid-template-columns: 1fr; } }
+    .mini{
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.18);
+      padding:10px;
+    }
+    .mini .k{ color:var(--muted2); font-size:11px; font-weight:950; letter-spacing:.25px; }
+    .mini .v{ margin-top:6px; font-size:14px; font-weight:950; color:var(--text); }
+    .mini .s{ margin-top:6px; font-size:12px; color:var(--muted); line-height:1.4; }
+
+    .trust{
+      display:flex; align-items:center; justify-content:space-between; gap:10px;
+      padding:10px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+    }
+    .trust b{ font-size:12px; letter-spacing:.2px; }
+    .trust .meter{
+      height:10px; width:160px; border-radius:999px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.22);
+      overflow:hidden;
+    }
+    .trust .bar{
+      height:100%;
+      width:40%;
+      background: linear-gradient(135deg, rgba(124,92,255,.9), rgba(0,224,255,.6));
+      border-radius:999px;
+      transition:.25s width;
     }
 
-    @media (max-width: 980px){
-      .grid{grid-template-columns:1fr}
-      .mini-grid{grid-template-columns:1fr}
-      .sim{grid-template-columns:1fr}
-      .packs{grid-template-columns:1fr}
+    /* ===== Proof premium ===== */
+    .proofGrid{
+      display:grid; gap:10px;
+      grid-template-columns: repeat(3, minmax(0,1fr));
     }
+    @media (max-width: 980px){ .proofGrid{ grid-template-columns:1fr; } }
+    .proof{
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      overflow:hidden;
+      position:relative;
+    }
+    .proof:before{
+      content:"";
+      position:absolute; inset:-2px;
+      background: radial-gradient(600px 180px at 20% 20%, rgba(124,92,255,.16), transparent 60%),
+                  radial-gradient(600px 180px at 80% 60%, rgba(0,224,255,.12), transparent 60%);
+      pointer-events:none;
+      opacity:.85;
+    }
+    .proof .ph{
+      position:relative;
+      padding:12px;
+      border-bottom:1px solid rgba(255,255,255,.08);
+      display:flex; align-items:center; justify-content:space-between; gap:10px;
+      color:var(--muted);
+      font-size:12px; font-weight:950;
+    }
+    .proof .pb{
+      position:relative;
+      padding:12px;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.45;
+    }
+    .badge2{
+      padding:6px 10px; border-radius:999px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.20);
+      color:var(--text);
+      font-weight:950;
+      font-size:11px;
+      letter-spacing:.2px;
+    }
+    .proof .mock{
+      margin-top:10px;
+      height:82px;
+      border-radius:14px;
+      border:1px dashed rgba(255,255,255,.16);
+      background:
+        linear-gradient(135deg, rgba(124,92,255,.10), rgba(0,224,255,.06)),
+        radial-gradient(circle at 30% 30%, rgba(255,255,255,.07), transparent 55%);
+      display:flex; align-items:center; justify-content:center;
+      color: rgba(255,255,255,.78);
+      font-weight:900;
+      letter-spacing:.2px;
+      font-size:12px;
+    }
+
+    /* ===== Packs ===== */
+    .packs{
+      display:grid; gap:12px;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+    }
+    @media (max-width: 980px){ .packs{ grid-template-columns: 1fr; } }
+
+    .pack{
+      border-radius: 18px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      overflow:hidden;
+      position:relative;
+      transition:.18s transform, .18s box-shadow, .18s filter;
+    }
+    .pack:hover{ transform: translateY(-2px); filter:saturate(1.06); box-shadow: var(--shadow), var(--glow); }
+    .pack .phd{
+      padding:16px 16px 12px;
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .pack .phd b{ display:block; font-size:15px; letter-spacing:.2px; }
+    .pack .phd span{ display:block; color:var(--muted); font-size:12px; margin-top:6px; line-height:1.35; }
+    .pack .pbd{ padding:16px; }
+    .price{ display:flex; align-items:baseline; gap:8px; margin: 8px 0 12px; }
+    .price .big{ font-size:26px; font-weight:950; letter-spacing:.2px; }
+    .price .per{ color:var(--muted2); font-size:12px; font-weight:900; }
+    .badge{
+      position:absolute; top:12px; right:12px;
+      padding:7px 10px; border-radius:999px;
+      font-size:11px; font-weight:950;
+      background: linear-gradient(135deg, rgba(124,92,255,.88), rgba(0,224,255,.55));
+      color:#081022;
+    }
+    .pack.reco{
+      border-color: rgba(124,92,255,.35);
+      background: linear-gradient(180deg, rgba(124,92,255,.10), rgba(255,255,255,.03));
+    }
+    .list{
+      margin:0; padding-left: 18px;
+      color:var(--muted);
+      line-height:1.5;
+      font-size:13px;
+    }
+
+    /* ===== CTA lead capture ===== */
+    .cta{
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,.10);
+      background: radial-gradient(800px 240px at 20% 20%, rgba(124,92,255,.14), rgba(0,0,0,.18)),
+                  radial-gradient(800px 240px at 80% 60%, rgba(0,224,255,.10), rgba(0,0,0,.18));
+      padding:12px;
+    }
+    .ctaTop{
+      display:flex; align-items:flex-start; justify-content:space-between; gap:10px; flex-wrap:wrap;
+    }
+    .ctaTop b{ font-size:13px; letter-spacing:.2px; }
+    .ctaTop span{ color:var(--muted); font-size:12px; line-height:1.35; }
+    .ctaForm{
+      margin-top:10px;
+      display:grid; gap:10px;
+      grid-template-columns: 1fr 1fr;
+    }
+    @media (max-width: 720px){ .ctaForm{ grid-template-columns:1fr; } }
+    .ctaForm input{
+      width:100%;
+      background: rgba(0,0,0,.22);
+      border:1px solid rgba(255,255,255,.12);
+      color:var(--text);
+      padding:12px 12px;
+      border-radius: 12px;
+      outline:none;
+      font-size:14px;
+    }
+    .ctaForm input:focus{
+      border-color: rgba(124,92,255,.55);
+      box-shadow: 0 0 0 4px rgba(124,92,255,.15);
+    }
+    .ctaBtns{ display:flex; gap:10px; flex-wrap:wrap; margin-top:10px; }
+    .toast{
+      margin-top:10px;
+      display:none;
+      padding:10px 12px;
+      border-radius:14px;
+      border:1px solid rgba(46,229,157,.25);
+      background: rgba(46,229,157,.08);
+      color: rgba(255,255,255,.90);
+      font-size:12px;
+      line-height:1.45;
+    }
+
+    /* ===== Modal proposition ===== */
+    .modal{
+      position:fixed; inset:0;
+      display:none;
+      align-items:center; justify-content:center;
+      background: rgba(0,0,0,.65);
+      backdrop-filter: blur(6px);
+      z-index:999;
+      padding:18px;
+    }
+    .modal.on{ display:flex; }
+    .modalCard{
+      width:min(980px, 100%);
+      max-height: 88vh;
+      overflow:auto;
+      border-radius: 18px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(10,14,26,.92);
+      box-shadow: 0 24px 80px rgba(0,0,0,.65);
+    }
+    .modalHd{
+      padding:14px 14px;
+      border-bottom:1px solid rgba(255,255,255,.08);
+      display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap;
+    }
+    .modalHd b{ letter-spacing:.2px; }
+    .modalBd{ padding:14px; }
+    .onepager{
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      padding:14px;
+    }
+    .opGrid{
+      display:grid; gap:12px;
+      grid-template-columns: 1.1fr .9fr;
+      align-items:start;
+    }
+    @media (max-width: 980px){ .opGrid{ grid-template-columns:1fr; } }
+    .opKpis{
+      display:grid; gap:10px;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+    }
+    @media (max-width: 900px){ .opKpis{ grid-template-columns:1fr; } }
+    .opKpi{
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.18);
+      padding:10px;
+    }
+    .opKpi .k{ color:var(--muted2); font-size:11px; font-weight:950; letter-spacing:.25px; }
+    .opKpi .v{ margin-top:6px; font-weight:950; font-size:14px; }
+    .opKpi .s{ margin-top:6px; color:var(--muted); font-size:12px; line-height:1.4; }
+    .opList{
+      margin:10px 0 0; padding-left:18px;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.5;
+    }
+
+    /* ===== PRINT (one-pager only) ===== */
     @media print{
-      .top, #formCard, footer { display:none !important; }
-      body{background:#fff !important; color:#111 !important;}
-      .card,.pack{box-shadow:none !important; border:1px solid #ddd !important; background:#fff !important;}
-      .deliver{background:#fff !important; color:#111 !important;}
-      .badge,.pill,.chip{border-color:#ddd !important; background:#f6f6f6 !important; color:#111 !important;}
-      a{color:#111 !important; text-decoration:none !important;}
+      body{ background:#fff; color:#111; }
+      body:before, body:after{ display:none !important; }
+      .wrap, .topbar, #cardForm, #cardResult, .modalHd .btn, .modalHd .actions { display:none !important; }
+      .modal{ display:block !important; position:static !important; inset:auto !important; background:#fff !important; padding:0 !important; }
+      .modalCard{ border:0 !important; box-shadow:none !important; background:#fff !important; }
+      .modalBd{ padding:0 !important; }
+      .onepager, .opKpi{ border-color:#ddd !important; background:#fff !important; }
+      .opList{ color:#111 !important; }
     }
   </style>
 </head>
 
 <body>
-  <div class="top">
-    <div class="container row">
+  <div class="wrap">
+    <div class="topbar">
       <div class="brand">
-        <div class="logo" aria-hidden="true"></div>
-        <div class="title">
-          <b>Mini-Audit Conversion-First</b>
-          <small>Simulation de valeur • plan 14 jours • RDV 15 min</small>
+        <div class="dot"></div>
+        <div>
+          <b>Audit IA — Conversion & Croissance</b>
+          <span>Score propriétaire • Simulation boardroom • Preuve premium • Proposition 1-page</span>
         </div>
       </div>
-      <div class="nav">
-        <a href="#audit">Audit</a>
-        <a href="#resultat">Résultat</a>
-        <a href="#packs">Solutions</a>
-        <button class="btn primary" type="button" id="goBtn">Lancer</button>
+
+      <div class="actions">
+        <button class="btn ghost" id="btnReset">Reset</button>
+        <button class="btn ghost" id="btnDemo">Demo data</button>
+        <button class="btn" id="btnPrint">Exporter PDF (one-page)</button>
+        <button class="btn primary" id="btnNextTop">Continuer</button>
+      </div>
+    </div>
+
+    <div class="hero">
+      <!-- LEFT: INPUT + STEPS -->
+      <section class="card" id="cardForm">
+        <div class="hd">
+          <div>
+            <h1>Audit express (2–4 min)</h1>
+            <p>On prend vos chiffres → on calcule le coût d’inaction → on projette un plan 7/30/90 jours + une proposition claire.</p>
+          </div>
+          <div class="pill"><span class="k" id="stepLabel">Étape 1</span><span id="stepSub">/ 3</span></div>
+        </div>
+
+        <div class="bd">
+          <div class="steps" aria-label="progress">
+            <div class="step on" data-step="1"><span>Profil & pipeline</span><span class="n">1</span></div>
+            <div class="step" data-step="2"><span>Performance & coûts</span><span class="n">2</span></div>
+            <div class="step" data-step="3"><span>Objectif & contact</span><span class="n">3</span></div>
+          </div>
+
+          <!-- STEP 1 -->
+          <div class="split" data-panel="1">
+            <div class="grid">
+              <div class="field">
+                <label>Secteur <small>e-commerce, B2B, services</small></label>
+                <select id="sector">
+                  <option value="ecom">E-commerce</option>
+                  <option value="leadgen">Leadgen (demande devis)</option>
+                  <option value="saas">SaaS / abonnement</option>
+                  <option value="local">Local / retail</option>
+                  <option value="b2b">B2B (cycle long)</option>
+                </select>
+              </div>
+              <div class="field">
+                <label>Maturité digitale <small>stack & process</small></label>
+                <select id="maturity">
+                  <option value="1">Début (pas d’analytics / pas de CRM)</option>
+                  <option value="2">Intermédiaire (tracking partiel)</option>
+                  <option value="3">Avancé (CRM + analytics + automatisations)</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label>Source principale <small>top canal</small></label>
+                <select id="topChannel">
+                  <option value="ads">Ads (Meta/Google/TikTok)</option>
+                  <option value="seo">SEO / contenu</option>
+                  <option value="social">Réseaux sociaux</option>
+                  <option value="referral">Partenariats / referral</option>
+                  <option value="mixed">Mix</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label>Trafic mensuel <small>visites / sessions</small></label>
+                <input id="traffic" type="number" min="0" step="1" placeholder="ex: 25000" />
+              </div>
+
+              <div class="field">
+                <label>Leads / commandes mensuelles <small>volume</small></label>
+                <input id="volume" type="number" min="0" step="1" placeholder="ex: 600" />
+              </div>
+
+              <div class="field">
+                <label>Taux de conversion <small>si inconnu, calc auto</small></label>
+                <input id="cr" type="number" min="0" step="0.01" placeholder="ex: 2.4" />
+              </div>
+            </div>
+
+            <div class="row">
+              <button class="btn primary" id="btnNext1">Next →</button>
+              <button class="btn" id="btnCalc1">Recalculer</button>
+            </div>
+          </div>
+
+          <!-- STEP 2 -->
+          <div class="split" data-panel="2" style="display:none;">
+            <div class="grid">
+              <div class="field">
+                <label>Panier moyen (AOV) <small>€</small></label>
+                <input id="aov" type="number" min="0" step="0.01" placeholder="ex: 79.90" />
+              </div>
+              <div class="field">
+                <label>Marge brute <small>%</small></label>
+                <input id="gm" type="number" min="0" max="100" step="0.1" placeholder="ex: 45" />
+              </div>
+
+              <div class="field">
+                <label>Dépense marketing mensuelle <small>€</small></label>
+                <input id="adspend" type="number" min="0" step="0.01" placeholder="ex: 5000" />
+              </div>
+              <div class="field">
+                <label>CAC actuel <small>€ (si inconnu, calc auto)</small></label>
+                <input id="cac" type="number" min="0" step="0.01" placeholder="ex: 18.50" />
+              </div>
+
+              <div class="field">
+                <label>Taux de conversion cible <small>%</small></label>
+                <input id="crTarget" type="number" min="0" step="0.01" placeholder="ex: 3.2" />
+              </div>
+              <div class="field">
+                <label>Gain AOV cible <small>€ (upsell / pricing)</small></label>
+                <input id="aovLift" type="number" min="0" step="0.01" placeholder="ex: 10" />
+              </div>
+            </div>
+
+            <div class="row">
+              <button class="btn" id="btnPrev2">← Back</button>
+              <button class="btn primary" id="btnNext2">Next →</button>
+              <button class="btn" id="btnCalc2">Recalculer</button>
+            </div>
+          </div>
+
+          <!-- STEP 3 -->
+          <div class="split" data-panel="3" style="display:none;">
+            <div class="grid">
+              <div class="field">
+                <label>Objectif principal <small>priorité</small></label>
+                <select id="goal">
+                  <option value="conv">Augmenter le taux de conversion</option>
+                  <option value="aov">Augmenter le panier moyen</option>
+                  <option value="cac">Réduire CAC / meilleure rentabilité</option>
+                  <option value="ret">Rétention / LTV</option>
+                  <option value="speed">Accélérer ventes (pipeline & closing)</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label>Horizon <small>temps</small></label>
+                <select id="horizon">
+                  <option value="30">30 jours</option>
+                  <option value="60">60 jours</option>
+                  <option value="90" selected>90 jours</option>
+                  <option value="180">180 jours</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label>Nom entreprise <small>optionnel</small></label>
+                <input id="company" type="text" placeholder="ex: Studio X" />
+              </div>
+              <div class="field">
+                <label>Site / Instagram <small>optionnel</small></label>
+                <input id="url" type="text" placeholder="ex: https://..." />
+              </div>
+
+              <div class="field">
+                <label>Contact <small>email ou téléphone</small></label>
+                <input id="contact" type="text" placeholder="ex: contact@..." />
+              </div>
+
+              <div class="field">
+                <label>Note rapide <small>douleur principale</small></label>
+                <input id="note" type="text" placeholder="ex: panier abandonné, leads froids..." />
+              </div>
+            </div>
+
+            <div class="row">
+              <button class="btn" id="btnPrev3">← Back</button>
+              <button class="btn primary" id="btnFinish">Générer l’audit</button>
+              <button class="btn" id="btnProposal">Générer la proposition</button>
+            </div>
+
+            <div class="divider"></div>
+            <div class="note">
+              En call : remplis vite les champs → tu montres “coût d’inaction” + “ROI 90j” + “ce qu’on installe en 7 jours”. Ensuite tu proposes le pack recommandé.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- RIGHT: RESULTS -->
+      <aside class="card" id="cardResult">
+        <div class="hd">
+          <div>
+            <h2>Résultats live</h2>
+            <p>Score + coût d’inaction + ROI boardroom + preuve premium + solutions 7/30/90 + pack.</p>
+          </div>
+          <div class="pill"><span class="k" id="liveStatus">LIVE</span><span id="liveHint">auto-calcul</span></div>
+        </div>
+
+        <div class="bd">
+          <!-- Score global -->
+          <div class="scoreWrap">
+            <div class="ring" id="ring" style="--p:35">
+              <div class="in">
+                <b id="scoreVal">35</b>
+                <span>/ 100</span>
+              </div>
+            </div>
+            <div>
+              <div id="scoreTag" class="tag warn">Potentiel moyen</div>
+              <div style="margin-top:10px; color:var(--muted); font-size:13px; line-height:1.4;">
+                <b id="headline" style="color:var(--text)">Focus : preuve + conversion</b><br/>
+                <span id="subline">On installe le système qui transforme la visibilité en clients (mesurable, pilotable).</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="divider"></div>
+
+          <!-- KPI baseline -->
+          <div class="kpis">
+            <div class="kpi">
+              <div class="t">CA mensuel estimé</div>
+              <div class="v" id="kpiRev">—</div>
+              <div class="s">Basé sur volume × AOV</div>
+            </div>
+            <div class="kpi">
+              <div class="t">Marge brute estimée</div>
+              <div class="v" id="kpiGross">—</div>
+              <div class="s">Basé sur marge brute %</div>
+            </div>
+            <div class="kpi">
+              <div class="t">Upside 90j (ROI)</div>
+              <div class="v" id="kpiUpside">—</div>
+              <div class="s">Delta CR + Delta AOV + efficacité</div>
+            </div>
+          </div>
+
+          <div class="divider"></div>
+
+          <!-- Boardroom simulation -->
+          <div class="board">
+            <div class="boardHd">
+              <div class="pill"><span class="k">Simulation boardroom</span><span id="scenarioLbl">Réaliste</span></div>
+              <div class="seg" aria-label="scénarios">
+                <button id="scCon" class="on" data-scn="conservative">Conservateur</button>
+                <button id="scReal" data-scn="realistic">Réaliste</button>
+                <button id="scAg" data-scn="aggressive">Agressif</button>
+              </div>
+            </div>
+
+            <div class="boardBd">
+              <div class="trust">
+                <div>
+                  <b>Qualité des hypothèses</b>
+                  <div style="color:var(--muted); font-size:12px; margin-top:4px;" id="assumptionsTxt">
+                    Plus vous renseignez, plus la projection est précise.
+                  </div>
+                </div>
+                <div style="display:flex; align-items:center; gap:10px;">
+                  <div class="meter"><div class="bar" id="trustBar" style="width:40%"></div></div>
+                  <div class="pill"><span class="k" id="trustLbl">Confiance: moyenne</span></div>
+                </div>
+              </div>
+
+              <div class="charts">
+                <div class="chartCard">
+                  <div class="chartTop"><span>Waterfall ROI (marge)</span><span class="badge2" id="wfHint">+ leviers</span></div>
+                  <canvas id="canvasWater" width="900" height="420"></canvas>
+                </div>
+                <div class="chartCard">
+                  <div class="chartTop"><span>Digital Leverage Score</span><span class="badge2" id="radHint">4 piliers</span></div>
+                  <canvas id="canvasRadar" width="900" height="420"></canvas>
+                </div>
+              </div>
+
+              <div class="miniRow">
+                <div class="mini">
+                  <div class="k">Coût d’inaction (mensuel)</div>
+                  <div class="v" id="inactionCost">—</div>
+                  <div class="s" id="inactionS">Fuites : preuve, conversion, relances, tracking.</div>
+                </div>
+                <div class="mini">
+                  <div class="k">Gain net estimé (90 jours)</div>
+                  <div class="v" id="net90">—</div>
+                  <div class="s" id="net90S">Projection nette après ramp + frais marketing.</div>
+                </div>
+                <div class="mini">
+                  <div class="k">Effort vs Impact</div>
+                  <div class="v" id="effImpact">—</div>
+                  <div class="s" id="effImpactS">Priorité #1 = plus d’impact / moins d’effort.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="divider"></div>
+
+          <!-- Proof premium -->
+          <div>
+            <div class="pill" style="margin-bottom:10px;">
+              <span class="k">Proof premium</span><span>ce que vous obtenez visuellement</span>
+            </div>
+            <div class="proofGrid">
+              <div class="proof">
+                <div class="ph"><span>Avant → Après</span><span class="badge2">Site / Landing</span></div>
+                <div class="pb">
+                  Une page “preuve + offre” qui convertit (CTA, objections, garanties).
+                  <div class="mock">Mockup landing (exemple)</div>
+                </div>
+              </div>
+              <div class="proof">
+                <div class="ph"><span>Avant → Après</span><span class="badge2">Visuel drone</span></div>
+                <div class="pb">
+                  Mini-film 15–30s + déclinaisons pub. Autorité instantanée.
+                  <div class="mock">Mockup vidéo (exemple)</div>
+                </div>
+              </div>
+              <div class="proof">
+                <div class="ph"><span>Avant → Après</span><span class="badge2">Réputation</span></div>
+                <div class="pb">
+                  Système avis + réponses + relances. La confiance devient un actif.
+                  <div class="mock">Mockup avis (exemple)</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="divider"></div>
+
+          <!-- Solutions -->
+          <div>
+            <div class="pill" style="margin-bottom:10px;">
+              <span class="k">Solutions personnalisées</span><span id="solHint">7/30/90 + livrables</span>
+            </div>
+
+            <div class="solGrid" id="solutionsBlock">
+              <div class="solCard">
+                <div class="shd">
+                  <div>
+                    <b id="solTitle">Blueprint valeur + acquisition</b><br/>
+                    <span id="solSubtitle">Mix visuel + web + tunnel + CRM selon votre objectif.</span>
+                  </div>
+                  <span id="solFit">fit: —</span>
+                </div>
+
+                <div class="chips" id="solChips">
+                  <span class="chip"><span class="dot2"></span> Remplis les champs <small>pour générer</small></span>
+                </div>
+
+                <div class="plan">
+                  <div class="phase">
+                    <div class="pt"><span>J+7 • Impact rapide</span><span class="pill" style="padding:6px 8px;">Proof</span></div>
+                    <ul id="plan7"><li>—</li></ul>
+                  </div>
+                  <div class="phase">
+                    <div class="pt"><span>J+30 • Système stable</span><span class="pill" style="padding:6px 8px;">Pipeline</span></div>
+                    <ul id="plan30"><li>—</li></ul>
+                  </div>
+                  <div class="phase">
+                    <div class="pt"><span>J+90 • Scale</span><span class="pill" style="padding:6px 8px;">Growth</span></div>
+                    <ul id="plan90"><li>—</li></ul>
+                  </div>
+                </div>
+
+                <div class="deliver" id="deliverables">
+                  <b>Livrables:</b> — (audit + assets + setup + automatisations).
+                </div>
+
+                <div class="kv">
+                  <div class="item">
+                    <div class="k">Preuve installée</div>
+                    <div class="v" id="proofKpi">—</div>
+                  </div>
+                  <div class="item">
+                    <div class="k">Acquisition</div>
+                    <div class="v" id="acqKpi">—</div>
+                  </div>
+                  <div class="item">
+                    <div class="k">Conversion</div>
+                    <div class="v" id="convKpi">—</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="divider"></div>
+
+          <!-- Pack -->
+          <div class="pill" style="margin-bottom:10px;">
+            <span class="k">Pack recommandé</span><span id="packRecoMini">—</span>
+          </div>
+
+          <div class="packs" id="packs">
+            <div class="pack" data-pack="starter">
+              <div class="phd">
+                <b>Starter — Proof + base clean</b>
+                <span>On pose le socle : preuve premium + landing + tracking + quick wins.</span>
+              </div>
+              <div class="pbd">
+                <div class="price"><div class="big">490€</div><div class="per">one-shot</div></div>
+                <ul class="list">
+                  <li>Audit score + KPI + coût d’inaction</li>
+                  <li>1 page preuve + CTA + objections</li>
+                  <li>Setup tracking events clés</li>
+                  <li>Débrief 45 min + plan 30 jours</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="pack reco" data-pack="growth">
+              <div class="badge">Best ROI</div>
+              <div class="phd">
+                <b>Growth — Sprints + pipeline</b>
+                <span>Conversion + relances + création de valeur visible (preuve + contenu + funnel).</span>
+              </div>
+              <div class="pbd">
+                <div class="price"><div class="big">990€</div><div class="per">/ mois</div></div>
+                <ul class="list">
+                  <li>2 sprints/mois (landing, offre, CRO)</li>
+                  <li>CRM + relances (email/SMS/WhatsApp)</li>
+                  <li>Pack créa (hooks + scripts + visuels)</li>
+                  <li>1 call/sem + support async</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="pack" data-pack="scale">
+              <div class="phd">
+                <b>Scale — Full system</b>
+                <span>De la visibilité au cash : tracking avancé, ads, créas, closing, rétention.</span>
+              </div>
+              <div class="pbd">
+                <div class="price"><div class="big">1990€</div><div class="per">/ mois</div></div>
+                <ul class="list">
+                  <li>Stack complet + tracking avancé</li>
+                  <li>Optimisation Ads + créas en continu</li>
+                  <li>Sales scripts + pipeline + scoring</li>
+                  <li>Rétention/LTV + upsell</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="divider"></div>
+
+          <!-- CTA lead capture -->
+          <div class="cta">
+            <div class="ctaTop">
+              <div>
+                <b>Passer de “visibilité” à “clients” (mesurable)</b><br/>
+                <span>2 options : <b>plan exact en 15 min</b> ou <b>proposition 1-page</b> immédiatement.</span>
+              </div>
+              <span class="badge2" id="ctaBadge">Low friction</span>
+            </div>
+            <div class="ctaForm">
+              <input id="leadName" type="text" placeholder="Nom / Entreprise" />
+              <input id="leadEmail" type="text" placeholder="Email / Téléphone" />
+            </div>
+            <div class="ctaBtns">
+              <button class="btn primary" id="btnCall">Je veux le plan exact (15 min)</button>
+              <button class="btn" id="btnSendProposal">Envoyez-moi la proposition</button>
+              <button class="btn ghost" id="btnCopySummary">Copier résumé (call)</button>
+            </div>
+            <div class="toast" id="toast"></div>
+          </div>
+
+          <div class="divider"></div>
+
+          <div class="note" id="callScript">
+            Script call : “Je vous montre votre coût d’inaction mensuel + votre ROI 90 jours, puis ce qu’on installe en 7 jours pour transformer la visibilité en clients.”
+          </div>
+
+          <div class="footer">
+            <div>Version : Maximaliste • Offline • 1 fichier (HTML)</div>
+            <div id="stamp">—</div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <!-- MODAL: ONE-PAGER PROPOSAL -->
+  <div class="modal" id="modal">
+    <div class="modalCard">
+      <div class="modalHd">
+        <b>Proposition 1-page (prête à envoyer)</b>
+        <div class="actions">
+          <button class="btn" id="btnPrintModal">Imprimer / PDF</button>
+          <button class="btn ghost" id="btnCloseModal">Fermer</button>
+        </div>
+      </div>
+      <div class="modalBd">
+        <div class="onepager" id="onepager">
+          <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:12px; flex-wrap:wrap;">
+            <div>
+              <div style="font-weight:950; font-size:16px; letter-spacing:.2px;" id="opTitle">Proposition —</div>
+              <div style="color:var(--muted); font-size:12px; margin-top:6px; line-height:1.4;" id="opSub">—</div>
+            </div>
+            <div class="pill"><span class="k" id="opDate">—</span><span>timestamp</span></div>
+          </div>
+
+          <div class="divider"></div>
+
+          <div class="opGrid">
+            <div>
+              <div class="pill"><span class="k">Résumé (KPI)</span><span>boardroom-ready</span></div>
+              <div style="margin-top:10px;" class="opKpis">
+                <div class="opKpi">
+                  <div class="k">CA mensuel</div>
+                  <div class="v" id="opRev">—</div>
+                  <div class="s">Base actuelle</div>
+                </div>
+                <div class="opKpi">
+                  <div class="k">Marge mensuelle</div>
+                  <div class="v" id="opGross">—</div>
+                  <div class="s">Avant optimisation</div>
+                </div>
+                <div class="opKpi">
+                  <div class="k">Gain net (90j)</div>
+                  <div class="v" id="opNet90">—</div>
+                  <div class="s">Projection scénario sélectionné</div>
+                </div>
+              </div>
+
+              <div class="divider"></div>
+
+              <div class="pill"><span class="k">Plan 7/30/90</span><span>exécution</span></div>
+              <ul class="opList" id="opPlan">
+                <li>—</li>
+              </ul>
+
+              <div class="divider"></div>
+
+              <div class="pill"><span class="k">Livrables</span><span>preuve + système</span></div>
+              <ul class="opList" id="opDeliver">
+                <li>—</li>
+              </ul>
+            </div>
+
+            <div>
+              <div class="pill"><span class="k">Pack recommandé</span><span id="opPack">—</span></div>
+              <div style="margin-top:10px; border:1px solid rgba(255,255,255,.10); background:rgba(0,0,0,.18); border-radius:14px; padding:12px;">
+                <div style="color:var(--muted2); font-size:11px; font-weight:950; letter-spacing:.25px;">Pourquoi ce pack</div>
+                <div style="margin-top:8px; font-weight:950; font-size:13px; line-height:1.45;" id="opWhy">—</div>
+              </div>
+
+              <div class="divider"></div>
+
+              <div class="pill"><span class="k">Contact</span><span>next step</span></div>
+              <div style="margin-top:10px; border:1px solid rgba(255,255,255,.10); background:rgba(0,0,0,.18); border-radius:14px; padding:12px;">
+                <div style="color:var(--muted2); font-size:11px; font-weight:950; letter-spacing:.25px;">Entreprise</div>
+                <div style="margin-top:6px; font-weight:950;" id="opCompany">—</div>
+                <div style="margin-top:10px; color:var(--muted2); font-size:11px; font-weight:950; letter-spacing:.25px;">Contact</div>
+                <div style="margin-top:6px; font-weight:950;" id="opContact">—</div>
+                <div style="margin-top:10px; color:var(--muted2); font-size:11px; font-weight:950; letter-spacing:.25px;">Note</div>
+                <div style="margin-top:6px; color:var(--muted); font-size:12px; line-height:1.45;" id="opNote">—</div>
+              </div>
+
+              <div class="divider"></div>
+
+              <div style="color:var(--muted); font-size:12px; line-height:1.45;">
+                <b>Engagement :</b> exécution orientée résultats, pilotage par KPI, preuves livrées rapidement.
+              </div>
+            </div>
+          </div>
+
+          <div class="divider"></div>
+
+          <div style="display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap; color:var(--muted2); font-size:12px;">
+            <div id="opFooterL">—</div>
+            <div id="opFooterR">—</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 
-  <header>
-    <div class="container grid">
-      <div class="card hero">
-        <span class="pill"><span class="dot" aria-hidden="true"></span> Objectif: + demandes qualifiées & image premium</span>
-        <h1>
-          Votre <span class="grad">image</span> + votre <span class="grad">visibilité</span> + votre <span class="grad">conversion</span>,
-          en un plan clair.
-        </h1>
-        <p>
-          En 60 secondes, vous obtenez une simulation: <b>ce qu’on améliore</b>, <b>ce qu’on installe</b> et <b>comment ça génère plus de demandes</b>.
-          Pensé pour être présenté pendant un appel.
-        </p>
-
-        <div class="mini-grid">
-          <div class="mini"><b>Visuels Premium</b><span>Drone + caméra + montage: crédibilité instant et différenciation.</span></div>
-          <div class="mini"><b>Machine à Demandes</b><span>Site/landing + tunnel + suivi + relances: zéro lead perdu.</span></div>
-          <div class="mini"><b>Acquisition</b><span>SEO local + Google + Ads Meta/Google: flux stable de prospects.</span></div>
-        </div>
-
-        <div class="row" style="margin-top:12px">
-          <span class="pill">Temps: <b style="color:rgba(255,255,255,.92)">60–90s</b></span>
-          <span class="pill">Résultat: <b style="color:rgba(255,255,255,.92)">Score + Stack + Pack conseillé</b></span>
-          <button class="btn ghost" type="button" id="pdfBtn">PDF</button>
-        </div>
-      </div>
-
-      <aside class="card panel" id="formCard">
-        <h2 id="audit">Générer votre simulation</h2>
-        <p>Quelques infos, puis on vous sort un plan d’actions + les solutions adaptées à votre entreprise.</p>
-
-        <form id="auditForm">
-          <label>
-            Entreprise *
-            <input name="company" required placeholder="Ex: Nom de l’entreprise" autocomplete="organization" />
-          </label>
-
-          <div class="r2">
-            <label>
-              Secteur *
-              <select name="sector" required>
-                <option value="" disabled selected>Choisir</option>
-                <option>Commerce local</option>
-                <option>Restauration</option>
-                <option>Sport / Club</option>
-                <option>Immobilier</option>
-                <option>Artisan / BTP</option>
-                <option>Services B2B</option>
-                <option>Services B2C</option>
-                <option>E-commerce</option>
-                <option>Autre</option>
-              </select>
-            </label>
-            <label>
-              Ville *
-              <input name="city" required placeholder="Ex: Montpellier" autocomplete="address-level2" />
-            </label>
-          </div>
-
-          <div class="r2">
-            <label>
-              Email pro *
-              <input name="email" required type="email" placeholder="contact@..." autocomplete="email" />
-            </label>
-            <label>
-              Objectif *
-              <select name="goal" required>
-                <option value="" disabled selected>Choisir</option>
-                <option>Plus d’appels / demandes</option>
-                <option>Plus de RDV qualifiés</option>
-                <option>Plus de ventes</option>
-                <option>Améliorer l’image & la confiance</option>
-                <option>Dominer localement</option>
-              </select>
-            </label>
-          </div>
-
-          <label>
-            Site (optionnel)
-            <input name="website" placeholder="https://..." inputmode="url" autocomplete="url" />
-          </label>
-
-          <label>
-            Frein principal (1 phrase) *
-            <textarea name="pain" rows="2" required placeholder="Ex: peu de demandes / visuels pas pro / pas d’avis / pas de pub / pas de suivi"></textarea>
-          </label>
-
-          <div class="toggle">
-            <input id="needVisual" type="checkbox" checked />
-            <div>
-              <b>Visuels Premium (Drone + Caméra + Montage)</b>
-              <span>Valorise l’image, augmente la confiance, améliore le taux de conversion.</span>
-              <div class="chips">
-                <span class="chip">Drone</span><span class="chip">Caméra</span><span class="chip">Mini-film</span><span class="chip">Reels/TikTok</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="toggle">
-            <input id="needDigital" type="checkbox" checked />
-            <div>
-              <b>Conversion Digitale (Site + SEO + Tunnel + Suivi)</b>
-              <span>Machine à demandes: pages qui convertissent + suivi + relance + Google.</span>
-              <div class="chips">
-                <span class="chip">Site</span><span class="chip">SEO</span><span class="chip">Landing</span><span class="chip">Tunnel</span><span class="chip">Avis</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="toggle">
-            <input id="needAds" type="checkbox" checked />
-            <div>
-              <b>Acquisition (Ads Meta/Google)</b>
-              <span>Flux stable de prospects + optimisation continue.</span>
-              <div class="chips">
-                <span class="chip">Meta Ads</span><span class="chip">Google Ads</span><span class="chip">Tracking</span><span class="chip">Optimisation</span>
-              </div>
-            </div>
-          </div>
-
-          <button class="btn primary" type="submit" id="submitBtn">Générer le résultat</button>
-        </form>
-      </aside>
-    </div>
-  </header>
-
-  <section id="resultat">
-    <div class="container sim">
-      <div class="card box">
-        <h3>Score & Priorités</h3>
-
-        <div class="score">
-          <div class="big">
-            <div class="n" id="scoreN">—</div>
-            <div style="padding-bottom:6px">
-              <div style="color:var(--muted2); font-size:13px">/100</div>
-              <div id="scoreTag" class="badge warn">Simulation</div>
-            </div>
-          </div>
-          <div class="meter"><div id="meterFill"></div></div>
-        </div>
-
-        <div class="stack" id="stack">
-          <div class="item">
-            <div class="ic" aria-hidden="true">⚡</div>
-            <div>
-              <b>Ce que vous allez voir ici</b>
-              <span>Une simulation claire: <b>priorités</b> + <b>stack recommandée</b> + <b>pack conseillé</b>.</span>
-              <div class="chips">
-                <span class="chip">Image</span><span class="chip">Conversion</span><span class="chip">Acquisition</span><span class="chip">Suivi</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="cta">
-          <div class="row">
-            <div class="left">
-              <b>Étape suivante: RDV 15 min</b>
-              <span>On valide l’objectif et on lance l’exécution du pack conseillé.</span>
-            </div>
-            <div class="right">
-              <a class="btn wa" id="waBtn" href="#" target="_blank" rel="noopener">WhatsApp</a>
-              <a class="btn primary" id="calBtn" href="#" target="_blank" rel="noopener">Réserver</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="card box">
-        <h3>Plan 14 jours + Simulation de valeur</h3>
-        <div class="deliver" id="deliver">
-          Remplissez l’audit pour afficher votre plan personnalisé.
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="packs">
-    <div class="container">
-      <div class="card box" style="margin-bottom:12px">
-        <h3>Solutions (packs)</h3>
-        <div class="muted">
-          Packs conçus pour répondre à 100% des besoins: image premium, conversion digitale, acquisition et suivi.
-        </div>
-      </div>
-
-      <div class="packs">
-        <div class="pack">
-          <div class="head">
-            <h4>Pack Fondation</h4>
-            <span class="tag">Conversion</span>
-          </div>
-          <p>Base solide: présence propre + pages qui convertissent + Google optimisé.</p>
-          <ul class="list">
-            <li><span class="check">✓</span> Site vitrine pro + sécurité + mises à jour</li>
-            <li><span class="check">✓</span> SEO local + Google Business (optimisé)</li>
-            <li><span class="check">✓</span> Landing “offre principale” + CTA unique</li>
-            <li><span class="check">✓</span> Avis + preuves + FAQ objections</li>
-          </ul>
-        </div>
-
-        <div class="pack highlight">
-          <span class="ribbon">Recommandé</span>
-          <div class="head">
-            <h4>Pack Impact</h4>
-            <span class="tag">Image + Conversion</span>
-          </div>
-          <p>Effet premium immédiat: visuels drone/caméra + montage + contenus + pages qui convertissent.</p>
-          <ul class="list">
-            <li><span class="check">✓</span> Drone + caméra (photos/vidéos) + mini-film</li>
-            <li><span class="check">✓</span> Montage + déclinaisons Reels/TikTok/Stories</li>
-            <li><span class="check">✓</span> Landing + tunnel simple + suivi leads</li>
-            <li><span class="check">✓</span> Optimisation mensuelle conversion</li>
-          </ul>
-        </div>
-
-        <div class="pack">
-          <div class="head">
-            <h4>Pack Dominance</h4>
-            <span class="tag">Acquisition</span>
-          </div>
-          <p>Flux stable de prospects: Ads + tracking + optimisation continue + suivi des leads.</p>
-          <ul class="list">
-            <li><span class="check">✓</span> Meta Ads / Google Ads (mise en place + réglages)</li>
-            <li><span class="check">✓</span> Tracking + événements + tableau de suivi</li>
-            <li><span class="check">✓</span> Relances J+1/J+3 + pipeline simple</li>
-            <li><span class="check">✓</span> Reporting clair + actions mensuelles</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    <div class="container">
-      Mini-audit + simulateur de valeur. Présentable en appel. Export PDF disponible.
-    </div>
-  </footer>
-
   <script>
-    const CONFIG = {
-      WHATSAPP_NUMBER: "33600000000",          // sans "+"
-      CALENDLY_URL: "https://calendly.com/votre-lien/15min",
-      WEBHOOK_URL: ""                          // optionnel
+    // ---------- UTIL ----------
+    const $ = (id) => document.getElementById(id);
+    const money = (n) => {
+      if (!isFinite(n)) return "—";
+      return new Intl.NumberFormat("fr-FR", { style:"currency", currency:"EUR", maximumFractionDigits:0 }).format(n);
+    };
+    const num = (v) => {
+      const x = parseFloat(String(v).replace(",", "."));
+      return isFinite(x) ? x : 0;
+    };
+    const clamp = (x, a, b) => Math.max(a, Math.min(b, x));
+    const nowStamp = () => {
+      const d = new Date();
+      return d.toLocaleString("fr-FR", { year:"numeric", month:"2-digit", day:"2-digit", hour:"2-digit", minute:"2-digit" });
     };
 
-    const $ = (s, r=document) => r.querySelector(s);
-    const clamp = (n, a, b) => Math.max(a, Math.min(b, n));
-    function safe(s){ return String(s||"").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+    // Canvas helpers (no external libs)
+    function dprCanvas(c){
+      const dpr = window.devicePixelRatio || 1;
+      const rect = c.getBoundingClientRect();
+      const w = Math.floor(rect.width * dpr);
+      const h = Math.floor(rect.height * dpr);
+      if (c.width !== w || c.height !== h){
+        c.width = w; c.height = h;
+      }
+      const ctx = c.getContext("2d");
+      ctx.setTransform(dpr,0,0,dpr,0,0);
+      return ctx;
+    }
 
-    function waLink(message){
-      return `https://wa.me/${CONFIG.WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+    function hexToRgba(hex, a){
+      // supports #RRGGBB
+      const h = hex.replace("#","");
+      const r = parseInt(h.slice(0,2),16);
+      const g = parseInt(h.slice(2,4),16);
+      const b = parseInt(h.slice(4,6),16);
+      return `rgba(${r},${g},${b},${a})`;
     }
-    function labelFromScore(s){
-      if(s >= 82) return {txt:"Prêt à scaler", cls:"good"};
-      if(s >= 62) return {txt:"Gros potentiel", cls:"warn"};
-      return {txt:"Fuites importantes", cls:"bad"};
+
+    function getCssVar(name){
+      return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
     }
-    async function sendLead(payload){
-      try{ localStorage.setItem("last_audit", JSON.stringify(payload)); }catch(e){}
-      if(!CONFIG.WEBHOOK_URL) return { ok:true, skipped:true };
-      const res = await fetch(CONFIG.WEBHOOK_URL, {
-        method:"POST",
-        headers:{ "Content-Type":"application/json" },
-        body: JSON.stringify(payload)
+
+    // ---------- STATE ----------
+    let step = 1;
+    let scenario = "conservative"; // default visual; will set button
+    const els = {
+      sector: $("sector"),
+      maturity: $("maturity"),
+      topChannel: $("topChannel"),
+      traffic: $("traffic"),
+      volume: $("volume"),
+      cr: $("cr"),
+
+      aov: $("aov"),
+      gm: $("gm"),
+      adspend: $("adspend"),
+      cac: $("cac"),
+      crTarget: $("crTarget"),
+      aovLift: $("aovLift"),
+
+      goal: $("goal"),
+      horizon: $("horizon"),
+      company: $("company"),
+      url: $("url"),
+      contact: $("contact"),
+      note: $("note"),
+    };
+
+    // ---------- NAV STEPS ----------
+    function setStep(n){
+      step = clamp(n, 1, 3);
+      $("stepLabel").textContent = "Étape " + step;
+      $("stepSub").textContent = "/ 3";
+
+      document.querySelectorAll("[data-panel]").forEach(p => {
+        p.style.display = (parseInt(p.getAttribute("data-panel"),10) === step) ? "" : "none";
       });
-      return { ok:res.ok, status:res.status };
-    }
 
-    function computeScore({hasSite, needVisual, needDigital, needAds, painText, goal}){
-      let s = 72;
-
-      if(!hasSite) s -= 14;
-      if(painText.includes("peu de demandes") || painText.includes("pas de demandes")) s -= 10;
-      if(painText.includes("avis") || painText.includes("confiance") || painText.includes("image")) s -= 8;
-      if(painText.includes("lent") || painText.includes("mobile")) s -= 6;
-      if(painText.includes("suivi") || painText.includes("relance") || painText.includes("crm")) s -= 8;
-
-      // Activation des leviers (signal d'engagement + adéquation)
-      if(needVisual) s += 6;
-      if(needDigital) s += 6;
-      if(needAds) s += 6;
-
-      if(goal.includes("Dominer")) s += 3;
-      if(goal.includes("confiance") || goal.includes("image")) s += 2;
-
-      return clamp(Math.round(s), 28, 92);
-    }
-
-    function buildStack({needVisual, needDigital, needAds, painText, hasSite}){
-      const leaks = [];
-      if(!hasSite || painText.includes("pas de site") || painText.includes("site")) leaks.push("Parcours client à renforcer (page offre + CTA + mobile)");
-      if(painText.includes("avis") || painText.includes("confiance") || painText.includes("image")) leaks.push("Confiance à augmenter (preuves, avis, visuels premium)");
-      if(painText.includes("suivi") || painText.includes("relance") || painText.includes("crm")) leaks.push("Leads perdus (réponse auto + relances J+1/J+3)");
-      if(painText.includes("pub") || painText.includes("ads") || painText.includes("meta") || painText.includes("google")) leaks.push("Acquisition à structurer (tracking + campagnes + optimisation)");
-      if(leaks.length === 0) leaks.push("Clarté de l’offre + preuves + vitesse (gros impact conversion)");
-
-      const items = [];
-      if(needVisual){
-        items.push({ic:"🎥", title:"Visuels Premium (Drone + Caméra + Montage)", desc:"Image premium + différenciation + hausse conversion.", chips:["Drone","Caméra","Mini-film","Reels/TikTok"]});
-      } else {
-        items.push({ic:"✅", title:"Crédibilité (preuves + avis + FAQ)", desc:"Réassurance instant pour accélérer la décision.", chips:["Avis","FAQ","Garanties","Portfolio"]});
-      }
-
-      if(needDigital){
-        items.push({ic:"🧲", title:"Conversion (Site/Landing + Tunnel + SEO)", desc:"Pages qui convertissent + SEO local + Google optimisé.", chips:["Site","Landing","Tunnel","SEO","Google"]});
-        items.push({ic:"⚡", title:"Suivi (réponse auto + relances)", desc:"Zéro lead perdu: WhatsApp/email + pipeline simple.", chips:["Auto","Relance","WhatsApp","Pipeline"]});
-      }
-
-      if(needAds){
-        items.push({ic:"📈", title:"Acquisition (Meta Ads / Google Ads)", desc:"Flux stable de prospects + optimisation continue.", chips:["Meta Ads","Google Ads","Tracking","Optimisation"]});
-      } else {
-        items.push({ic:"📍", title:"Visibilité locale (SEO + Avis)", desc:"Capter la demande organique et sécuriser la position locale.", chips:["SEO","Local","Avis"]});
-      }
-
-      return { leaks, items };
-    }
-
-    function renderStack(stack){
-      const root = $("#stack");
-      root.innerHTML = "";
-
-      const leakHTML = stack.leaks.map(x => `<span class="chip">${safe(x)}</span>`).join("");
-
-      root.innerHTML += `
-        <div class="item">
-          <div class="ic" aria-hidden="true">🧠</div>
-          <div>
-            <b>Priorités identifiées</b>
-            <span>Ce qui bloque le plus souvent la conversion et la prise de contact.</span>
-            <div class="chips">${leakHTML}</div>
-          </div>
-        </div>
-      `;
-
-      stack.items.forEach(it=>{
-        const chips = it.chips.map(c=>`<span class="chip">${safe(c)}</span>`).join("");
-        root.innerHTML += `
-          <div class="item">
-            <div class="ic" aria-hidden="true">${safe(it.ic)}</div>
-            <div>
-              <b>${safe(it.title)}</b>
-              <span>${safe(it.desc)}</span>
-              <div class="chips">${chips}</div>
-            </div>
-          </div>
-        `;
+      document.querySelectorAll(".step").forEach(s => {
+        const on = parseInt(s.getAttribute("data-step"),10) === step;
+        s.classList.toggle("on", on);
       });
+
+      $("btnNextTop").textContent = (step < 3) ? "Continuer" : "Générer";
     }
 
-    function recommendPack({needVisual, needDigital, needAds, score, goal}){
-      // Reco simple et claire pour un appel
-      if(needAds || goal.includes("Dominer")) return "Pack Dominance";
-      if(needVisual && needDigital) return "Pack Impact";
-      if(score < 62) return "Pack Fondation";
-      return "Pack Impact";
+    // ---------- CORE CALC ----------
+    function getInputs(){
+      const traffic = num(els.traffic.value);
+      const volume = num(els.volume.value);
+      let cr = num(els.cr.value);
+
+      if ((!els.cr.value || cr === 0) && traffic > 0 && volume > 0){
+        cr = (volume / traffic) * 100;
+      }
+
+      const aov = num(els.aov.value);
+      const gm = num(els.gm.value) / 100;
+      const adspend = num(els.adspend.value);
+      let cac = num(els.cac.value);
+
+      if ((!els.cac.value || cac === 0) && volume > 0 && adspend > 0){
+        cac = adspend / volume;
+      }
+
+      const crTarget = num(els.crTarget.value);
+      const aovLift = num(els.aovLift.value);
+      const horizonDays = parseInt(els.horizon.value, 10) || 90;
+
+      return { traffic, volume, cr, aov, gm, adspend, cac, crTarget, aovLift, horizonDays };
     }
 
-    function renderPlan(lead, score, stack, pack){
-      const plan14 = [
-        "J0–J1: Promesse claire + CTA unique + preuves (avis/portfolio) + optimisation mobile",
-        "J2–J4: Landing “offre principale” + formulaire court + tracking (événements)",
-        "J5–J7: Google Business + avis + SEO local + relances J+1/J+3 (zéro lead perdu)",
-        "J8–J14: Contenus réseaux (Reels/TikTok) + optimisation conversion + (option) Ads Meta/Google"
+    function computeScore(i){
+      const maturity = parseInt(els.maturity.value, 10) || 1;
+
+      const dataCompleteness =
+        (i.traffic>0) + (i.volume>0) + (i.aov>0) + (i.gm>0) + (i.adspend>0 || i.cac>0);
+
+      const gpPerOrder = i.aov * i.gm;
+      const unitProfitAfterAds = gpPerOrder - (i.cac || 0);
+      const profitRatio = gpPerOrder > 0 ? (unitProfitAfterAds / gpPerOrder) : 0;
+
+      const sector = els.sector.value;
+      let crBenchLow = 1.0, crBenchHigh = 3.0;
+      if (sector === "ecom"){ crBenchLow = 1.2; crBenchHigh = 3.2; }
+      if (sector === "leadgen"){ crBenchLow = 2.5; crBenchHigh = 8.0; }
+      if (sector === "saas"){ crBenchLow = 0.8; crBenchHigh = 2.2; }
+      if (sector === "local"){ crBenchLow = 1.5; crBenchHigh = 4.0; }
+      if (sector === "b2b"){ crBenchLow = 0.6; crBenchHigh = 1.8; }
+
+      const crScore = clamp(((i.cr - crBenchLow) / (crBenchHigh - crBenchLow)) * 25, 0, 25);
+      const profitScore = clamp((profitRatio) * 25, -10, 25);
+      const maturityScore = [0, 12, 18, 25][maturity] || 12;
+      const dataScore = clamp(dataCompleteness * 6, 0, 18);
+
+      const penalty = (dataCompleteness < 3) ? 15 : 0;
+
+      let score = crScore + profitScore + maturityScore + dataScore - penalty;
+      score = clamp(Math.round(score), 0, 100);
+
+      return { score, crBenchLow, crBenchHigh, profitRatio, unitProfitAfterAds, gpPerOrder, dataCompleteness };
+    }
+
+    function computeUpside(i, scn){
+      // baseline
+      const revM = i.volume * i.aov;
+      const grossM = revM * i.gm;
+
+      // scenario multipliers (impact + ramp)
+      const sc = {
+        conservative: { ramp:0.55, crBonus:0.60, aovBonus:0.60, effBonus:0.70 },
+        realistic:    { ramp:0.65, crBonus:1.00, aovBonus:1.00, effBonus:1.00 },
+        aggressive:   { ramp:0.75, crBonus:1.25, aovBonus:1.25, effBonus:1.20 },
+      }[scn] || { ramp:0.65, crBonus:1.0, aovBonus:1.0, effBonus:1.0 };
+
+      // target volume
+      let volTarget = i.volume;
+      if (i.traffic > 0 && i.crTarget > 0){
+        volTarget = i.traffic * (i.crTarget / 100);
+      } else {
+        // scenario if no explicit target: +10 / +20 / +30%
+        const base = (scn === "conservative") ? 1.10 : (scn === "aggressive" ? 1.30 : 1.20);
+        volTarget = i.volume * base;
+      }
+
+      // AOV target
+      const aovTarget = i.aov + ((i.aovLift || 0) * sc.aovBonus);
+
+      // ad efficiency (proxy): if ads exist, assume CAC improves slightly by scenario and maturity
+      let cacEff = i.cac || 0;
+      const maturity = parseInt(els.maturity.value,10) || 1;
+      const cacImprovement = (i.adspend>0 || cacEff>0) ? ( (scn==="conservative")? 0.06 : (scn==="aggressive")? 0.14 : 0.10 ) : 0;
+      const maturityFactor = (maturity>=3) ? 1.15 : (maturity===2 ? 1.0 : 0.9);
+      const cacTarget = Math.max(0, cacEff * (1 - cacImprovement*maturityFactor*sc.effBonus));
+
+      // compute target
+      const revTargetM = volTarget * aovTarget;
+      const grossTargetM = revTargetM * i.gm;
+
+      // baseline ad cost (use adspend if provided)
+      const adCostBase = i.adspend || (i.volume>0 ? (i.cac * i.volume) : 0);
+      const adCostTarget = (i.adspend>0) ? (cacTarget * volTarget) : 0;
+
+      // delta gross + delta ad cost => delta net (simplified)
+      const deltaGrossM = Math.max(0, grossTargetM - grossM);
+      const deltaAdsM = Math.max(0, adCostBase - adCostTarget); // savings
+      const months = i.horizonDays / 30;
+
+      const upsideGross = (deltaGrossM * months * sc.ramp);
+      const upsideAds = (deltaAdsM * months * sc.ramp);
+
+      const upside = upsideGross + upsideAds;
+
+      return {
+        revM, grossM,
+        volTarget, aovTarget, cacTarget,
+        revTargetM, grossTargetM,
+        upside,
+        upsideGross, upsideAds,
+        adCostBase, adCostTarget
+      };
+    }
+
+    // ---------- Digital Leverage Score (4 pillars) ----------
+    function computePillars(i, s){
+      // 0..100 each pillar
+      const maturity = parseInt(els.maturity.value,10) || 1;
+      const ch = els.topChannel.value;
+      const goal = els.goal.value;
+      const hasSite = (els.url.value || "").trim().length > 0;
+      const note = (els.note.value || "").toLowerCase();
+
+      // Proxy signals
+      const hasTracking = (maturity >= 2) ? 1 : 0;
+      const hasCRM = (maturity >= 3) ? 1 : 0;
+      const hasAds = (ch === "ads" || ch === "mixed" || i.adspend > 0);
+      const hasData = (s.dataCompleteness >= 4);
+
+      // Proof & Authority
+      let proof = 40;
+      proof += hasSite ? 10 : -5;
+      proof += (note.includes("avis") || note.includes("preuve") || note.includes("créd") || note.includes("cred")) ? -5 : 5;
+      proof += (els.sector.value === "local" || els.sector.value === "b2b") ? 10 : 5;
+      proof += (goal === "speed") ? 10 : 0;
+      proof = clamp(proof, 15, 92);
+
+      // Acquisition
+      let acq = 45;
+      acq += hasAds ? 10 : 5;
+      acq += hasData ? 8 : -6;
+      acq += (ch === "seo" || ch === "social") ? 6 : 0;
+      acq += (goal === "cac") ? -3 : 0;
+      acq = clamp(acq, 15, 92);
+
+      // Conversion
+      let conv = 42;
+      conv += (i.cr > (s.crBenchLow + 0.3)) ? 8 : -6;
+      conv += (i.aov > 0) ? 6 : -4;
+      conv += hasTracking ? 8 : -10;
+      conv += (goal === "conv" || goal === "aov") ? 8 : 0;
+      conv = clamp(conv, 12, 92);
+
+      // Retention / Pipeline
+      let ret = 38;
+      ret += hasCRM ? 12 : -4;
+      ret += (els.sector.value === "leadgen" || els.sector.value === "b2b") ? 10 : 4;
+      ret += (goal === "ret" || goal === "speed") ? 10 : 0;
+      ret += hasTracking ? 6 : -6;
+      ret = clamp(ret, 12, 92);
+
+      return { proof, acq, conv, ret };
+    }
+
+    // ---------- Solutions personnalisées ----------
+    function buildSolutions(i, s, u){
+      const sector = els.sector.value;
+      const goal = els.goal.value;
+      const maturity = parseInt(els.maturity.value, 10) || 1;
+      const ch = els.topChannel.value;
+      const note = (els.note.value || "").toLowerCase();
+
+      const hasSite = (els.url.value || "").trim().length > 0;
+      const needProof = note.includes("avis") || note.includes("créd") || note.includes("cred") || note.includes("preuve") || !hasSite;
+
+      const modules = [];
+
+      if (sector === "local" || sector === "b2b" || goal === "speed" || needProof){
+        modules.push({ key:"visual", label:"Visuels drone + mini-film", tag:"Preuve & autorité", level:"good" });
+        modules.push({ key:"content", label:"Contenus réseaux + pubs", tag:"Acquisition", level:"good" });
+      }
+
+      if (!hasSite || maturity <= 2 || goal === "conv" || goal === "aov"){
+        modules.push({ key:"web", label:"Site/landing + tunnel", tag:"Conversion", level:"good" });
+        modules.push({ key:"ops", label:"MAJ & sécurité + perf", tag:"Opérationnel", level:"warn" });
+      }
+
+      if (sector === "leadgen" || sector === "b2b" || goal === "ret" || goal === "speed" || goal === "cac"){
+        modules.push({ key:"crm", label:"CRM + relances auto", tag:"Pipeline", level:"good" });
+        modules.push({ key:"reviews", label:"Gestion avis + réputation", tag:"Crédibilité", level:"warn" });
+      }
+
+      if (ch === "ads" || ch === "mixed" || i.adspend > 0 || goal === "cac"){
+        modules.push({ key:"track", label:"Tracking GA4/Pixel + events", tag:"Mesure", level:(maturity>=2 ? "warn" : "bad") });
+        modules.push({ key:"ads", label:"Optimisation ads + créas", tag:"ROI", level:"warn" });
+      }
+
+      if (modules.length === 0){
+        modules.push({ key:"visual", label:"Visuels premium (drone/mini-film)", tag:"Preuve", level:"warn" });
+        modules.push({ key:"web", label:"Landing + tunnel conversion", tag:"Conversion", level:"warn" });
+        modules.push({ key:"crm", label:"Relances prospects + avis", tag:"Pipeline", level:"warn" });
+      }
+
+      const seen = new Set();
+      const finalModules = modules.filter(m => (seen.has(m.key) ? false : seen.add(m.key)));
+
+      const plan7 = [];
+      const plan30 = [];
+      const plan90 = [];
+
+      plan7.push("Audit + KPI baseline + coût d’inaction (1 page).");
+      plan7.push("Page ‘preuve’ + CTA + objections + garanties.");
+      if (finalModules.some(m => m.key === "visual")){
+        plan7.push("Shooting drone + mini-film 15–30s + déclinaisons.");
+      } else {
+        plan7.push("Pack créa : 3 visuels + 2 hooks + 1 script vidéo.");
+      }
+      if (finalModules.some(m => m.key === "track")){
+        plan7.push("Tracking events clés + dashboard KPI simple.");
+      }
+
+      plan30.push("Landing dédiée à l’offre + tunnel (RDV/checkout).");
+      plan30.push("Relances auto (email/SMS/WhatsApp) : abandons + post-lead (7j).");
+      if (finalModules.some(m => m.key === "reviews")){
+        plan30.push("Système avis : collecte + réponses + templates + push Google.");
+      } else {
+        plan30.push("Optimisation conversion : copy, CTA, FAQ, friction (2 itérations).");
+      }
+      plan30.push("MAJ site : sécurité + perf + corrections UX.");
+
+      if (finalModules.some(m => m.key === "ads")){
+        plan90.push("Optimisation campagnes + itérations créas (hebdo).");
+      } else {
+        plan90.push("Acquisition organique : calendrier contenu + formats récurrents.");
+      }
+      plan90.push("A/B test : 2 variations landing + 2 variations offre.");
+      plan90.push("Pipeline : scoring + scripts closing + relances multi-étapes.");
+      plan90.push("Dashboard KPI mensuel + pilotage ROI.");
+
+      const deliver = [];
+      deliver.push("Audit PDF (score + KPI + coût d’inaction)");
+      deliver.push("Board KPI + tracking events");
+      if (finalModules.some(m => m.key === "visual")) deliver.push("Pack visuel (drone + mini-film + déclinaisons)");
+      deliver.push("Landing + tunnel (formulaire / RDV / checkout)");
+      deliver.push("CRM + relances + templates (email/SMS/WhatsApp)");
+      deliver.push("Avis & réputation + scripts");
+
+      const proofKpi = finalModules.some(m => m.key === "visual")
+        ? "Mini-film + visuels premium livrés"
+        : "Page preuve + pack créa livré";
+
+      const acqKpi = (ch === "ads" || i.adspend > 0)
+        ? "Créa + ads optimisées (ROI)"
+        : "Plan contenu + hooks + calendrier";
+
+      const convKpi = (goal === "conv" || goal === "aov")
+        ? "Landing + tunnel + relances auto"
+        : "Pipeline + CRM + relances";
+
+      let fit = "fit: solide";
+      if (s.score <= 35) fit = "fit: foundations";
+      if (s.score >= 75) fit = "fit: scale-ready";
+
+      let title = "Blueprint valeur + acquisition";
+      let subtitle = "Mix visuel + web + tunnel + CRM selon votre objectif (prêt à déployer).";
+      if (goal === "speed"){ title = "Blueprint closing & pipeline"; subtitle = "On transforme les leads en RDV + ventes avec CRM, scripts, relances et preuve."; }
+      if (goal === "ret"){ title = "Blueprint rétention & LTV"; subtitle = "On augmente le revenu sans plus de trafic : relances, avis, offres récurrentes."; }
+      if (goal === "cac"){ title = "Blueprint ROI & CAC"; subtitle = "On nettoie le tracking, on optimise ads/créas et on remonte la marge."; }
+
+      return {
+        title, subtitle, fit,
+        modules: finalModules,
+        plan7: plan7.slice(0,4),
+        plan30: plan30.slice(0,4),
+        plan90: plan90.slice(0,4),
+        deliverables: deliver,
+        proofKpi, acqKpi, convKpi
+      };
+    }
+
+    // ---------- Pack selection ----------
+    function pickPack(i, s, u){
+      const maturity = parseInt(els.maturity.value, 10) || 1;
+      const hasBasics = (i.traffic>0 && i.volume>0 && i.aov>0 && i.gm>0);
+      const bigUpside = u.upside >= 8000;
+      const marginUnderPressure = (s.profitRatio < 0.2);
+
+      let pack = "starter";
+      if (hasBasics && maturity >= 2) pack = "growth";
+      if (bigUpside && maturity >= 2) pack = "growth";
+      if (bigUpside && !marginUnderPressure && (i.adspend >= 8000 || i.volume >= 1500)) pack = "scale";
+      if (marginUnderPressure && maturity >= 2) pack = "scale";
+
+      if (s.score <= 35) pack = "starter";
+      if (s.score >= 70 && (i.adspend >= 6000 || i.volume >= 1200)) pack = "scale";
+
+      return pack;
+    }
+
+    function paintPack(pack){
+      const cards = document.querySelectorAll(".pack");
+      cards.forEach(c => c.classList.remove("reco"));
+      const target = document.querySelector(`.pack[data-pack="${pack}"]`);
+      if (target) target.classList.add("reco");
+      const map = { starter:"Starter (one-shot)", growth:"Growth (abonnement)", scale:"Scale (abonnement)" };
+      $("packRecoMini").textContent = map[pack] || "—";
+    }
+
+    // ---------- Assumptions confidence ----------
+    function computeTrust(s){
+      // 0..6
+      const filled =
+        (num(els.traffic.value)>0) +
+        (num(els.volume.value)>0) +
+        (num(els.aov.value)>0) +
+        (num(els.gm.value)>0) +
+        ((num(els.adspend.value)>0) || (num(els.cac.value)>0)) +
+        ((els.url.value||"").trim().length>0);
+
+      const pct = clamp((filled / 6) * 100, 10, 100);
+      let lbl = "Confiance: faible";
+      if (pct >= 70) lbl = "Confiance: élevée";
+      else if (pct >= 45) lbl = "Confiance: moyenne";
+
+      $("trustBar").style.width = pct + "%";
+      $("trustLbl").textContent = lbl;
+
+      const txt =
+        (pct >= 70) ? "Hypothèses solides : projection très exploitable en décision."
+        : (pct >= 45) ? "Hypothèses correctes : projection exploitable (à affiner en onboarding)."
+        : "Hypothèses partielles : projection indicative (remplir AOV, marge, ads pour précision).";
+
+      $("assumptionsTxt").textContent = txt;
+      return { filled, pct };
+    }
+
+    // ---------- Cost of inaction ----------
+    function computeInaction(i, u, pillars){
+      // fuites estimées : panier + relances + preuve + tracking (proxy)
+      const revM = u.revM || 0;
+      const grossM = u.grossM || 0;
+
+      // leak factors from pillars (lower pillar => more leak)
+      const leakProof = clamp((70 - pillars.proof) / 100, 0, 0.35);
+      const leakConv  = clamp((70 - pillars.conv) / 100, 0, 0.35);
+      const leakRet   = clamp((70 - pillars.ret)  / 100, 0, 0.30);
+      const leakAcq   = clamp((70 - pillars.acq)  / 100, 0, 0.25);
+
+      // weighted leak on gross
+      const leak = (leakProof*0.25 + leakConv*0.35 + leakRet*0.25 + leakAcq*0.15);
+      const cost = grossM * leak;
+
+      return { cost, leak };
+    }
+
+    // ---------- Charts ----------
+    function drawRadar(pillars){
+      const c = $("canvasRadar");
+      const ctx = dprCanvas(c);
+      const w = c.getBoundingClientRect().width;
+      const h = c.getBoundingClientRect().height;
+
+      ctx.clearRect(0,0,w,h);
+
+      const accent = getCssVar("--accent");
+      const accent2 = getCssVar("--accent2");
+      const grid = "rgba(255,255,255,.08)";
+      const text = "rgba(255,255,255,.75)";
+      const muted = "rgba(255,255,255,.55)";
+
+      const cx = w/2;
+      const cy = h/2 + 6;
+      const R = Math.min(w,h)*0.34;
+
+      const axes = [
+        {k:"proof", label:"Preuve"},
+        {k:"acq",   label:"Acquisition"},
+        {k:"conv",  label:"Conversion"},
+        {k:"ret",   label:"Rétention"},
       ];
 
-      const planHTML = plan14.map(x=>`<li>${safe(x)}</li>`).join("");
+      // rings
+      for (let r=1; r<=4; r++){
+        const rr = (R/4)*r;
+        ctx.beginPath();
+        for (let i=0;i<axes.length;i++){
+          const a = (-Math.PI/2) + i*(2*Math.PI/axes.length);
+          const x = cx + Math.cos(a)*rr;
+          const y = cy + Math.sin(a)*rr;
+          if (i===0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
+        }
+        ctx.closePath();
+        ctx.strokeStyle = grid;
+        ctx.lineWidth = 1;
+        ctx.stroke();
+      }
 
-      const visuelLine = lead.needVisual
-        ? "<b>Visuels premium:</b> drone + caméra + montage + formats réseaux (image premium immédiate)."
-        : "<b>Crédibilité:</b> preuves + avis + FAQ + portfolio (confiance immédiate).";
+      // axis lines + labels
+      axes.forEach((ax, i) => {
+        const a = (-Math.PI/2) + i*(2*Math.PI/axes.length);
+        const x = cx + Math.cos(a)*R;
+        const y = cy + Math.sin(a)*R;
+        ctx.beginPath();
+        ctx.moveTo(cx,cy);
+        ctx.lineTo(x,y);
+        ctx.strokeStyle = "rgba(255,255,255,.10)";
+        ctx.stroke();
 
-      const digitalLine = lead.needDigital
-        ? "<b>Conversion digitale:</b> site/landing + SEO + Google + tunnel + suivi."
-        : "<b>Conversion:</b> page offre + CTA + preuves (version light).";
+        // labels
+        ctx.fillStyle = text;
+        ctx.font = "12px ui-sans-serif, system-ui";
+        const lx = cx + Math.cos(a)*(R + 20);
+        const ly = cy + Math.sin(a)*(R + 20);
+        ctx.textAlign = (Math.cos(a) > 0.3) ? "left" : (Math.cos(a) < -0.3) ? "right" : "center";
+        ctx.textBaseline = "middle";
+        ctx.fillText(ax.label, lx, ly);
+      });
 
-      const adsLine = lead.needAds
-        ? "<b>Acquisition:</b> Meta/Google Ads + tracking + optimisation continue."
-        : "<b>Acquisition:</b> priorité SEO/avis/local (ads optionnelles).";
+      // polygon
+      const vals = axes.map(ax => clamp(pillars[ax.k] / 100, 0, 1));
+      ctx.beginPath();
+      vals.forEach((v, i) => {
+        const a = (-Math.PI/2) + i*(2*Math.PI/axes.length);
+        const x = cx + Math.cos(a)*(R*v);
+        const y = cy + Math.sin(a)*(R*v);
+        if (i===0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
+      });
+      ctx.closePath();
 
-      $("#deliver").innerHTML = `
-        <b>${safe(lead.company)}</b> — ${safe(lead.city)}<br>
-        <b>Objectif:</b> ${safe(lead.goal)}<br>
-        <b>Score:</b> <span class="hl">${score}/100</span> • ${safe(labelFromScore(score).txt)}<br><br>
+      const grad = ctx.createLinearGradient(cx-R, cy-R, cx+R, cy+R);
+      grad.addColorStop(0, hexToRgba(accent, .35));
+      grad.addColorStop(1, hexToRgba(accent2, .22));
+      ctx.fillStyle = grad;
+      ctx.fill();
 
-        ${visuelLine}<br>
-        ${digitalLine}<br>
-        ${adsLine}<br><br>
+      ctx.strokeStyle = hexToRgba(accent, .75);
+      ctx.lineWidth = 2;
+      ctx.stroke();
 
-        <b>Pack conseillé:</b> <span class="hl">${safe(pack)}</span><br><br>
+      // points
+      vals.forEach((v, i) => {
+        const a = (-Math.PI/2) + i*(2*Math.PI/axes.length);
+        const x = cx + Math.cos(a)*(R*v);
+        const y = cy + Math.sin(a)*(R*v);
+        ctx.beginPath();
+        ctx.arc(x,y,4,0,2*Math.PI);
+        ctx.fillStyle = "rgba(255,255,255,.85)";
+        ctx.fill();
+        ctx.beginPath();
+        ctx.arc(x,y,7,0,2*Math.PI);
+        ctx.strokeStyle = hexToRgba(accent2, .35);
+        ctx.stroke();
+      });
 
-        <b>Plan 14 jours:</b>
-        <ul>${planHTML}</ul>
-
-        <b>Résultat attendu:</b> plus de demandes qualifiées via <b>image + confiance + parcours + suivi</b>.
-      `;
+      // small legend
+      ctx.fillStyle = muted;
+      ctx.font = "11px ui-sans-serif, system-ui";
+      ctx.textAlign = "left";
+      ctx.fillText("Plus c’est haut, plus votre levier digital est exploitable.", 10, 16);
     }
 
-    function setScoreUI(score){
-      $("#scoreN").textContent = score;
-      $("#meterFill").style.width = clamp(score,0,100) + "%";
-      const lab = labelFromScore(score);
-      const tag = $("#scoreTag");
-      tag.textContent = lab.txt;
-      tag.className = "badge " + lab.cls;
-    }
+    function drawWaterfall(baseGrossM, deltaGrossM, deltaAdsM){
+      const c = $("canvasWater");
+      const ctx = dprCanvas(c);
+      const w = c.getBoundingClientRect().width;
+      const h = c.getBoundingClientRect().height;
 
-    function updateCTA(lead, score, pack){
-      const msg =
-`Bonjour,
-Je viens de générer votre mini-audit pour ${lead.company} (${lead.city}).
+      ctx.clearRect(0,0,w,h);
 
-Score: ${score}/100 — ${labelFromScore(score).txt}
-Objectif: ${lead.goal}
-Pack conseillé: ${pack}
+      const accent = getCssVar("--accent");
+      const accent2 = getCssVar("--accent2");
+      const grid = "rgba(255,255,255,.08)";
+      const text = "rgba(255,255,255,.75)";
+      const muted = "rgba(255,255,255,.55)";
 
-Je vous propose 15 minutes pour valider l’objectif et lancer la mise en place (visuels premium + conversion + acquisition + suivi).`;
+      const pad = 26;
+      const top = 28;
+      const bottom = 34;
 
-      $("#waBtn").href = waLink(msg);
-      $("#calBtn").href = CONFIG.CALENDLY_URL || "#";
-    }
+      const maxVal = Math.max(1, baseGrossM + deltaGrossM + deltaAdsM);
+      const minVal = 0;
 
-    // Actions UI
-    $("#pdfBtn").addEventListener("click", () => window.print());
-    $("#goBtn").addEventListener("click", () => { location.hash = "#audit"; });
-
-    $("#auditForm").addEventListener("submit", async (e) => {
-      e.preventDefault();
-      const btn = $("#submitBtn");
-      btn.disabled = true;
-      btn.textContent = "Génération…";
-
-      const company = e.target.company.value.trim();
-      const sector  = e.target.sector.value;
-      const city    = e.target.city.value.trim();
-      const email   = e.target.email.value.trim();
-      const goal    = e.target.goal.value;
-      const website = e.target.website.value.trim();
-      const pain    = e.target.pain.value.trim();
-
-      const needVisual  = $("#needVisual").checked;
-      const needDigital = $("#needDigital").checked;
-      const needAds     = $("#needAds").checked;
-
-      const painText = pain.toLowerCase();
-      const hasSite = !!website && website.length > 6 && website.includes(".");
-
-      const score = computeScore({hasSite, needVisual, needDigital, needAds, painText, goal});
-      setScoreUI(score);
-
-      const stack = buildStack({needVisual, needDigital, needAds, painText, hasSite});
-      renderStack(stack);
-
-      const lead = {
-        created_at: new Date().toISOString(),
-        company, sector, city, email, goal, website, pain,
-        needVisual, needDigital, needAds,
-        score
+      const scaleY = (v) => {
+        const t = (v - minVal) / (maxVal - minVal);
+        return top + (h - top - bottom) * (1 - t);
       };
 
-      const pack = recommendPack({needVisual, needDigital, needAds, score, goal});
-      renderPlan(lead, score, stack, pack);
-      updateCTA(lead, score, pack);
+      // grid lines
+      for (let i=0;i<=4;i++){
+        const y = top + (h - top - bottom) * (i/4);
+        ctx.beginPath();
+        ctx.moveTo(pad, y);
+        ctx.lineTo(w-pad, y);
+        ctx.strokeStyle = grid;
+        ctx.stroke();
 
-      try{ await sendLead(lead); }catch(err){}
+        const val = (maxVal * (1 - i/4));
+        ctx.fillStyle = muted;
+        ctx.font = "11px ui-sans-serif, system-ui";
+        ctx.textAlign = "left";
+        ctx.textBaseline = "middle";
+        ctx.fillText(money(val), pad, y - 10);
+      }
 
-      btn.disabled = false;
-      btn.textContent = "Générer le résultat";
-      location.hash = "#resultat";
+      const bars = [
+        { label:"Marge actuelle", start:0, end:baseGrossM, color:hexToRgba(accent, .45) },
+        { label:"+ Conversion", start:baseGrossM, end:baseGrossM + deltaGrossM, color:hexToRgba(accent2, .32) },
+        { label:"+ Efficacité ads", start:baseGrossM + deltaGrossM, end:baseGrossM + deltaGrossM + deltaAdsM, color:"rgba(46,229,157,.22)" },
+        { label:"Marge cible", start:0, end:baseGrossM + deltaGrossM + deltaAdsM, color:"rgba(255,255,255,.08)", outline:true },
+      ];
+
+      const bw = (w - pad*2) / (bars.length + 1);
+      const gap = bw * 0.22;
+
+      bars.forEach((b, i) => {
+        const x = pad + bw*(i+0.6);
+        const y1 = scaleY(b.end);
+        const y0 = scaleY(b.start);
+        const barH = Math.max(2, y0 - y1);
+
+        // bar
+        ctx.beginPath();
+        const r = 10;
+        const rx = x, ry = y1, rw = bw - gap, rh = barH;
+        // rounded rect
+        ctx.moveTo(rx+r, ry);
+        ctx.arcTo(rx+rw, ry, rx+rw, ry+rh, r);
+        ctx.arcTo(rx+rw, ry+rh, rx, ry+rh, r);
+        ctx.arcTo(rx, ry+rh, rx, ry, r);
+        ctx.arcTo(rx, ry, rx+rw, ry, r);
+        ctx.closePath();
+
+        if (b.outline){
+          ctx.fillStyle = "rgba(255,255,255,.04)";
+          ctx.fill();
+          ctx.strokeStyle = "rgba(255,255,255,.14)";
+          ctx.stroke();
+        } else {
+          const grad = ctx.createLinearGradient(rx, ry, rx+rw, ry+rh);
+          grad.addColorStop(0, b.color);
+          grad.addColorStop(1, "rgba(0,0,0,.12)");
+          ctx.fillStyle = grad;
+          ctx.fill();
+          ctx.strokeStyle = "rgba(255,255,255,.10)";
+          ctx.stroke();
+        }
+
+        // labels
+        ctx.fillStyle = text;
+        ctx.font = "12px ui-sans-serif, system-ui";
+        ctx.textAlign = "center";
+        ctx.textBaseline = "top";
+        ctx.fillText(b.label, rx + rw/2, h - 26);
+
+        // value
+        const val = (i === 1) ? deltaGrossM : (i === 2 ? deltaAdsM : b.end);
+        ctx.fillStyle = muted;
+        ctx.font = "11px ui-sans-serif, system-ui";
+        ctx.textBaseline = "bottom";
+        ctx.fillText(money(val), rx + rw/2, y1 - 8);
+      });
+
+      // headline
+      ctx.fillStyle = muted;
+      ctx.font = "11px ui-sans-serif, system-ui";
+      ctx.textAlign = "left";
+      ctx.textBaseline = "top";
+      ctx.fillText("Décomposition de la marge (mensuelle) : conversion + efficacité + cible.", 10, 10);
+    }
+
+    // ---------- UI Update ----------
+    function updateScenarioButtons(){
+      $("scCon").classList.toggle("on", scenario==="conservative");
+      $("scReal").classList.toggle("on", scenario==="realistic");
+      $("scAg").classList.toggle("on", scenario==="aggressive");
+      $("scenarioLbl").textContent = scenario==="conservative" ? "Conservateur" : scenario==="aggressive" ? "Agressif" : "Réaliste";
+    }
+
+    function updateUI(){
+      const i = getInputs();
+
+      $("stamp").textContent = "Généré : " + nowStamp();
+
+      const s = computeScore(i);
+
+      // score ring animate
+      const prev = parseInt($("scoreVal").textContent || "0", 10);
+      const target = s.score;
+      animateNumber(prev, target, 280, (v) => {
+        $("scoreVal").textContent = v;
+        $("ring").style.setProperty("--p", v);
+      });
+
+      // Tag + headline
+      const tag = $("scoreTag");
+      tag.classList.remove("good","warn","bad");
+
+      let label = "Potentiel moyen";
+      let cls = "warn";
+      let head = "Focus : preuve + conversion";
+      let sub = "On installe le système qui transforme la visibilité en clients (mesurable, pilotable).";
+
+      if (s.score >= 75){
+        label = "Potentiel élevé";
+        cls = "good";
+        head = "Focus : scale & pilotage";
+        sub = "Base solide : on accélère via sprints, créas, funnel, CRM et tracking avancé.";
+      } else if (s.score <= 35){
+        label = "Potentiel critique";
+        cls = "bad";
+        head = "Focus : foundations (preuve + mesure)";
+        sub = "On stoppe les fuites, on installe la preuve, on mesure tout, puis on scale.";
+      }
+
+      tag.textContent = label;
+      tag.classList.add(cls);
+      $("headline").textContent = head;
+      $("subline").textContent = sub;
+
+      // trust meter
+      const trust = computeTrust(s);
+
+      // scenario-based upside
+      updateScenarioButtons();
+      const u = computeUpside(i, scenario);
+
+      // KPI baseline
+      $("kpiRev").textContent = money(u.revM);
+      $("kpiGross").textContent = money(u.grossM);
+      $("kpiUpside").textContent = money(u.upside);
+
+      // pillars
+      const pillars = computePillars(i, s);
+
+      // inaction cost
+      const inact = computeInaction(i, u, pillars);
+      $("inactionCost").textContent = money(inact.cost);
+      $("inactionS").textContent = "Fuites estimées : " + Math.round(inact.leak*100) + "% de la marge brute mensuelle.";
+
+      // net 90 estimate (use upside but with conservative “delivery cost” proxy)
+      const deliveryCost = (scenario==="aggressive") ? 0.18 : (scenario==="conservative" ? 0.12 : 0.15);
+      const net90 = Math.max(0, u.upside * (1 - deliveryCost));
+      $("net90").textContent = money(net90);
+      $("net90S").textContent = "Après ramp (" + (scenario==="conservative"?"55%":scenario==="aggressive"?"75%":"65%") + ") + friction d’exécution.";
+
+      // effort vs impact heuristic
+      const effort = (trust.pct < 45) ? "Effort: moyen →" : "Effort: faible →";
+      const impact = (s.score <= 35) ? "Impact: très fort" : (s.score >= 75 ? "Impact: fort" : "Impact: fort");
+      $("effImpact").textContent = effort + " " + impact;
+      $("effImpactS").textContent = (s.score<=35)
+        ? "Priorité #1 : preuve + tracking + landing (gains rapides)."
+        : "Priorité #1 : funnel + relances + créas (gains mesurables).";
+
+      // Solutions
+      const sol = buildSolutions(i, s, u);
+      $("solTitle").textContent = sol.title;
+      $("solSubtitle").textContent = sol.subtitle;
+      $("solFit").textContent = sol.fit;
+
+      const chips = $("solChips");
+      chips.innerHTML = "";
+      sol.modules.forEach(m => {
+        const span = document.createElement("span");
+        span.className = "chip " + (m.level || "");
+        span.innerHTML = '<span class="dot2"></span>' + m.label + ' <small>' + m.tag + '</small>';
+        chips.appendChild(span);
+      });
+
+      const fill = (id, arr) => {
+        const ul = $(id);
+        ul.innerHTML = "";
+        arr.forEach(t => {
+          const li = document.createElement("li");
+          li.textContent = t;
+          ul.appendChild(li);
+        });
+      };
+      fill("plan7", sol.plan7);
+      fill("plan30", sol.plan30);
+      fill("plan90", sol.plan90);
+
+      $("deliverables").innerHTML = "<b>Livrables:</b> " + sol.deliverables.join(" • ");
+      $("proofKpi").textContent = sol.proofKpi;
+      $("acqKpi").textContent = sol.acqKpi;
+      $("convKpi").textContent = sol.convKpi;
+
+      // Pack
+      const pack = pickPack(i, s, u);
+      paintPack(pack);
+
+      // Auto-fill CR/CAC if computed
+      if ((!els.cr.value || num(els.cr.value) === 0) && i.traffic>0 && i.volume>0){
+        els.cr.value = (i.cr).toFixed(2);
+      }
+      if ((!els.cac.value || num(els.cac.value) === 0) && i.volume>0 && i.adspend>0){
+        els.cac.value = (i.cac).toFixed(2);
+      }
+
+      // Charts
+      drawRadar(pillars);
+      // waterfall uses monthly margin deltas: deltaGrossM (monthly) + deltaAdsM (monthly)
+      const baseGrossM = u.grossM || 0;
+      const deltaGrossM = Math.max(0, (u.grossTargetM || 0) - (u.grossM || 0));
+      const deltaAdsM = Math.max(0, (u.adCostBase || 0) - (u.adCostTarget || 0));
+      drawWaterfall(baseGrossM, deltaGrossM, deltaAdsM);
+
+      // Update call script summary
+      const comp = (els.company.value || "").trim() || "votre entreprise";
+      $("callScript").textContent =
+        `Script call : “En 2 minutes je calcule votre coût d’inaction (${money(inact.cost)}/mois) + votre gain net 90 jours (${money(net90)}), puis je vous montre ce qu’on installe en 7 jours pour convertir la visibilité en clients.”`;
+
+      // Update modal (if open)
+      if ($("modal").classList.contains("on")){
+        buildOnePager(pack, sol, u, net90, inact.cost);
+      }
+    }
+
+    // ---------- Animation number ----------
+    function animateNumber(from, to, ms, cb){
+      const start = performance.now();
+      const diff = to - from;
+      const ease = (t) => 1 - Math.pow(1 - t, 3);
+      function tick(now){
+        const t = clamp((now - start) / ms, 0, 1);
+        const v = Math.round(from + diff * ease(t));
+        cb(v);
+        if (t < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    }
+
+    // ---------- One-pager ----------
+    function buildOnePager(pack, sol, u, net90, inactionCost){
+      const company = (els.company.value || "").trim() || "—";
+      const contact = (els.contact.value || "").trim() || "—";
+      const note = (els.note.value || "").trim() || "—";
+      const url = (els.url.value || "").trim();
+      const packLabel = pack==="starter" ? "Starter" : (pack==="scale" ? "Scale" : "Growth");
+
+      const why =
+        pack==="starter" ? `Priorité : installer la preuve + la mesure + une landing qui convertit. Coût d’inaction estimé: ${money(inactionCost)}/mois.`
+        : pack==="growth" ? `Priorité : sprints conversion + relances + créas (effet cumulatif). Objectif : gains mesurables sous 30 jours.`
+        : `Priorité : pilotage complet (tracking/ads/créas/pipeline). On vise la maximisation du ROI et la scalabilité.`;
+
+      $("opTitle").textContent = `Proposition — ${company}`;
+      $("opSub").textContent = `Scénario: ${scenario==="conservative"?"Conservateur":scenario==="aggressive"?"Agressif":"Réaliste"} • Coût d’inaction estimé: ${money(inactionCost)}/mois • ${url ? "Source: " + url : "Source: non renseignée"}`;
+      $("opDate").textContent = nowStamp();
+
+      $("opRev").textContent = money(u.revM);
+      $("opGross").textContent = money(u.grossM);
+      $("opNet90").textContent = money(net90);
+
+      const plan = []
+        .concat(sol.plan7.map(x => "J+7: " + x))
+        .concat(sol.plan30.map(x => "J+30: " + x))
+        .concat(sol.plan90.map(x => "J+90: " + x));
+
+      const opPlan = $("opPlan");
+      opPlan.innerHTML = "";
+      plan.slice(0, 10).forEach(t => {
+        const li = document.createElement("li");
+        li.textContent = t;
+        opPlan.appendChild(li);
+      });
+
+      const opDel = $("opDeliver");
+      opDel.innerHTML = "";
+      sol.deliverables.forEach(t => {
+        const li = document.createElement("li");
+        li.textContent = t;
+        opDel.appendChild(li);
+      });
+
+      $("opPack").textContent = packLabel;
+      $("opWhy").textContent = why;
+
+      $("opCompany").textContent = company;
+      $("opContact").textContent = contact;
+      $("opNote").textContent = note;
+
+      $("opFooterL").textContent = "Audit IA Conversion & Croissance • Proposition 1-page";
+      $("opFooterR").textContent = "Généré: " + nowStamp();
+    }
+
+    function openModal(){
+      $("modal").classList.add("on");
+      document.body.style.overflow = "hidden";
+    }
+    function closeModal(){
+      $("modal").classList.remove("on");
+      document.body.style.overflow = "";
+    }
+
+    // ---------- EVENTS ----------
+    function bindLive(){
+      const inputs = document.querySelectorAll("input, select");
+      inputs.forEach(el => el.addEventListener("input", updateUI));
+      inputs.forEach(el => el.addEventListener("change", updateUI));
+      window.addEventListener("resize", () => updateUI());
+    }
+
+    function resetAll(){
+      Object.values(els).forEach(el => { if (el && el.tagName === "INPUT") el.value = ""; });
+      els.sector.value = "ecom";
+      els.maturity.value = "1";
+      els.topChannel.value = "ads";
+      els.goal.value = "conv";
+      els.horizon.value = "90";
+      scenario = "conservative";
+      updateUI();
+      setStep(1);
+    }
+
+    function demo(){
+      els.sector.value = "local";
+      els.maturity.value = "2";
+      els.topChannel.value = "ads";
+      els.traffic.value = "42000";
+      els.volume.value = "820";
+      els.cr.value = "";
+      els.aov.value = "78.5";
+      els.gm.value = "48";
+      els.adspend.value = "9000";
+      els.cac.value = "";
+      els.crTarget.value = "3.1";
+      els.aovLift.value = "9";
+      els.goal.value = "speed";
+      els.horizon.value = "90";
+      els.company.value = "Studio X";
+      els.url.value = "https://example.com";
+      els.contact.value = "contact@studiox.fr";
+      els.note.value = "Manque de preuve visuelle + avis, relances inexistantes, leads froids.";
+      scenario = "realistic";
+      updateUI();
+      setStep(3);
+    }
+
+    // Scenario buttons
+    document.querySelectorAll("[data-scn]").forEach(btn => {
+      btn.addEventListener("click", () => {
+        scenario = btn.getAttribute("data-scn");
+        updateUI();
+      });
     });
 
-    // init fallback
-    $("#waBtn").href = waLink("Bonjour, je souhaite un RDV 15 minutes.");
-    $("#calBtn").href = CONFIG.CALENDLY_URL || "#";
-    $("#meterFill").style.width = "0%";
+    // Buttons navigation
+    $("btnNext1").addEventListener("click", () => setStep(2));
+    $("btnNext2").addEventListener("click", () => setStep(3));
+    $("btnPrev2").addEventListener("click", () => setStep(1));
+    $("btnPrev3").addEventListener("click", () => setStep(2));
+
+    $("btnCalc1").addEventListener("click", updateUI);
+    $("btnCalc2").addEventListener("click", updateUI);
+
+    $("btnFinish").addEventListener("click", () => {
+      updateUI();
+      document.getElementById("cardResult").scrollIntoView({ behavior:"smooth", block:"start" });
+    });
+
+    $("btnNextTop").addEventListener("click", () => {
+      if (step < 3) setStep(step + 1);
+      else {
+        updateUI();
+        document.getElementById("cardResult").scrollIntoView({ behavior:"smooth", block:"start" });
+      }
+    });
+
+    // Proposal
+    $("btnProposal").addEventListener("click", () => {
+      updateUI();
+      const i = getInputs();
+      const s = computeScore(i);
+      const u = computeUpside(i, scenario);
+      const pillars = computePillars(i, s);
+      const inact = computeInaction(i, u, pillars);
+      const deliveryCost = (scenario==="aggressive") ? 0.18 : (scenario==="conservative" ? 0.12 : 0.15);
+      const net90 = Math.max(0, u.upside * (1 - deliveryCost));
+      const sol = buildSolutions(i, s, u);
+      const pack = pickPack(i, s, u);
+      buildOnePager(pack, sol, u, net90, inact.cost);
+      openModal();
+    });
+
+    $("btnPrint").addEventListener("click", () => {
+      // open proposal then print onepager (print css hides rest)
+      $("btnProposal").click();
+      setTimeout(() => window.print(), 50);
+    });
+
+    $("btnPrintModal").addEventListener("click", () => window.print());
+    $("btnCloseModal").addEventListener("click", closeModal);
+    $("modal").addEventListener("click", (e) => {
+      if (e.target === $("modal")) closeModal();
+    });
+
+    $("btnReset").addEventListener("click", resetAll);
+    $("btnDemo").addEventListener("click", demo);
+
+    // CTA actions (offline): copy + toast
+    function toast(msg){
+      const t = $("toast");
+      t.style.display = "block";
+      t.textContent = msg;
+      clearTimeout(window.__toastT);
+      window.__toastT = setTimeout(() => { t.style.display = "none"; }, 2800);
+    }
+
+    function buildCallSummary(){
+      const i = getInputs();
+      const s = computeScore(i);
+      const u = computeUpside(i, scenario);
+      const pillars = computePillars(i, s);
+      const inact = computeInaction(i, u, pillars);
+      const deliveryCost = (scenario==="aggressive") ? 0.18 : (scenario==="conservative" ? 0.12 : 0.15);
+      const net90 = Math.max(0, u.upside * (1 - deliveryCost));
+      const comp = (els.company.value || "").trim() || "Votre entreprise";
+
+      return [
+        `Résumé Audit — ${comp}`,
+        `• Score: ${s.score}/100 | Scénario: ${scenario==="conservative"?"Conservateur":scenario==="aggressive"?"Agressif":"Réaliste"}`,
+        `• CA mensuel estimé: ${money(u.revM)} | Marge brute: ${money(u.grossM)}`,
+        `• Coût d’inaction: ${money(inact.cost)}/mois`,
+        `• Gain net 90 jours estimé: ${money(net90)}`,
+        `• Next: installer preuve + tunnel + relances + tracking (7 jours).`,
+      ].join("\n");
+    }
+
+    $("btnCopySummary").addEventListener("click", async () => {
+      const text = buildCallSummary();
+      try{
+        await navigator.clipboard.writeText(text);
+        toast("Résumé copié. Colle-le dans ton CRM / WhatsApp / email.");
+      }catch(e){
+        // fallback
+        const ta = document.createElement("textarea");
+        ta.value = text;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand("copy");
+        document.body.removeChild(ta);
+        toast("Résumé copié (fallback).");
+      }
+    });
+
+    $("btnSendProposal").addEventListener("click", () => {
+      const name = ($("leadName").value || "").trim();
+      const email = ($("leadEmail").value || "").trim();
+      if (!name || !email){
+        toast("Ajoute au minimum Nom/Entreprise + Email/Téléphone pour envoyer la proposition.");
+        return;
+      }
+      // Offline: we generate and open proposal
+      $("btnProposal").click();
+      toast("Proposition générée. Imprime en PDF puis envoie-la au prospect.");
+    });
+
+    $("btnCall").addEventListener("click", () => {
+      const name = ($("leadName").value || "").trim();
+      const email = ($("leadEmail").value || "").trim();
+      const msg = name && email
+        ? `OK. Next step: call 15 min avec ${name} (${email}). Utilise le résumé copié + la proposition 1-page.`
+        : "OK. Next step: call 15 min. Copie le résumé et génère la proposition 1-page.";
+      toast(msg);
+    });
+
+    // init
+    bindLive();
+    setStep(1);
+    updateUI();
   </script>
 </body>
 </html>
