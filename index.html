@@ -7,18 +7,26 @@
   <meta name="description" content="VISION — Système de croissance : Preuve visuelle (drone) + Google/SEO + Landing + Tracking. Objectif : plus de clients, mesurable, sans friction." />
   <title>VISION — Système de croissance (Drone • Google • SEO • Landing • Conversion)</title>
 
+  <!-- OpenGraph / Social preview -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="VISION — Système de croissance (preuve → visibilité → conversion)" />
+  <meta property="og:description" content="Preuve visuelle premium (drone) + Google/SEO + landing + tracking. Objectif : plus de clients, mesurable, sans friction." />
+  <!-- Remplace par ton URL d'image -->
+  <meta property="og:image" content="/og-vision.jpg" />
+  <meta property="og:locale" content="fr_FR" />
+
   <!--
-    VISION — “Shock Conversion” Page (v4)
-    But: rendre la décision évidente (preuve + ROI + offre irrésistible + anti-risque)
-    ✅ Ajouts clés:
-      - Bloc “preuve” ultra concret (avant/après + métriques) + placeholders média
-      - Positionnement “système” (pas agence) + différenciation vs concurrents
-      - Offre irrésistible: garantie + bonus + plan 7 jours + onboarding simple
-      - Simulateur ROI + recommandation pack + break-even
-      - Comparator “nous vs alternatif” (sans dénigrer illégalement)
-      - “Battlecard” objections (réponses courtes)
-      - Sticky CTA + micro-animations + tracking événements + UTM
-      - Générateur de message WhatsApp/Email prêt à envoyer (friction = 0)
+    VISION — Shock Conversion Page (v5)
+    Objectif: une page pilier qui prouve, rassure, quantifie, et convertit.
+    ✅ Ajouts v5:
+      - Logo VISION (SVG) + motifs dynamiques (canvas + particles légers)
+      - CTA unique (Audit express) + fallback automatique (mobile -> WhatsApp / desktop -> email)
+      - Modal "Cas réel" (avant/après + chiffres + timeline)
+      - ROI crédibilisé: plages par secteur + break-even en jours + recommandations plus intelligentes
+      - Tabs AB accessibles (ARIA tabs) + focus visible
+      - Tracking pro: client_id, sendBeacon endpoint optionnel, anti double click + snapshot inputs
+      - Anti-spam: cooldown, validation tel/email, honeypot renforcé
+      - CSS utilitaires (p/mt) pour itérer vite
   -->
 
   <style>
@@ -44,7 +52,6 @@
       --bad:#FB7185;
 
       --r14:14px; --r18:18px; --r24:24px; --r32:32px; --r40:40px;
-
       --max:1240px;
 
       --fs0: clamp(13px, 1.05vw, 15px);
@@ -57,6 +64,8 @@
 
       --ease:cubic-bezier(.2,.85,.2,1);
       --dur:220ms;
+
+      --focus: 0 0 0 4px rgba(124,92,255,.22), 0 0 0 1px rgba(255,255,255,.12) inset;
     }
 
     *{box-sizing:border-box}
@@ -76,19 +85,46 @@
       letter-spacing:.12px;
     }
 
+    /* dynamic motif layer (canvas) */
+    #motif{
+      position:fixed; inset:0;
+      width:100%; height:100%;
+      z-index:0;
+      pointer-events:none;
+      opacity:.42;
+      filter: saturate(1.1);
+    }
+
+    /* subtle noise */
     body:before{
       content:"";
       position:fixed; inset:0;
       pointer-events:none;
       background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.7' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='260' height='260' filter='url(%23n)' opacity='.12'/%3E%3C/svg%3E");
       mix-blend-mode:overlay;
-      opacity:.14;
+      opacity:.12;
       z-index:0;
     }
 
     a{color:inherit}
     .wrap{max-width:var(--max); margin:0 auto; padding:0 18px; position:relative; z-index:1}
     .sr{position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0}
+
+    /* util */
+    .p12{padding:12px}
+    .p16{padding:16px}
+    .p18{padding:18px}
+    .p22{padding:22px}
+    .mt8{margin-top:8px}
+    .mt10{margin-top:10px}
+    .mt12{margin-top:12px}
+    .mt14{margin-top:14px}
+    .mt16{margin-top:16px}
+    .rowGap10{display:flex; gap:10px; flex-wrap:wrap}
+    .muted{color:var(--muted)}
+    .small{font-size:var(--fs0)}
+    .soft{color:var(--soft)}
+    .mono{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace}
 
     /* Topbar */
     .topbar{
@@ -104,20 +140,22 @@
     .brand{
       display:flex; align-items:center; gap:12px;
       text-decoration:none;
-      min-width: 220px;
+      min-width: 240px;
     }
-    .logo{
-      width:40px; height:40px; border-radius:16px;
-      background: linear-gradient(135deg, var(--a), var(--b));
-      box-shadow: 0 20px 70px rgba(124,92,255,.22), 0 20px 70px rgba(25,240,194,.10);
+    .logoWrap{
+      width:44px; height:44px; border-radius:18px;
+      border:1px solid rgba(255,255,255,.10);
+      background: linear-gradient(135deg, rgba(124,92,255,.20), rgba(25,240,194,.10));
+      box-shadow: 0 20px 70px rgba(124,92,255,.18), 0 20px 70px rgba(25,240,194,.08);
       position:relative; overflow:hidden; flex:0 0 auto;
+      display:grid; place-items:center;
     }
-    .logo:before{
+    .logoWrap:before{
       content:""; position:absolute; inset:-2px;
       background:
         radial-gradient(24px 24px at 28% 28%, rgba(255,255,255,.55), transparent 65%),
         radial-gradient(30px 30px at 76% 72%, rgba(255,255,255,.20), transparent 68%);
-      opacity:.85;
+      opacity:.72;
     }
     .brand-title{font-weight:999; letter-spacing:-.55px; font-size:14px; line-height:1}
     .brand-sub{margin-top:4px; color:var(--muted); font-size:12px; font-weight:820}
@@ -147,14 +185,17 @@
       font-size:var(--fs0);
       cursor:pointer;
       user-select:none;
-      transition: transform var(--dur) var(--ease), border-color var(--dur) var(--ease), filter var(--dur) var(--ease), background var(--dur) var(--ease);
+      transition: transform var(--dur) var(--ease), border-color var(--dur) var(--ease), filter var(--dur) var(--ease), background var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
       position:relative;
       overflow:hidden;
       white-space:nowrap;
+      -webkit-tap-highlight-color: transparent;
     }
     .btn:hover{transform:translateY(-1px); border-color:var(--line2); background: rgba(255,255,255,.05)}
     .btn:active{transform:translateY(0)}
     .btn svg{width:16px; height:16px}
+    .btn:focus-visible{outline:none; box-shadow: var(--focus); border-color: rgba(124,92,255,.35)}
+    .btn[aria-busy="true"]{opacity:.72; pointer-events:none}
 
     .btn.primary{
       border-color:transparent;
@@ -276,7 +317,7 @@
       color:var(--soft);
     }
 
-    /* Shock proof strip */
+    /* Proof strip */
     .proof-strip{
       display:grid;
       grid-template-columns: 1fr 1fr 1fr;
@@ -306,7 +347,32 @@
     .meter{height:12px; border-radius:999px; background: rgba(255,255,255,.08); border:1px solid var(--line); overflow:hidden; margin-top:10px}
     .bar{height:100%; width:0%; border-radius:999px; background: linear-gradient(90deg, var(--a), var(--b)); transition: width 700ms var(--ease)}
 
-    /* “No choice” section (positioning) */
+    /* Proof KPIs (quantified) */
+    .kpiStack{
+      margin-top:12px;
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:10px;
+    }
+    @media (max-width: 820px){ .kpiStack{grid-template-columns:1fr} }
+    .kpiBox{
+      border:1px solid var(--line);
+      border-radius: 18px;
+      padding:12px;
+      background: rgba(255,255,255,.03);
+      position:relative; overflow:hidden;
+    }
+    .kpiBox:before{
+      content:""; position:absolute; inset:-2px;
+      background: radial-gradient(520px 160px at 20% 10%, rgba(124,92,255,.10), transparent 62%);
+      opacity:.8; pointer-events:none;
+    }
+    .kpiBox>*{position:relative}
+    .kpiBox .k{color:var(--muted); font-size:12px; font-weight:900}
+    .kpiBox .v{font-size:22px; font-weight:999; letter-spacing:-.5px; margin-top:6px}
+    .kpiBox .h{color:var(--muted); font-size:12.5px; margin-top:6px}
+
+    /* Position section */
     .position{
       display:grid;
       grid-template-columns: 1.05fr .95fr;
@@ -360,7 +426,7 @@
       border:1px solid var(--line);
       border-radius: 22px;
       background: rgba(255,255,255,.03);
-      height: 240px;
+      min-height: 240px;
       position:relative;
       overflow:hidden;
     }
@@ -396,7 +462,7 @@
       padding:4px;
       backdrop-filter: blur(10px);
     }
-    .toggle button{
+    .tabBtn{
       border:0;
       background: transparent;
       color: var(--muted);
@@ -405,12 +471,13 @@
       padding:8px 10px;
       border-radius:999px;
       cursor:pointer;
-      transition: background var(--dur) var(--ease), color var(--dur) var(--ease);
+      transition: background var(--dur) var(--ease), color var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
     }
-    .toggle button.active{
+    .tabBtn[aria-selected="true"]{
       background: linear-gradient(135deg, rgba(124,92,255,.30), rgba(25,240,194,.18));
       color: var(--text);
     }
+    .tabBtn:focus-visible{outline:none; box-shadow: var(--focus)}
     .mediaSlot .stage{
       position:absolute; inset:0;
       display:flex; align-items:center; justify-content:center;
@@ -420,6 +487,19 @@
     }
     .mediaSlot .stage .big{font-weight:999; letter-spacing:-.6px; font-size:16px}
     .mediaSlot .stage .small{margin-top:8px; color:var(--muted); font-size:12.5px}
+    .mediaSlot .stage .slotNote{
+      margin-top:10px;
+      display:inline-flex;
+      gap:8px;
+      align-items:center;
+      justify-content:center;
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.16);
+      font-size:12px;
+      color:rgba(243,246,255,.84);
+    }
 
     /* Timeline */
     .timeline{
@@ -464,7 +544,7 @@
     }
     input:focus, select:focus, textarea:focus{
       border-color: rgba(124,92,255,.55);
-      box-shadow: 0 0 0 4px rgba(124,92,255,.14);
+      box-shadow: var(--focus);
     }
     .row{display:grid; grid-template-columns:1fr 1fr; gap:10px}
     @media (max-width: 560px){ .row{grid-template-columns:1fr} }
@@ -501,10 +581,11 @@
       font-weight:950;
       color:var(--muted);
       cursor:pointer;
-      transition: transform var(--dur) var(--ease), border-color var(--dur) var(--ease), color var(--dur) var(--ease), background var(--dur) var(--ease);
+      transition: transform var(--dur) var(--ease), border-color var(--dur) var(--ease), color var(--dur) var(--ease), background var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
       user-select:none;
     }
     .tab:hover{transform:translateY(-1px); border-color:var(--line2); color:var(--text)}
+    .tab:focus-visible{outline:none; box-shadow: var(--focus)}
     .tab.active{color:#040511; border-color:transparent; background: linear-gradient(135deg, var(--a), var(--b))}
 
     .result{
@@ -565,7 +646,7 @@
     .kpi .k{color:var(--muted); font-size:12px}
     .kpi .v{font-weight:999; font-size:20px; letter-spacing:-.5px; margin-top:6px}
 
-    /* Irresistible offer / launch */
+    /* Launch */
     .launch{
       display:flex; align-items:center; justify-content:space-between;
       gap:12px; padding:12px 14px;
@@ -639,7 +720,7 @@
     .tick svg{width:12px; height:12px}
     .price-actions{display:flex; gap:10px; flex-wrap:wrap; margin-top:auto}
 
-    /* “Nous vs alternative” */
+    /* Compare */
     .compare{
       border:1px solid var(--line);
       border-radius: var(--r32);
@@ -654,7 +735,7 @@
     .ok{color:#d1fae5}
     .no{color:#ffe4e6}
 
-    /* Guarantee block */
+    /* Guarantee */
     .guarantee{
       margin-top:12px;
       padding:12px 14px;
@@ -671,7 +752,6 @@
     .form{padding:16px}
     .form-grid{display:grid; grid-template-columns:1fr 1fr; gap:12px}
     @media (max-width: 980px){ .form-grid{grid-template-columns:1fr} }
-
     details{
       border:1px solid var(--line);
       border-radius: 18px;
@@ -681,6 +761,7 @@
     summary{cursor:pointer; font-weight:999; letter-spacing:-.2px; list-style:none}
     summary::-webkit-details-marker{display:none}
     details p{margin:10px 0 0; color:var(--muted); font-size:var(--fs0)}
+    summary:focus-visible{outline:none; box-shadow: var(--focus); border-radius: 12px; padding:4px 6px; margin:-4px -6px}
 
     /* Toast + sticky */
     .toast{
@@ -714,19 +795,128 @@
 
     .spacer{height:104px}
 
+    /* Modal (Case study) */
+    .modalBackdrop{
+      position:fixed; inset:0;
+      background: rgba(0,0,0,.55);
+      backdrop-filter: blur(10px);
+      display:none;
+      z-index:120;
+      padding:24px;
+    }
+    .modal{
+      max-width: 980px;
+      margin: 0 auto;
+      border-radius: var(--r40);
+      border:1px solid var(--line);
+      background: rgba(10,12,28,.92);
+      box-shadow: var(--shadow);
+      position:relative;
+      overflow:hidden;
+    }
+    .modal:before{
+      content:"";
+      position:absolute; inset:-2px;
+      background:
+        radial-gradient(920px 300px at 22% 18%, rgba(124,92,255,.18), transparent 60%),
+        radial-gradient(920px 300px at 85% 35%, rgba(25,240,194,.11), transparent 62%),
+        radial-gradient(820px 240px at 60% 90%, rgba(255,209,102,.08), transparent 62%);
+      opacity:.8; pointer-events:none;
+    }
+    .modal>*{position:relative}
+    .modalHeader{
+      display:flex; align-items:flex-start; justify-content:space-between; gap:12px;
+      padding:16px 16px 0;
+    }
+    .modalHeader h3{
+      margin:0;
+      font-size:18px;
+      font-weight:999;
+      letter-spacing:-.25px;
+    }
+    .modalHeader p{margin:8px 0 0; color:var(--muted); font-size:var(--fs0)}
+    .modalBody{
+      padding:16px;
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap:12px;
+    }
+    @media (max-width: 980px){ .modalBody{grid-template-columns:1fr} }
+    .closeBtn{
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.04);
+      color:var(--text);
+      border-radius: 14px;
+      padding:10px 12px;
+      cursor:pointer;
+      transition: transform var(--dur) var(--ease), border-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+    }
+    .closeBtn:hover{transform:translateY(-1px); border-color:var(--line2)}
+    .closeBtn:focus-visible{outline:none; box-shadow: var(--focus)}
+    .caseGrid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:10px;
+    }
+    @media (max-width: 560px){ .caseGrid{grid-template-columns:1fr} }
+    .caseCard{
+      border:1px solid var(--line);
+      border-radius: 22px;
+      background: rgba(255,255,255,.03);
+      padding:12px;
+      position:relative; overflow:hidden;
+      min-height: 148px;
+    }
+    .caseCard:before{
+      content:""; position:absolute; inset:-2px;
+      background: radial-gradient(520px 160px at 20% 10%, rgba(96,165,250,.10), transparent 62%);
+      opacity:.8; pointer-events:none;
+    }
+    .caseCard>*{position:relative}
+    .caseCard b{display:block; font-weight:999}
+    .caseCard .note{margin-top:6px; color:var(--muted); font-size:12.5px}
+    .caseCard .bigN{margin-top:10px; font-size:22px; font-weight:999; letter-spacing:-.5px}
+    .caseTL{display:grid; grid-template-columns:1fr; gap:10px}
+    .tlItem{
+      border:1px solid var(--line);
+      border-radius: 18px;
+      background: rgba(255,255,255,.03);
+      padding:12px;
+    }
+    .tlItem .k{color:var(--muted); font-size:12px; font-weight:900}
+    .tlItem b{display:block; margin-top:6px; font-weight:999}
+    .tlItem p{margin:6px 0 0; color:var(--muted); font-size:12.5px}
+
     /* Reduce motion */
     @media (prefers-reduced-motion: reduce){
       *{scroll-behavior:auto !important; transition:none !important}
+      #motif{display:none !important;}
     }
   </style>
 </head>
 
 <body>
+  <!-- Dynamic motif canvas -->
+  <canvas id="motif" aria-hidden="true"></canvas>
+
   <!-- TOPBAR -->
   <div class="topbar">
     <div class="wrap topbar-inner">
       <a class="brand" href="#top" data-evt="nav_brand">
-        <div class="logo" aria-hidden="true"></div>
+        <div class="logoWrap" aria-hidden="true">
+          <!-- VISION Logo (SVG) -->
+          <svg width="26" height="26" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+            <defs>
+              <linearGradient id="g1" x1="8" y1="8" x2="56" y2="56" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#7C5CFF"/><stop offset="1" stop-color="#19F0C2"/>
+              </linearGradient>
+            </defs>
+            <path d="M32 6c14.36 0 26 11.64 26 26S46.36 58 32 58 6 46.36 6 32 17.64 6 32 6Z" stroke="url(#g1)" stroke-width="3" opacity=".9"/>
+            <path d="M14 34c10-18 26-18 36 0" stroke="url(#g1)" stroke-width="3" stroke-linecap="round" opacity=".8"/>
+            <path d="M20 35c6-11 18-11 24 0" stroke="url(#g1)" stroke-width="3" stroke-linecap="round" opacity=".9"/>
+            <circle cx="32" cy="34" r="4" fill="url(#g1)"/>
+          </svg>
+        </div>
         <div>
           <div class="brand-title">VISION</div>
           <div class="brand-sub">Système de clients (preuve → visibilité → conversion)</div>
@@ -739,9 +929,10 @@
         <a class="hide-sm" href="#roi" data-evt="nav_roi">ROI</a>
         <a class="hide-sm" href="#packs" data-evt="nav_packs">Offres</a>
         <a class="hide-sm" href="#audit" data-evt="nav_audit">Audit</a>
-        <a href="#audit" class="btn primary" data-evt="cta_top_audit">
+        <!-- CTA unique -->
+        <a href="#audit" class="btn primary" id="ctaTop" data-evt="cta_top_audit">
           <svg viewBox="0 0 24 24" fill="none"><path d="M7 7h10M7 12h10M7 17h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-          Audit + plan (60s)
+          Audit express (60s)
         </a>
       </nav>
     </div>
@@ -752,7 +943,7 @@
     <header class="hero">
       <div class="wrap hero-grid">
         <section class="card hero-left">
-          <div class="pill"><span class="dot"></span> Sans engagement • Mesurable • Zéro friction</div>
+          <div class="pill"><span class="dot"></span> Sans contrat long • Mesurable • Zéro friction</div>
 
           <h1 class="h1">
             La décision devient évidente :
@@ -766,25 +957,44 @@
           </p>
 
           <div class="hero-cta">
-            <a class="btn primary" href="#roi" data-evt="cta_hero_roi">
+            <a class="btn primary" href="#audit" id="ctaHero" data-evt="cta_hero_audit">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M12 3v18M3 12h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              Recevoir mon audit
+            </a>
+            <a class="btn" href="#roi" data-evt="cta_hero_roi">
               <svg viewBox="0 0 24 24" fill="none"><path d="M4 19V5m0 14h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M7 15l3-4 3 2 4-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
               Estimer mon gain
             </a>
-            <a class="btn" href="#preuve" data-evt="cta_hero_proof">
+            <button class="btn ghost" id="openCase" type="button" data-evt="open_case_modal">
               <svg viewBox="0 0 24 24" fill="none"><path d="M4 7h16M4 12h16M4 17h10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-              Voir la preuve
-            </a>
-            <a class="btn ghost" id="whatsHero" href="#" data-evt="cta_hero_whatsapp">
-              <svg viewBox="0 0 24 24" fill="none"><path d="M20 11.5a8.5 8.5 0 0 1-12.7 7.4L4 20l1.2-3.2A8.5 8.5 0 1 1 20 11.5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              WhatsApp (direct)
-            </a>
+              Voir un cas réel
+            </button>
           </div>
 
           <div class="trust">
             <span class="pill">Plan 7 jours (onboarding)</span>
             <span class="pill">1 CTA unique = + conversion</span>
             <span class="pill">Tracking + reporting</span>
-            <span class="pill">Vous gardez vos accès</span>
+            <span class="pill">Accès conservés</span>
+          </div>
+
+          <!-- Quantified proof stack (exemples) -->
+          <div class="kpiStack" aria-label="Résultats typiques (exemples)">
+            <div class="kpiBox">
+              <div class="k">Google (activité)</div>
+              <div class="v">+35% à +80%</div>
+              <div class="h">Vues + actions (itinéraires/appels) après relance + contenu.</div>
+            </div>
+            <div class="kpiBox">
+              <div class="k">Conversion (CTA)</div>
+              <div class="v">+15% à +45%</div>
+              <div class="h">Page d’offre + CTA unique = moins de friction, plus de clics.</div>
+            </div>
+            <div class="kpiBox">
+              <div class="k">Demandes (leads)</div>
+              <div class="v">+10 à +40/mois</div>
+              <div class="h">Selon secteur, offre, et volume initial. Mesuré + itéré.</div>
+            </div>
           </div>
 
           <div class="proof-strip">
@@ -823,7 +1033,7 @@
             </div>
             <div class="mini">
               <b>Le trigger</b>
-              <p>Avant/Après + avis + Google actif = crédibilité immédiate.</p>
+              <p>Avant/Après + avis + Google actif = crédibilité.</p>
               <span class="tagSmall">Confiance</span>
             </div>
             <div class="mini">
@@ -833,30 +1043,38 @@
             </div>
           </div>
 
-          <div class="panel" style="padding:12px">
+          <div class="panel p12">
             <b>Onboarding ultra simple</b><br>
-            <span style="color:var(--muted); font-size:var(--fs0)">
+            <span class="muted small">
               Vous nous ajoutez sur Google Business (gestionnaire) + on connecte votre CTA.
               Le reste est géré.
             </span>
           </div>
 
-          <div class="panel" style="padding:12px">
+          <div class="panel p12">
             <b>Ce que vous obtenez en 7 jours</b><br>
-            <span style="color:var(--muted); font-size:var(--fs0)">
-              Une image premium + une page d’offre qui convertit + un Google vivant.
+            <span class="muted small">
+              Une image premium + une page d’offre qui convertit + un Google vivant + tracking.
             </span>
           </div>
 
-          <div style="display:flex; gap:10px; flex-wrap:wrap">
-            <a class="btn primary tiny" href="#audit" data-evt="cta_side_audit">Audit + plan</a>
+          <div class="rowGap10">
+            <a class="btn primary tiny" href="#audit" data-evt="cta_side_audit">Audit express</a>
             <a class="btn tiny" href="#packs" data-evt="cta_side_packs">Voir les offres</a>
+          </div>
+
+          <div class="panel p12">
+            <b>Anti-risque (défini)</b><br>
+            <span class="muted small">
+              “Signal mesurable” = au moins 1 : hausse activité Google, clics CTA, appels/WhatsApp trackés.
+              Sinon, itération complète offerte (landing + Google + contenu).
+            </span>
           </div>
         </aside>
       </div>
     </header>
 
-    <!-- SYSTEME (positioning) -->
+    <!-- SYSTEME -->
     <section id="systeme">
       <div class="wrap">
         <div class="section-title">
@@ -867,12 +1085,12 @@
         <div class="position">
           <div class="panel pos-left">
             <div class="pill"><span class="dot"></span> Décision automatique</div>
-            <p style="margin:10px 0 0; color:var(--muted); font-size:var(--fs1)">
+            <p class="mt10 muted" style="font-size:var(--fs1)">
               Le prospect décide quand il a <b>confiance</b> + <b>clarté</b> + <b>action simple</b>.
               On installe ces 3 couches et on mesure.
             </p>
 
-            <div class="grid2" style="margin-top:12px">
+            <div class="grid2 mt12">
               <div class="valueCard">
                 <b>1) Preuve (image premium)</b>
                 <p>Drone + photos + avant/après + mini-reels. Vous “montez de gamme”.</p>
@@ -908,34 +1126,28 @@
             </div>
           </div>
 
-          <div class="panel pos-right" style="padding:16px">
+          <div class="panel pos-right p16">
             <div class="pill"><span class="dot"></span> Pourquoi ils vous choisissent</div>
 
-            <div class="panel" style="margin-top:12px; padding:12px">
+            <div class="panel p12 mt12">
               <b>Ce que ressent le client :</b><br>
-              <span style="color:var(--muted); font-size:var(--fs0)">
-                “Ils sont sérieux, ça fait premium, je clique, j’obtiens une réponse.”
-              </span>
+              <span class="muted small">“Ils sont sérieux, c’est premium, je clique, je reçois une réponse.”</span>
             </div>
 
-            <div class="panel" style="margin-top:10px; padding:12px">
+            <div class="panel p12 mt10">
               <b>Ce que vous obtenez :</b><br>
-              <span style="color:var(--muted); font-size:var(--fs0)">
-                + demandes/mois + image premium + système qui tourne sans vous.
-              </span>
+              <span class="muted small">+ demandes/mois + image premium + système qui tourne sans vous.</span>
             </div>
 
-            <div class="panel" style="margin-top:10px; padding:12px">
+            <div class="panel p12 mt10">
               <b>Ce que vos concurrents n’ont pas :</b><br>
-              <span style="color:var(--muted); font-size:var(--fs0)">
-                Preuve + Google + landing + tracking, dans le même package, livré vite.
-              </span>
+              <span class="muted small">Preuve + Google + landing + tracking, dans le même package, livré vite.</span>
             </div>
 
-            <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap">
-              <a class="btn primary" href="#preuve" data-evt="cta_pos_proof">Voir avant/après</a>
+            <div class="rowGap10 mt12">
+              <a class="btn primary" href="#audit" data-evt="cta_pos_audit">Recevoir mon audit</a>
               <a class="btn" href="#roi" data-evt="cta_pos_roi">Calculer ROI</a>
-              <a class="btn ghost" id="whatsPos" href="#" data-evt="cta_pos_whatsapp">WhatsApp</a>
+              <button class="btn ghost" id="ctaSmartPos" type="button" data-evt="cta_smart_pos">Contact direct</button>
             </div>
           </div>
         </div>
@@ -947,25 +1159,32 @@
       <div class="wrap">
         <div class="section-title">
           <h2>Preuve concrète (avant / après)</h2>
-          <p>Remplace ces slots par vos médias réels : vidéo showreel, captures Google (vues/appels), captures landing (clics).</p>
+          <p>Remplace ces slots par vos médias réels : showreel, captures Google (vues/appels), captures landing (clics).</p>
         </div>
 
         <div class="proof-wall">
-          <div class="panel" style="padding:16px">
+          <div class="panel p16">
             <div class="gallery">
               <div class="mediaSlot" data-ab="showreel">
                 <div class="top">
                   <span class="label">Showreel drone</span>
                   <div class="toggle" role="tablist" aria-label="Avant Après showreel">
-                    <button type="button" class="active" data-state="apres">APRÈS</button>
-                    <button type="button" data-state="avant">AVANT</button>
+                    <button class="tabBtn" role="tab" aria-selected="true" aria-controls="showreel_apres" id="showreel_tab_apres" type="button" data-state="apres">APRÈS</button>
+                    <button class="tabBtn" role="tab" aria-selected="false" aria-controls="showreel_avant" id="showreel_tab_avant" type="button" data-state="avant">AVANT</button>
                   </div>
                 </div>
-                <div class="stage">
+                <div class="stage" role="tabpanel" id="showreel_apres" aria-labelledby="showreel_tab_apres">
                   <div>
                     <div class="big" data-apres>Vidéo premium + montage pro<br>(30–45s) + vertical</div>
-                    <div class="big" data-avant style="display:none">Anciennes vidéos / aucune preuve</div>
-                    <div class="small">Dépose ici un embed vidéo ou image (placeholder).</div>
+                    <div class="small">Place ici un embed vidéo (YouTube/Vimeo) ou une image.</div>
+                    <div class="slotNote">Astuce : ajoute un poster “avant/après” + 3 plans clés</div>
+                  </div>
+                </div>
+                <div class="stage" role="tabpanel" id="showreel_avant" aria-labelledby="showreel_tab_avant" style="display:none">
+                  <div>
+                    <div class="big" data-avant>Anciennes vidéos / aucune preuve</div>
+                    <div class="small">Sans preuve = choix au hasard (prix).</div>
+                    <div class="slotNote">Tu remplaces ça par “preuve visuelle” = premium</div>
                   </div>
                 </div>
               </div>
@@ -974,15 +1193,22 @@
                 <div class="top">
                   <span class="label">Google Business</span>
                   <div class="toggle" role="tablist" aria-label="Avant Après google">
-                    <button type="button" class="active" data-state="apres">APRÈS</button>
-                    <button type="button" data-state="avant">AVANT</button>
+                    <button class="tabBtn" role="tab" aria-selected="true" aria-controls="google_apres" id="google_tab_apres" type="button" data-state="apres">APRÈS</button>
+                    <button class="tabBtn" role="tab" aria-selected="false" aria-controls="google_avant" id="google_tab_avant" type="button" data-state="avant">AVANT</button>
                   </div>
                 </div>
-                <div class="stage">
+                <div class="stage" role="tabpanel" id="google_apres" aria-labelledby="google_tab_apres">
                   <div>
                     <div class="big" data-apres>Fiche active + photos + posts<br>+ réponses</div>
-                    <div class="big" data-avant style="display:none">Fiche morte / pas d’updates</div>
                     <div class="small">Ajoute captures : vues, appels, itinéraires.</div>
+                    <div class="slotNote">Focus : “actions” (appels / messages / itinéraires)</div>
+                  </div>
+                </div>
+                <div class="stage" role="tabpanel" id="google_avant" aria-labelledby="google_tab_avant" style="display:none">
+                  <div>
+                    <div class="big" data-avant>Fiche morte / pas d’updates</div>
+                    <div class="small">Google te “range” → moins de demandes.</div>
+                    <div class="slotNote">On transforme en fiche vivante + crédible</div>
                   </div>
                 </div>
               </div>
@@ -991,15 +1217,22 @@
                 <div class="top">
                   <span class="label">Landing conversion</span>
                   <div class="toggle" role="tablist" aria-label="Avant Après landing">
-                    <button type="button" class="active" data-state="apres">APRÈS</button>
-                    <button type="button" data-state="avant">AVANT</button>
+                    <button class="tabBtn" role="tab" aria-selected="true" aria-controls="landing_apres" id="landing_tab_apres" type="button" data-state="apres">APRÈS</button>
+                    <button class="tabBtn" role="tab" aria-selected="false" aria-controls="landing_avant" id="landing_tab_avant" type="button" data-state="avant">AVANT</button>
                   </div>
                 </div>
-                <div class="stage">
+                <div class="stage" role="tabpanel" id="landing_apres" aria-labelledby="landing_tab_apres">
                   <div>
                     <div class="big" data-apres>Offre claire + CTA unique<br>WhatsApp / RDV</div>
-                    <div class="big" data-avant style="display:none">Site flou / trop de choix</div>
                     <div class="small">Ajoute capture : clics CTA, formulaires.</div>
+                    <div class="slotNote">1 page = 1 action (sinon perte)</div>
+                  </div>
+                </div>
+                <div class="stage" role="tabpanel" id="landing_avant" aria-labelledby="landing_tab_avant" style="display:none">
+                  <div>
+                    <div class="big" data-avant>Site flou / trop de choix</div>
+                    <div class="small">Trop de choix = pas de choix.</div>
+                    <div class="slotNote">On crée une “page d’offre” dédiée</div>
                   </div>
                 </div>
               </div>
@@ -1008,47 +1241,52 @@
                 <div class="top">
                   <span class="label">Tracking / reporting</span>
                   <div class="toggle" role="tablist" aria-label="Avant Après tracking">
-                    <button type="button" class="active" data-state="apres">APRÈS</button>
-                    <button type="button" data-state="avant">AVANT</button>
+                    <button class="tabBtn" role="tab" aria-selected="true" aria-controls="tracking_apres" id="tracking_tab_apres" type="button" data-state="apres">APRÈS</button>
+                    <button class="tabBtn" role="tab" aria-selected="false" aria-controls="tracking_avant" id="tracking_tab_avant" type="button" data-state="avant">AVANT</button>
                   </div>
                 </div>
-                <div class="stage">
+                <div class="stage" role="tabpanel" id="tracking_apres" aria-labelledby="tracking_tab_apres">
                   <div>
                     <div class="big" data-apres>Mesure = décisions meilleures<br>itérations</div>
-                    <div class="big" data-avant style="display:none">Aucune mesure / au hasard</div>
                     <div class="small">Ajoute capture : dashboard + résultats mensuels.</div>
+                    <div class="slotNote">On pilote par data, pas à l’instinct</div>
+                  </div>
+                </div>
+                <div class="stage" role="tabpanel" id="tracking_avant" aria-labelledby="tracking_tab_avant" style="display:none">
+                  <div>
+                    <div class="big" data-avant>Aucune mesure / au hasard</div>
+                    <div class="small">Impossible d’améliorer ce qu’on ne mesure pas.</div>
+                    <div class="slotNote">Tracking = accélérateur de ROI</div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
 
-          <div class="panel" style="padding:16px">
+          <div class="panel p16">
             <div class="pill"><span class="dot"></span> Ce qui “force” la décision</div>
-            <p style="margin:10px 0 0; color:var(--muted); font-size:var(--fs1)">
+            <p class="mt10 muted" style="font-size:var(--fs1)">
               Le prospect se dit :
               <b>“Ça fait premium”</b> (preuve) → <b>“Ils sont trouvables”</b> (Google) → <b>“C’est simple”</b> (CTA).
               C’est exactement ce que VISION installe.
             </p>
 
-            <div class="panel" style="margin-top:12px; padding:12px">
-              <b>Mini “kit preuve” inclus :</b><br>
-              <span style="color:var(--muted); font-size:var(--fs0)">
-                1 showreel + photos + 4 contenus vertical + mise à jour Google + landing + tracking.
-              </span>
+            <div class="panel p12 mt12">
+              <b>Kit preuve inclus :</b><br>
+              <span class="muted small">1 showreel + photos + 4 contenus vertical + mises à jour Google + landing + tracking.</span>
             </div>
 
-            <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:12px">
-              <a class="btn primary" href="#roi" data-evt="cta_proof_roi">Voir ROI</a>
-              <a class="btn" href="#packs" data-evt="cta_proof_packs">Voir offres</a>
-              <a class="btn ghost" id="whatsProof" href="#" data-evt="cta_proof_whatsapp">WhatsApp</a>
+            <div class="rowGap10 mt12">
+              <a class="btn primary" href="#audit" data-evt="cta_proof_audit">Recevoir mon audit</a>
+              <a class="btn" href="#roi" data-evt="cta_proof_roi">Voir ROI</a>
+              <button class="btn ghost" id="ctaSmartProof" type="button" data-evt="cta_smart_proof">Contact direct</button>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- PLAN 7 JOURS -->
+    <!-- PLAN -->
     <section id="plan">
       <div class="wrap">
         <div class="section-title">
@@ -1073,12 +1311,12 @@
       <div class="wrap">
         <div class="section-title">
           <h2>ROI : estimation (simple & crédible)</h2>
-          <p>Vous entrez vos chiffres. On sort : leads, clients, CA, profit, gain net + break-even + pack recommandé.</p>
+          <p>Vous entrez vos chiffres. On sort : leads, clients, CA, profit, gain net + break-even + pack recommandé + break-even en jours.</p>
         </div>
 
         <div class="two">
           <!-- Inputs -->
-          <div class="panel" style="padding:16px">
+          <div class="panel p16">
             <div class="row">
               <div>
                 <label for="sectorPreset">Secteur (pré-remplissage)</label>
@@ -1103,7 +1341,7 @@
               </div>
             </div>
 
-            <div class="row" style="margin-top:10px">
+            <div class="row mt10">
               <div>
                 <label for="planSel">Pack</label>
                 <select id="planSel">
@@ -1119,14 +1357,15 @@
             </div>
 
             <div class="help">
-              <span class="badge">Méthode</span>
+              <span class="badge">Crédibilité</span>
               <div>
-                On estime + demandes via <b>preuve</b> + <b>Google/SEO</b> + <b>landing</b>, puis conversion en clients.
-                Vous gardez la main sur vos valeurs.
+                On ajuste l’<b>uplift</b> par secteur + scénario (prudent/réaliste/ambitieux).
+                Le but : estimation <b>conservative</b> mais utile.
+                <div class="mt8 mono" id="upliftGuide">Plage conseillée : —</div>
               </div>
             </div>
 
-            <div class="row" style="margin-top:10px">
+            <div class="row mt10">
               <div>
                 <label for="avgClient">Valeur moyenne d’un client (€)</label>
                 <input id="avgClient" type="number" min="10" step="10" value="200" />
@@ -1137,7 +1376,7 @@
               </div>
             </div>
 
-            <div class="row" style="margin-top:10px">
+            <div class="row mt10">
               <div>
                 <label for="currentLeads">Demandes actuelles / mois</label>
                 <input id="currentLeads" type="number" min="0" step="1" value="15" />
@@ -1148,7 +1387,7 @@
               </div>
             </div>
 
-            <div class="row" style="margin-top:10px">
+            <div class="row mt10">
               <div>
                 <label for="timeSaved">Temps économisé / mois (heures)</label>
                 <input id="timeSaved" type="number" min="0" step="1" value="6" />
@@ -1160,15 +1399,15 @@
             </div>
 
             <div class="tabs" aria-label="Scénarios">
-              <div class="tab active" data-s="prudent">Prudent</div>
-              <div class="tab" data-s="realiste">Réaliste</div>
-              <div class="tab" data-s="ambitieux">Ambitieux</div>
+              <button class="tab active" type="button" data-s="prudent">Prudent</button>
+              <button class="tab" type="button" data-s="realiste">Réaliste</button>
+              <button class="tab" type="button" data-s="ambitieux">Ambitieux</button>
             </div>
 
-            <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap">
+            <div class="rowGap10 mt12">
               <button class="btn primary" id="calcBtn" type="button" data-evt="calc_run">Calculer</button>
               <button class="btn" id="resetBtn" type="button" data-evt="calc_reset">Reset</button>
-              <a class="btn ghost" href="#audit" data-evt="calc_audit">Recevoir mon plan exact</a>
+              <a class="btn ghost" href="#audit" data-evt="calc_audit">Recevoir le plan exact</a>
             </div>
           </div>
 
@@ -1188,43 +1427,50 @@
 
             <div class="kpi-row">
               <div class="kpi"><div class="k">Gain net / mois</div><div class="v" id="net">—</div></div>
+              <div class="kpi"><div class="k">Break-even</div><div class="v" id="breakeven">—</div></div>
+              <div class="kpi"><div class="k">Break-even (jours)</div><div class="v" id="breakevenDays">—</div></div>
+            </div>
+
+            <div class="kpi-row">
+              <div class="kpi"><div class="k">Leads en + / mois</div><div class="v" id="leadsPlus">—</div></div>
               <div class="kpi"><div class="k">Clients en + / mois</div><div class="v" id="clientsPlus">—</div></div>
               <div class="kpi"><div class="k">CA en + / mois</div><div class="v" id="caPlus">—</div></div>
             </div>
 
             <div class="kpi-row">
-              <div class="kpi"><div class="k">Leads en + / mois</div><div class="v" id="leadsPlus">—</div></div>
-              <div class="kpi"><div class="k">Break-even</div><div class="v" id="breakeven">—</div></div>
               <div class="kpi"><div class="k">Pack recommandé</div><div class="v" id="recPlan">—</div></div>
+              <div class="kpi"><div class="k">Pourquoi ce pack</div><div class="v" id="recWhy">—</div></div>
+              <div class="kpi"><div class="k">Note crédibilité uplift</div><div class="v" id="upliftScore">—</div></div>
             </div>
 
-            <div class="panel" style="padding:12px">
+            <div class="panel p12">
               <b>Décomposition</b>
-              <div class="hint" id="breakdown" style="margin-top:8px">—</div>
+              <div class="hint mt8" id="breakdown">—</div>
             </div>
 
-            <div class="panel" style="padding:12px">
+            <div class="panel p12">
               <b>Plan 30 jours</b>
-              <div class="hint" id="plan30" style="margin-top:8px">—</div>
+              <div class="hint mt8" id="plan30">—</div>
             </div>
 
-            <div style="display:flex; gap:10px; flex-wrap:wrap">
-              <a class="btn primary" href="#audit" data-evt="cta_result_audit">Recevoir mon plan exact</a>
-              <a class="btn ghost" id="whatsCalc" href="#" data-evt="cta_result_whatsapp">WhatsApp</a>
+            <div class="rowGap10">
+              <a class="btn primary" href="#audit" data-evt="cta_result_audit">Recevoir mon audit</a>
+              <button class="btn ghost" id="ctaSmartCalc" type="button" data-evt="cta_smart_calc">Contact direct</button>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- OFFRE IRRÉSISTIBLE -->
+    <!-- OFFRE -->
     <section id="launch">
       <div class="wrap">
         <div class="launch">
           <div class="left">
             <b>Offre “Shock” (démarrage) — bonus inclus</b>
             <div class="subt">
-              Objectif : produire la preuve + lancer le système en 7 jours. Anti-risque : si aucun signal, itération complète.
+              Objectif : produire la preuve + lancer le système en 7 jours.
+              Anti-risque : si aucun <b>signal mesurable</b>, itération complète.
             </div>
           </div>
           <div class="right">
@@ -1235,7 +1481,7 @@
 
         <div class="guarantee">
           <b>Garantie anti-risque (30 jours) :</b>
-          si vous n’avez <b>aucun signal d’amélioration visible</b> (activité Google, clics, demandes),
+          si vous n’avez <b>aucun signal mesurable</b> (activité Google, clics CTA, demandes),
           on refait une <b>itération complète</b> (landing + Google + contenu) <b>sans coût</b>.
         </div>
       </div>
@@ -1245,12 +1491,11 @@
     <section id="packs">
       <div class="wrap">
         <div class="section-title">
-          <h2>Offres (sans engagement)</h2>
+          <h2>Offres (sans contrat long)</h2>
           <p>Le but n’est pas “un pack”. Le but est : <b>des demandes</b>. Choisissez votre niveau de délégation.</p>
         </div>
 
         <div class="pricing">
-          <!-- START -->
           <div class="price-card">
             <div class="price-name">START</div>
             <div class="price-sub">Conversion minimale, rapide, propre</div>
@@ -1266,9 +1511,8 @@
             </div>
           </div>
 
-          <!-- SCALE -->
           <div class="price-card reco">
-            <div class="tagTop">Best ROI</div>
+            <div class="tagTop">Pack le plus choisi (ROI)</div>
             <div class="price-name">SCALE</div>
             <div class="price-sub">Le système complet (preuve + Google + landing)</div>
             <div class="price"><strong>690€</strong><span>/mois</span></div>
@@ -1284,7 +1528,6 @@
             </div>
           </div>
 
-          <!-- DOMINATE -->
           <div class="price-card">
             <div class="price-name">DOMINATE</div>
             <div class="price-sub">Délégation + pilotage croissance</div>
@@ -1302,10 +1545,9 @@
           </div>
         </div>
 
-        <!-- Compare -->
-        <div class="section-title" style="margin-top:18px">
+        <div class="section-title mt16">
           <h2>Pourquoi VISION gagne (comparatif)</h2>
-          <p>Sans blabla : on compare des éléments livrables, pas des promesses.</p>
+          <p>Sans blabla : on compare des livrables, pas des promesses.</p>
         </div>
 
         <div class="compare">
@@ -1341,16 +1583,16 @@
               <td class="no">❌ Délais flous</td>
             </tr>
             <tr>
-              <th>Anti-risque</th>
-              <td class="ok">✅ Itération offerte si aucun signal</td>
-              <td class="no">❌ Aucun engagement de résultat</td>
+              <th>Anti-risque (défini)</th>
+              <td class="ok">✅ Signal mesurable + itération offerte</td>
+              <td class="no">❌ Engagement flou</td>
             </tr>
           </table>
         </div>
       </div>
     </section>
 
-    <!-- FAQ objections -->
+    <!-- FAQ -->
     <section id="faq">
       <div class="wrap">
         <div class="section-title">
@@ -1358,7 +1600,7 @@
           <p>On coupe les freins à la décision. Court, clair, actionnable.</p>
         </div>
 
-        <div class="panel" style="padding:16px; display:grid; grid-template-columns:1fr 1fr; gap:12px">
+        <div class="panel p16" style="display:grid; grid-template-columns:1fr 1fr; gap:12px">
           <details>
             <summary>“J’ai déjà un site.”</summary>
             <p>On ne refait pas “tout”. On ajoute une <b>page d’offre</b> + un <b>CTA unique</b> qui convertit.</p>
@@ -1372,8 +1614,8 @@
             <p>Vous validez. On exécute. Vous récupérez les demandes.</p>
           </details>
           <details>
-            <summary>“Sans engagement = pas fiable.”</summary>
-            <p>Au contraire : vous restez parce que ça marche, pas parce que vous êtes bloqué.</p>
+            <summary>“Sans contrat long = pas fiable.”</summary>
+            <p>Vous restez parce que ça performe, pas parce que vous êtes bloqué.</p>
           </details>
         </div>
       </div>
@@ -1383,7 +1625,7 @@
     <section id="audit">
       <div class="wrap">
         <div class="section-title">
-          <h2>Audit + plan d’actions (60 secondes)</h2>
+          <h2>Audit express + plan d’actions (60 secondes)</h2>
           <p>On renvoie : diagnostic + priorités + pack recommandé + plan 30 jours. Message prêt à envoyer.</p>
         </div>
 
@@ -1391,16 +1633,16 @@
           <form id="leadForm" class="form-grid" autocomplete="on">
             <div>
               <label for="company">Entreprise</label>
-              <input id="company" name="company" required placeholder="Nom de l'entreprise" />
+              <input id="company" name="company" required placeholder="Nom de l'entreprise" autocomplete="organization" />
             </div>
             <div>
               <label for="city">Ville / zone</label>
-              <input id="city" name="city" required placeholder="Ex : Gignac / Montpellier" />
+              <input id="city" name="city" required placeholder="Ex : Gignac / Montpellier" autocomplete="address-level2" />
             </div>
 
             <div>
               <label for="sector">Secteur</label>
-              <input id="sector" name="sector" required placeholder="Ex : immobilier, restaurant, artisan..." />
+              <input id="sector" name="sector" required placeholder="Ex : immobilier, restaurant, artisan..." autocomplete="off" />
             </div>
             <div>
               <label for="goal2">Objectif</label>
@@ -1415,35 +1657,44 @@
 
             <div>
               <label for="name">Nom</label>
-              <input id="name" name="name" required placeholder="Prénom" />
+              <input id="name" name="name" required placeholder="Prénom" autocomplete="given-name" />
             </div>
             <div>
               <label for="phone">Téléphone</label>
-              <input id="phone" name="phone" required inputmode="tel" placeholder="06..." />
+              <input id="phone" name="phone" required inputmode="tel" placeholder="06..." autocomplete="tel" />
             </div>
 
             <div>
               <label for="email">Email</label>
-              <input id="email" name="email" type="email" required placeholder="email@domaine.fr" />
+              <input id="email" name="email" type="email" required placeholder="email@domaine.fr" autocomplete="email" />
             </div>
             <div>
               <label for="website">Site (optionnel)</label>
-              <input id="website" name="website" placeholder="https://..." />
+              <input id="website" name="website" placeholder="https://..." autocomplete="url" />
+            </div>
+
+            <div style="grid-column:1/-1;">
+              <label for="budget">Budget marketing mensuel actuel (optionnel)</label>
+              <input id="budget" name="budget" type="number" min="0" step="50" placeholder="Ex : 0 / 300 / 1000" />
+              <div class="hint">Aide à calibrer le plan (SEO / contenu / ads optionnelles).</div>
             </div>
 
             <div style="grid-column:1/-1;">
               <label for="msg">Message (optionnel)</label>
-              <textarea id="msg" name="msg" rows="4" placeholder="Ex : on veut drone + Google + landing + tracking pour augmenter les demandes"></textarea>
+              <textarea id="msg" name="msg" rows="4" placeholder="Ex : drone + Google + landing + tracking pour augmenter les demandes"></textarea>
               <div class="hint">Plus c’est précis, plus le plan est personnalisé.</div>
             </div>
 
+            <!-- honeypot -->
             <input type="text" id="hp" name="hp" style="display:none" tabindex="-1" autocomplete="off" />
+            <!-- timestamp anti-bot -->
+            <input type="hidden" id="ts" name="ts" />
 
             <div style="grid-column:1/-1; display:flex; gap:10px; flex-wrap:wrap; align-items:center">
-              <button class="btn primary" type="submit" data-evt="lead_submit_whatsapp">Envoyer via WhatsApp</button>
+              <button class="btn primary" id="submitBtn" type="submit" data-evt="lead_submit_primary">Envoyer (contact direct)</button>
               <button class="btn" type="button" id="copyBtn" data-evt="lead_copy">Copier le message</button>
               <a class="btn ghost" id="mailBtn" href="#" data-evt="lead_email">Envoyer par email</a>
-              <span style="color:var(--muted); font-size:12px">Sans engagement • accès conservés • réponse rapide</span>
+              <span class="muted" style="font-size:12px">Sans contrat long • accès conservés • réponse rapide</span>
             </div>
           </form>
         </div>
@@ -1459,31 +1710,121 @@
     <div class="sticky-inner">
       <div class="msg">Objectif : <b>plus de clients</b>. Preuve (drone) + visibilité (Google/SEO) + conversion (landing) + mesure (tracking).</div>
       <div class="sticky-actions">
-        <a class="btn primary" href="#audit" data-evt="cta_sticky_audit">Audit + plan</a>
+        <a class="btn primary" href="#audit" data-evt="cta_sticky_audit">Audit express</a>
         <a class="btn" href="#roi" data-evt="cta_sticky_roi">ROI</a>
-        <a class="btn ghost" id="whatsSticky" href="#" data-evt="cta_sticky_whatsapp">WhatsApp</a>
+        <button class="btn ghost" id="ctaSmartSticky" type="button" data-evt="cta_smart_sticky">Contact direct</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Case study modal -->
+  <div class="modalBackdrop" id="caseModal" role="dialog" aria-modal="true" aria-labelledby="caseTitle">
+    <div class="modal">
+      <div class="modalHeader">
+        <div>
+          <h3 id="caseTitle">Cas réel (exemple) — avant / après</h3>
+          <p>Template à remplacer par tes chiffres réels. Le format est déjà “preuve = décision”.</p>
+        </div>
+        <button class="closeBtn" id="closeCase" type="button" aria-label="Fermer">
+          Fermer
+        </button>
+      </div>
+      <div class="modalBody">
+        <div>
+          <div class="caseGrid">
+            <div class="caseCard">
+              <b>Google (actions)</b>
+              <div class="note">Itinéraires + appels + messages</div>
+              <div class="bigN">+42%</div>
+              <div class="note">Sur 28 jours (après posts + photos + réponses).</div>
+            </div>
+            <div class="caseCard">
+              <b>CTA landing</b>
+              <div class="note">Clics WhatsApp / RDV</div>
+              <div class="bigN">+31%</div>
+              <div class="note">CTA unique + offre claire + mobile-first.</div>
+            </div>
+            <div class="caseCard">
+              <b>Leads / mois</b>
+              <div class="note">Demandes entrantes</div>
+              <div class="bigN">+18</div>
+              <div class="note">Selon secteur et volume initial.</div>
+            </div>
+            <div class="caseCard">
+              <b>Break-even</b>
+              <div class="note">Retour sur investissement</div>
+              <div class="bigN">12 jours</div>
+              <div class="note">Estimation basée sur marge client.</div>
+            </div>
+          </div>
+
+          <div class="panel p12 mt12">
+            <b>Preuves à intégrer (en prod)</b>
+            <div class="hint mt8">
+              • Capture Google “Performance” (vues + actions)<br>
+              • Capture landing (clics CTA)<br>
+              • Avant/Après visuels (photos + showreel)
+            </div>
+          </div>
+        </div>
+
+        <div class="caseTL">
+          <div class="tlItem">
+            <div class="k">Semaine 1</div>
+            <b>Preuve visuelle premium</b>
+            <p>Drone + photos + showreel + versions verticales.</p>
+          </div>
+          <div class="tlItem">
+            <div class="k">Semaine 2</div>
+            <b>Google relancé</b>
+            <p>Posts + photos + réponses + structure SEO local.</p>
+          </div>
+          <div class="tlItem">
+            <div class="k">Semaine 3</div>
+            <b>Landing + CTA unique</b>
+            <p>Page d’offre dédiée + tracking (clics / appels).</p>
+          </div>
+          <div class="tlItem">
+            <div class="k">Semaine 4</div>
+            <b>Itération</b>
+            <p>Optimisation conversion + reporting + next moves.</p>
+          </div>
+
+          <div class="rowGap10">
+            <a class="btn primary" href="#audit" id="caseToAudit" data-evt="case_to_audit">Recevoir mon audit</a>
+            <button class="btn ghost" id="caseSmart" type="button" data-evt="case_smart_contact">Contact direct</button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 
   <script>
     /* ==========================================================
-      VISION — JS v4 (shock conversion)
+      VISION — JS v5 (pillar system)
+      - Dynamic motif canvas
       - Proof bars
-      - AB toggles
-      - ROI calculator + pack reco
-      - Launch slots scarcity (localStorage)
-      - UTM capture + events tracking
-      - WhatsApp / Email message generator
+      - AB toggles (ARIA tabs)
+      - ROI calculator (credible ranges + break-even days)
+      - Smart CTA fallback (mobile->WhatsApp, desktop->email)
+      - Modal case study
+      - Tracking pro (client_id + sendBeacon optional)
+      - Anti-spam cooldown + validation
     ========================================================== */
 
     const CONFIG = {
-      whatsappNumber: "33600000000", // <-- remplace (sans +)
+      // ✅ Remplace tes vrais points de contact
+      whatsappNumberParts: ["336","00","00","00","00"], // obfuscation légère
       emailFallback: "contact@tondomaine.fr",
       brandName: "VISION",
       launchSlotsStart: 10,
-      launchSlotsKey: "vision_launch_slots_v4",
-      utmKey: "vision_utm_v4"
+      launchSlotsKey: "vision_launch_slots_v5",
+      utmKey: "vision_utm_v5",
+      clientKey: "vision_client_id_v5",
+      // Endpoint optionnel (Vercel) : /api/evt
+      eventEndpoint: "/api/evt",
+      enableBeacon: false, // passe à true si tu as mis en place l'endpoint
+      submitCooldownMs: 2500
     };
 
     const $ = (s, p=document) => p.querySelector(s);
@@ -1492,6 +1833,7 @@
     const round = (n) => Math.round(n);
     const money = (n) => `${n >= 0 ? "+" : ""}${Math.round(n)}€`;
 
+    // Toast
     function toast(msg){
       const el = $("#toast");
       el.textContent = msg;
@@ -1513,33 +1855,87 @@
       });
     });
 
+    // Dynamic motif canvas (light particles + lines)
+    (function motif(){
+      const c = $("#motif");
+      const ctx = c.getContext("2d", {alpha:true});
+      let w=0,h=0,dpr=1,pts=[],raf=0;
+      const prefersReduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if(prefersReduced){ c.style.display="none"; return; }
+
+      function resize(){
+        dpr = Math.min(2, window.devicePixelRatio || 1);
+        w = c.width = Math.floor(innerWidth * dpr);
+        h = c.height = Math.floor(innerHeight * dpr);
+        c.style.width = innerWidth + "px";
+        c.style.height = innerHeight + "px";
+        pts = Array.from({length: Math.floor(Math.min(120, Math.max(70, innerWidth/12)))}, ()=>({
+          x: Math.random()*w,
+          y: Math.random()*h,
+          vx: (Math.random()-.5)*0.25*dpr,
+          vy: (Math.random()-.5)*0.25*dpr,
+          r: (Math.random()*1.8+0.6)*dpr
+        }));
+      }
+
+      function draw(){
+        ctx.clearRect(0,0,w,h);
+        // gradient stroke
+        const g = ctx.createLinearGradient(0,0,w,h);
+        g.addColorStop(0, "rgba(124,92,255,.28)");
+        g.addColorStop(1, "rgba(25,240,194,.18)");
+        ctx.lineWidth = 1*dpr;
+
+        // move
+        for(const p of pts){
+          p.x += p.vx; p.y += p.vy;
+          if(p.x<0||p.x>w) p.vx*=-1;
+          if(p.y<0||p.y>h) p.vy*=-1;
+        }
+
+        // lines
+        ctx.strokeStyle = g;
+        for(let i=0;i<pts.length;i++){
+          for(let j=i+1;j<pts.length;j++){
+            const a=pts[i], b=pts[j];
+            const dx=a.x-b.x, dy=a.y-b.y;
+            const dist = Math.sqrt(dx*dx+dy*dy);
+            const max = 140*dpr;
+            if(dist<max){
+              const alpha = (1 - dist/max) * 0.28;
+              ctx.globalAlpha = alpha;
+              ctx.beginPath();
+              ctx.moveTo(a.x,a.y);
+              ctx.lineTo(b.x,b.y);
+              ctx.stroke();
+            }
+          }
+        }
+
+        // points
+        ctx.globalAlpha = 0.9;
+        for(const p of pts){
+          ctx.fillStyle = "rgba(255,255,255,.16)";
+          ctx.beginPath();
+          ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+          ctx.fill();
+        }
+
+        ctx.globalAlpha = 1;
+        raf = requestAnimationFrame(draw);
+      }
+
+      resize();
+      draw();
+      addEventListener("resize", ()=>{ cancelAnimationFrame(raf); resize(); draw(); }, {passive:true});
+    })();
+
     // Proof bars
     setTimeout(()=>{
       $("#p1").style.width = "92%";
-      $("#p2").style.width = "80%";
+      $("#p2").style.width = "82%";
       $("#p3").style.width = "88%";
     }, 350);
-
-    // AB toggles
-    $$(".mediaSlot").forEach(card=>{
-      const buttons = $$(".toggle button", card);
-      buttons.forEach(btn=>{
-        btn.addEventListener("click", ()=>{
-          buttons.forEach(b=>b.classList.remove("active"));
-          btn.classList.add("active");
-          const state = btn.dataset.state; // avant / apres
-
-          const showA = state === "avant";
-          const afterEls = $$("[data-apres]", card);
-          const beforeEls = $$("[data-avant]", card);
-
-          afterEls.forEach(el => el.style.display = showA ? "none" : "block");
-          beforeEls.forEach(el => el.style.display = showA ? "block" : "none");
-
-          track("ab_toggle", {card: card.dataset.ab, state});
-        });
-      });
-    });
 
     // UTM capture
     function getUTMFromURL(){
@@ -1564,18 +1960,45 @@
     }
     const UTM = loadUTM();
 
-    // Tracking
+    // client_id
+    function getClientId(){
+      let id = localStorage.getItem(CONFIG.clientKey);
+      if(id) return id;
+      id = (crypto && crypto.randomUUID) ? crypto.randomUUID() : ("cid_"+Math.random().toString(16).slice(2)+"_"+Date.now());
+      localStorage.setItem(CONFIG.clientKey, id);
+      return id;
+    }
+    const CLIENT_ID = getClientId();
+
+    // Tracking (console + dataLayer + optional beacon)
+    let lastEvtKey = "";
     function track(name, data={}){
       const payload = {
         name,
         ts: new Date().toISOString(),
+        client_id: CLIENT_ID,
         path: location.pathname + location.search + location.hash,
+        ref: document.referrer || undefined,
+        vp: {w: innerWidth, h: innerHeight},
         utm: UTM || undefined,
         ...data
       };
+
+      // dedupe very fast repeats (double-click)
+      const evtKey = name + "|" + JSON.stringify(data || {});
+      if(evtKey === lastEvtKey && (name.startsWith("cta_") || name.includes("submit"))) return;
+      lastEvtKey = evtKey;
+
       console.log("[VISION_EVT]", payload);
       window.dataLayer = window.dataLayer || [];
       window.dataLayer.push({event:"vision_event", ...payload});
+
+      if(CONFIG.enableBeacon && navigator.sendBeacon){
+        try{
+          const blob = new Blob([JSON.stringify(payload)], {type:"application/json"});
+          navigator.sendBeacon(CONFIG.eventEndpoint, blob);
+        }catch{}
+      }
     }
     $$("[data-evt]").forEach(el=>{
       el.addEventListener("click", ()=> track(el.getAttribute("data-evt")));
@@ -1604,16 +2027,110 @@
     }
     renderSlots();
 
-    // Presets
+    // AB toggles (ARIA tabs)
+    $$(".mediaSlot").forEach(card=>{
+      const buttons = $$(".toggle .tabBtn", card);
+      buttons.forEach(btn=>{
+        btn.addEventListener("click", ()=>{
+          const state = btn.dataset.state; // avant/apres
+          buttons.forEach(b=>b.setAttribute("aria-selected", String(b===btn)));
+          // show matching panel
+          const afterPanel = card.querySelector('[role="tabpanel"][id$="_apres"]');
+          const beforePanel = card.querySelector('[role="tabpanel"][id$="_avant"]');
+          const showBefore = state === "avant";
+          if(afterPanel) afterPanel.style.display = showBefore ? "none" : "flex";
+          if(beforePanel) beforePanel.style.display = showBefore ? "flex" : "none";
+          track("ab_toggle", {card: card.dataset.ab, state});
+        });
+      });
+    });
+
+    // Case modal
+    const modal = $("#caseModal");
+    function openModal(){
+      modal.style.display = "block";
+      document.body.style.overflow = "hidden";
+      $("#closeCase").focus();
+      track("case_open");
+    }
+    function closeModal(){
+      modal.style.display = "none";
+      document.body.style.overflow = "";
+      $("#openCase").focus();
+      track("case_close");
+    }
+    $("#openCase").addEventListener("click", openModal);
+    $("#closeCase").addEventListener("click", closeModal);
+    modal.addEventListener("click", (e)=>{ if(e.target === modal) closeModal(); });
+    addEventListener("keydown", (e)=>{ if(e.key === "Escape" && modal.style.display==="block") closeModal(); });
+    $("#caseToAudit").addEventListener("click", ()=>{ closeModal(); });
+
+    // WhatsApp/email helpers (smart CTA)
+    function getWhatsNumber(){
+      // tiny obfuscation (still public, but not a single literal string)
+      return CONFIG.whatsappNumberParts.join("");
+    }
+    function openWhatsApp(text){
+      const url = `https://wa.me/${getWhatsNumber()}?text=${encodeURIComponent(text)}`;
+      window.open(url, "_blank", "noopener,noreferrer");
+    }
+    function openMail(text){
+      const subject = encodeURIComponent(`Audit express + plan d’actions — ${CONFIG.brandName}`);
+      const body = encodeURIComponent(text);
+      window.location.href = `mailto:${CONFIG.emailFallback}?subject=${subject}&body=${body}`;
+    }
+    function utmString(){
+      if(!UTM) return "";
+      return Object.entries(UTM).map(([k,v])=>`${k}=${v}`).join(" | ");
+    }
+    function buildQuickHello(){
+      return `Bonjour, je souhaite un audit express + plan d’actions (${CONFIG.brandName}).` +
+        (UTM ? `\nUTM: ${utmString()}` : "") +
+        `\nClientID: ${CLIENT_ID}`;
+    }
+    function isMobile(){
+      return /Android|iPhone|iPad|iPod/i.test(navigator.userAgent || "") || (matchMedia && matchMedia("(max-width: 820px)").matches);
+    }
+    function smartContact(source){
+      const msg = buildQuickHello() + `\nSource: ${source}`;
+      if(isMobile()){
+        openWhatsApp(msg);
+        track("smart_contact", {source, channel:"whatsapp"});
+      }else{
+        openMail(msg);
+        track("smart_contact", {source, channel:"email"});
+      }
+      decrementSlots();
+    }
+    $("#ctaSmartSticky").addEventListener("click", ()=> smartContact("sticky"));
+    $("#ctaSmartPos").addEventListener("click", ()=> smartContact("position"));
+    $("#ctaSmartProof").addEventListener("click", ()=> smartContact("proof"));
+    $("#ctaSmartCalc").addEventListener("click", ()=> smartContact("roi_result"));
+    $("#caseSmart").addEventListener("click", ()=> smartContact("case_modal"));
+
+    // Presets (values + uplift ranges)
     const PRESETS = {
-      restaurant: { avgClient: 18, margin: 60, currentLeads: 120, closeRate: 4, uplift: 15, timeSaved: 4, hourValue: 25, goalMode:"Réservations" },
-      immobilier: { avgClient: 2500, margin: 55, currentLeads: 20, closeRate: 2, uplift: 25, timeSaved: 6, hourValue: 45, goalMode:"RDV" },
-      artisan:    { avgClient: 900, margin: 45, currentLeads: 18, closeRate: 3, uplift: 25, timeSaved: 6, hourValue: 40, goalMode:"Appels" },
-      beaute:     { avgClient: 70, margin: 65, currentLeads: 60, closeRate: 4, uplift: 20, timeSaved: 4, hourValue: 25, goalMode:"Réservations" },
-      sport:      { avgClient: 60, margin: 55, currentLeads: 45, closeRate: 3, uplift: 20, timeSaved: 5, hourValue: 30, goalMode:"RDV" },
-      auto:       { avgClient: 450, margin: 40, currentLeads: 25, closeRate: 3, uplift: 20, timeSaved: 6, hourValue: 35, goalMode:"Appels" }
+      restaurant: { avgClient: 18, margin: 60, currentLeads: 120, closeRate: 4, uplift: 18, timeSaved: 4, hourValue: 25, goalMode:"Réservations", upliftRange:[10,30] },
+      immobilier: { avgClient: 2500, margin: 55, currentLeads: 20, closeRate: 2, uplift: 28, timeSaved: 6, hourValue: 45, goalMode:"RDV", upliftRange:[15,45] },
+      artisan:    { avgClient: 900, margin: 45, currentLeads: 18, closeRate: 3, uplift: 25, timeSaved: 6, hourValue: 40, goalMode:"Appels", upliftRange:[15,50] },
+      beaute:     { avgClient: 70, margin: 65, currentLeads: 60, closeRate: 4, uplift: 22, timeSaved: 4, hourValue: 25, goalMode:"Réservations", upliftRange:[12,40] },
+      sport:      { avgClient: 60, margin: 55, currentLeads: 45, closeRate: 3, uplift: 20, timeSaved: 5, hourValue: 30, goalMode:"RDV", upliftRange:[12,35] },
+      auto:       { avgClient: 450, margin: 40, currentLeads: 25, closeRate: 3, uplift: 22, timeSaved: 6, hourValue: 35, goalMode:"Appels", upliftRange:[12,40] }
     };
+    let currentPreset = "custom";
+    function setUpliftGuide(){
+      if(currentPreset === "custom"){
+        $("#upliftGuide").textContent = "Plage conseillée : 15%–45% (selon offre/volume).";
+        return;
+      }
+      const r = PRESETS[currentPreset]?.upliftRange;
+      $("#upliftGuide").textContent = r ? `Plage conseillée (${currentPreset}) : ${r[0]}%–${r[1]}%` : "Plage conseillée : —";
+    }
+    setUpliftGuide();
+
     function applyPreset(key){
+      currentPreset = key;
+      setUpliftGuide();
       if(key === "custom") return;
       const p = PRESETS[key];
       if(!p) return;
@@ -1660,10 +2177,22 @@
       }
     }
 
-    function recommendedPlan(extraClients){
-      if(extraClients >= 10) return "DOMINATE";
-      if(extraClients >= 3) return "SCALE";
-      return "START";
+    function recommendedPlan(extraClients, leads, timeSaved, preset){
+      // smarter: volume + delegation + sector needs
+      if(extraClients >= 10 || leads >= 80) return {plan:"DOMINATE", why:"Volume élevé → délégation + pilotage continu."};
+      if(extraClients >= 3 || leads >= 25) return {plan:"SCALE", why:"Meilleur équilibre preuve + Google + landing."};
+      if(timeSaved >= 10 && preset !== "custom") return {plan:"SCALE", why:"Gain de temps + besoin de structure récurrente."};
+      return {plan:"START", why:"Démarrage propre : CTA unique + Google relancé."};
+    }
+
+    function upliftCredibilityScore(upliftPct){
+      // score based on recommended range if preset
+      if(currentPreset === "custom") return {label:"OK", detail:"—"};
+      const r = PRESETS[currentPreset]?.upliftRange;
+      if(!r) return {label:"OK", detail:"—"};
+      if(upliftPct < r[0]) return {label:"Très prudent", detail:`Sous la plage (${r[0]}–${r[1]}).`};
+      if(upliftPct > r[1]) return {label:"Ambitieux", detail:`Au-dessus de la plage (${r[0]}–${r[1]}).`};
+      return {label:"Crédible", detail:`Dans la plage (${r[0]}–${r[1]}).`};
     }
 
     function calc(){
@@ -1677,7 +2206,8 @@
       const closeRate10 = clamp(Number($("#closeRate").value || 0), 0, 10);
       const closePctBase = closeRate10 / 10;
 
-      const upliftRaw = clamp(Number($("#uplift").value || 0), 0, 300) / 100;
+      const upliftInputPct = clamp(Number($("#uplift").value || 0), 0, 300);
+      const upliftRaw = upliftInputPct / 100;
 
       const timeSaved = Math.max(0, Number($("#timeSaved").value || 0));
       const hourValue = Math.max(0, Number($("#hourValue").value || 0));
@@ -1699,11 +2229,19 @@
       const net = (extraProfit + timeValue) - fee;
 
       const breakEvenClients = profitPerClient > 0 ? Math.ceil(fee / profitPerClient) : Infinity;
+
+      // break-even days: assume netPositivePerMonth = (extraProfit + timeValue) - fee
+      // use gross gain (extraProfit + timeValue) as runway for payback
+      const grossGain = (extraProfit + timeValue);
+      const netPerDay = grossGain / 30;
+      const breakEvenDays = netPerDay > 0 ? Math.ceil(fee / netPerDay) : Infinity;
+
       const score = (isFinite(breakEvenClients) && breakEvenClients > 0)
         ? clamp((extraClients / breakEvenClients) * 100, 0, 180)
         : 0;
 
-      const rec = recommendedPlan(extraClients);
+      const rec = recommendedPlan(extraClients, leads, timeSaved, currentPreset);
+      const cred = upliftCredibilityScore(upliftInputPct);
 
       const status = net >= 0 ? "Rentable" : "À optimiser";
       $("#headline").textContent = `${status} — ${money(net)} / mois (estimation)`;
@@ -1715,7 +2253,10 @@
       $("#caPlus").textContent = `+${round(extraCA)}€`;
       $("#leadsPlus").textContent = `+${round(extraLeads)}`;
       $("#breakeven").textContent = isFinite(breakEvenClients) ? `${breakEvenClients} client(s)/mois` : "—";
-      $("#recPlan").textContent = rec;
+      $("#breakevenDays").textContent = isFinite(breakEvenDays) ? `${breakEvenDays} jours` : "—";
+      $("#recPlan").textContent = rec.plan;
+      $("#recWhy").textContent = rec.why;
+      $("#upliftScore").textContent = `${cred.label}`;
 
       $("#breakdown").innerHTML =
         `• Leads en plus : <b>+${round(extraLeads)}</b> / mois<br>` +
@@ -1724,7 +2265,8 @@
         `• Profit estimé : <b>${money(extraProfit)}</b> / mois<br>` +
         `• Valeur temps : <b>${money(timeValue)}</b> / mois<br>` +
         `• Coût pack : <b>-${fee}€</b> / mois<br>` +
-        `➡ Gain net : <b>${money(net)}</b> / mois`;
+        `➡ Gain net : <b>${money(net)}</b> / mois<br>` +
+        (cred.detail !== "—" ? `<span class="mono">Uplift: ${cred.detail}</span>` : "");
 
       const tag = $("#scoreTag");
       const hint = $("#scoreHint");
@@ -1745,20 +2287,28 @@
 
       const plan30 = [
         "Semaine 1 : preuve premium (drone + photos) + showreel + cohérence marque.",
-        "Semaine 2 : Google Business (posts + photos + structure SEO local).",
+        "Semaine 2 : Google Business (posts + photos + réponses + structure SEO local).",
         "Semaine 3 : landing à CTA unique + tracking (clics, appels, WhatsApp).",
         "Semaine 4 : itération conversion + reporting + plan du mois suivant."
       ];
       $("#plan30").innerHTML = plan30.map(x=>`• ${x}`).join("<br>");
 
-      toast("ROI calculé. Envoie l’audit pour le plan exact.");
+      toast("ROI calculé. Lance l’audit pour le plan exact.");
       track("calc_done", {
-        scenario, goal,
-        extraLeads: round(extraLeads),
-        extraClients: round(extraClients),
-        extraCA: round(extraCA),
-        net: Math.round(net),
-        recPlan: rec
+        scenario, goal, preset: currentPreset,
+        inputs: {
+          avgClient, marginPct: Math.round(marginPct*100),
+          leads, closeRate10, upliftInputPct, timeSaved, hourValue, fee
+        },
+        outputs: {
+          extraLeads: round(extraLeads),
+          extraClients: round(extraClients),
+          extraCA: round(extraCA),
+          net: Math.round(net),
+          breakEvenClients: isFinite(breakEvenClients) ? breakEvenClients : null,
+          breakEvenDays: isFinite(breakEvenDays) ? breakEvenDays : null,
+          recPlan: rec.plan
+        }
       });
     }
 
@@ -1766,6 +2316,9 @@
 
     $("#resetBtn").addEventListener("click", ()=>{
       $("#sectorPreset").value = "custom";
+      currentPreset = "custom";
+      setUpliftGuide();
+
       $("#goalMode").value = "Appels";
       $("#planSel").value = "SCALE";
       $("#avgClient").value = 200;
@@ -1782,7 +2335,7 @@
 
       $("#headline").textContent = "—";
       $("#subtitle").textContent = "Clique “Calculer”.";
-      ["net","clientsPlus","caPlus","leadsPlus","breakeven","recPlan"].forEach(id=>$("#"+id).textContent="—");
+      ["net","clientsPlus","caPlus","leadsPlus","breakeven","breakevenDays","recPlan","recWhy","upliftScore"].forEach(id=>$("#"+id).textContent="—");
       $("#breakdown").textContent = "—";
       $("#plan30").textContent = "—";
       $("#scoreTag").className = "tag";
@@ -1802,40 +2355,18 @@
       });
     });
 
-    // WhatsApp/email
-    function openWhatsApp(text){
-      const url = `https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent(text)}`;
-      window.open(url, "_blank", "noopener,noreferrer");
-    }
-    function openMail(text){
-      const subject = encodeURIComponent(`Audit + plan d’actions — ${CONFIG.brandName}`);
-      const body = encodeURIComponent(text);
-      window.location.href = `mailto:${CONFIG.emailFallback}?subject=${subject}&body=${body}`;
-    }
-    function utmString(){
-      if(!UTM) return "";
-      return Object.entries(UTM).map(([k,v])=>`${k}=${v}`).join(" | ");
-    }
-    function buildQuickHello(){
-      return `Bonjour, je souhaite un audit + plan d’actions (${CONFIG.brandName}).` + (UTM ? `\nUTM: ${utmString()}` : "");
-    }
-    function wireWhats(id, msgBuilder){
-      const el = $(id);
-      if(!el) return;
-      el.addEventListener("click", (e)=>{
-        e.preventDefault();
-        const msg = (msgBuilder ? msgBuilder() : buildQuickHello());
-        openWhatsApp(msg);
-        track("whatsapp_open", {source:id});
-      });
-    }
-    wireWhats("#whatsHero");
-    wireWhats("#whatsProof");
-    wireWhats("#whatsSticky");
-    wireWhats("#whatsPos");
-    wireWhats("#whatsCalc", ()=> buildQuickHello() + "\n\nJe viens de faire le ROI. Pouvez-vous me proposer le pack recommandé + plan 30 jours ?");
-
     // Lead form
+    $("#ts").value = String(Date.now());
+
+    function validatePhoneFR(t){
+      const v = (t || "").replace(/\s+/g,"").replace(/[^\d+]/g,"");
+      // accept +33xxxxxxxxx or 0xxxxxxxxx (9-10 digits after)
+      return /^(\+33|0)\d{9}$/.test(v);
+    }
+    function validateEmail(v){
+      return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v || "");
+    }
+
     function getLeadPayload(){
       return {
         company: $("#company").value.trim(),
@@ -1846,16 +2377,24 @@
         phone: $("#phone").value.trim(),
         email: $("#email").value.trim(),
         website: $("#website").value.trim(),
+        budget: ($("#budget").value || "").trim(),
         msg: $("#msg").value.trim(),
         hp: $("#hp").value.trim(),
+        ts: Number($("#ts").value || 0),
         plan: $("#planSel").value,
         scenario
       };
     }
     function validateRequired(p){
       const required = ["company","city","sector","name","phone","email"];
-      return required.every(k => !!p[k]);
+      if(!required.every(k => !!p[k])) return false;
+      if(!validateEmail(p.email)) return false;
+      if(!validatePhoneFR(p.phone)) return false;
+      // naive bot timing: must take at least 2 seconds
+      if(p.ts && (Date.now() - p.ts) < 1800) return false;
+      return true;
     }
+
     function buildLeadMessage(p){
       const planEl = $("#planSel");
       const fee = Number(planEl.selectedOptions[0].dataset.price || 0);
@@ -1868,14 +2407,16 @@
       const uplift = Number($("#uplift").value || 0);
 
       return [
-        `Bonjour, je souhaite un audit + plan d’actions (${CONFIG.brandName}).`,
+        `Bonjour, je souhaite un audit express + plan d’actions (${CONFIG.brandName}).`,
+        `ClientID : ${CLIENT_ID}`,
         UTM ? `UTM : ${utmString()}` : "",
         `Entreprise : ${p.company}`,
         `Ville/Zone : ${p.city}`,
         `Secteur : ${p.sector}`,
         `Objectif : ${p.goal}`,
+        p.budget ? `Budget marketing actuel : ${p.budget}€/mois` : "",
         `Pack sélectionné : ${p.plan} (${fee}€/mois)`,
-        `ROI : objectif ${goalMode} • scénario ${SCENARIOS[p.scenario].label} • valeur client ${avgClient}€ • marge ${marginPct}% • demandes ${leads}/mois • sur 10 demandes = ${closeRate} client(s) • +${uplift}% demandes`,
+        `ROI (inputs) : objectif ${goalMode} • scénario ${SCENARIOS[p.scenario].label} • valeur client ${avgClient}€ • marge ${marginPct}% • demandes ${leads}/mois • sur 10 demandes = ${closeRate} client(s) • uplift +${uplift}%`,
         `Nom : ${p.name}`,
         `Téléphone : ${p.phone}`,
         `Email : ${p.email}`,
@@ -1884,41 +2425,80 @@
       ].filter(Boolean).join("\n");
     }
 
+    // Cooldown
+    let lastSubmitAt = 0;
+    function canSubmit(){
+      const now = Date.now();
+      if(now - lastSubmitAt < CONFIG.submitCooldownMs) return false;
+      lastSubmitAt = now;
+      return true;
+    }
+
+    // Primary submit = smart fallback
     $("#leadForm").addEventListener("submit", (e)=>{
       e.preventDefault();
+      if(!canSubmit()){ toast("Patiente 2s…"); return; }
+
+      const btn = $("#submitBtn");
+      btn.setAttribute("aria-busy","true");
+
       const p = getLeadPayload();
-      if(p.hp){ toast("Erreur."); return; }
-      if(!validateRequired(p)){ toast("Remplis tous les champs obligatoires."); return; }
+      if(p.hp){ toast("Erreur."); btn.removeAttribute("aria-busy"); return; }
+
+      if(!validateRequired(p)){
+        toast("Champs invalides. Vérifie email + téléphone (FR).");
+        btn.removeAttribute("aria-busy");
+        return;
+      }
+
       const msg = buildLeadMessage(p);
-      toast("WhatsApp s’ouvre avec le message prêt.");
-      openWhatsApp(msg);
+      // smart: mobile -> WhatsApp, desktop -> email
+      if(isMobile()){
+        toast("WhatsApp s’ouvre avec le message prêt.");
+        openWhatsApp(msg);
+        track("lead_submit", {channel:"whatsapp", company:p.company, sector:p.sector});
+      }else{
+        toast("Email s’ouvre avec le message prêt.");
+        openMail(msg);
+        track("lead_submit", {channel:"email", company:p.company, sector:p.sector});
+      }
+
       decrementSlots();
-      track("lead_submit", {channel:"whatsapp", company:p.company, sector:p.sector});
+      btn.removeAttribute("aria-busy");
     });
 
     $("#copyBtn").addEventListener("click", async ()=>{
+      if(!canSubmit()){ toast("Patiente 2s…"); return; }
       const p = getLeadPayload();
-      if(!validateRequired(p)){ toast("Remplis les champs obligatoires pour générer le message."); return; }
+      if(!validateRequired(p)){ toast("Remplis les champs (email + tel FR)."); return; }
       const msg = buildLeadMessage(p);
       try{
         await navigator.clipboard.writeText(msg);
         toast("Message copié.");
         track("lead_copy_done");
       }catch{
-        toast("Copie impossible. Utilise WhatsApp.");
+        toast("Copie impossible. Utilise l’envoi direct.");
         track("lead_copy_fail");
       }
     });
 
     $("#mailBtn").addEventListener("click", (e)=>{
       e.preventDefault();
+      if(!canSubmit()){ toast("Patiente 2s…"); return; }
       const p = getLeadPayload();
-      if(!validateRequired(p)){ toast("Remplis les champs obligatoires."); return; }
+      if(!validateRequired(p)){ toast("Remplis les champs (email + tel FR)."); return; }
       const msg = buildLeadMessage(p);
       openMail(msg);
       decrementSlots();
       track("lead_submit", {channel:"email", company:p.company, sector:p.sector});
     });
+
+    // Smart CTA on top hero audit (optional direct contact)
+    $("#ctaTop").addEventListener("contextmenu", (e)=>{ e.preventDefault(); smartContact("top_cta_context"); });
+    $("#ctaHero").addEventListener("contextmenu", (e)=>{ e.preventDefault(); smartContact("hero_cta_context"); });
+
+    // Init
+    track("page_view");
   </script>
 
   <script type="application/ld+json">
@@ -1926,7 +2506,10 @@
     "@context":"https://schema.org",
     "@type":"ProfessionalService",
     "name":"VISION",
+    "url":"https://tondomaine.fr",
     "areaServed":"FR",
+    "email":"contact@tondomaine.fr",
+    "telephone":"+33 6 00 00 00 00",
     "serviceType":[
       "Drone & Visual Proof System",
       "Google Business Optimization",
