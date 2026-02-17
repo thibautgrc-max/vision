@@ -15,18 +15,14 @@
 
   <style>
     /* ==========================================================
-      VISION — Conversion-grade UI (SMB → Mid → Enterprise)
-      Objectif: décision rapide, preuve claire, bénéfices concrets, ROI visible.
-      - Un seul CTA principal
-      - “Choose your lane” (PME / ETI / Grand compte) = copy + ROI adaptés
-      - Simulation ROI + break-even + plan recommandé
-      - Proof wall + process + packs lisibles
-      - Perf: CSS/JS light, no libs
+      VISION — Conversion-grade UI
+      Modifs demandées :
+      ✅ 1) Suppression bloc "Choisissez votre format (PME/ETI/Grand compte)"
+      ✅ 2) Fix visuel iOS (banding/lignes) + structure/dimensionnement
     ========================================================== */
 
     :root{
       --bg:#060616; --bg2:#070A22;
-
       --text:#F4F7FF;
       --muted:#A6B4DF;
       --soft:#D9E1FF;
@@ -67,37 +63,76 @@
     *{box-sizing:border-box}
     html,body{height:100%}
     html{scroll-behavior:smooth}
+
     body{
       margin:0;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
       color:var(--text);
+
+      /* Fond plus "stable" iOS (réduit banding) */
       background:
         radial-gradient(1200px 760px at 12% 12%, rgba(124,92,255,.26), transparent 60%),
         radial-gradient(1100px 780px at 92% 18%, rgba(25,240,194,.14), transparent 62%),
         radial-gradient(900px 720px at 50% 100%, rgba(96,165,250,.10), transparent 62%),
         linear-gradient(180deg, var(--bg), var(--bg2) 55%, var(--bg));
+
       overflow-x:hidden;
       line-height:1.55;
       letter-spacing:.12px;
       text-rendering:optimizeLegibility;
       -webkit-font-smoothing:antialiased;
       -moz-osx-font-smoothing:grayscale;
+
+      /* évite certains artefacts de rendu */
+      -webkit-text-size-adjust: 100%;
     }
 
-    /* Dynamic motif overlay (light, fast) */
+    /* ✅ Overlay "motif" ajusté pour éviter les seams/lignes */
     body:before{
+      content:"";
+      position:fixed; inset:-2px;
+      pointer-events:none;
+      opacity:.10;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='540' height='540'%3E%3Cdefs%3E%3CradialGradient id='g' cx='50%25' cy='50%25' r='55%25'%3E%3Cstop offset='0' stop-color='%237C5CFF' stop-opacity='.55'/%3E%3Cstop offset='1' stop-color='%2319F0C2' stop-opacity='0'/%3E%3C/radialGradient%3E%3ClinearGradient id='l' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop stop-color='%23FFFFFF' stop-opacity='.18'/%3E%3Cstop offset='1' stop-color='%23FFFFFF' stop-opacity='0'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='120' cy='150' r='110' fill='url(%23g)'/%3E%3Ccircle cx='410' cy='350' r='150' fill='url(%23g)'/%3E%3Cpath d='M60 460 C190 320, 270 540, 490 400' fill='none' stroke='url(%23l)' stroke-width='2'/%3E%3Cpath d='M70 90 C220 10, 320 170, 480 80' fill='none' stroke='url(%23l)' stroke-width='2'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+      background-size: 540px 540px;
+      background-position: 0 0;
+      mix-blend-mode: overlay;
+      filter: blur(.2px);
+      transform: translateZ(0);
+    }
+
+    /* ✅ Grain (anti-banding) : masque les “stries” iOS */
+    body:after{
       content:"";
       position:fixed; inset:0;
       pointer-events:none;
-      opacity:.13;
-      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='540' height='540'%3E%3Cdefs%3E%3CradialGradient id='g' cx='50%25' cy='50%25' r='55%25'%3E%3Cstop offset='0' stop-color='%237C5CFF' stop-opacity='.55'/%3E%3Cstop offset='1' stop-color='%2319F0C2' stop-opacity='0'/%3E%3C/radialGradient%3E%3ClinearGradient id='l' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop stop-color='%23FFFFFF' stop-opacity='.18'/%3E%3Cstop offset='1' stop-color='%23FFFFFF' stop-opacity='0'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='120' cy='150' r='110' fill='url(%23g)'/%3E%3Ccircle cx='410' cy='350' r='150' fill='url(%23g)'/%3E%3Cpath d='M60 460 C190 320, 270 540, 490 400' fill='none' stroke='url(%23l)' stroke-width='2'/%3E%3Cpath d='M70 90 C220 10, 320 170, 480 80' fill='none' stroke='url(%23l)' stroke-width='2'/%3E%3C/svg%3E");
-      mix-blend-mode:overlay;
+      opacity:.08;
+      mix-blend-mode: overlay;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='.9'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+      background-size: 220px 220px;
+      transform: translateZ(0);
     }
 
     a{color:inherit; text-decoration:none}
     img{max-width:100%; height:auto; display:block}
-    .wrap{max-width:var(--max); margin:0 auto; padding:0 18px; position:relative}
-    .sr{position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0}
+
+    /* ✅ Wrap plus stable + évite les “lignes” de layout */
+    .wrap{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:0 18px;
+      position:relative;
+      z-index:1;
+      width: min(var(--max), calc(100% - 36px));
+    }
+
+    .sr{
+      position:absolute; width:1px; height:1px;
+      padding:0; margin:-1px; overflow:hidden;
+      clip:rect(0,0,0,0); white-space:nowrap; border:0
+    }
 
     /* Topbar */
     .topbar{
@@ -138,7 +173,8 @@
 
     /* Nav */
     .nav{
-      display:flex; align-items:center; gap:10px; flex-wrap:wrap; justify-content:flex-end;
+      display:flex; align-items:center; gap:10px;
+      flex-wrap:wrap; justify-content:flex-end;
       color:var(--muted);
     }
     .nav a{
@@ -211,6 +247,7 @@
       opacity:.92; pointer-events:none;
     }
     .card>*{position:relative}
+
     .panel{
       border:1px solid var(--line);
       border-radius: var(--r24);
@@ -265,41 +302,7 @@
     .heroCta{display:flex; gap:10px; flex-wrap:wrap; align-items:center}
     .trust{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px}
 
-    /* Persona selector */
-    .lane{
-      margin-top:14px;
-      border:1px solid var(--line);
-      border-radius: var(--r32);
-      background: rgba(255,255,255,.03);
-      padding:12px;
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      align-items:center;
-      justify-content:space-between;
-    }
-    .laneLeft{display:flex; flex-direction:column; gap:4px}
-    .laneLeft b{font-weight:1000; letter-spacing:-.2px}
-    .laneLeft span{color:var(--muted); font-size:12.5px}
-    .seg{
-      display:flex; gap:8px; flex-wrap:wrap;
-    }
-    .seg button{
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.03);
-      color:var(--soft);
-      font-weight:950;
-      border-radius:999px;
-      padding:10px 12px;
-      cursor:pointer;
-      transition: transform var(--dur) var(--ease), border-color var(--dur) var(--ease), background var(--dur) var(--ease);
-    }
-    .seg button:hover{transform:translateY(-1px); border-color:var(--line2)}
-    .seg button[aria-pressed="true"]{
-      border-color: rgba(124,92,255,.45);
-      background: rgba(124,92,255,.14);
-      box-shadow: 0 18px 46px rgba(124,92,255,.14);
-    }
+    /* ✅ (Supprimé) lane / segments — on garde le naming pour éviter du CSS mort, mais plus utilisé */
 
     /* Hero right */
     .heroRight{padding:18px; display:flex; flex-direction:column; gap:10px}
@@ -384,7 +387,7 @@
       white-space:nowrap;
     }
 
-    /* Proof wall with real visuals placeholders */
+    /* Proof wall */
     .proof{
       border:1px solid var(--line);
       border-radius: var(--r32);
@@ -476,6 +479,7 @@
     /* Pricing */
     .pricing{display:grid; grid-template-columns: repeat(3, 1fr); gap:12px; align-items:stretch}
     @media (max-width: 980px){ .pricing{grid-template-columns:1fr} }
+
     .price-card{
       padding:16px;
       border-radius: var(--r40);
@@ -617,11 +621,13 @@
     }
     .stickyInner{
       max-width:var(--max); margin:0 auto; padding:12px 18px;
-      display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap;
+      display:flex; align-items:center; justify-content:space-between;
+      gap:10px; flex-wrap:wrap;
     }
     .stickyMsg{color:var(--muted); font-size:var(--fs0)}
     .stickyMini{
-      display:flex; gap:10px; flex-wrap:wrap; align-items:center;
+      display:inline-flex;
+      gap:10px; flex-wrap:wrap; align-items:center;
       border:1px solid rgba(255,255,255,.10);
       border-radius: 999px;
       padding:8px 10px;
@@ -629,6 +635,8 @@
       color: rgba(217,225,255,.86);
       font-weight:900;
       font-size:12px;
+      width: fit-content;
+      margin-left: 10px;
     }
 
     .spacer{height:92px}
@@ -687,8 +695,15 @@
     @media (prefers-reduced-motion: reduce){
       html{scroll-behavior:auto}
       .reveal{opacity:1 !important; transform:none !important; transition:none !important}
-      .btn, .nav a, .seg button{transition:none !important}
+      .btn, .nav a{transition:none !important}
       .bar{transition:none !important}
+    }
+
+    /* ✅ Fallback iOS : blur un peu moins agressif (réduit artefacts) */
+    @supports (-webkit-touch-callout: none){
+      .topbar{backdrop-filter: blur(12px)}
+      .sticky{backdrop-filter: blur(12px)}
+      .modalCard{backdrop-filter: blur(12px)}
     }
   </style>
 </head>
@@ -714,12 +729,9 @@
                 </feMerge>
               </filter>
             </defs>
-            <!-- outer -->
             <path d="M32 6c14.36 0 26 11.64 26 26S46.36 58 32 58 6 46.36 6 32 17.64 6 32 6Z"
                   stroke="url(#vg)" stroke-width="3" opacity=".92"/>
-            <!-- V monogram -->
             <path d="M18 22l14 26 14-26" stroke="url(#vg)" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" opacity=".80"/>
-            <!-- eye line -->
             <path d="M14 36c10-14 26-14 36 0" stroke="url(#vg)" stroke-width="3" stroke-linecap="round" opacity=".85" filter="url(#glow)"/>
             <path d="M21 36c6-8 16-8 22 0" stroke="url(#vg)" stroke-width="3" stroke-linecap="round" opacity=".95"/>
             <circle cx="32" cy="36" r="4.2" fill="url(#vg)"/>
@@ -785,18 +797,7 @@
           <span class="pillTag">IA-ready</span>
         </div>
 
-        <!-- Choose your lane -->
-        <div class="lane" aria-label="Choix entreprise">
-          <div class="laneLeft">
-            <b>Choisissez votre format</b>
-            <span id="laneHint">PME → décision rapide, ROI immédiat.</span>
-          </div>
-          <div class="seg" role="group" aria-label="Segment entreprise">
-            <button type="button" class="laneBtn" data-lane="smb" aria-pressed="true">PME</button>
-            <button type="button" class="laneBtn" data-lane="mid" aria-pressed="false">ETI</button>
-            <button type="button" class="laneBtn" data-lane="ent" aria-pressed="false">Grand compte</button>
-          </div>
-        </div>
+        <!-- ✅ SECTION "Choisissez votre format" SUPPRIMÉE -->
 
         <div class="kpiRow" aria-label="KPI">
           <div class="kpi">
@@ -1143,7 +1144,7 @@
 
           <div class="recommend" id="recommendBox">
             <b id="recommendTitle">Reco : —</b>
-            <p id="recommendText">On te sort le pack le plus logique selon ROI + segment.</p>
+            <p id="recommendText">On te sort le pack le plus logique selon ROI.</p>
           </div>
 
           <div class="panel" style="padding:14px; margin-top:10px">
@@ -1301,7 +1302,6 @@
           <!-- honeypot + timing -->
           <input type="text" id="hp" name="hp" style="display:none" tabindex="-1" autocomplete="off" />
           <input type="hidden" id="ts" name="ts" />
-          <input type="hidden" id="laneField" name="laneField" />
           <input type="hidden" id="roiField" name="roiField" />
 
           <div style="grid-column:1/-1; display:flex; gap:10px; flex-wrap:wrap; align-items:center">
@@ -1317,7 +1317,7 @@
     </section>
   </main>
 
-  <!-- DECISION MODAL -->
+  <!-- DECISION MODAL (simplifié, sans PME/ETI/Grand compte) -->
   <div class="modal" id="decisionModal" role="dialog" aria-modal="true" aria-label="Aide au choix">
     <div class="modalCard">
       <div class="modalTop">
@@ -1326,38 +1326,42 @@
           <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
         </button>
       </div>
+
       <div class="modalBody">
         <div class="modalGrid">
           <div class="miniCard">
-            <b>PME</b>
-            <p>Objectif : ROI rapide. On priorise preuve + Google + landing + tracking. Décision = simple.</p>
+            <b>Ce que vous devez exiger</b>
+            <p>1) Preuves réelles (showreel + avant/après) • 2) CTA unique • 3) Tracking (clics/appels/leads) • 4) Process clair.</p>
             <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:12px">
-              <button class="btn primary pill" type="button" data-setlane="smb">Activer PME</button>
-              <a class="btn pill" href="#calc">Simulation</a>
+              <a class="btn primary pill" href="#preuves" id="modalProof">Voir preuves</a>
+              <a class="btn pill" href="#packs" id="modalOffers">Voir offres</a>
             </div>
           </div>
-          <div class="miniCard">
-            <b>ETI</b>
-            <p>Objectif : volume + cohérence marque. Process + reporting + cadence contenus + SEO.</p>
-            <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:12px">
-              <button class="btn primary pill" type="button" data-setlane="mid">Activer ETI</button>
-              <a class="btn pill" href="#packs">Offres</a>
-            </div>
-          </div>
-          <div class="miniCard">
-            <b>Grand compte</b>
-            <p>Objectif : contrôle + conformité + data. Tracking avancé, gouvernance, livrables signés.</p>
-            <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:12px">
-              <button class="btn primary pill" type="button" data-setlane="ent">Activer Grand compte</button>
-              <a class="btn pill" href="#audit">Audit</a>
-            </div>
-          </div>
+
           <div class="miniCard">
             <b>La règle d’or</b>
-            <p>Si on ne peut pas mesurer la conversion (CTA/events/leads), ce n’est pas du marketing, c’est du décor.</p>
+            <p>Si on ne mesure pas la conversion (CTA/events/leads), ce n’est pas du marketing : c’est du décor.</p>
             <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:12px">
               <button class="btn pill" type="button" id="modalGoCalc">Go ROI</button>
               <button class="btn ghost pill" type="button" id="modalGoAudit">Go audit</button>
+            </div>
+          </div>
+
+          <div class="miniCard">
+            <b>Quand choisir SCALE</b>
+            <p>Si vous voulez : preuve premium + série de contenus + Google/SEO + landing + tracking. C’est la configuration “machine”.</p>
+            <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:12px">
+              <button class="btn primary pill" type="button" id="modalPickScale">Appliquer SCALE</button>
+              <a class="btn pill" href="#calc">Vérifier ROI</a>
+            </div>
+          </div>
+
+          <div class="miniCard">
+            <b>Quand choisir DOMINATE</b>
+            <p>Si vous voulez déléguer + Ads + reporting + optimisation continue (scale propre + gouvernance).</p>
+            <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:12px">
+              <button class="btn primary pill" type="button" id="modalPickDominate">Appliquer DOMINATE</button>
+              <a class="btn pill" href="#audit">Audit</a>
             </div>
           </div>
         </div>
@@ -1384,14 +1388,11 @@
 
   <script>
     /* ==========================================================
-      VISION — JS (conversion-grade, light)
-      - Reveal (IntersectionObserver)
-      - Segment (PME/ETI/Grand compte): copy + ROI defaults + recommendation logic
-      - Industry presets
-      - ROI calculator: net + break-even + score + plan recommended
+      VISION — JS (simplifié)
+      - Reveal
+      - ROI calculator + recommendation (sans segments PME/ETI/GC)
+      - Modal aide au choix (sans complexité)
       - Lead generator: WhatsApp / copy / email
-      - Anti-bot: honeypot + minimum time
-      - Modal decision helper
     ========================================================== */
 
     const CONFIG = {
@@ -1432,79 +1433,7 @@
       window.dataLayer.push({ event:"vision_event", ...payload });
     }
 
-    // Lane presets
-    const LANE_PRESETS = {
-      smb: {
-        label: "PME",
-        hint: "PME → décision rapide, ROI immédiat.",
-        heroSub: "VISION installe un pipeline complet : preuves premium (drone/film + contenus) → Google/SEO (intention) → landing (CTA unique) → tracking (pilotage). Résultat : des demandes rapides, mesurables.",
-        kpi: [
-          ["Vitesse", "Setup rapide, livrables visibles en jours."],
-          ["Intention", "Google + SEO = appels / itinéraires / messages."],
-          ["ROI", "Break-even visé < 2 clients/mois."]
-        ],
-        defaults: { planFee: 690, extraClients: 4, leadRate: 35, timeSaved: 6, hourValue: 35 }
-      },
-      mid: {
-        label: "ETI",
-        hint: "ETI → volume + cohérence marque + cadence.",
-        heroSub: "VISION standardise votre acquisition : preuve premium + contenus en série + SEO/Google + landing + tracking. Objectif : stabiliser un flux de demandes et scaler propre.",
-        kpi: [
-          ["Cadence", "Séries de contenus + planning + déclinaisons."],
-          ["Cohérence", "Message homogène sur site, Google, social."],
-          ["Pilotage", "KPI mensuels, itérations, priorités."]
-        ],
-        defaults: { planFee: 1290, extraClients: 7, leadRate: 30, timeSaved: 10, hourValue: 55 }
-      },
-      ent: {
-        label: "Grand compte",
-        hint: "Grand compte → gouvernance + conformité + data.",
-        heroSub: "VISION fournit un système exécuté comme un produit : process, tracking, livrables structurés, reporting, et stabilité. Objectif : performance + contrôle.",
-        kpi: [
-          ["Gouvernance", "Livrables signés, process, jalons."],
-          ["Data", "Tracking avancé, attribution, KPI business."],
-          ["Scale", "Ads + créas + itération continue."]
-        ],
-        defaults: { planFee: 1290, extraClients: 12, leadRate: 25, timeSaved: 18, hourValue: 80 }
-      }
-    };
-
-    let currentLane = "smb";
-    function setLane(lane){
-      currentLane = lane in LANE_PRESETS ? lane : "smb";
-      const p = LANE_PRESETS[currentLane];
-
-      // toggle aria-pressed
-      $$(".laneBtn").forEach(b=>{
-        b.setAttribute("aria-pressed", String(b.dataset.lane === currentLane));
-      });
-
-      $("#laneHint").textContent = p.hint;
-      $("#heroSub").textContent = p.heroSub;
-
-      // KPIs
-      $("#kpi1").textContent = p.kpi[0][0];
-      $("#kpi1s").textContent = p.kpi[0][1];
-      $("#kpi2").textContent = p.kpi[1][0];
-      $("#kpi2s").textContent = p.kpi[1][1];
-      $("#kpi3").textContent = p.kpi[2][0];
-      $("#kpi3s").textContent = p.kpi[2][1];
-
-      // Defaults in calculator
-      $("#planFee").value = String(p.defaults.planFee);
-      $("#extraClients").value = String(p.defaults.extraClients);
-      $("#leadRate").value = String(p.defaults.leadRate);
-      $("#timeSaved").value = String(p.defaults.timeSaved);
-      $("#hourValue").value = String(p.defaults.hourValue);
-
-      $("#laneField").value = p.label;
-      track("set_lane", {lane:p.label});
-      calcROI(true);
-    }
-
-    $$(".laneBtn").forEach(b=> b.addEventListener("click", ()=> setLane(b.dataset.lane)));
-
-    // Industry presets (adjust avgClient / margin / leadRate lightly)
+    // Industry presets
     const INDUSTRY_PRESETS = {
       default: { avgClient: 300, margin: 50, leadRate: 35 },
       immo:    { avgClient: 2000, margin: 65, leadRate: 25 },
@@ -1533,9 +1462,7 @@
     }
 
     function recommendPlan({net, breakevenClients, score}){
-      // simple logic: if net is high and scale is needed -> dominate; if positive -> scale; else start
-      const lane = currentLane;
-      if(net >= 1500 || (lane !== "smb" && score >= 120)) return "DOMINATE";
+      if(net >= 1500 || score >= 130) return "DOMINATE";
       if(net >= 0 && (breakevenClients <= 2 || score >= 95)) return "SCALE";
       return "START";
     }
@@ -1549,8 +1476,6 @@
       const timeSaved = Math.max(0, Number($("#timeSaved").value||0));
       const hourValue = Math.max(0, Number($("#hourValue").value||0));
 
-      // conversion realism: extraClients = "won clients" target; for many businesses they think in leads:
-      // We'll interpret extraClients as "signed clients" but still show implied leads.
       const profitPerClient = avgClient * margin;
       const extraProfit = extraClients * profitPerClient;
       const timeValue = timeSaved * hourValue;
@@ -1561,7 +1486,6 @@
 
       const impliedLeads = leadRate > 0 ? Math.ceil(extraClients / leadRate) : Infinity;
 
-      // Score (0..180)
       let score = 0;
       if(isFinite(breakevenClients) && breakevenClients > 0){
         score = clamp((extraClients / breakevenClients) * 100, 0, 180);
@@ -1597,7 +1521,6 @@
         s.style.color = "#FFE4E6";
       }
 
-      // Recommended plan
       const plan = recommendPlan({net, breakevenClients, score});
       const recTitle = `Reco : ${plan}`;
       const recText =
@@ -1608,15 +1531,12 @@
       $("#recommendTitle").textContent = recTitle;
       $("#recommendText").textContent = recText;
 
-      // Sticky ROI
       $("#stickyRoi").textContent = `ROI : ${net>=0?"+":""}${Math.round(net)}€/mois`;
 
-      // Save ROI for lead form
-      $("#roiField").value = `net=${Math.round(net)}€/mois; breakeven=${isFinite(breakevenRounded)?breakevenRounded:"—"}; score=${Math.round(score)}; reco=${plan}; lane=${LANE_PRESETS[currentLane].label}`;
+      $("#roiField").value = `net=${Math.round(net)}€/mois; breakeven=${isFinite(breakevenRounded)?breakevenRounded:"—"}; score=${Math.round(score)}; reco=${plan}`;
 
       if(!silent){
         track("roi_calc", {
-          lane: LANE_PRESETS[currentLane].label,
           avgClient, marginPct: Math.round(margin*100),
           extraClients, leadRatePct: Math.round(leadRate*100),
           fee, timeValue: Math.round(timeValue),
@@ -1625,16 +1545,15 @@
         });
       }
 
-      // expose latest recommended plan for apply button
       window.__VISION_RECO__ = plan;
     }
 
     $("#doCalc")?.addEventListener("click", ()=>calcROI(false));
-    // Auto-calc after lane set / industry changes
-    // Initial state
-    setLane("smb");
 
-    // Apply recommended plan (sync fee select)
+    // Initial calc
+    calcROI(true);
+
+    // Apply recommended plan
     $("#applyRecommended")?.addEventListener("click", ()=>{
       const plan = window.__VISION_RECO__ || "SCALE";
       const feeMap = { START: 299, SCALE: 690, DOMINATE: 1290 };
@@ -1657,27 +1576,30 @@
 
     // Modal decision helper
     const modal = $("#decisionModal");
-    function openModal(){
-      modal.classList.add("open");
-      track("open_decision_modal", {});
-    }
-    function closeModal(){
-      modal.classList.remove("open");
-    }
+    function openModal(){ modal.classList.add("open"); track("open_decision_modal", {}); }
+    function closeModal(){ modal.classList.remove("open"); }
+
     $("#openDecision")?.addEventListener("click", openModal);
     $("#closeDecision")?.addEventListener("click", closeModal);
     modal?.addEventListener("click", (e)=>{ if(e.target === modal) closeModal(); });
     document.addEventListener("keydown", (e)=>{ if(e.key === "Escape") closeModal(); });
 
-    $$("[data-setlane]").forEach(b=>{
-      b.addEventListener("click", ()=>{
-        setLane(b.dataset.setlane);
-        closeModal();
-        location.hash = "#calc";
-      });
-    });
     $("#modalGoCalc")?.addEventListener("click", ()=>{ closeModal(); location.hash="#calc"; });
     $("#modalGoAudit")?.addEventListener("click", ()=>{ closeModal(); location.hash="#audit"; });
+
+    $("#modalPickScale")?.addEventListener("click", ()=>{
+      $("#planFee").value = "690";
+      closeModal();
+      location.hash="#calc";
+      calcROI(false);
+    });
+
+    $("#modalPickDominate")?.addEventListener("click", ()=>{
+      $("#planFee").value = "1290";
+      closeModal();
+      location.hash="#calc";
+      calcROI(false);
+    });
 
     // Lead form: WhatsApp / Copy / Email
     function openWhatsApp(text){
@@ -1697,7 +1619,6 @@
     }
 
     function buildLeadMessage(p){
-      const lane = LANE_PRESETS[currentLane].label;
       const roi = $("#roiField").value || "—";
       const reco = window.__VISION_RECO__ || "—";
 
@@ -1708,7 +1629,6 @@
         `Ville/Zone : ${p.city}`,
         `Secteur : ${p.sector}`,
         `Objectif : ${p.goal}`,
-        `Taille : ${lane}`,
         "",
         `Contact : ${p.name} • ${p.phone} • ${p.email}`,
         p.website ? `Site : ${p.website}` : "",
@@ -1748,7 +1668,7 @@
 
       const msg = buildLeadMessage(p);
       openWhatsApp(msg);
-      track("lead_submit", {channel:"whatsapp", company:p.company, lane:LANE_PRESETS[currentLane].label});
+      track("lead_submit", {channel:"whatsapp", company:p.company});
     });
 
     $("#copy")?.addEventListener("click", async ()=>{
@@ -1797,10 +1717,10 @@
 
       const msg = buildLeadMessage(p);
       openMail(msg);
-      track("lead_submit", {channel:"email", company:p.company, lane:LANE_PRESETS[currentLane].label});
+      track("lead_submit", {channel:"email", company:p.company});
     });
 
-    // Small UX: auto update ROI when user changes inputs (no spam tracking)
+    // Auto update ROI (silent)
     ["avgClient","margin","extraClients","leadRate","planFee","timeSaved","hourValue"].forEach(id=>{
       const el = $("#"+id);
       if(!el) return;
