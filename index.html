@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
   <meta name="theme-color" content="#070814" />
-  <meta name="description" content="VISION — Référence croissance : films drone + contenus social + SEO/Google + sites & landing + Ads + IA (ChatGPT) + tracking. Simulation ROI + audit 60s." />
+  <meta name="description" content="VISION — Référence croissance : films drone + contenus social + SEO/Google + sites & landing + Ads + IA + tracking. Simulation ROI + audit 60s." />
   <title>VISION — Preuve → Google → Conversion (ROI traçable)</title>
 
   <!-- Open Graph -->
@@ -15,38 +15,44 @@
 
   <style>
     /* ==========================================================
-      VISION — Conversion-grade UI
-      Modifs demandées :
-      ✅ 1) Suppression bloc "Choisissez votre format (PME/ETI/Grand compte)"
-      ✅ 2) Fix visuel iOS (banding/lignes) + structure/dimensionnement
+      VISION — FINAL UI (Conversion + Premium + ROI)
+      Objectif:
+      - Qualité perçue très élevée (SMB → Mid → Enterprise)
+      - Décision rapide: preuve + process + ROI + plan d’action
+      - Simulateur concret: ROI + Break-even + Funnel + Budget + Plan recommandé
+      - 1 seul CTA: Audit 60s (mais multiples chemins pour y arriver)
+      - CSS/JS sans libs, perf OK, mobile-first
     ========================================================== */
 
     :root{
-      --bg:#060616; --bg2:#070A22;
+      --bg:#050514; --bg2:#070A22; --bg3:#0B0F2E;
       --text:#F4F7FF;
       --muted:#A6B4DF;
       --soft:#D9E1FF;
 
-      --a:#7C5CFF;     /* violet */
-      --b:#19F0C2;     /* mint */
-      --c:#60A5FA;     /* blue */
-      --d:#FFD166;     /* gold */
-      --e:#FB7185;     /* rose */
+      --a:#7C5CFF; /* violet */
+      --b:#19F0C2; /* mint */
+      --c:#60A5FA; /* blue */
+      --d:#FFD166; /* gold */
+      --e:#FB7185; /* rose */
+
       --good:#34D399;
       --warn:#FFCC66;
       --bad:#FB7185;
 
       --line:rgba(255,255,255,.11);
       --line2:rgba(255,255,255,.18);
+      --glass: rgba(255,255,255,.045);
+      --glass2: rgba(255,255,255,.06);
+      --glass3: rgba(0,0,0,.22);
 
       --shadow: 0 28px 92px rgba(0,0,0,.55);
       --shadow2: 0 14px 44px rgba(0,0,0,.38);
       --shadow3: 0 10px 28px rgba(0,0,0,.30);
 
-      --r16:16px; --r20:20px; --r24:24px; --r32:32px; --r40:40px;
+      --r14:14px; --r16:16px; --r20:20px; --r24:24px; --r32:32px; --r40:40px;
 
       --max:1180px;
-
       --fs0: clamp(13px, 1.05vw, 15px);
       --fs1: clamp(16px, 1.45vw, 20px);
       --fs2: clamp(24px, 2.55vw, 40px);
@@ -54,6 +60,7 @@
 
       --ease:cubic-bezier(.2,.85,.2,1);
       --dur:220ms;
+
       --focus: 0 0 0 4px rgba(124,92,255,.22), 0 0 0 1px rgba(255,255,255,.12) inset;
 
       --safe-bottom: env(safe-area-inset-bottom, 0px);
@@ -63,86 +70,48 @@
     *{box-sizing:border-box}
     html,body{height:100%}
     html{scroll-behavior:smooth}
-
     body{
       margin:0;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
       color:var(--text);
-
-      /* Fond plus "stable" iOS (réduit banding) */
       background:
-        radial-gradient(1200px 760px at 12% 12%, rgba(124,92,255,.26), transparent 60%),
-        radial-gradient(1100px 780px at 92% 18%, rgba(25,240,194,.14), transparent 62%),
-        radial-gradient(900px 720px at 50% 100%, rgba(96,165,250,.10), transparent 62%),
-        linear-gradient(180deg, var(--bg), var(--bg2) 55%, var(--bg));
-
+        radial-gradient(1200px 760px at 12% 12%, rgba(124,92,255,.28), transparent 60%),
+        radial-gradient(1100px 780px at 92% 18%, rgba(25,240,194,.16), transparent 62%),
+        radial-gradient(900px 720px at 50% 100%, rgba(96,165,250,.11), transparent 62%),
+        linear-gradient(180deg, var(--bg), var(--bg2) 50%, var(--bg));
       overflow-x:hidden;
       line-height:1.55;
       letter-spacing:.12px;
       text-rendering:optimizeLegibility;
       -webkit-font-smoothing:antialiased;
       -moz-osx-font-smoothing:grayscale;
-
-      /* évite certains artefacts de rendu */
-      -webkit-text-size-adjust: 100%;
     }
 
-    /* ✅ Overlay "motif" ajusté pour éviter les seams/lignes */
+    /* Animated background (very light) */
     body:before{
-      content:"";
-      position:fixed; inset:-2px;
-      pointer-events:none;
-      opacity:.10;
-      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='540' height='540'%3E%3Cdefs%3E%3CradialGradient id='g' cx='50%25' cy='50%25' r='55%25'%3E%3Cstop offset='0' stop-color='%237C5CFF' stop-opacity='.55'/%3E%3Cstop offset='1' stop-color='%2319F0C2' stop-opacity='0'/%3E%3C/radialGradient%3E%3ClinearGradient id='l' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop stop-color='%23FFFFFF' stop-opacity='.18'/%3E%3Cstop offset='1' stop-color='%23FFFFFF' stop-opacity='0'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='120' cy='150' r='110' fill='url(%23g)'/%3E%3Ccircle cx='410' cy='350' r='150' fill='url(%23g)'/%3E%3Cpath d='M60 460 C190 320, 270 540, 490 400' fill='none' stroke='url(%23l)' stroke-width='2'/%3E%3Cpath d='M70 90 C220 10, 320 170, 480 80' fill='none' stroke='url(%23l)' stroke-width='2'/%3E%3C/svg%3E");
-      background-repeat: repeat;
-      background-size: 540px 540px;
-      background-position: 0 0;
-      mix-blend-mode: overlay;
-      filter: blur(.2px);
-      transform: translateZ(0);
-    }
-
-    /* ✅ Grain (anti-banding) : masque les “stries” iOS */
-    body:after{
       content:"";
       position:fixed; inset:0;
       pointer-events:none;
-      opacity:.08;
-      mix-blend-mode: overlay;
-      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='.9'/%3E%3C/svg%3E");
-      background-repeat: repeat;
-      background-size: 220px 220px;
+      opacity:.13;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='540' height='540'%3E%3Cdefs%3E%3CradialGradient id='g' cx='50%25' cy='50%25' r='55%25'%3E%3Cstop offset='0' stop-color='%237C5CFF' stop-opacity='.55'/%3E%3Cstop offset='1' stop-color='%2319F0C2' stop-opacity='0'/%3E%3C/radialGradient%3E%3ClinearGradient id='l' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop stop-color='%23FFFFFF' stop-opacity='.18'/%3E%3Cstop offset='1' stop-color='%23FFFFFF' stop-opacity='0'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='120' cy='150' r='110' fill='url(%23g)'/%3E%3Ccircle cx='410' cy='350' r='150' fill='url(%23g)'/%3E%3Cpath d='M60 460 C190 320, 270 540, 490 400' fill='none' stroke='url(%23l)' stroke-width='2'/%3E%3Cpath d='M70 90 C220 10, 320 170, 480 80' fill='none' stroke='url(%23l)' stroke-width='2'/%3E%3C/svg%3E");
+      mix-blend-mode:overlay;
       transform: translateZ(0);
     }
 
     a{color:inherit; text-decoration:none}
     img{max-width:100%; height:auto; display:block}
-
-    /* ✅ Wrap plus stable + évite les “lignes” de layout */
-    .wrap{
-      max-width:var(--max);
-      margin:0 auto;
-      padding:0 18px;
-      position:relative;
-      z-index:1;
-      width: min(var(--max), calc(100% - 36px));
-    }
-
-    .sr{
-      position:absolute; width:1px; height:1px;
-      padding:0; margin:-1px; overflow:hidden;
-      clip:rect(0,0,0,0); white-space:nowrap; border:0
-    }
+    .wrap{max-width:var(--max); margin:0 auto; padding:0 18px; position:relative}
+    .sr{position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0}
 
     /* Topbar */
     .topbar{
       position:sticky; top:0; z-index:80;
       padding-top: var(--safe-top);
-      background: rgba(6,6,22,.78);
+      background: rgba(5,5,20,.72);
       border-bottom:1px solid var(--line);
     }
     @supports (backdrop-filter: blur(10px)){
-      .topbar{backdrop-filter: blur(14px)}
+      .topbar{backdrop-filter: blur(16px)}
     }
     .top-inner{
       display:flex; align-items:center; justify-content:space-between;
@@ -173,8 +142,7 @@
 
     /* Nav */
     .nav{
-      display:flex; align-items:center; gap:10px;
-      flex-wrap:wrap; justify-content:flex-end;
+      display:flex; align-items:center; gap:10px; flex-wrap:wrap; justify-content:flex-end;
       color:var(--muted);
     }
     .nav a{
@@ -227,6 +195,10 @@
     .btn.ghost{background:transparent}
     .btn.tiny{padding:10px 12px; border-radius:12px}
     .btn.pill{border-radius:999px; padding:10px 12px}
+    .btn.badgeBtn{
+      border-color: rgba(255,255,255,.14);
+      background: rgba(0,0,0,.12);
+    }
 
     /* Cards */
     .card{
@@ -241,9 +213,9 @@
       content:"";
       position:absolute; inset:-2px;
       background:
-        radial-gradient(920px 280px at 16% 0%, rgba(124,92,255,.16), transparent 62%),
-        radial-gradient(820px 260px at 90% 16%, rgba(25,240,194,.10), transparent 62%),
-        radial-gradient(760px 220px at 55% 100%, rgba(96,165,250,.07), transparent 62%);
+        radial-gradient(920px 280px at 16% 0%, rgba(124,92,255,.18), transparent 62%),
+        radial-gradient(820px 260px at 90% 16%, rgba(25,240,194,.11), transparent 62%),
+        radial-gradient(760px 220px at 55% 100%, rgba(96,165,250,.08), transparent 62%);
       opacity:.92; pointer-events:none;
     }
     .card>*{position:relative}
@@ -254,6 +226,25 @@
       background: rgba(255,255,255,.03);
       box-shadow: var(--shadow2);
     }
+
+    /* Premium “glass” sections */
+    .glass{
+      border:1px solid rgba(255,255,255,.12);
+      border-radius: var(--r32);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      box-shadow: var(--shadow2);
+      overflow:hidden;
+      position:relative;
+    }
+    .glass:before{
+      content:"";
+      position:absolute; inset:-2px;
+      background:
+        radial-gradient(780px 240px at 10% 0%, rgba(124,92,255,.12), transparent 62%),
+        radial-gradient(680px 220px at 90% 10%, rgba(25,240,194,.08), transparent 62%);
+      opacity:.9; pointer-events:none;
+    }
+    .glass>*{position:relative}
 
     /* Text helpers */
     .pillTag{
@@ -269,6 +260,7 @@
     .muted{color:var(--muted)}
     .soft{color:var(--soft)}
     .grad{background:linear-gradient(135deg,var(--a),var(--b)); -webkit-background-clip:text; background-clip:text; color:transparent}
+    .mono{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono","Courier New", monospace}
 
     /* Layout */
     section{padding:28px 0}
@@ -302,7 +294,39 @@
     .heroCta{display:flex; gap:10px; flex-wrap:wrap; align-items:center}
     .trust{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px}
 
-    /* ✅ (Supprimé) lane / segments — on garde le naming pour éviter du CSS mort, mais plus utilisé */
+    /* “Choose your lane” */
+    .lane{
+      margin-top:14px;
+      border:1px solid var(--line);
+      border-radius: var(--r32);
+      background: rgba(255,255,255,.03);
+      padding:12px;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:space-between;
+    }
+    .laneLeft{display:flex; flex-direction:column; gap:4px}
+    .laneLeft b{font-weight:1000; letter-spacing:-.2px}
+    .laneLeft span{color:var(--muted); font-size:12.5px}
+    .seg{display:flex; gap:8px; flex-wrap:wrap}
+    .seg button{
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      color:var(--soft);
+      font-weight:950;
+      border-radius:999px;
+      padding:10px 12px;
+      cursor:pointer;
+      transition: transform var(--dur) var(--ease), border-color var(--dur) var(--ease), background var(--dur) var(--ease);
+    }
+    .seg button:hover{transform:translateY(-1px); border-color:var(--line2)}
+    .seg button[aria-pressed="true"]{
+      border-color: rgba(124,92,255,.45);
+      background: rgba(124,92,255,.14);
+      box-shadow: 0 18px 46px rgba(124,92,255,.14);
+    }
 
     /* Hero right */
     .heroRight{padding:18px; display:flex; flex-direction:column; gap:10px}
@@ -314,7 +338,18 @@
       background: rgba(255,255,255,.03);
       box-shadow: var(--shadow3);
       padding:14px;
+      position:relative;
+      overflow:hidden;
     }
+    .box:before{
+      content:"";
+      position:absolute; inset:-2px;
+      background:
+        radial-gradient(420px 160px at 10% 0%, rgba(96,165,250,.08), transparent 62%),
+        radial-gradient(420px 160px at 95% 100%, rgba(255,209,102,.06), transparent 62%);
+      opacity:.9; pointer-events:none;
+    }
+    .box>*{position:relative}
     .box b{font-weight:1000; letter-spacing:-.25px}
     .box p{margin:8px 0 0; color:var(--muted); font-size:var(--fs0)}
 
@@ -353,9 +388,7 @@
       opacity:.9; pointer-events:none;
     }
     .solution>*{position:relative}
-    .solution .top{
-      display:flex; align-items:center; justify-content:space-between; gap:10px;
-    }
+    .solution .top{display:flex; align-items:center; justify-content:space-between; gap:10px}
     .badge{
       display:inline-flex; align-items:center; gap:8px;
       padding:8px 10px; border-radius:999px;
@@ -415,7 +448,7 @@
       padding:14px;
       position:relative;
       overflow:hidden;
-      min-height: 250px;
+      min-height: 260px;
       display:flex;
       flex-direction:column;
       gap:10px;
@@ -445,15 +478,23 @@
       border:1px dashed rgba(255,255,255,.18);
       border-radius: 18px;
       background: rgba(255,255,255,.03);
-      height: 120px;
+      height: 130px;
       display:grid;
       place-items:center;
       color: rgba(217,225,255,.75);
       font-weight:900;
       font-size:12px;
       letter-spacing:.25px;
+      overflow:hidden;
+      position:relative;
     }
     .mock small{display:block; margin-top:6px; color: rgba(166,180,223,.8); font-weight:850}
+    .mock:before{
+      content:"";
+      position:absolute; inset:-2px;
+      background: linear-gradient(135deg, rgba(124,92,255,.10), rgba(25,240,194,.06));
+      opacity:.9;
+    }
 
     /* Timeline */
     .timeline{display:grid; grid-template-columns: repeat(6, 1fr); gap:10px}
@@ -479,7 +520,6 @@
     /* Pricing */
     .pricing{display:grid; grid-template-columns: repeat(3, 1fr); gap:12px; align-items:stretch}
     @media (max-width: 980px){ .pricing{grid-template-columns:1fr} }
-
     .price-card{
       padding:16px;
       border-radius: var(--r40);
@@ -491,6 +531,7 @@
       gap:12px;
       position:relative;
       overflow:hidden;
+      isolation:isolate;
     }
     .price-card:before{
       content:""; position:absolute; inset:-2px;
@@ -526,7 +567,7 @@
     .tick svg{width:12px; height:12px}
     .price-actions{display:flex; gap:10px; flex-wrap:wrap; margin-top:auto}
 
-    /* Calculator */
+    /* Inputs */
     label{display:block; color:var(--muted); font-size:var(--fs0); margin-bottom:6px}
     input, select, textarea{
       width:100%;
@@ -536,30 +577,72 @@
       background: rgba(255,255,255,.03);
       color:var(--text);
       outline:none;
-      transition: box-shadow var(--dur) var(--ease), border-color var(--dur) var(--ease);
+      transition: box-shadow var(--dur) var(--ease), border-color var(--dur) var(--ease), transform var(--dur) var(--ease);
     }
     input:focus, select:focus, textarea:focus{border-color: rgba(124,92,255,.55); box-shadow: var(--focus)}
+    input:hover, select:hover, textarea:hover{border-color: rgba(255,255,255,.18)}
+    input[type="range"]{padding:0; height:44px}
     .split{display:grid; grid-template-columns: 1fr 1fr; gap:12px; align-items:stretch}
     @media (max-width: 980px){ .split{grid-template-columns:1fr} }
     .row{display:grid; grid-template-columns:1fr 1fr; gap:10px}
     @media (max-width: 560px){ .row{grid-template-columns:1fr} }
 
+    /* Simulateur premium */
     .calc{
-      border:1px solid var(--line);
+      border:1px solid rgba(255,255,255,.12);
       border-radius: var(--r40);
-      background: rgba(255,255,255,.03);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
       box-shadow: var(--shadow2);
       padding:16px;
+      position:relative;
+      overflow:hidden;
     }
+    .calc:before{
+      content:"";
+      position:absolute; inset:-2px;
+      background:
+        radial-gradient(700px 240px at 12% 0%, rgba(124,92,255,.12), transparent 62%),
+        radial-gradient(620px 220px at 90% 20%, rgba(25,240,194,.08), transparent 62%),
+        radial-gradient(520px 200px at 60% 100%, rgba(96,165,250,.06), transparent 62%);
+      opacity:.92; pointer-events:none;
+    }
+    .calc>*{position:relative}
+
+    .calcHeader{
+      display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap;
+      margin-bottom:10px;
+    }
+    .calcHeader b{font-weight:1000; letter-spacing:-.25px}
+    .calcHeader .mini{
+      display:flex; gap:8px; flex-wrap:wrap;
+      color: rgba(217,225,255,.86);
+      font-weight:900; font-size:12px;
+    }
+
+    .hint{color:var(--muted); font-size:12.5px; margin-top:8px}
+    .divider{height:1px; background: var(--line); margin:12px 0}
+
     .res{
       margin-top:10px;
-      border:1px solid var(--line);
+      border:1px solid rgba(255,255,255,.12);
       border-radius: var(--r32);
       background: rgba(0,0,0,.18);
       padding:14px;
+      position:relative;
+      overflow:hidden;
     }
+    .res:before{
+      content:"";
+      position:absolute; inset:-2px;
+      background:
+        radial-gradient(520px 220px at 10% 0%, rgba(25,240,194,.08), transparent 60%),
+        radial-gradient(520px 220px at 95% 100%, rgba(124,92,255,.12), transparent 60%);
+      opacity:.92; pointer-events:none;
+    }
+    .res>*{position:relative}
     .res .big{font-size:26px; font-weight:1000; letter-spacing:-.65px}
     .res .sm{margin-top:6px; color:var(--muted); font-size:12.5px}
+
     .status{
       display:inline-flex; align-items:center; gap:8px;
       padding:8px 10px; border-radius:999px;
@@ -569,6 +652,7 @@
       margin-top:10px;
       width:fit-content;
     }
+
     .meter{
       height:10px; border-radius:999px;
       border:1px solid var(--line);
@@ -582,6 +666,7 @@
       background: linear-gradient(90deg, var(--a), var(--b));
       transition: width 520ms var(--ease);
     }
+
     .recommend{
       margin-top:10px;
       border:1px solid rgba(124,92,255,.28);
@@ -591,6 +676,46 @@
     }
     .recommend b{font-weight:1000; letter-spacing:-.2px}
     .recommend p{margin:6px 0 0; color:rgba(217,225,255,.86); font-size:12.5px}
+
+    /* Funnel + budget boxes */
+    .funnelGrid{
+      margin-top:12px;
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:10px;
+    }
+    @media (max-width: 980px){ .funnelGrid{grid-template-columns:1fr} }
+    .fCard{
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.03);
+      border-radius: var(--r24);
+      padding:12px;
+      position:relative;
+      overflow:hidden;
+    }
+    .fCard:before{
+      content:"";
+      position:absolute; inset:-2px;
+      background:
+        radial-gradient(520px 200px at 10% 0%, rgba(96,165,250,.07), transparent 62%),
+        radial-gradient(520px 200px at 95% 100%, rgba(255,209,102,.05), transparent 62%);
+      opacity:.9; pointer-events:none;
+    }
+    .fCard>*{position:relative}
+    .fK{color:var(--muted); font-size:12px; font-weight:900; letter-spacing:.35px}
+    .fV{margin-top:6px; font-size:18px; font-weight:1000; letter-spacing:-.35px}
+    .fS{margin-top:6px; color:var(--muted); font-size:12.5px}
+
+    /* Chart */
+    .chartWrap{
+      margin-top:10px;
+      border:1px solid rgba(255,255,255,.12);
+      border-radius: var(--r24);
+      background: rgba(255,255,255,.03);
+      padding:10px;
+      overflow:hidden;
+    }
+    canvas{width:100%; height:160px; display:block}
 
     /* FAQ */
     details{
@@ -607,27 +732,25 @@
     .form{padding:18px}
     .formGrid{display:grid; grid-template-columns:1fr 1fr; gap:12px}
     @media (max-width: 980px){ .formGrid{grid-template-columns:1fr} }
-    .hint{color:var(--muted); font-size:12.5px; margin-top:6px}
+    .hint2{color:var(--muted); font-size:12.5px; margin-top:6px}
 
     /* Sticky CTA */
     .sticky{
       position:fixed; left:0; right:0; bottom:0; z-index:90;
-      background: rgba(6,6,22,.78);
+      background: rgba(5,5,20,.72);
       border-top:1px solid var(--line);
       padding-bottom: var(--safe-bottom);
     }
     @supports (backdrop-filter: blur(10px)){
-      .sticky{backdrop-filter: blur(14px)}
+      .sticky{backdrop-filter: blur(16px)}
     }
     .stickyInner{
       max-width:var(--max); margin:0 auto; padding:12px 18px;
-      display:flex; align-items:center; justify-content:space-between;
-      gap:10px; flex-wrap:wrap;
+      display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap;
     }
     .stickyMsg{color:var(--muted); font-size:var(--fs0)}
     .stickyMini{
-      display:inline-flex;
-      gap:10px; flex-wrap:wrap; align-items:center;
+      display:inline-flex; gap:10px; flex-wrap:wrap; align-items:center;
       border:1px solid rgba(255,255,255,.10);
       border-radius: 999px;
       padding:8px 10px;
@@ -635,17 +758,14 @@
       color: rgba(217,225,255,.86);
       font-weight:900;
       font-size:12px;
-      width: fit-content;
-      margin-left: 10px;
     }
-
-    .spacer{height:92px}
+    .spacer{height:96px}
 
     /* Reveal */
-    .reveal{opacity:0; transform: translateY(10px); transition: opacity 420ms var(--ease), transform 420ms var(--ease)}
+    .reveal{opacity:0; transform: translateY(10px); transition: opacity 520ms var(--ease), transform 520ms var(--ease)}
     .reveal.in{opacity:1; transform: translateY(0)}
 
-    /* Modal (decision assist) */
+    /* Modal */
     .modal{
       position:fixed; inset:0; z-index:120;
       display:none;
@@ -654,16 +774,16 @@
     }
     .modal.open{display:grid; place-items:center}
     .modalCard{
-      width:min(920px, 100%);
+      width:min(980px, 100%);
       border-radius: var(--r40);
       border:1px solid rgba(255,255,255,.16);
-      background: rgba(6,6,22,.88);
+      background: rgba(5,5,20,.84);
       box-shadow: var(--shadow);
       position:relative;
       overflow:hidden;
     }
     @supports (backdrop-filter: blur(10px)){
-      .modalCard{backdrop-filter: blur(14px)}
+      .modalCard{backdrop-filter: blur(16px)}
     }
     .modalTop{
       display:flex; justify-content:space-between; align-items:center;
@@ -692,18 +812,26 @@
     }
     .closeX:focus-visible{outline:none; box-shadow: var(--focus)}
 
+    /* Micro “premium” highlight */
+    .halo{
+      position:relative;
+    }
+    .halo:before{
+      content:"";
+      position:absolute; inset:-18px;
+      background: radial-gradient(520px 220px at 20% 10%, rgba(124,92,255,.12), transparent 60%),
+                  radial-gradient(420px 220px at 90% 70%, rgba(25,240,194,.08), transparent 60%);
+      opacity:.9;
+      pointer-events:none;
+      filter: blur(0px);
+      z-index:-1;
+    }
+
     @media (prefers-reduced-motion: reduce){
       html{scroll-behavior:auto}
       .reveal{opacity:1 !important; transform:none !important; transition:none !important}
-      .btn, .nav a{transition:none !important}
+      .btn, .nav a, .seg button{transition:none !important}
       .bar{transition:none !important}
-    }
-
-    /* ✅ Fallback iOS : blur un peu moins agressif (réduit artefacts) */
-    @supports (-webkit-touch-callout: none){
-      .topbar{backdrop-filter: blur(12px)}
-      .sticky{backdrop-filter: blur(12px)}
-      .modalCard{backdrop-filter: blur(12px)}
     }
   </style>
 </head>
@@ -714,7 +842,7 @@
     <div class="wrap top-inner">
       <a class="brand" href="#top" aria-label="Aller en haut">
         <div class="logo" aria-hidden="true">
-          <!-- Optimized VISION logo: eye + V monogram, crisp strokes -->
+          <!-- Optimized VISION logo -->
           <svg width="28" height="28" viewBox="0 0 64 64" fill="none" aria-hidden="true">
             <defs>
               <linearGradient id="vg" x1="10" y1="10" x2="54" y2="54" gradientUnits="userSpaceOnUse">
@@ -761,17 +889,17 @@
   <main id="top" class="wrap">
     <!-- HERO -->
     <header class="hero">
-      <section class="card heroLeft reveal">
+      <section class="card heroLeft reveal halo">
         <div class="pillTag"><span class="dot"></span> Mode “référence” : <b>qualité visible</b> • <b>ROI traçable</b> • <b>décision rapide</b></div>
 
         <h1 class="h1">
-          Faites-vous <span class="grad">choisir</span>.
-          <br>Pas juste <span class="grad">voir</span>.
+          On ne vend pas du marketing.
+          <br><span class="grad">On vend des demandes mesurées.</span>
         </h1>
 
         <p class="sub" id="heroSub">
           VISION installe un pipeline complet : <b>preuves premium</b> (drone/film + contenus) → <b>Google/SEO</b> (intention) → <b>landing</b> (CTA unique) → <b>Ads</b> (accélération) → <b>tracking</b> (pilotage).
-          Résultat : <b>des demandes</b>, pas des “likes”.
+          Résultat : <b>des prospects chauds</b>, pas du bruit.
         </p>
 
         <div class="heroCta">
@@ -793,20 +921,32 @@
           <span class="pillTag">CTA unique</span>
           <span class="pillTag">Google vivant</span>
           <span class="pillTag">Contenu vertical</span>
-          <span class="pillTag">Tracking & reporting</span>
+          <span class="pillTag">Tracking KPI</span>
           <span class="pillTag">IA-ready</span>
+          <span class="pillTag">Assets premium</span>
         </div>
 
-        <!-- ✅ SECTION "Choisissez votre format" SUPPRIMÉE -->
+        <!-- Choose your lane -->
+        <div class="lane" aria-label="Choix entreprise">
+          <div class="laneLeft">
+            <b>Choisissez votre format</b>
+            <span id="laneHint">PME → décision rapide, ROI immédiat.</span>
+          </div>
+          <div class="seg" role="group" aria-label="Segment entreprise">
+            <button type="button" class="laneBtn" data-lane="smb" aria-pressed="true">PME</button>
+            <button type="button" class="laneBtn" data-lane="mid" aria-pressed="false">ETI</button>
+            <button type="button" class="laneBtn" data-lane="ent" aria-pressed="false">Grand compte</button>
+          </div>
+        </div>
 
         <div class="kpiRow" aria-label="KPI">
           <div class="kpi">
-            <div class="k">Perception</div>
+            <div class="k">Positionnement</div>
             <div class="v" id="kpi1">Premium</div>
             <div class="s" id="kpi1s">Visuels = autorité. Vous montez de gamme instant.</div>
           </div>
           <div class="kpi">
-            <div class="k">Visibilité</div>
+            <div class="k">Acquisition</div>
             <div class="v" id="kpi2">Intention</div>
             <div class="s" id="kpi2s">Google + SEO local = prospects chauds.</div>
           </div>
@@ -821,40 +961,48 @@
       <aside class="card heroRight reveal">
         <div class="miniGrid">
           <div class="box">
-            <b>Ce que les clients voient</b>
-            <p>Une marque “solide”, claire, haut niveau. Donc ils agissent.</p>
+            <b>Ce que le marché achète</b>
+            <p>Clarté + preuve + KPI. Sans ça, c’est “joli” mais inutile.</p>
           </div>
           <div class="box">
-            <b>Ce que vous obtenez</b>
-            <p>Demandes + reporting + optimisation. Une machine, pas un one-shot.</p>
+            <b>Ce que VISION livre</b>
+            <p>Assets premium + pipeline de conversion + tracking exploitable.</p>
           </div>
           <div class="box">
-            <b>Ce qu’on supprime</b>
-            <p>Offres floues, sites lents, contenus random, “SEO” sans actions.</p>
+            <b>Ce qu’on coupe</b>
+            <p>Offres floues, sites lents, contenus random, SEO “fantôme”.</p>
           </div>
           <div class="box">
             <b>Ce qu’on verrouille</b>
-            <p>Preuve → Google → CTA. Le chemin est simple.</p>
+            <p>Preuve → Google → CTA. Une route. Pas 12 chemins.</p>
           </div>
         </div>
 
         <div class="panel" style="padding:14px">
-          <b>Décision rapide (mode acheteur)</b>
+          <b>Mode acheteur : check rapide</b>
           <p class="muted" style="margin:8px 0 0; font-size:var(--fs0)">
-            Si votre prestataire ne peut pas montrer <b>preuve</b> + <b>tracking</b> + <b>process</b>, c’est du bruit.
+            Si un prestataire ne montre pas <b>preuve</b> + <b>process</b> + <b>tracking</b>, c’est du décor. Pas une machine.
           </p>
           <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:12px">
             <a class="btn primary tiny" href="#preuves">Voir preuves</a>
-            <a class="btn tiny" href="#packs">Voir offres</a>
+            <a class="btn tiny" href="#calc">Voir ROI</a>
+            <a class="btn tiny ghost" href="#packs">Voir offres</a>
           </div>
         </div>
 
         <div class="panel" style="padding:14px">
           <b>Visuels pro (à remplacer par vos assets)</b>
-          <div class="mock" style="height:128px">
+          <div class="mock" style="height:140px">
             SHOWREEL / CAPTURES / AVANT-APRÈS
             <small>Remplacer par images/vidéo réelles</small>
           </div>
+        </div>
+
+        <div class="panel" style="padding:14px">
+          <b>Garantie de cadre</b>
+          <p class="muted" style="margin:8px 0 0; font-size:var(--fs0)">
+            <span class="mono">Accès conservés</span> • <span class="mono">KPI mensuels</span> • <span class="mono">itérations</span> • pas de contrat long imposé.
+          </p>
         </div>
       </aside>
     </header>
@@ -875,9 +1023,9 @@
             <span class="badge">PREUVE</span>
           </div>
           <b>Films drone + contenus premium</b>
-          <p>Vous êtes perçu “référence”. Les prospects vous choisissent avant de comparer.</p>
+          <p>Vous êtes perçu “référence”. Les prospects décident plus vite.</p>
           <div class="chips">
-            <span class="chip">Showreel</span><span class="chip">Avant/Après</span><span class="chip">Reels</span>
+            <span class="chip">Showreel</span><span class="chip">Avant/Après</span><span class="chip">Reels</span><span class="chip">Photos</span>
           </div>
         </div>
 
@@ -891,7 +1039,7 @@
           <b>Google Business + SEO local</b>
           <p>On capte les gens déjà chauds : appels, itinéraires, messages.</p>
           <div class="chips">
-            <span class="chip">Posts</span><span class="chip">Avis</span><span class="chip">Pages locales</span>
+            <span class="chip">Posts</span><span class="chip">Avis</span><span class="chip">Pages locales</span><span class="chip">Photos</span>
           </div>
         </div>
 
@@ -903,9 +1051,9 @@
             <span class="badge">CONVERSION</span>
           </div>
           <b>Landing + CTA unique + tracking</b>
-          <p>Une page = une action. On mesure les clics, appels, formulaires.</p>
+          <p>Une page = une action. On mesure clics, appels, leads, taux.</p>
           <div class="chips">
-            <span class="chip">CTA unique</span><span class="chip">Tracking</span><span class="chip">Optimisation</span>
+            <span class="chip">CTA unique</span><span class="chip">Events</span><span class="chip">Reporting</span><span class="chip">Optimisation</span>
           </div>
         </div>
       </div>
@@ -927,8 +1075,8 @@
             <span class="badge">SITE</span>
           </div>
           <b>Site vitrine premium</b>
-          <p>Rapide, lisible, preuve visible, CTA clair. Mobile-first.</p>
-          <div class="chips"><span class="chip">Performance</span><span class="chip">UX</span><span class="chip">Credibility</span></div>
+          <p>Rapide, clair, preuves visibles, CTA net. Mobile-first.</p>
+          <div class="chips"><span class="chip">Performance</span><span class="chip">UX</span><span class="chip">Crédibilité</span></div>
         </div>
 
         <div class="solution">
@@ -951,7 +1099,7 @@
             <span class="badge">TRACKING</span>
           </div>
           <b>Tracking & reporting</b>
-          <p>KPI business : clics CTA, appels, leads, taux. Pilotage data.</p>
+          <p>KPI business : clics CTA, appels, leads, taux, coût lead.</p>
           <div class="chips"><span class="chip">Events</span><span class="chip">KPIs</span><span class="chip">Tableau</span></div>
         </div>
 
@@ -963,7 +1111,7 @@
             <span class="badge">SOCIAL</span>
           </div>
           <b>Contenu réseaux (Reels/Shorts)</b>
-          <p>Séries “preuve” : avant/après, coulisses, résultats, FAQ.</p>
+          <p>Séries “preuve” : avant/après, coulisses, FAQ, résultats.</p>
           <div class="chips"><span class="chip">Hooks</span><span class="chip">Templates</span><span class="chip">Série</span></div>
         </div>
 
@@ -1046,9 +1194,9 @@
 
       <div class="timeline" aria-label="Process">
         <div class="day"><div class="n">ÉTAPE 1</div><b>Audit & angle</b><p>Promesse, offre, CTA unique, objectifs.</p></div>
-        <div class="day"><div class="n">ÉTAPE 2</div><b>Production</b><p>Drone/film + photos + scripts de contenus.</p></div>
+        <div class="day"><div class="n">ÉTAPE 2</div><b>Production</b><p>Drone/film + photos + scripts contenus.</p></div>
         <div class="day"><div class="n">ÉTAPE 3</div><b>Contenu</b><p>Showreel + Reels/Shorts (série “preuve”).</p></div>
-        <div class="day"><div class="n">ÉTAPE 4</div><b>Landing</b><p>Page d’offre + objections + CTA + tracking.</p></div>
+        <div class="day"><div class="n">ÉTAPE 4</div><b>Landing</b><p>Offre + objections + CTA + tracking.</p></div>
         <div class="day"><div class="n">ÉTAPE 5</div><b>Google/SEO</b><p>Posts, avis, pages locales, optimisation.</p></div>
         <div class="day"><div class="n">ÉTAPE 6</div><b>Scale (option)</b><p>Ads + optimisation + itérations KPI.</p></div>
       </div>
@@ -1057,12 +1205,22 @@
     <!-- CALC -->
     <section id="calc" class="reveal">
       <div class="title">
-        <h2>Simulation ROI (business-first)</h2>
-        <p>Objectif : visualiser le ROI en 30 secondes. Le système recommande ensuite l’offre logique.</p>
+        <h2>Simulation ROI (concrète + actionnable)</h2>
+        <p>On calcule <b>ROI</b>, <b>break-even</b>, <b>funnel</b> (leads nécessaires), <b>budget Ads conseillé</b>, et on sort un <b>plan recommandé</b>.</p>
       </div>
 
       <div class="split">
+        <!-- Inputs -->
         <div class="calc">
+          <div class="calcHeader">
+            <b>Paramètres business</b>
+            <div class="mini">
+              <span class="pillTag">ROI</span>
+              <span class="pillTag">Break-even</span>
+              <span class="pillTag">Funnel</span>
+            </div>
+          </div>
+
           <div class="row">
             <div>
               <label for="industry">Secteur</label>
@@ -1100,12 +1258,23 @@
 
           <div class="row" style="margin-top:10px">
             <div>
-              <label for="extraClients">Clients en + / mois (objectif)</label>
+              <label for="extraClients">Clients signés en + / mois (objectif)</label>
               <input id="extraClients" type="number" min="0" step="1" value="4" />
             </div>
             <div>
               <label for="leadRate">Taux de closing (%)</label>
               <input id="leadRate" type="number" min="1" max="95" step="1" value="35" />
+            </div>
+          </div>
+
+          <div class="row" style="margin-top:10px">
+            <div>
+              <label for="landingRate">Taux de conversion landing → lead (%)</label>
+              <input id="landingRate" type="number" min="1" max="35" step="1" value="6" />
+            </div>
+            <div>
+              <label for="cpl">Coût par lead estimé (CPL €)</label>
+              <input id="cpl" type="number" min="1" step="1" value="18" />
             </div>
           </div>
 
@@ -1120,17 +1289,21 @@
             </div>
           </div>
 
-          <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:12px">
+          <div class="divider"></div>
+
+          <div style="display:flex; gap:10px; flex-wrap:wrap">
             <button class="btn primary" type="button" id="doCalc">Calculer</button>
             <button class="btn" type="button" id="applyRecommended">Appliquer reco</button>
+            <button class="btn badgeBtn" type="button" id="oneClickSMB">Mode ROI rapide</button>
             <a class="btn ghost" href="#audit">Audit 60s</a>
           </div>
 
           <div class="hint">
-            Règle simple : si votre <b>break-even</b> est &lt; 2 clients/mois, c’est une évidence.
+            Heuristique simple: si le <b>break-even</b> est <b>&lt; 2 clients/mois</b>, la décision est mathématique.
           </div>
         </div>
 
+        <!-- Results -->
         <div class="calc">
           <div class="pillTag"><span class="dot"></span> Résultat</div>
 
@@ -1144,13 +1317,37 @@
 
           <div class="recommend" id="recommendBox">
             <b id="recommendTitle">Reco : —</b>
-            <p id="recommendText">On te sort le pack le plus logique selon ROI.</p>
+            <p id="recommendText">On te sort le pack le plus logique selon ROI + segment + funnel.</p>
+          </div>
+
+          <div class="funnelGrid" aria-label="Funnel & budget">
+            <div class="fCard">
+              <div class="fK">Leads nécessaires / mois</div>
+              <div class="fV" id="needLeads">—</div>
+              <div class="fS">Calculé depuis closing.</div>
+            </div>
+            <div class="fCard">
+              <div class="fK">Budget Ads conseillé / mois</div>
+              <div class="fV" id="adsBudget">—</div>
+              <div class="fS">Basé sur CPL estimé.</div>
+            </div>
+            <div class="fCard">
+              <div class="fK">Trafic landing requis / mois</div>
+              <div class="fV" id="needTraffic">—</div>
+              <div class="fS">Basé sur taux landing.</div>
+            </div>
+          </div>
+
+          <div class="chartWrap">
+            <b style="display:block; font-weight:1000; letter-spacing:-.2px; margin-bottom:8px">Projection sur 6 mois (net cumulé)</b>
+            <canvas id="roiChart" width="900" height="220" aria-label="Projection ROI sur 6 mois"></canvas>
+            <div class="hint">Graph = <b>net cumulé</b> (profit + valeur temps – coût pack – budget Ads estimé).</div>
           </div>
 
           <div class="panel" style="padding:14px; margin-top:10px">
             <b>Lecture rapide</b>
             <p class="muted" style="margin:8px 0 0; font-size:var(--fs0)">
-              Le ROI vient de 3 sources : <b>clients en +</b> + <b>marge</b> + <b>temps économisé</b>. VISION optimise les 3 via preuve + Google + conversion + tracking.
+              Le ROI vient de 4 sources: <b>clients signés</b> + <b>marge</b> + <b>temps économisé</b> + <b>coût acquisition</b>. VISION optimise le système complet (preuve + Google + conversion + tracking).
             </p>
           </div>
         </div>
@@ -1161,7 +1358,7 @@
     <section id="packs" class="reveal">
       <div class="title">
         <h2>Offres (décision rapide)</h2>
-        <p>Trois niveaux. Même logique. Plus tu montes, plus tu délègues et tu scales.</p>
+        <p>Trois niveaux. Même logique. Plus tu montes, plus tu délègues et tu scales (preuve + Google + conversion + tracking).</p>
       </div>
 
       <div class="pricing">
@@ -1296,12 +1493,13 @@
           <div style="grid-column:1/-1;">
             <label for="msg">Contexte (optionnel)</label>
             <textarea id="msg" name="msg" rows="4" placeholder="Ex : +10 leads/mois, Google ok mais pas de preuve, besoin Ads, etc."></textarea>
-            <div class="hint">Plus c’est précis, plus le plan est “chirurgical”.</div>
+            <div class="hint2">Plus c’est précis, plus le plan est “chirurgical”.</div>
           </div>
 
           <!-- honeypot + timing -->
           <input type="text" id="hp" name="hp" style="display:none" tabindex="-1" autocomplete="off" />
           <input type="hidden" id="ts" name="ts" />
+          <input type="hidden" id="laneField" name="laneField" />
           <input type="hidden" id="roiField" name="roiField" />
 
           <div style="grid-column:1/-1; display:flex; gap:10px; flex-wrap:wrap; align-items:center">
@@ -1317,7 +1515,7 @@
     </section>
   </main>
 
-  <!-- DECISION MODAL (simplifié, sans PME/ETI/Grand compte) -->
+  <!-- DECISION MODAL -->
   <div class="modal" id="decisionModal" role="dialog" aria-modal="true" aria-label="Aide au choix">
     <div class="modalCard">
       <div class="modalTop">
@@ -1326,42 +1524,38 @@
           <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
         </button>
       </div>
-
       <div class="modalBody">
         <div class="modalGrid">
           <div class="miniCard">
-            <b>Ce que vous devez exiger</b>
-            <p>1) Preuves réelles (showreel + avant/après) • 2) CTA unique • 3) Tracking (clics/appels/leads) • 4) Process clair.</p>
+            <b>PME</b>
+            <p>Objectif : ROI rapide. On priorise preuve + Google + landing + tracking. Décision simple.</p>
             <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:12px">
-              <a class="btn primary pill" href="#preuves" id="modalProof">Voir preuves</a>
-              <a class="btn pill" href="#packs" id="modalOffers">Voir offres</a>
+              <button class="btn primary pill" type="button" data-setlane="smb">Activer PME</button>
+              <a class="btn pill" href="#calc">Simulation</a>
             </div>
           </div>
-
+          <div class="miniCard">
+            <b>ETI</b>
+            <p>Objectif : volume + cohérence marque. Process + reporting + cadence contenus + SEO.</p>
+            <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:12px">
+              <button class="btn primary pill" type="button" data-setlane="mid">Activer ETI</button>
+              <a class="btn pill" href="#packs">Offres</a>
+            </div>
+          </div>
+          <div class="miniCard">
+            <b>Grand compte</b>
+            <p>Objectif : contrôle + conformité + data. Tracking avancé, gouvernance, livrables signés.</p>
+            <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:12px">
+              <button class="btn primary pill" type="button" data-setlane="ent">Activer Grand compte</button>
+              <a class="btn pill" href="#audit">Audit</a>
+            </div>
+          </div>
           <div class="miniCard">
             <b>La règle d’or</b>
-            <p>Si on ne mesure pas la conversion (CTA/events/leads), ce n’est pas du marketing : c’est du décor.</p>
+            <p>Si on ne mesure pas la conversion (CTA/events/leads), ce n’est pas du marketing, c’est du décor.</p>
             <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:12px">
               <button class="btn pill" type="button" id="modalGoCalc">Go ROI</button>
               <button class="btn ghost pill" type="button" id="modalGoAudit">Go audit</button>
-            </div>
-          </div>
-
-          <div class="miniCard">
-            <b>Quand choisir SCALE</b>
-            <p>Si vous voulez : preuve premium + série de contenus + Google/SEO + landing + tracking. C’est la configuration “machine”.</p>
-            <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:12px">
-              <button class="btn primary pill" type="button" id="modalPickScale">Appliquer SCALE</button>
-              <a class="btn pill" href="#calc">Vérifier ROI</a>
-            </div>
-          </div>
-
-          <div class="miniCard">
-            <b>Quand choisir DOMINATE</b>
-            <p>Si vous voulez déléguer + Ads + reporting + optimisation continue (scale propre + gouvernance).</p>
-            <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:12px">
-              <button class="btn primary pill" type="button" id="modalPickDominate">Appliquer DOMINATE</button>
-              <a class="btn pill" href="#audit">Audit</a>
             </div>
           </div>
         </div>
@@ -1388,11 +1582,18 @@
 
   <script>
     /* ==========================================================
-      VISION — JS (simplifié)
-      - Reveal
-      - ROI calculator + recommendation (sans segments PME/ETI/GC)
-      - Modal aide au choix (sans complexité)
+      VISION — JS FINAL (Premium + ROI + Funnel + Chart)
+      - Reveal (IntersectionObserver)
+      - Segment (PME/ETI/Grand compte): copy + defaults + recommendation logic
+      - Industry presets
+      - ROI calculator:
+          net = (clients*profit/client) + timeValue - (fee + adsBudget)
+          funnel: leads needed, traffic needed, ads budget
+          score: blended metric
+      - Projection chart (6 months net cumulé)
       - Lead generator: WhatsApp / copy / email
+      - Anti-bot: honeypot + minimum time
+      - Modal decision helper
     ========================================================== */
 
     const CONFIG = {
@@ -1433,16 +1634,89 @@
       window.dataLayer.push({ event:"vision_event", ...payload });
     }
 
+    // Lane presets
+    const LANE_PRESETS = {
+      smb: {
+        label: "PME",
+        hint: "PME → décision rapide, ROI immédiat.",
+        heroSub: "VISION installe un pipeline complet : preuves premium (drone/film + contenus) → Google/SEO (intention) → landing (CTA unique) → tracking (pilotage) → Ads (si besoin). Résultat : des demandes rapides, mesurables.",
+        kpi: [
+          ["Vitesse", "Setup rapide, livrables visibles en jours."],
+          ["Intention", "Google + SEO = appels / itinéraires / messages."],
+          ["ROI", "Break-even visé < 2 clients/mois."]
+        ],
+        defaults: { planFee: 690, extraClients: 4, leadRate: 35, landingRate: 6, cpl: 18, timeSaved: 6, hourValue: 35 }
+      },
+      mid: {
+        label: "ETI",
+        hint: "ETI → volume + cohérence marque + cadence.",
+        heroSub: "VISION standardise votre acquisition : preuve premium + contenus en série + SEO/Google + landing + tracking. Objectif : stabiliser un flux et scaler propre.",
+        kpi: [
+          ["Cadence", "Séries de contenus + planning + déclinaisons."],
+          ["Cohérence", "Message homogène sur site, Google, social."],
+          ["Pilotage", "KPI mensuels, itérations, priorités."]
+        ],
+        defaults: { planFee: 1290, extraClients: 7, leadRate: 30, landingRate: 7, cpl: 22, timeSaved: 10, hourValue: 55 }
+      },
+      ent: {
+        label: "Grand compte",
+        hint: "Grand compte → gouvernance + conformité + data.",
+        heroSub: "VISION fournit un système exécuté comme un produit : process, tracking, livrables structurés, reporting, et stabilité. Objectif : performance + contrôle.",
+        kpi: [
+          ["Gouvernance", "Livrables signés, process, jalons."],
+          ["Data", "Tracking avancé, attribution, KPI business."],
+          ["Scale", "Ads + créas + itération continue."]
+        ],
+        defaults: { planFee: 1290, extraClients: 12, leadRate: 25, landingRate: 8, cpl: 28, timeSaved: 18, hourValue: 80 }
+      }
+    };
+
+    let currentLane = "smb";
+
+    function setLane(lane){
+      currentLane = lane in LANE_PRESETS ? lane : "smb";
+      const p = LANE_PRESETS[currentLane];
+
+      $$(".laneBtn").forEach(b=>{
+        b.setAttribute("aria-pressed", String(b.dataset.lane === currentLane));
+      });
+
+      $("#laneHint").textContent = p.hint;
+      $("#heroSub").textContent = p.heroSub;
+
+      $("#kpi1").textContent = p.kpi[0][0];
+      $("#kpi1s").textContent = p.kpi[0][1];
+      $("#kpi2").textContent = p.kpi[1][0];
+      $("#kpi2s").textContent = p.kpi[1][1];
+      $("#kpi3").textContent = p.kpi[2][0];
+      $("#kpi3s").textContent = p.kpi[2][1];
+
+      // Defaults
+      $("#planFee").value = String(p.defaults.planFee);
+      $("#extraClients").value = String(p.defaults.extraClients);
+      $("#leadRate").value = String(p.defaults.leadRate);
+      $("#landingRate").value = String(p.defaults.landingRate);
+      $("#cpl").value = String(p.defaults.cpl);
+      $("#timeSaved").value = String(p.defaults.timeSaved);
+      $("#hourValue").value = String(p.defaults.hourValue);
+
+      $("#laneField").value = p.label;
+      track("set_lane", {lane:p.label});
+      calcROI(true);
+    }
+
+    $$(".laneBtn").forEach(b=> b.addEventListener("click", ()=> setLane(b.dataset.lane)));
+
     // Industry presets
     const INDUSTRY_PRESETS = {
-      default: { avgClient: 300, margin: 50, leadRate: 35 },
-      immo:    { avgClient: 2000, margin: 65, leadRate: 25 },
-      resto:   { avgClient: 120,  margin: 55, leadRate: 40 },
-      btp:     { avgClient: 900,  margin: 45, leadRate: 30 },
-      auto:    { avgClient: 500,  margin: 40, leadRate: 35 },
-      sante:   { avgClient: 250,  margin: 60, leadRate: 45 },
-      tourisme:{ avgClient: 180,  margin: 50, leadRate: 35 },
-      b2b:     { avgClient: 2500, margin: 55, leadRate: 20 }
+      default: { avgClient: 300, margin: 50, leadRate: 35, landingRate: 6, cpl: 18 },
+      immo:    { avgClient: 2000, margin: 65, leadRate: 25, landingRate: 5, cpl: 35 },
+      resto:   { avgClient: 120,  margin: 55, leadRate: 40, landingRate: 7, cpl: 10 },
+      btp:     { avgClient: 900,  margin: 45, leadRate: 30, landingRate: 6, cpl: 18 },
+      auto:    { avgClient: 500,  margin: 40, leadRate: 35, landingRate: 7, cpl: 16 },
+      sante:   { avgClient: 250,  margin: 60, leadRate: 45, landingRate: 8, cpl: 12 },
+      tourisme:{ avgClient: 180,  margin: 50, leadRate: 35, landingRate: 7, cpl: 14 },
+      b2b:     { avgClient: 2500, margin: 55, leadRate: 20, landingRate: 4, cpl: 45 }
     };
 
     $("#industry")?.addEventListener("change", ()=>{
@@ -1451,53 +1725,171 @@
       $("#avgClient").value = String(p.avgClient);
       $("#margin").value = String(p.margin);
       $("#leadRate").value = String(p.leadRate);
+      $("#landingRate").value = String(p.landingRate);
+      $("#cpl").value = String(p.cpl);
       track("industry_change", {industry:k});
       calcROI(true);
     });
 
-    // ROI calculator
-    function formatMoney(n){
+    // Formatting
+    function fmtInt(n){ return isFinite(n) ? String(Math.round(n)) : "—"; }
+    function fmtMoney(n){
+      if(!isFinite(n)) return "—";
       const sign = n >= 0 ? "+" : "";
       return `${sign}${Math.round(n)}€ / mois (est.)`;
     }
 
-    function recommendPlan({net, breakevenClients, score}){
-      if(net >= 1500 || score >= 130) return "DOMINATE";
-      if(net >= 0 && (breakevenClients <= 2 || score >= 95)) return "SCALE";
+    // Plan recommendation
+    function recommendPlan({net, breakevenClients, score, adsBudget}){
+      const lane = currentLane;
+
+      // DOMINATE if: high net OR needs sustained ads budget + lane mid/ent
+      if(net >= 2200 || (adsBudget >= 600 && lane !== "smb" && score >= 120)) return "DOMINATE";
+
+      // SCALE if positive or close to positive with decent score
+      if(net >= 0 && (breakevenClients <= 2.2 || score >= 95)) return "SCALE";
+
       return "START";
     }
 
+    // Chart (net cumulé sur 6 mois)
+    function drawChart(values){
+      const canvas = $("#roiChart");
+      if(!canvas) return;
+      const ctx = canvas.getContext("2d");
+      const w = canvas.width, h = canvas.height;
+
+      ctx.clearRect(0,0,w,h);
+
+      // background grid (no fixed color instructions; use current styles)
+      ctx.globalAlpha = 1;
+      ctx.lineWidth = 1;
+
+      // Compute min/max
+      const minV = Math.min(...values, 0);
+      const maxV = Math.max(...values, 0);
+      const padTop = 18, padBottom = 26, padLeft = 42, padRight = 16;
+
+      const plotW = w - padLeft - padRight;
+      const plotH = h - padTop - padBottom;
+
+      function yScale(v){
+        const range = (maxV - minV) || 1;
+        return padTop + (maxV - v) / range * plotH;
+      }
+      function xScale(i){
+        const n = values.length - 1;
+        return padLeft + (i / (n||1)) * plotW;
+      }
+
+      // Grid lines
+      ctx.strokeStyle = "rgba(255,255,255,.10)";
+      for(let i=0;i<4;i++){
+        const y = padTop + (i/3)*plotH;
+        ctx.beginPath();
+        ctx.moveTo(padLeft,y);
+        ctx.lineTo(w - padRight,y);
+        ctx.stroke();
+      }
+
+      // Zero line
+      const y0 = yScale(0);
+      ctx.strokeStyle = "rgba(255,255,255,.18)";
+      ctx.beginPath();
+      ctx.moveTo(padLeft,y0);
+      ctx.lineTo(w - padRight,y0);
+      ctx.stroke();
+
+      // Line
+      ctx.lineWidth = 2;
+      ctx.strokeStyle = "rgba(124,92,255,.95)";
+      ctx.beginPath();
+      values.forEach((v,i)=>{
+        const x = xScale(i);
+        const y = yScale(v);
+        if(i===0) ctx.moveTo(x,y);
+        else ctx.lineTo(x,y);
+      });
+      ctx.stroke();
+
+      // Points
+      ctx.fillStyle = "rgba(25,240,194,.95)";
+      values.forEach((v,i)=>{
+        const x = xScale(i);
+        const y = yScale(v);
+        ctx.beginPath();
+        ctx.arc(x,y,3,0,Math.PI*2);
+        ctx.fill();
+      });
+
+      // Labels
+      ctx.fillStyle = "rgba(217,225,255,.82)";
+      ctx.font = "12px ui-sans-serif, system-ui";
+      ctx.fillText("0", 16, y0 + 4);
+
+      // month labels
+      ctx.fillStyle = "rgba(166,180,223,.85)";
+      for(let i=0;i<values.length;i++){
+        const x = xScale(i);
+        const label = i===0 ? "M1" : `M${i+1}`;
+        ctx.fillText(label, x - 10, h - 10);
+      }
+    }
+
+    // ROI calculator
     function calcROI(silent=false){
       const avgClient = Math.max(0, Number($("#avgClient").value||0));
-      const margin = clamp(Number($("#margin").value||0), 0, 95)/100;
-      const extraClients = Math.max(0, Number($("#extraClients").value||0));
-      const leadRate = clamp(Number($("#leadRate").value||0), 1, 95)/100;
-      const fee = Math.max(0, Number($("#planFee").value||0));
+      const marginPct = clamp(Number($("#margin").value||0), 0, 95);
+      const margin = marginPct/100;
+
+      const extraClients = Math.max(0, Number($("#extraClients").value||0));     // signed clients target
+      const leadRatePct = clamp(Number($("#leadRate").value||0), 1, 95);
+      const leadRate = leadRatePct/100;                                         // closing %
+
+      const landingRatePct = clamp(Number($("#landingRate").value||0), 1, 35);
+      const landingRate = landingRatePct/100;                                   // landing->lead %
+
+      const cpl = Math.max(0, Number($("#cpl").value||0));                       // cost per lead
+      const fee = Math.max(0, Number($("#planFee").value||0));                   // pack fee
+
       const timeSaved = Math.max(0, Number($("#timeSaved").value||0));
       const hourValue = Math.max(0, Number($("#hourValue").value||0));
 
       const profitPerClient = avgClient * margin;
+
+      // Funnel
+      const leadsNeeded = leadRate > 0 ? Math.ceil(extraClients / leadRate) : Infinity;
+      const trafficNeeded = landingRate > 0 ? Math.ceil(leadsNeeded / landingRate) : Infinity;
+
+      // Ads budget (only if CPL > 0, else 0)
+      const adsBudget = (isFinite(leadsNeeded) && cpl > 0) ? (leadsNeeded * cpl) : 0;
+
       const extraProfit = extraClients * profitPerClient;
       const timeValue = timeSaved * hourValue;
-      const net = (extraProfit + timeValue) - fee;
 
-      const breakevenClients = profitPerClient > 0 ? (fee / profitPerClient) : Infinity;
+      // Net includes fee + adsBudget
+      const net = (extraProfit + timeValue) - (fee + adsBudget);
+
+      const breakevenClients = profitPerClient > 0 ? ((fee + adsBudget) / profitPerClient) : Infinity;
       const breakevenRounded = isFinite(breakevenClients) ? Math.ceil(breakevenClients) : Infinity;
 
-      const impliedLeads = leadRate > 0 ? Math.ceil(extraClients / leadRate) : Infinity;
-
+      // Score (0..180)
       let score = 0;
       if(isFinite(breakevenClients) && breakevenClients > 0){
         score = clamp((extraClients / breakevenClients) * 100, 0, 180);
       }
+      // Add time leverage bonus (max +25)
       score = clamp(score + clamp((timeValue / Math.max(1, fee)) * 25, 0, 25), 0, 180);
 
-      $("#net").textContent = formatMoney(net);
+      // UI: main
+      $("#net").textContent = fmtMoney(net);
       $("#details").innerHTML =
         `Profit/client ≈ <b>${Math.round(profitPerClient)}€</b> • Objectif clients = <b>${extraClients}</b> / mois<br>` +
-        `Leads (estim.) ≈ <b>${isFinite(impliedLeads)? impliedLeads : "—"}</b> à ${Math.round(leadRate*100)}% closing • Temps = <b>+${Math.round(timeValue)}€</b><br>` +
-        `Coût pack = <b>${fee}€</b> • Break-even ≈ <b>${isFinite(breakevenRounded)?breakevenRounded:"—"}</b> client(s)/mois.`;
+        `Leads ≈ <b>${fmtInt(leadsNeeded)}</b> à ${Math.round(leadRate*100)}% closing • Landing→Lead = <b>${Math.round(landingRate*100)}%</b><br>` +
+        `Budget Ads ≈ <b>${Math.round(adsBudget)}€</b> (CPL ${Math.round(cpl)}€) • Temps = <b>+${Math.round(timeValue)}€</b><br>` +
+        `Coût total ≈ <b>${Math.round(fee + adsBudget)}€</b> • Break-even ≈ <b>${isFinite(breakevenRounded)?breakevenRounded:"—"}</b> client(s)/mois.`;
 
+      // UI: status & bar
       const s = $("#status");
       const bar = $("#scoreBar");
       const scoreText = $("#scoreText");
@@ -1505,61 +1897,116 @@
       scoreText.textContent = `Score : ${Math.round(score)} / 180`;
 
       if(net >= 0 && score >= 115){
-        s.textContent = "Très bon (rentable rapidement)";
+        s.textContent = "Très bon (rentable + scalable)";
         s.style.borderColor = "rgba(52,211,153,.30)";
         s.style.background = "rgba(52,211,153,.12)";
         s.style.color = "#D1FAE5";
       }else if(net >= 0){
-        s.textContent = "Bon (optimisation possible)";
+        s.textContent = "Bon (optimisation = plus de marge)";
         s.style.borderColor = "rgba(255,204,102,.30)";
         s.style.background = "rgba(255,204,102,.12)";
         s.style.color = "#FFF7ED";
       }else{
-        s.textContent = "À optimiser (preuve + offre + CTA + Google)";
+        s.textContent = "À optimiser (offre + preuve + CTA + Google)";
         s.style.borderColor = "rgba(251,113,133,.30)";
         s.style.background = "rgba(251,113,133,.12)";
         s.style.color = "#FFE4E6";
       }
 
-      const plan = recommendPlan({net, breakevenClients, score});
+      // UI: funnel cards
+      $("#needLeads").textContent = isFinite(leadsNeeded) ? `${leadsNeeded} leads` : "—";
+      $("#adsBudget").textContent = `${Math.round(adsBudget)}€`;
+      $("#needTraffic").textContent = isFinite(trafficNeeded) ? `${trafficNeeded} visites` : "—";
+
+      // Recommendation
+      const plan = recommendPlan({net, breakevenClients, score, adsBudget});
       const recTitle = `Reco : ${plan}`;
       const recText =
-        plan === "START" ? "On sécurise la base (landing + Google + tracking). Ensuite on upgrade vers SCALE." :
-        plan === "SCALE" ? "Le meilleur ROI : preuve premium + Google + conversion + tracking. Système complet." :
-        "Mode référence : délégation + Ads + pilotage KPI. Scale propre.";
+        plan === "START" ? "On sécurise la base (landing + Google + tracking). Ensuite on upgrade vers SCALE dès que le funnel est stable." :
+        plan === "SCALE" ? "Le meilleur ROI : preuve premium + Google + conversion + tracking. C’est le setup standard “référence locale”." :
+        "Mode référence : délégation + Ads + pilotage KPI. Scale propre + cadence contenus.";
 
       $("#recommendTitle").textContent = recTitle;
       $("#recommendText").textContent = recText;
 
+      // Sticky ROI
       $("#stickyRoi").textContent = `ROI : ${net>=0?"+":""}${Math.round(net)}€/mois`;
 
-      $("#roiField").value = `net=${Math.round(net)}€/mois; breakeven=${isFinite(breakevenRounded)?breakevenRounded:"—"}; score=${Math.round(score)}; reco=${plan}`;
+      // Save ROI for lead form
+      $("#roiField").value =
+        `net=${Math.round(net)}€/mois; breakeven=${isFinite(breakevenRounded)?breakevenRounded:"—"}; ` +
+        `leads=${isFinite(leadsNeeded)?leadsNeeded:"—"}; ads=${Math.round(adsBudget)}€; score=${Math.round(score)}; ` +
+        `reco=${plan}; lane=${LANE_PRESETS[currentLane].label}`;
+
+      // Projection (6 months net cumulé)
+      const netMonthly = net;
+      const cum = [];
+      let acc = 0;
+      for(let i=0;i<6;i++){
+        acc += netMonthly;
+        cum.push(acc);
+      }
+      drawChart(cum);
+
+      // expose latest reco
+      window.__VISION_RECO__ = plan;
 
       if(!silent){
         track("roi_calc", {
-          avgClient, marginPct: Math.round(margin*100),
-          extraClients, leadRatePct: Math.round(leadRate*100),
-          fee, timeValue: Math.round(timeValue),
-          net: Math.round(net), score: Math.round(score),
+          lane: LANE_PRESETS[currentLane].label,
+          avgClient,
+          marginPct,
+          extraClients,
+          leadRatePct,
+          landingRatePct,
+          cpl,
+          fee,
+          adsBudget: Math.round(adsBudget),
+          timeValue: Math.round(timeValue),
+          net: Math.round(net),
+          score: Math.round(score),
           reco: plan
         });
       }
-
-      window.__VISION_RECO__ = plan;
     }
 
     $("#doCalc")?.addEventListener("click", ()=>calcROI(false));
 
-    // Initial calc
-    calcROI(true);
+    // Initial state
+    setLane("smb");
 
     // Apply recommended plan
     $("#applyRecommended")?.addEventListener("click", ()=>{
       const plan = window.__VISION_RECO__ || "SCALE";
       const feeMap = { START: 299, SCALE: 690, DOMINATE: 1290 };
       $("#planFee").value = String(feeMap[plan] ?? 690);
+
+      // Slightly adjust defaults to match plan (more realistic)
+      if(plan === "START"){
+        $("#cpl").value = String(Math.max(10, Number($("#cpl").value||18)));
+        $("#landingRate").value = String(clamp(Number($("#landingRate").value||6), 4, 10));
+      }
+      if(plan === "DOMINATE"){
+        $("#landingRate").value = String(clamp(Number($("#landingRate").value||7) + 1, 5, 12));
+      }
+
       track("apply_reco", {plan});
       calcROI(true);
+    });
+
+    // One-click ROI mode
+    $("#oneClickSMB")?.addEventListener("click", ()=>{
+      setLane("smb");
+      $("#industry").value = "default";
+      $("#avgClient").value = "350";
+      $("#margin").value = "55";
+      $("#extraClients").value = "4";
+      $("#leadRate").value = "35";
+      $("#landingRate").value = "7";
+      $("#cpl").value = "16";
+      track("one_click_roi", {});
+      calcROI(false);
+      location.hash = "#calc";
     });
 
     // Pack pick sync
@@ -1574,34 +2021,33 @@
       });
     });
 
-    // Modal decision helper
+    // Modal
     const modal = $("#decisionModal");
     function openModal(){ modal.classList.add("open"); track("open_decision_modal", {}); }
     function closeModal(){ modal.classList.remove("open"); }
-
     $("#openDecision")?.addEventListener("click", openModal);
     $("#closeDecision")?.addEventListener("click", closeModal);
     modal?.addEventListener("click", (e)=>{ if(e.target === modal) closeModal(); });
     document.addEventListener("keydown", (e)=>{ if(e.key === "Escape") closeModal(); });
 
+    $$("[data-setlane]").forEach(b=>{
+      b.addEventListener("click", ()=>{
+        setLane(b.dataset.setlane);
+        closeModal();
+        location.hash = "#calc";
+      });
+    });
     $("#modalGoCalc")?.addEventListener("click", ()=>{ closeModal(); location.hash="#calc"; });
     $("#modalGoAudit")?.addEventListener("click", ()=>{ closeModal(); location.hash="#audit"; });
 
-    $("#modalPickScale")?.addEventListener("click", ()=>{
-      $("#planFee").value = "690";
-      closeModal();
-      location.hash="#calc";
-      calcROI(false);
+    // Inputs auto-calc (silent)
+    ["avgClient","margin","extraClients","leadRate","landingRate","cpl","planFee","timeSaved","hourValue"].forEach(id=>{
+      const el = $("#"+id);
+      if(!el) return;
+      el.addEventListener("input", ()=>calcROI(true));
     });
 
-    $("#modalPickDominate")?.addEventListener("click", ()=>{
-      $("#planFee").value = "1290";
-      closeModal();
-      location.hash="#calc";
-      calcROI(false);
-    });
-
-    // Lead form: WhatsApp / Copy / Email
+    // Lead form
     function openWhatsApp(text){
       const url = `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(text)}`;
       window.open(url, "_blank", "noopener,noreferrer");
@@ -1619,6 +2065,7 @@
     }
 
     function buildLeadMessage(p){
+      const lane = LANE_PRESETS[currentLane].label;
       const roi = $("#roiField").value || "—";
       const reco = window.__VISION_RECO__ || "—";
 
@@ -1629,12 +2076,13 @@
         `Ville/Zone : ${p.city}`,
         `Secteur : ${p.sector}`,
         `Objectif : ${p.goal}`,
+        `Taille : ${lane}`,
         "",
         `Contact : ${p.name} • ${p.phone} • ${p.email}`,
         p.website ? `Site : ${p.website}` : "",
         p.msg ? `Contexte : ${p.msg}` : "",
         "",
-        `Simulation ROI : ${roi}`,
+        `Simulation : ${roi}`,
         `Reco : ${reco}`,
         "",
         "Je veux : film/drone + social + Google/SEO + landing + tracking + Ads + IA.",
@@ -1660,7 +2108,7 @@
         ts: Number($("#ts").value||0)
       };
 
-      if(p.hp) return; // bot
+      if(p.hp) return;
       if(!p.company || !p.city || !p.sector || !p.name) return alert("Complète les champs obligatoires.");
       if(!validatePhoneFR(p.phone)) return alert("Téléphone invalide (FR).");
       if(!validateEmail(p.email)) return alert("Email invalide.");
@@ -1668,7 +2116,7 @@
 
       const msg = buildLeadMessage(p);
       openWhatsApp(msg);
-      track("lead_submit", {channel:"whatsapp", company:p.company});
+      track("lead_submit", {channel:"whatsapp", company:p.company, lane:LANE_PRESETS[currentLane].label});
     });
 
     $("#copy")?.addEventListener("click", async ()=>{
@@ -1717,15 +2165,11 @@
 
       const msg = buildLeadMessage(p);
       openMail(msg);
-      track("lead_submit", {channel:"email", company:p.company});
+      track("lead_submit", {channel:"email", company:p.company, lane:LANE_PRESETS[currentLane].label});
     });
 
-    // Auto update ROI (silent)
-    ["avgClient","margin","extraClients","leadRate","planFee","timeSaved","hourValue"].forEach(id=>{
-      const el = $("#"+id);
-      if(!el) return;
-      el.addEventListener("input", ()=>calcROI(true));
-    });
+    // Initial calc
+    calcROI(true);
   </script>
 
   <!-- Schema -->
