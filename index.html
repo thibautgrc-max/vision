@@ -3,70 +3,60 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="VISION — Drone + Visuel + Site web optimisé + Google + SEO + Landing + Tunnel + Contenu + Maintenance. Un seul objectif : plus de clients." />
   <meta name="theme-color" content="#060711" />
-  <title>VISION — Système premium (Drone • Site • Google • SEO • Conversion)</title>
+  <meta name="description" content="VISION — Système de croissance : Preuve visuelle (drone) + Google/SEO + Landing + Tracking. Objectif : plus de clients, mesurable, sans friction." />
+  <title>VISION — Système de croissance (Drone • Google • SEO • Landing • Conversion)</title>
 
   <!--
-    VISION — Conversion Page (v3 “perfect”)
-    Ajouts majeurs:
-    - Thème plus “premium” (contraste + lisibilité + hiérarchie)
-    - CTA simplifiés (2 objectifs: Simulation → Audit)
-    - Mur de preuves AVANT/APRÈS (toggle)
-    - Case Studies ultra courts (3 cartes)
-    - Timeline Jour 1 → Jour 7 (process)
-    - Simulation V3: CA additionnel + clients + leads + recommandation auto + objectif (Appels/RDV/Réservations/WhatsApp)
-    - Offre de lancement (compteur places restantes)
-    - Livrables/mois (table) + garantie anti-risque
-    - Tracking: events + UTM capture + injection dans WhatsApp/email (scalable)
+    VISION — “Shock Conversion” Page (v4)
+    But: rendre la décision évidente (preuve + ROI + offre irrésistible + anti-risque)
+    ✅ Ajouts clés:
+      - Bloc “preuve” ultra concret (avant/après + métriques) + placeholders média
+      - Positionnement “système” (pas agence) + différenciation vs concurrents
+      - Offre irrésistible: garantie + bonus + plan 7 jours + onboarding simple
+      - Simulateur ROI + recommandation pack + break-even
+      - Comparator “nous vs alternatif” (sans dénigrer illégalement)
+      - “Battlecard” objections (réponses courtes)
+      - Sticky CTA + micro-animations + tracking événements + UTM
+      - Générateur de message WhatsApp/Email prêt à envoyer (friction = 0)
   -->
 
   <style>
     :root{
-      /* Base */
-      --bg:#050610;
-      --bg2:#070A18;
-      --text:#F3F6FF;
-      --muted:#A9B4D6;
-      --soft:#C8D0EA;
-
+      --bg:#040511;
+      --bg2:#060a1d;
+      --panel:rgba(255,255,255,.045);
+      --panel2:rgba(255,255,255,.03);
       --line:rgba(255,255,255,.10);
-      --line2:rgba(255,255,255,.20);
-      --panel:rgba(255,255,255,.05);
-      --panel2:rgba(255,255,255,.035);
+      --line2:rgba(255,255,255,.18);
 
-      --shadow: 0 26px 90px rgba(0,0,0,.62);
-      --shadow2: 0 18px 60px rgba(0,0,0,.44);
+      --text:#F4F7FF;
+      --muted:#A9B6DA;
+      --soft:#C9D2EE;
 
-      /* Brand gradients */
       --a:#7C5CFF;   /* violet */
       --b:#19F0C2;   /* mint */
       --c:#FFD166;   /* gold */
       --d:#60A5FA;   /* blue */
       --e:#FB7185;   /* rose */
-      --f:#34D399;   /* green */
-
-      /* Status */
       --good:#34D399;
       --warn:#FFCC66;
       --bad:#FB7185;
 
-      /* Radius */
-      --r14:14px;
-      --r18:18px;
-      --r24:24px;
-      --r32:32px;
-      --r40:40px;
-      --max:1220px;
+      --r14:14px; --r18:18px; --r24:24px; --r32:32px; --r40:40px;
 
-      /* Typography */
+      --max:1240px;
+
       --fs0: clamp(13px, 1.05vw, 15px);
-      --fs1: clamp(16px, 1.25vw, 18px);
+      --fs1: clamp(16px, 1.35vw, 19px);
       --fs2: clamp(22px, 2.25vw, 34px);
-      --fs3: clamp(36px, 4.9vw, 72px);
+      --fs3: clamp(38px, 5.2vw, 76px);
 
-      --ease: cubic-bezier(.2,.85,.2,1);
-      --dur: 220ms;
+      --shadow: 0 28px 100px rgba(0,0,0,.62);
+      --shadow2: 0 20px 70px rgba(0,0,0,.48);
+
+      --ease:cubic-bezier(.2,.85,.2,1);
+      --dur:220ms;
     }
 
     *{box-sizing:border-box}
@@ -75,25 +65,22 @@
       margin:0;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
       color:var(--text);
-      line-height:1.55;
-      letter-spacing:.15px;
-      overflow-x:hidden;
-
       background:
-        radial-gradient(1200px 780px at 8% 8%, rgba(124,92,255,.32), transparent 58%),
-        radial-gradient(980px 720px at 92% 14%, rgba(25,240,194,.16), transparent 55%),
-        radial-gradient(900px 720px at 50% 90%, rgba(96,165,250,.10), transparent 58%),
-        radial-gradient(880px 720px at 22% 92%, rgba(255,209,102,.08), transparent 58%),
+        radial-gradient(1200px 760px at 10% 12%, rgba(124,92,255,.30), transparent 58%),
+        radial-gradient(1000px 740px at 92% 16%, rgba(25,240,194,.16), transparent 56%),
+        radial-gradient(1000px 860px at 50% 100%, rgba(96,165,250,.10), transparent 60%),
+        radial-gradient(900px 760px at 20% 92%, rgba(255,209,102,.08), transparent 60%),
         linear-gradient(180deg, var(--bg), var(--bg2) 55%, var(--bg));
+      overflow-x:hidden;
+      line-height:1.55;
+      letter-spacing:.12px;
     }
 
-    /* Crisp grain (lighter, less noisy) */
     body:before{
       content:"";
       position:fixed; inset:0;
       pointer-events:none;
-      background-image:
-        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.65' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='260' height='260' filter='url(%23n)' opacity='.14'/%3E%3C/svg%3E");
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.7' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='260' height='260' filter='url(%23n)' opacity='.12'/%3E%3C/svg%3E");
       mix-blend-mode:overlay;
       opacity:.14;
       z-index:0;
@@ -103,12 +90,10 @@
     .wrap{max-width:var(--max); margin:0 auto; padding:0 18px; position:relative; z-index:1}
     .sr{position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0}
 
-    /* =======================
-      TOPBAR
-    ======================= */
+    /* Topbar */
     .topbar{
-      position:sticky; top:0; z-index:80;
-      background: rgba(5,6,16,.70);
+      position:sticky; top:0; z-index:90;
+      background: rgba(4,5,17,.74);
       backdrop-filter: blur(14px);
       border-bottom:1px solid var(--line);
     }
@@ -116,45 +101,41 @@
       display:flex; align-items:center; justify-content:space-between;
       gap:12px; padding:14px 0;
     }
-    .brand{display:flex; align-items:center; gap:12px; text-decoration:none}
+    .brand{
+      display:flex; align-items:center; gap:12px;
+      text-decoration:none;
+      min-width: 220px;
+    }
     .logo{
       width:40px; height:40px; border-radius:16px;
       background: linear-gradient(135deg, var(--a), var(--b));
-      box-shadow:
-        0 18px 60px rgba(124,92,255,.22),
-        0 18px 70px rgba(25,240,194,.10);
+      box-shadow: 0 20px 70px rgba(124,92,255,.22), 0 20px 70px rgba(25,240,194,.10);
       position:relative; overflow:hidden; flex:0 0 auto;
     }
     .logo:before{
       content:""; position:absolute; inset:-2px;
       background:
-        radial-gradient(22px 22px at 28% 28%, rgba(255,255,255,.55), transparent 65%),
-        radial-gradient(28px 28px at 76% 72%, rgba(255,255,255,.20), transparent 68%);
+        radial-gradient(24px 24px at 28% 28%, rgba(255,255,255,.55), transparent 65%),
+        radial-gradient(30px 30px at 76% 72%, rgba(255,255,255,.20), transparent 68%);
       opacity:.85;
     }
-    .brand-title{font-weight:980; letter-spacing:-.55px; font-size:14px; line-height:1}
-    .brand-sub{margin-top:4px; color:var(--muted); font-size:12px; font-weight:780}
+    .brand-title{font-weight:999; letter-spacing:-.55px; font-size:14px; line-height:1}
+    .brand-sub{margin-top:4px; color:var(--muted); font-size:12px; font-weight:820}
 
-    .nav{display:flex; align-items:center; gap:10px; color:var(--muted); font-size:var(--fs0)}
+    .nav{display:flex; align-items:center; gap:10px; color:var(--muted); font-size:var(--fs0); flex-wrap:wrap; justify-content:flex-end}
     .nav a{
       text-decoration:none;
       padding:8px 10px;
       border-radius:12px;
       border:1px solid transparent;
       transition: transform var(--dur) var(--ease), border-color var(--dur) var(--ease), color var(--dur) var(--ease), background var(--dur) var(--ease);
+      white-space:nowrap;
     }
-    .nav a:hover{
-      transform:translateY(-1px);
-      border-color:var(--line);
-      color:var(--text);
-      background: rgba(255,255,255,.02);
-    }
+    .nav a:hover{transform:translateY(-1px); border-color:var(--line); color:var(--text); background: rgba(255,255,255,.02)}
     .hide-sm{display:inline-flex}
-    @media (max-width: 920px){ .hide-sm{display:none} }
+    @media (max-width: 980px){ .hide-sm{display:none} }
 
-    /* =======================
-      ATOMS
-    ======================= */
+    /* Buttons */
     .btn{
       display:inline-flex; align-items:center; justify-content:center; gap:10px;
       padding:12px 14px;
@@ -162,7 +143,7 @@
       border:1px solid var(--line);
       background: rgba(255,255,255,.04);
       text-decoration:none;
-      font-weight:930;
+      font-weight:950;
       font-size:var(--fs0);
       cursor:pointer;
       user-select:none;
@@ -173,11 +154,13 @@
     }
     .btn:hover{transform:translateY(-1px); border-color:var(--line2); background: rgba(255,255,255,.05)}
     .btn:active{transform:translateY(0)}
+    .btn svg{width:16px; height:16px}
+
     .btn.primary{
       border-color:transparent;
       color:#040511;
       background: linear-gradient(135deg, var(--a), var(--b));
-      box-shadow: 0 24px 80px rgba(124,92,255,.20), 0 20px 44px rgba(25,240,194,.10);
+      box-shadow: 0 26px 88px rgba(124,92,255,.20), 0 22px 54px rgba(25,240,194,.10);
     }
     .btn.primary:before{
       content:"";
@@ -190,34 +173,8 @@
     }
     .btn.ghost{background:transparent}
     .btn.tiny{padding:10px 12px; border-radius:12px}
-    .btn.icon{padding:12px 12px}
-    .btn svg{width:16px; height:16px}
 
-    .pill{
-      display:inline-flex; align-items:center; gap:8px;
-      padding:8px 12px;
-      border-radius:999px;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.03);
-      color:var(--muted);
-      font-size:var(--fs0);
-      width:fit-content;
-    }
-    .dot{
-      width:9px; height:9px; border-radius:999px;
-      background: var(--good);
-      box-shadow: 0 0 0 3px rgba(52,211,153,.12);
-    }
-    .chip{
-      padding:7px 10px;
-      border-radius:999px;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.03);
-      font-size:12px;
-      color:var(--muted);
-      font-weight:820;
-    }
-
+    /* Cards */
     .card{
       border:1px solid var(--line);
       border-radius: var(--r40);
@@ -230,14 +187,12 @@
       content:"";
       position:absolute; inset:-2px;
       background:
-        radial-gradient(900px 260px at 14% 0%, rgba(124,92,255,.16), transparent 62%),
-        radial-gradient(820px 260px at 90% 12%, rgba(25,240,194,.10), transparent 62%),
-        radial-gradient(680px 200px at 60% 90%, rgba(96,165,250,.08), transparent 62%);
-      opacity:.88;
-      pointer-events:none;
+        radial-gradient(920px 280px at 16% 0%, rgba(124,92,255,.16), transparent 62%),
+        radial-gradient(820px 260px at 90% 16%, rgba(25,240,194,.10), transparent 62%),
+        radial-gradient(760px 220px at 55% 100%, rgba(96,165,250,.08), transparent 62%);
+      opacity:.9; pointer-events:none;
     }
-    .card > *{position:relative}
-
+    .card>*{position:relative}
     .panel{
       border:1px solid var(--line);
       border-radius: var(--r24);
@@ -245,61 +200,83 @@
       box-shadow: var(--shadow2);
     }
 
+    /* Pills/chips */
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:8px 12px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      color:var(--muted);
+      font-size:var(--fs0);
+      width:fit-content;
+    }
+    .dot{width:9px; height:9px; border-radius:999px; background: var(--good); box-shadow: 0 0 0 3px rgba(52,211,153,.12)}
+    .chip{
+      padding:7px 10px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      font-size:12px;
+      color:var(--muted);
+      font-weight:860;
+    }
+
     section{padding:22px 0}
     .section-title{
       display:flex; align-items:flex-end; justify-content:space-between;
       gap:12px; margin:0 0 14px;
     }
-    .section-title h2{
-      margin:0;
-      font-size: var(--fs2);
-      font-weight:990;
-      letter-spacing:-.7px;
-    }
-    .section-title p{margin:0; color:var(--muted); font-size:var(--fs0); max-width:78ch}
+    .section-title h2{margin:0; font-size:var(--fs2); font-weight:999; letter-spacing:-.75px}
+    .section-title p{margin:0; color:var(--muted); font-size:var(--fs0); max-width:80ch}
 
-    /* =======================
-      HERO
-    ======================= */
+    /* HERO */
     header.hero{padding:34px 0 10px}
     .hero-grid{
       display:grid;
-      grid-template-columns: 1.20fr .80fr;
+      grid-template-columns: 1.15fr .85fr;
       gap:14px;
       align-items:stretch;
     }
     @media (max-width: 980px){ .hero-grid{grid-template-columns:1fr} }
-
     .hero-left{padding:22px}
     .h1{
       font-size: var(--fs3);
       line-height:1.02;
       margin:12px 0 10px;
-      letter-spacing:-1.25px;
+      letter-spacing:-1.35px;
       font-weight:999;
     }
     .sub{
       margin:0 0 16px;
       color:var(--muted);
       font-size: var(--fs1);
-      max-width: 74ch;
+      max-width: 76ch;
     }
     .hero-cta{display:flex; gap:10px; flex-wrap:wrap; align-items:center}
     .trust{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px}
 
     .hero-right{padding:18px; display:flex; flex-direction:column; gap:12px}
     .mini-grid{display:grid; grid-template-columns:1fr 1fr; gap:10px}
-    @media (max-width: 540px){ .mini-grid{grid-template-columns:1fr} }
+    @media (max-width: 560px){ .mini-grid{grid-template-columns:1fr} }
     .mini{
       border:1px solid var(--line);
       border-radius: 18px;
       padding:12px;
       background: rgba(255,255,255,.03);
     }
-    .mini b{display:block; margin-bottom:6px; letter-spacing:-.2px; font-weight:990}
+    .mini b{display:block; margin-bottom:6px; letter-spacing:-.2px; font-weight:999}
     .mini p{margin:0; color:var(--muted); font-size:var(--fs0)}
-    .mini .k{display:inline-block; margin-top:10px; font-size:12px; color:#0b1120; font-weight:999; padding:7px 10px; border-radius:999px; background: linear-gradient(135deg, rgba(124,92,255,.22), rgba(25,240,194,.14)); border:1px solid rgba(255,255,255,.10); color:var(--soft)}
+    .tagSmall{
+      display:inline-block; margin-top:10px;
+      font-size:12px; font-weight:999;
+      padding:7px 10px; border-radius:999px;
+      border:1px solid rgba(255,255,255,.10);
+      background: linear-gradient(135deg, rgba(124,92,255,.22), rgba(25,240,194,.14));
+      color:var(--soft);
+    }
 
+    /* Shock proof strip */
     .proof-strip{
       display:grid;
       grid-template-columns: 1fr 1fr 1fr;
@@ -312,138 +289,50 @@
       border-radius: var(--r24);
       border:1px solid var(--line);
       background: rgba(255,255,255,.03);
+      position:relative; overflow:hidden;
     }
-    .proof .k{font-size:12px; color:var(--muted); font-weight:990; letter-spacing:.45px}
-    .proof .t{margin-top:6px; font-weight:999; letter-spacing:-.35px}
-    .proof .d{margin-top:6px; color:var(--muted); font-size:var(--fs0)}
-    .meter{
-      height:12px;
-      border-radius:999px;
-      background: rgba(255,255,255,.08);
-      border:1px solid var(--line);
-      overflow:hidden;
-      margin-top:10px;
-    }
-    .bar{
-      height:100%;
-      width:0%;
-      border-radius:999px;
-      background: linear-gradient(90deg, var(--a), var(--b));
-      transition: width 700ms var(--ease);
-    }
-
-    /* =======================
-      “How it works”
-    ======================= */
-    .how{
-      display:grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap:12px;
-    }
-    @media (max-width: 980px){ .how{grid-template-columns:1fr} }
-    .how-card{
-      padding:16px;
-      border-radius: var(--r32);
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.03);
-      position:relative;
-      overflow:hidden;
-      box-shadow: var(--shadow2);
-    }
-    .how-card:before{
-      content:"";
-      position:absolute; inset:-2px;
-      background:
-        radial-gradient(520px 180px at 22% 10%, rgba(124,92,255,.12), transparent 62%),
-        radial-gradient(520px 180px at 80% 62%, rgba(25,240,194,.08), transparent 62%);
-      opacity:.86; pointer-events:none;
-    }
-    .how-card > *{position:relative}
-    .how-card .top{
-      display:flex; align-items:center; justify-content:space-between; gap:10px;
-      margin-bottom:10px;
-    }
-    .badgeN{
-      width:30px; height:30px; border-radius:12px;
-      display:flex; align-items:center; justify-content:center;
-      background: rgba(255,255,255,.04);
-      border:1px solid var(--line);
-      font-weight:999;
-      color:var(--soft);
-    }
-    .how-card b{font-weight:999; letter-spacing:-.2px}
-    .how-card p{margin:6px 0 0; color:var(--muted); font-size:var(--fs0)}
-
-    /* =======================
-      SOLUTIONS
-    ======================= */
-    .grid3{
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap:12px;
-    }
-    @media (max-width: 980px){ .grid3{grid-template-columns:1fr} }
-    .solution{
-      padding:16px;
-      border-radius: var(--r32);
-      border:1px solid var(--line);
-      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
-      box-shadow: var(--shadow2);
-      position:relative;
-      overflow:hidden;
-    }
-    .solution:before{
+    .proof:before{
       content:"";
       position:absolute; inset:-2px;
       background:
         radial-gradient(520px 180px at 22% 10%, rgba(255,209,102,.10), transparent 62%),
         radial-gradient(520px 180px at 80% 62%, rgba(96,165,250,.10), transparent 62%);
-      opacity:.78;
-      pointer-events:none;
+      opacity:.72; pointer-events:none;
     }
-    .solution > *{position:relative}
-    .solution h3{
-      margin:0 0 6px;
-      font-size:18px;
-      font-weight:999;
-      letter-spacing:-.4px;
-    }
-    .solution p{margin:0; color:var(--muted); font-size:var(--fs0)}
-    .chips{display:flex; flex-wrap:wrap; gap:8px; margin-top:12px}
+    .proof>*{position:relative}
+    .proof .k{font-size:12px; color:var(--muted); font-weight:990; letter-spacing:.45px}
+    .proof .t{margin-top:6px; font-weight:999; letter-spacing:-.35px}
+    .proof .d{margin-top:6px; color:var(--muted); font-size:var(--fs0)}
+    .meter{height:12px; border-radius:999px; background: rgba(255,255,255,.08); border:1px solid var(--line); overflow:hidden; margin-top:10px}
+    .bar{height:100%; width:0%; border-radius:999px; background: linear-gradient(90deg, var(--a), var(--b)); transition: width 700ms var(--ease)}
 
-    /* =======================
-      Proof + case studies
-    ======================= */
-    .cases{
+    /* “No choice” section (positioning) */
+    .position{
       display:grid;
-      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-columns: 1.05fr .95fr;
       gap:12px;
+      align-items:stretch;
     }
-    @media (max-width: 980px){ .cases{grid-template-columns:1fr} }
-    .case{
-      padding:16px;
-      border-radius: var(--r32);
+    @media (max-width: 980px){ .position{grid-template-columns:1fr} }
+    .pos-left{padding:16px}
+    .pos-right{padding:16px}
+    .grid2{display:grid; grid-template-columns:1fr 1fr; gap:10px}
+    @media (max-width: 560px){ .grid2{grid-template-columns:1fr} }
+
+    .valueCard{
       border:1px solid var(--line);
+      border-radius: var(--r24);
       background: rgba(255,255,255,.03);
-      box-shadow: var(--shadow2);
-      position:relative;
-      overflow:hidden;
+      padding:12px;
     }
-    .case:before{
-      content:"";
-      position:absolute; inset:-2px;
-      background:
-        radial-gradient(560px 180px at 25% 10%, rgba(96,165,250,.10), transparent 62%),
-        radial-gradient(560px 180px at 85% 60%, rgba(25,240,194,.08), transparent 62%);
-      opacity:.84;
-      pointer-events:none;
+    .valueCard b{display:block; font-weight:999; letter-spacing:-.2px}
+    .valueCard p{margin:6px 0 0; color:var(--muted); font-size:var(--fs0)}
+    .valueCard .kpi{
+      margin-top:10px;
+      display:flex; gap:8px; flex-wrap:wrap;
     }
-    .case > *{position:relative}
-    .case .k{font-size:12px; color:var(--muted); font-weight:990; letter-spacing:.45px}
-    .case .t{margin-top:8px; font-weight:999; letter-spacing:-.35px}
-    .case .m{margin-top:10px; display:flex; gap:8px; flex-wrap:wrap}
-    .metric{
-      padding:8px 10px;
+    .badgeK{
+      padding:7px 10px;
       border-radius:999px;
       border:1px solid var(--line);
       background: rgba(255,255,255,.03);
@@ -452,9 +341,10 @@
       color:var(--soft);
     }
 
+    /* Proof wall with media slots */
     .proof-wall{
       display:grid;
-      grid-template-columns: 1.12fr .88fr;
+      grid-template-columns: 1.1fr .9fr;
       gap:12px;
     }
     @media (max-width: 980px){ .proof-wall{grid-template-columns:1fr} }
@@ -464,46 +354,49 @@
       grid-template-columns: repeat(2, 1fr);
       gap:10px;
     }
-    @media (max-width: 540px){ .gallery{grid-template-columns:1fr} }
+    @media (max-width: 560px){ .gallery{grid-template-columns:1fr} }
 
-    .abCard{
+    .mediaSlot{
       border:1px solid var(--line);
       border-radius: 22px;
       background: rgba(255,255,255,.03);
+      height: 240px;
       position:relative;
       overflow:hidden;
-      height: 210px;
     }
-    .abCard:before{
+    .mediaSlot:before{
       content:"";
       position:absolute; inset:-2px;
       background:
-        radial-gradient(360px 170px at 25% 20%, rgba(124,92,255,.24), transparent 60%),
-        radial-gradient(320px 160px at 75% 60%, rgba(25,240,194,.16), transparent 60%),
-        radial-gradient(320px 160px at 60% 90%, rgba(255,209,102,.10), transparent 60%);
+        radial-gradient(380px 180px at 25% 20%, rgba(124,92,255,.22), transparent 60%),
+        radial-gradient(340px 170px at 75% 60%, rgba(25,240,194,.14), transparent 60%),
+        radial-gradient(320px 160px at 60% 92%, rgba(255,209,102,.10), transparent 60%);
       opacity:.86;
     }
-    .abCard .top{
+    .mediaSlot .top{
       position:absolute; top:12px; left:12px; right:12px;
       display:flex; align-items:center; justify-content:space-between; gap:10px;
+      z-index:2;
     }
-    .abCard .label{
+    .label{
       padding:7px 10px;
       border-radius:999px;
       border:1px solid var(--line);
-      background: rgba(0,0,0,.20);
+      background: rgba(0,0,0,.22);
       font-size:12px;
       font-weight:999;
       color:var(--soft);
+      backdrop-filter: blur(10px);
     }
-    .abCard .toggle{
+    .toggle{
       display:flex; gap:6px;
       border:1px solid var(--line);
-      background: rgba(0,0,0,.20);
+      background: rgba(0,0,0,.22);
       border-radius:999px;
       padding:4px;
+      backdrop-filter: blur(10px);
     }
-    .abCard .toggle button{
+    .toggle button{
       border:0;
       background: transparent;
       color: var(--muted);
@@ -514,31 +407,21 @@
       cursor:pointer;
       transition: background var(--dur) var(--ease), color var(--dur) var(--ease);
     }
-    .abCard .toggle button.active{
+    .toggle button.active{
       background: linear-gradient(135deg, rgba(124,92,255,.30), rgba(25,240,194,.18));
       color: var(--text);
     }
-
-    .abCard .stage{
+    .mediaSlot .stage{
       position:absolute; inset:0;
       display:flex; align-items:center; justify-content:center;
       padding:16px;
       text-align:center;
+      z-index:1;
     }
-    .abCard .stage .big{
-      font-weight:999;
-      letter-spacing:-.6px;
-      font-size:16px;
-    }
-    .abCard .stage .small{
-      margin-top:8px;
-      color:var(--muted);
-      font-size:12.5px;
-    }
+    .mediaSlot .stage .big{font-weight:999; letter-spacing:-.6px; font-size:16px}
+    .mediaSlot .stage .small{margin-top:8px; color:var(--muted); font-size:12.5px}
 
-    /* =======================
-      Timeline J1 → J7
-    ======================= */
+    /* Timeline */
     .timeline{
       display:grid;
       grid-template-columns: repeat(7, 1fr);
@@ -551,8 +434,7 @@
       border-radius: 20px;
       border:1px solid var(--line);
       background: rgba(255,255,255,.03);
-      position:relative;
-      overflow:hidden;
+      position:relative; overflow:hidden;
     }
     .day:before{
       content:"";
@@ -560,20 +442,13 @@
       background: radial-gradient(420px 140px at 20% 10%, rgba(124,92,255,.10), transparent 62%);
       opacity:.82; pointer-events:none;
     }
-    .day > *{position:relative}
+    .day>*{position:relative}
     .day .n{font-size:12px; color:var(--muted); font-weight:999; letter-spacing:.45px}
     .day b{display:block; margin-top:6px; font-weight:999; letter-spacing:-.2px}
     .day p{margin:6px 0 0; color:var(--muted); font-size:12.5px}
 
-    /* =======================
-      CALCULATOR V3
-    ======================= */
-    .two{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap:12px;
-      align-items:stretch;
-    }
+    /* ROI Calculator */
+    .two{display:grid; grid-template-columns: 1fr 1fr; gap:12px; align-items:stretch}
     @media (max-width: 980px){ .two{grid-template-columns:1fr} }
 
     label{display:block; font-size:var(--fs0); color:var(--muted); margin-bottom:6px}
@@ -592,12 +467,10 @@
       box-shadow: 0 0 0 4px rgba(124,92,255,.14);
     }
     .row{display:grid; grid-template-columns:1fr 1fr; gap:10px}
-    @media (max-width: 540px){ .row{grid-template-columns:1fr} }
+    @media (max-width: 560px){ .row{grid-template-columns:1fr} }
 
     .help{
-      display:flex;
-      align-items:flex-start;
-      gap:10px;
+      display:flex; align-items:flex-start; gap:10px;
       margin-top:10px;
       padding:10px 12px;
       border-radius: 18px;
@@ -618,12 +491,7 @@
       margin-top:1px;
     }
 
-    .tabs{
-      display:flex;
-      gap:8px;
-      flex-wrap:wrap;
-      margin-top:10px;
-    }
+    .tabs{display:flex; gap:8px; flex-wrap:wrap; margin-top:10px}
     .tab{
       padding:10px 12px;
       border-radius: 999px;
@@ -637,11 +505,7 @@
       user-select:none;
     }
     .tab:hover{transform:translateY(-1px); border-color:var(--line2); color:var(--text)}
-    .tab.active{
-      color:#040511;
-      border-color:transparent;
-      background: linear-gradient(135deg, var(--a), var(--b));
-    }
+    .tab.active{color:#040511; border-color:transparent; background: linear-gradient(135deg, var(--a), var(--b))}
 
     .result{
       padding:16px;
@@ -664,22 +528,18 @@
         radial-gradient(820px 240px at 60% 90%, rgba(255,209,102,.08), transparent 62%);
       opacity:.85; pointer-events:none;
     }
-    .result > *{position:relative}
-
+    .result>*{position:relative}
     .bigRes{font-size:30px; font-weight:999; letter-spacing:-.9px}
     .smallRes{color:var(--muted); font-size:var(--fs0)}
-
     .score{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:10px;
+      display:flex; align-items:center; justify-content:space-between; gap:10px;
       border:1px solid var(--line);
       border-radius: 18px;
       padding:12px;
       background: rgba(255,255,255,.03);
     }
     .score b{font-weight:999}
+    .hint{color:var(--muted); font-size:12.5px}
     .tag{
       padding:7px 10px;
       border-radius:999px;
@@ -694,13 +554,8 @@
     .tag.warn{border-color: rgba(255,204,102,.30); background: rgba(255,204,102,.12); color:#fff7ed}
     .tag.bad{border-color: rgba(251,113,133,.30); background: rgba(251,113,133,.12); color:#ffe4e6}
 
-    .kpi-row{
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap:10px;
-      margin-top:6px;
-    }
-    @media (max-width: 760px){ .kpi-row{grid-template-columns:1fr} }
+    .kpi-row{display:grid; grid-template-columns: repeat(3, 1fr); gap:10px; margin-top:6px}
+    @media (max-width: 820px){ .kpi-row{grid-template-columns:1fr} }
     .kpi{
       border:1px solid var(--line);
       border-radius: 18px;
@@ -710,24 +565,10 @@
     .kpi .k{color:var(--muted); font-size:12px}
     .kpi .v{font-weight:999; font-size:20px; letter-spacing:-.5px; margin-top:6px}
 
-    .kpi2-row{
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap:10px;
-    }
-    @media (max-width: 760px){ .kpi2-row{grid-template-columns:1fr} }
-
-    .hint{color:var(--muted); font-size:12.5px}
-
-    /* =======================
-      Offer launch bar
-    ======================= */
+    /* Irresistible offer / launch */
     .launch{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-      padding:12px 14px;
+      display:flex; align-items:center; justify-content:space-between;
+      gap:12px; padding:12px 14px;
       border-radius: 22px;
       border:1px solid rgba(255,209,102,.25);
       background: rgba(255,209,102,.08);
@@ -748,15 +589,8 @@
       white-space:nowrap;
     }
 
-    /* =======================
-      PRICING + Deliverables
-    ======================= */
-    .pricing{
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap:12px;
-      align-items:stretch;
-    }
+    /* Pricing */
+    .pricing{display:grid; grid-template-columns: repeat(3, 1fr); gap:12px; align-items:stretch}
     @media (max-width: 980px){ .pricing{grid-template-columns:1fr} }
     .price-card{
       padding:16px;
@@ -776,30 +610,20 @@
       background:
         radial-gradient(620px 220px at 20% 0%, rgba(124,92,255,.12), transparent 62%),
         radial-gradient(520px 190px at 85% 55%, rgba(25,240,194,.08), transparent 62%);
-      opacity:.86;
-      pointer-events:none;
+      opacity:.86; pointer-events:none;
     }
-    .price-card > *{position:relative}
-    .price-card.reco{
-      border-color: rgba(124,92,255,.44);
-      box-shadow: 0 30px 92px rgba(124,92,255,.18), var(--shadow2);
-    }
+    .price-card>*{position:relative}
+    .price-card.reco{border-color: rgba(124,92,255,.44); box-shadow: 0 30px 92px rgba(124,92,255,.18), var(--shadow2)}
     .tagTop{
       position:absolute; top:14px; right:14px;
-      padding:8px 10px;
-      border-radius:999px;
+      padding:8px 10px; border-radius:999px;
       background: rgba(124,92,255,.16);
       border:1px solid rgba(124,92,255,.30);
-      font-size:12px;
-      font-weight:999;
-      letter-spacing:-.1px;
+      font-size:12px; font-weight:999;
     }
     .price-name{font-weight:999; letter-spacing:-.3px; font-size:18px}
     .price-sub{color:var(--muted); font-size:var(--fs0); margin-top:6px}
-    .price{
-      display:flex; align-items:flex-end; gap:8px;
-      margin-top:10px;
-    }
+    .price{display:flex; align-items:flex-end; gap:8px; margin-top:10px}
     .price strong{font-size:34px; letter-spacing:-.9px}
     .price span{color:var(--muted); font-size:var(--fs0); padding-bottom:6px}
 
@@ -810,40 +634,27 @@
       background: rgba(52,211,153,.16);
       border:1px solid rgba(52,211,153,.28);
       display:flex; align-items:center; justify-content:center;
-      flex:0 0 auto;
-      margin-top:1px;
-      color:#D1FAE5;
+      flex:0 0 auto; margin-top:1px; color:#D1FAE5;
     }
     .tick svg{width:12px; height:12px}
     .price-actions{display:flex; gap:10px; flex-wrap:wrap; margin-top:auto}
 
-    .deliver{
-      margin-top:10px;
+    /* “Nous vs alternative” */
+    .compare{
       border:1px solid var(--line);
-      border-radius: 18px;
+      border-radius: var(--r32);
       overflow:hidden;
       background: rgba(255,255,255,.02);
     }
-    .deliver table{
-      width:100%;
-      border-collapse:collapse;
-      font-size:12.5px;
-    }
-    .deliver th, .deliver td{
-      padding:10px 10px;
-      border-bottom:1px solid rgba(255,255,255,.08);
-      vertical-align:top;
-    }
-    .deliver th{
-      text-align:left;
-      color:var(--soft);
-      font-weight:999;
-      background: rgba(255,255,255,.03);
-      white-space:nowrap;
-    }
-    .deliver td{color:var(--muted)}
-    .deliver tr:last-child td, .deliver tr:last-child th{border-bottom:0}
+    .compare table{width:100%; border-collapse:collapse; font-size:12.5px}
+    .compare th, .compare td{padding:12px 12px; border-bottom:1px solid rgba(255,255,255,.08); vertical-align:top}
+    .compare th{text-align:left; color:var(--soft); font-weight:999; background: rgba(255,255,255,.03); white-space:nowrap}
+    .compare td{color:var(--muted)}
+    .compare tr:last-child td, .compare tr:last-child th{border-bottom:0}
+    .ok{color:#d1fae5}
+    .no{color:#ffe4e6}
 
+    /* Guarantee block */
     .guarantee{
       margin-top:12px;
       padding:12px 14px;
@@ -856,9 +667,7 @@
     }
     .guarantee b{color:#ECFDF5}
 
-    /* =======================
-      FORM / FAQ
-    ======================= */
+    /* Form */
     .form{padding:16px}
     .form-grid{display:grid; grid-template-columns:1fr 1fr; gap:12px}
     @media (max-width: 980px){ .form-grid{grid-template-columns:1fr} }
@@ -869,18 +678,11 @@
       background: rgba(255,255,255,.03);
       padding:12px 14px;
     }
-    summary{
-      cursor:pointer;
-      font-weight:999;
-      letter-spacing:-.2px;
-      list-style:none;
-    }
+    summary{cursor:pointer; font-weight:999; letter-spacing:-.2px; list-style:none}
     summary::-webkit-details-marker{display:none}
     details p{margin:10px 0 0; color:var(--muted); font-size:var(--fs0)}
 
-    /* =======================
-      TOAST + STICKY
-    ======================= */
+    /* Toast + sticky */
     .toast{
       position:fixed; bottom:92px; left:50%;
       transform: translateX(-50%);
@@ -890,16 +692,16 @@
       padding:12px 14px;
       box-shadow: var(--shadow2);
       display:none;
-      z-index:100;
-      max-width:min(900px, calc(100% - 24px));
+      z-index:110;
+      max-width:min(940px, calc(100% - 24px));
       font-size:var(--fs0);
     }
     .sticky{
       position:fixed; left:0; right:0; bottom:0;
       border-top:1px solid var(--line);
-      background: rgba(5,6,16,.78);
+      background: rgba(4,5,17,.78);
       backdrop-filter: blur(14px);
-      z-index:90;
+      z-index:100;
     }
     .sticky-inner{
       max-width:var(--max); margin:0 auto; padding:12px 18px;
@@ -909,8 +711,10 @@
     .sticky .msg{color:var(--muted); font-size:var(--fs0)}
     .sticky .msg b{color:var(--text)}
     .sticky-actions{display:flex; gap:10px; flex-wrap:wrap}
+
     .spacer{height:104px}
 
+    /* Reduce motion */
     @media (prefers-reduced-motion: reduce){
       *{scroll-behavior:auto !important; transition:none !important}
     }
@@ -925,17 +729,20 @@
         <div class="logo" aria-hidden="true"></div>
         <div>
           <div class="brand-title">VISION</div>
-          <div class="brand-sub">Drone • Site • Google • SEO • Conversion</div>
+          <div class="brand-sub">Système de clients (preuve → visibilité → conversion)</div>
         </div>
       </a>
 
       <nav class="nav" aria-label="Navigation">
-        <a class="hide-sm" href="#how" data-evt="nav_how">Process</a>
-        <a class="hide-sm" href="#solutions" data-evt="nav_solutions">Solutions</a>
+        <a class="hide-sm" href="#systeme" data-evt="nav_system">Le système</a>
         <a class="hide-sm" href="#preuve" data-evt="nav_proof">Preuve</a>
-        <a class="hide-sm" href="#gain" data-evt="nav_calc">Simulation</a>
-        <a class="hide-sm" href="#packs" data-evt="nav_packs">Packs</a>
-        <a href="#audit" class="btn primary" data-evt="cta_top_audit">Audit 60s</a>
+        <a class="hide-sm" href="#roi" data-evt="nav_roi">ROI</a>
+        <a class="hide-sm" href="#packs" data-evt="nav_packs">Offres</a>
+        <a class="hide-sm" href="#audit" data-evt="nav_audit">Audit</a>
+        <a href="#audit" class="btn primary" data-evt="cta_top_audit">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M7 7h10M7 12h10M7 17h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          Audit + plan (60s)
+        </a>
       </nav>
     </div>
   </div>
@@ -945,53 +752,58 @@
     <header class="hero">
       <div class="wrap hero-grid">
         <section class="card hero-left">
-          <div class="pill"><span class="dot"></span> Sans engagement • Simple • Mesurable</div>
-          <h1 class="h1">Plus de clients.<br>Sans complexité.</h1>
+          <div class="pill"><span class="dot"></span> Sans engagement • Mesurable • Zéro friction</div>
+
+          <h1 class="h1">
+            La décision devient évidente :
+            <br><span style="background:linear-gradient(135deg,var(--a),var(--b)); -webkit-background-clip:text; background-clip:text; color:transparent">plus de clients.</span>
+          </h1>
+
           <p class="sub">
-            On installe un système complet pour déclencher la décision chez vos clients :
-            <b>visuel premium (drone)</b> → <b>Google/SEO</b> → <b>landing</b> → <b>WhatsApp / RDV</b> → <b>suivi mensuel</b>.
-            Objectif : <b>des demandes chaque mois</b> + <b>une image qui écrase la concurrence</b>.
+            VISION n’est pas “une agence de plus”.
+            C’est un <b>système complet</b> : <b>preuve visuelle premium</b> (drone) → <b>Google/SEO</b> → <b>landing</b> → <b>tracking</b>.
+            Objectif : <b>des demandes régulières</b> et une image qui vous fait choisir <b>avant même le prix</b>.
           </p>
 
           <div class="hero-cta">
-            <a class="btn primary" href="#gain" data-evt="cta_hero_calc">
+            <a class="btn primary" href="#roi" data-evt="cta_hero_roi">
               <svg viewBox="0 0 24 24" fill="none"><path d="M4 19V5m0 14h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M7 15l3-4 3 2 4-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
               Estimer mon gain
             </a>
-            <a class="btn" href="#audit" data-evt="cta_hero_audit">
-              <svg viewBox="0 0 24 24" fill="none"><path d="M7 7h10M7 12h10M7 17h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-              Audit 60s
+            <a class="btn" href="#preuve" data-evt="cta_hero_proof">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M4 7h16M4 12h16M4 17h10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              Voir la preuve
             </a>
             <a class="btn ghost" id="whatsHero" href="#" data-evt="cta_hero_whatsapp">
               <svg viewBox="0 0 24 24" fill="none"><path d="M20 11.5a8.5 8.5 0 0 1-12.7 7.4L4 20l1.2-3.2A8.5 8.5 0 1 1 20 11.5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              WhatsApp
+              WhatsApp (direct)
             </a>
           </div>
 
           <div class="trust">
-            <span class="pill">Livraison <b>72h</b> après tournage</span>
-            <span class="pill">1 CTA unique = <b>+ conversion</b></span>
-            <span class="pill">Reporting <b>mensuel</b></span>
-            <span class="pill">Vous gardez le <b>contrôle</b></span>
+            <span class="pill">Plan 7 jours (onboarding)</span>
+            <span class="pill">1 CTA unique = + conversion</span>
+            <span class="pill">Tracking + reporting</span>
+            <span class="pill">Vous gardez vos accès</span>
           </div>
 
           <div class="proof-strip">
             <div class="proof">
-              <div class="k">IMAGE</div>
-              <div class="t">Drone + visuel premium</div>
-              <div class="d">Confiance immédiate : “ils sont sérieux”.</div>
+              <div class="k">PREUVE</div>
+              <div class="t">Drone + avant/après</div>
+              <div class="d">Confiance immédiate : “ils sont premium”.</div>
               <div class="meter"><div class="bar" id="p1"></div></div>
             </div>
             <div class="proof">
               <div class="k">VISIBILITÉ</div>
               <div class="t">Google + SEO local</div>
-              <div class="d">On vous trouve au bon moment.</div>
+              <div class="d">Vous remontez quand on vous cherche.</div>
               <div class="meter"><div class="bar" id="p2"></div></div>
             </div>
             <div class="proof">
               <div class="k">CONVERSION</div>
-              <div class="t">Landing + tunnel</div>
-              <div class="d">Une action : WhatsApp/RDV.</div>
+              <div class="t">Landing + tracking</div>
+              <div class="d">Le prospect clique sans hésiter.</div>
               <div class="meter"><div class="bar" id="p3"></div></div>
             </div>
           </div>
@@ -1000,198 +812,148 @@
         <aside class="card hero-right">
           <div class="mini-grid">
             <div class="mini">
-              <b>Ce que vous voulez</b>
-              <p>Des demandes régulières + une image premium.</p>
-              <span class="k">Résultat</span>
+              <b>Le vrai problème</b>
+              <p>Les gens vous voient… mais ne vous contactent pas.</p>
+              <span class="tagSmall">Friction</span>
             </div>
             <div class="mini">
-              <b>Ce qui bloque</b>
-              <p>Fiche Google morte, site flou, aucune preuve visuelle.</p>
-              <span class="k">Problème</span>
+              <b>Notre solution</b>
+              <p>Une offre claire + un bouton unique + preuve visuelle.</p>
+              <span class="tagSmall">Décision</span>
             </div>
             <div class="mini">
-              <b>Ce qu’on installe</b>
-              <p>Preuve → visibilité → conversion → suivi.</p>
-              <span class="k">Système</span>
+              <b>Le trigger</b>
+              <p>Avant/Après + avis + Google actif = crédibilité immédiate.</p>
+              <span class="tagSmall">Confiance</span>
             </div>
             <div class="mini">
-              <b>Ce que vous gagnez</b>
-              <p>Clients + temps + crédibilité, mois après mois.</p>
-              <span class="k">ROI</span>
+              <b>Le résultat</b>
+              <p>Plus de demandes/mois, mesurées et répétables.</p>
+              <span class="tagSmall">ROI</span>
             </div>
           </div>
 
           <div class="panel" style="padding:12px">
-            <b>Setup ultra simple</b><br>
-            <span class="muted" style="font-size:var(--fs0)">
-              Vous nous ajoutez en gestionnaire Google Business + on connecte la page d’offre. Le reste est géré.
+            <b>Onboarding ultra simple</b><br>
+            <span style="color:var(--muted); font-size:var(--fs0)">
+              Vous nous ajoutez sur Google Business (gestionnaire) + on connecte votre CTA.
+              Le reste est géré.
             </span>
           </div>
 
           <div class="panel" style="padding:12px">
-            <b>Objectif du mois 1</b><br>
-            <span class="muted" style="font-size:var(--fs0)">
-              D’abord “ça fait premium” (visuel), ensuite “on vous trouve” (Google), ensuite “on vous contacte” (landing).
+            <b>Ce que vous obtenez en 7 jours</b><br>
+            <span style="color:var(--muted); font-size:var(--fs0)">
+              Une image premium + une page d’offre qui convertit + un Google vivant.
             </span>
           </div>
 
           <div style="display:flex; gap:10px; flex-wrap:wrap">
-            <a class="btn primary tiny" href="#gain" data-evt="cta_side_calc">Simulation</a>
-            <a class="btn tiny" href="#packs" data-evt="cta_side_packs">Packs</a>
+            <a class="btn primary tiny" href="#audit" data-evt="cta_side_audit">Audit + plan</a>
+            <a class="btn tiny" href="#packs" data-evt="cta_side_packs">Voir les offres</a>
           </div>
         </aside>
       </div>
     </header>
 
-    <!-- HOW IT WORKS -->
-    <section id="how">
+    <!-- SYSTEME (positioning) -->
+    <section id="systeme">
       <div class="wrap">
         <div class="section-title">
-          <h2>Comment ça marche (20 secondes)</h2>
-          <p>Un système qui parle aux clients : preuve visuelle + clarté + action simple.</p>
+          <h2>Le système VISION</h2>
+          <p>Votre concurrent vend “une vidéo” ou “un site”. VISION vend un <b>système complet</b> qui transforme la visibilité en demandes.</p>
         </div>
 
-        <div class="how">
-          <div class="how-card">
-            <div class="top">
-              <div class="badgeN">1</div>
-              <span class="chip">Preuve</span>
+        <div class="position">
+          <div class="panel pos-left">
+            <div class="pill"><span class="dot"></span> Décision automatique</div>
+            <p style="margin:10px 0 0; color:var(--muted); font-size:var(--fs1)">
+              Le prospect décide quand il a <b>confiance</b> + <b>clarté</b> + <b>action simple</b>.
+              On installe ces 3 couches et on mesure.
+            </p>
+
+            <div class="grid2" style="margin-top:12px">
+              <div class="valueCard">
+                <b>1) Preuve (image premium)</b>
+                <p>Drone + photos + avant/après + mini-reels. Vous “montez de gamme”.</p>
+                <div class="kpi">
+                  <span class="badgeK">Showreel 30–45s</span>
+                  <span class="badgeK">Formats vertical</span>
+                </div>
+              </div>
+              <div class="valueCard">
+                <b>2) Visibilité (Google/SEO)</b>
+                <p>Fiche active + contenu + structure SEO local. Vous remontez.</p>
+                <div class="kpi">
+                  <span class="badgeK">Posts Google</span>
+                  <span class="badgeK">Photos régulières</span>
+                </div>
+              </div>
+              <div class="valueCard">
+                <b>3) Conversion (landing)</b>
+                <p>Une page d’offre ultra claire. Un CTA unique. Zéro friction.</p>
+                <div class="kpi">
+                  <span class="badgeK">CTA unique</span>
+                  <span class="badgeK">Mobile-first</span>
+                </div>
+              </div>
+              <div class="valueCard">
+                <b>4) Mesure (tracking)</b>
+                <p>On suit clics, appels, WhatsApp, formulaires. Reporting mensuel.</p>
+                <div class="kpi">
+                  <span class="badgeK">Tracking</span>
+                  <span class="badgeK">Reporting</span>
+                </div>
+              </div>
             </div>
-            <b>On vous fait paraître premium</b>
-            <p>Drone + photos + vidéo courte. Le client se dit : “ok c’est sérieux”.</p>
           </div>
 
-          <div class="how-card">
-            <div class="top">
-              <div class="badgeN">2</div>
-              <span class="chip">Visibilité</span>
-            </div>
-            <b>On vous rend trouvable sur Google</b>
-            <p>Fiche active + SEO local. Vous remontez quand on vous cherche.</p>
-          </div>
+          <div class="panel pos-right" style="padding:16px">
+            <div class="pill"><span class="dot"></span> Pourquoi ils vous choisissent</div>
 
-          <div class="how-card">
-            <div class="top">
-              <div class="badgeN">3</div>
-              <span class="chip">Conversion</span>
+            <div class="panel" style="margin-top:12px; padding:12px">
+              <b>Ce que ressent le client :</b><br>
+              <span style="color:var(--muted); font-size:var(--fs0)">
+                “Ils sont sérieux, ça fait premium, je clique, j’obtiens une réponse.”
+              </span>
             </div>
-            <b>On transforme en demandes</b>
-            <p>Landing + bouton unique (WhatsApp/RDV). On supprime la friction.</p>
+
+            <div class="panel" style="margin-top:10px; padding:12px">
+              <b>Ce que vous obtenez :</b><br>
+              <span style="color:var(--muted); font-size:var(--fs0)">
+                + demandes/mois + image premium + système qui tourne sans vous.
+              </span>
+            </div>
+
+            <div class="panel" style="margin-top:10px; padding:12px">
+              <b>Ce que vos concurrents n’ont pas :</b><br>
+              <span style="color:var(--muted); font-size:var(--fs0)">
+                Preuve + Google + landing + tracking, dans le même package, livré vite.
+              </span>
+            </div>
+
+            <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap">
+              <a class="btn primary" href="#preuve" data-evt="cta_pos_proof">Voir avant/après</a>
+              <a class="btn" href="#roi" data-evt="cta_pos_roi">Calculer ROI</a>
+              <a class="btn ghost" id="whatsPos" href="#" data-evt="cta_pos_whatsapp">WhatsApp</a>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- SOLUTIONS -->
-    <section id="solutions">
-      <div class="wrap">
-        <div class="section-title">
-          <h2>Solutions VISION (ce qui fait signer)</h2>
-          <p>On ne vend pas “du contenu”. On vend un système qui transforme la visibilité en demandes.</p>
-        </div>
-
-        <div class="grid3">
-          <div class="solution">
-            <h3>Drone & Visuel premium</h3>
-            <p>Films, vidéos, photos, avant/après, contenu vertical. Objectif : confiance instantanée.</p>
-            <div class="chips">
-              <span class="chip">Showreel 30–45s</span>
-              <span class="chip">Photos premium</span>
-              <span class="chip">Reels/TikTok</span>
-              <span class="chip">Avant/Après</span>
-            </div>
-          </div>
-
-          <div class="solution">
-            <h3>Site web & landing optimisés</h3>
-            <p>Un site clair, rapide, mobile, avec une offre lisible et une page qui convertit.</p>
-            <div class="chips">
-              <span class="chip">Page offre</span>
-              <span class="chip">CTA unique</span>
-              <span class="chip">Vitesse mobile</span>
-              <span class="chip">Tracking</span>
-            </div>
-          </div>
-
-          <div class="solution">
-            <h3>Google & SEO local</h3>
-            <p>Fiche vivante + contenu + pages SEO. Le client vous trouve et vous choisit.</p>
-            <div class="chips">
-              <span class="chip">Posts Google</span>
-              <span class="chip">Photos régulières</span>
-              <span class="chip">SEO local</span>
-              <span class="chip">Avis & réponses</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="panel" style="margin-top:12px; padding:14px">
-          <b>Bonus conversion :</b>
-          <span class="muted">
-            landing dédiée + tunnel simple (WhatsApp / appel / RDV) + tracking + reporting mensuel.
-            L’entreprise ne doit pas réfléchir : elle clique.
-          </span>
-        </div>
-      </div>
-    </section>
-
-    <!-- CASE STUDIES -->
-    <section id="cas">
-      <div class="wrap">
-        <div class="section-title">
-          <h2>Résultats (format ultra court)</h2>
-          <p>À remplacer par vos vrais chiffres. Le format est prêt : c’est ce qui déclenche la confiance.</p>
-        </div>
-
-        <div class="cases">
-          <div class="case">
-            <div class="k">RESTAURANT</div>
-            <div class="t">Image premium + Google actif</div>
-            <div class="m">
-              <span class="metric">+18% demandes</span>
-              <span class="metric">+12 appels/mois</span>
-              <span class="metric">Showreel + posts</span>
-            </div>
-            <p class="hint" style="margin:10px 0 0">Contenu vertical + photos + posts Google → plus de clics → plus d’appels.</p>
-          </div>
-
-          <div class="case">
-            <div class="k">ARTISAN / BTP</div>
-            <div class="t">Avant/Après + landing</div>
-            <div class="m">
-              <span class="metric">+9 RDV/mois</span>
-              <span class="metric">CTA unique</span>
-              <span class="metric">SEO local</span>
-            </div>
-            <p class="hint" style="margin:10px 0 0">Landing claire + WhatsApp → moins de friction → plus de devis.</p>
-          </div>
-
-          <div class="case">
-            <div class="k">IMMOBILIER</div>
-            <div class="t">Visuel + pages services</div>
-            <div class="m">
-              <span class="metric">+22% leads</span>
-              <span class="metric">+ crédibilité</span>
-              <span class="metric">Visuels site</span>
-            </div>
-            <p class="hint" style="margin:10px 0 0">Les visuels premium font “haut niveau” → le prospect choisit plus vite.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- PROOF WALL -->
+    <!-- PREUVE -->
     <section id="preuve">
       <div class="wrap">
         <div class="section-title">
-          <h2>Preuve (Avant / Après)</h2>
-          <p>Le client achète quand il voit. Ici tu mets : showreel + captures Google + landing + contenus.</p>
+          <h2>Preuve concrète (avant / après)</h2>
+          <p>Remplace ces slots par vos médias réels : vidéo showreel, captures Google (vues/appels), captures landing (clics).</p>
         </div>
 
         <div class="proof-wall">
           <div class="panel" style="padding:16px">
             <div class="gallery">
-              <div class="abCard" data-ab="showreel">
+              <div class="mediaSlot" data-ab="showreel">
                 <div class="top">
                   <span class="label">Showreel drone</span>
                   <div class="toggle" role="tablist" aria-label="Avant Après showreel">
@@ -1201,14 +963,14 @@
                 </div>
                 <div class="stage">
                   <div>
-                    <div class="big" data-apres>Vidéo premium (30–45s)<br>+ version vertical</div>
-                    <div class="big" data-avant style="display:none">Anciennes vidéos / aucun montage</div>
-                    <div class="small">Remplace ce bloc par votre vidéo (embed / image).</div>
+                    <div class="big" data-apres>Vidéo premium + montage pro<br>(30–45s) + vertical</div>
+                    <div class="big" data-avant style="display:none">Anciennes vidéos / aucune preuve</div>
+                    <div class="small">Dépose ici un embed vidéo ou image (placeholder).</div>
                   </div>
                 </div>
               </div>
 
-              <div class="abCard" data-ab="google">
+              <div class="mediaSlot" data-ab="google">
                 <div class="top">
                   <span class="label">Google Business</span>
                   <div class="toggle" role="tablist" aria-label="Avant Après google">
@@ -1218,14 +980,14 @@
                 </div>
                 <div class="stage">
                   <div>
-                    <div class="big" data-apres>Fiche active<br>posts + photos + réponses</div>
-                    <div class="big" data-avant style="display:none">Fiche vide / pas d’updates</div>
-                    <div class="small">Ajoute captures : vues / appels / itinéraires.</div>
+                    <div class="big" data-apres>Fiche active + photos + posts<br>+ réponses</div>
+                    <div class="big" data-avant style="display:none">Fiche morte / pas d’updates</div>
+                    <div class="small">Ajoute captures : vues, appels, itinéraires.</div>
                   </div>
                 </div>
               </div>
 
-              <div class="abCard" data-ab="landing">
+              <div class="mediaSlot" data-ab="landing">
                 <div class="top">
                   <span class="label">Landing conversion</span>
                   <div class="toggle" role="tablist" aria-label="Avant Après landing">
@@ -1235,26 +997,26 @@
                 </div>
                 <div class="stage">
                   <div>
-                    <div class="big" data-apres>Page claire<br>1 CTA = WhatsApp/RDV</div>
-                    <div class="big" data-avant style="display:none">Site flou / 10 menus</div>
-                    <div class="small">Ajoute captures : taux de clic / leads.</div>
+                    <div class="big" data-apres>Offre claire + CTA unique<br>WhatsApp / RDV</div>
+                    <div class="big" data-avant style="display:none">Site flou / trop de choix</div>
+                    <div class="small">Ajoute capture : clics CTA, formulaires.</div>
                   </div>
                 </div>
               </div>
 
-              <div class="abCard" data-ab="social">
+              <div class="mediaSlot" data-ab="tracking">
                 <div class="top">
-                  <span class="label">Contenu social</span>
-                  <div class="toggle" role="tablist" aria-label="Avant Après social">
+                  <span class="label">Tracking / reporting</span>
+                  <div class="toggle" role="tablist" aria-label="Avant Après tracking">
                     <button type="button" class="active" data-state="apres">APRÈS</button>
                     <button type="button" data-state="avant">AVANT</button>
                   </div>
                 </div>
                 <div class="stage">
                   <div>
-                    <div class="big" data-apres>Reels/TikTok<br>cohérents + réguliers</div>
-                    <div class="big" data-avant style="display:none">Aucun contenu / irrégulier</div>
-                    <div class="small">Ajoute 6–12 miniatures réelles.</div>
+                    <div class="big" data-apres>Mesure = décisions meilleures<br>itérations</div>
+                    <div class="big" data-avant style="display:none">Aucune mesure / au hasard</div>
+                    <div class="small">Ajoute capture : dashboard + résultats mensuels.</div>
                   </div>
                 </div>
               </div>
@@ -1262,21 +1024,23 @@
           </div>
 
           <div class="panel" style="padding:16px">
-            <div class="pill"><span class="dot"></span> Le déclic “premium”</div>
-            <p class="muted" style="margin:10px 0 0; font-size:var(--fs0)">
-              Le client choisit quand il a <b>confiance</b> + <b>clarté</b>.
-              Le drone/visuel déclenche la confiance. Le site/landing donne la clarté.
-              Google/SEO apporte le trafic. Le CTA capte le lead.
+            <div class="pill"><span class="dot"></span> Ce qui “force” la décision</div>
+            <p style="margin:10px 0 0; color:var(--muted); font-size:var(--fs1)">
+              Le prospect se dit :
+              <b>“Ça fait premium”</b> (preuve) → <b>“Ils sont trouvables”</b> (Google) → <b>“C’est simple”</b> (CTA).
+              C’est exactement ce que VISION installe.
             </p>
 
             <div class="panel" style="margin-top:12px; padding:12px">
-              <b>Promesse opérationnelle :</b>
-              <span class="muted">“Niveau premium en 7 jours, puis itérations mensuelles.”</span>
+              <b>Mini “kit preuve” inclus :</b><br>
+              <span style="color:var(--muted); font-size:var(--fs0)">
+                1 showreel + photos + 4 contenus vertical + mise à jour Google + landing + tracking.
+              </span>
             </div>
 
             <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:12px">
-              <a class="btn primary" href="#gain" data-evt="cta_proof_calc">Voir la simulation</a>
-              <a class="btn" href="#audit" data-evt="cta_proof_audit">Audit 60s</a>
+              <a class="btn primary" href="#roi" data-evt="cta_proof_roi">Voir ROI</a>
+              <a class="btn" href="#packs" data-evt="cta_proof_packs">Voir offres</a>
               <a class="btn ghost" id="whatsProof" href="#" data-evt="cta_proof_whatsapp">WhatsApp</a>
             </div>
           </div>
@@ -1284,32 +1048,32 @@
       </div>
     </section>
 
-    <!-- TIMELINE -->
-    <section id="timeline">
+    <!-- PLAN 7 JOURS -->
+    <section id="plan">
       <div class="wrap">
         <div class="section-title">
-          <h2>Plan 7 jours (process qui rassure)</h2>
-          <p>Pas de flou : vous savez exactement ce qu’on fait, quand, et pourquoi.</p>
+          <h2>Plan 7 jours (zéro flou)</h2>
+          <p>Process = confiance. Vous savez ce qu’on fait, quand, et pourquoi.</p>
         </div>
 
         <div class="timeline">
-          <div class="day"><div class="n">JOUR 1</div><b>Audit & offre</b><p>Objectif + CTA + angles marketing.</p></div>
-          <div class="day"><div class="n">JOUR 2</div><b>Tournage</b><p>Drone + photos + séquences clé.</p></div>
+          <div class="day"><div class="n">JOUR 1</div><b>Audit & angle</b><p>Offre + CTA + promesse.</p></div>
+          <div class="day"><div class="n">JOUR 2</div><b>Tournage</b><p>Drone + photos + scènes clés.</p></div>
           <div class="day"><div class="n">JOUR 3</div><b>Montage</b><p>Showreel + versions verticales.</p></div>
-          <div class="day"><div class="n">JOUR 4</div><b>Landing</b><p>Page d’offre + bouton unique.</p></div>
+          <div class="day"><div class="n">JOUR 4</div><b>Landing</b><p>Page offre + CTA unique.</p></div>
           <div class="day"><div class="n">JOUR 5</div><b>Google</b><p>Posts + photos + structure SEO.</p></div>
-          <div class="day"><div class="n">JOUR 6</div><b>Contenu</b><p>Calendrier + publication + cohérence.</p></div>
-          <div class="day"><div class="n">JOUR 7</div><b>Reporting</b><p>Mesure + itérations mensuelles.</p></div>
+          <div class="day"><div class="n">JOUR 6</div><b>Tracking</b><p>Clics, appels, WhatsApp, forms.</p></div>
+          <div class="day"><div class="n">JOUR 7</div><b>Itération</b><p>Optimisation + plan 30 jours.</p></div>
         </div>
       </div>
     </section>
 
-    <!-- SIMULATION V3 -->
-    <section id="gain">
+    <!-- ROI -->
+    <section id="roi">
       <div class="wrap">
         <div class="section-title">
-          <h2>Simulation : estimation de gain (simple & crédible)</h2>
-          <p>Tu mets tes chiffres. On te sort : <b>leads</b>, <b>clients</b>, <b>CA</b>, <b>profit</b>, <b>gain net</b> + <b>pack recommandé</b>.</p>
+          <h2>ROI : estimation (simple & crédible)</h2>
+          <p>Vous entrez vos chiffres. On sort : leads, clients, CA, profit, gain net + break-even + pack recommandé.</p>
         </div>
 
         <div class="two">
@@ -1317,7 +1081,7 @@
           <div class="panel" style="padding:16px">
             <div class="row">
               <div>
-                <label for="sectorPreset">Votre secteur (pré-remplissage)</label>
+                <label for="sectorPreset">Secteur (pré-remplissage)</label>
                 <select id="sectorPreset">
                   <option value="custom" selected>Je choisis moi-même</option>
                   <option value="restaurant">Restaurant / Snack</option>
@@ -1329,7 +1093,7 @@
                 </select>
               </div>
               <div>
-                <label for="goalMode">Objectif principal</label>
+                <label for="goalMode">Objectif</label>
                 <select id="goalMode">
                   <option value="Appels" selected>Appels</option>
                   <option value="RDV">RDV</option>
@@ -1341,24 +1105,24 @@
 
             <div class="row" style="margin-top:10px">
               <div>
-                <label for="plan">Pack (sans engagement)</label>
-                <select id="plan">
+                <label for="planSel">Pack</label>
+                <select id="planSel">
                   <option value="START" data-price="299">START — 299€/mois</option>
                   <option value="SCALE" data-price="690" selected>SCALE — 690€/mois</option>
                   <option value="DOMINATE" data-price="1290">DOMINATE — 1290€/mois</option>
                 </select>
               </div>
               <div>
-                <label for="uplift">Demandes en plus estimées (%)</label>
+                <label for="uplift">Demandes en + estimées (%)</label>
                 <input id="uplift" type="number" min="0" max="300" step="5" value="30" />
               </div>
             </div>
 
             <div class="help">
-              <span class="badge">Simple</span>
+              <span class="badge">Méthode</span>
               <div>
-                <b>Lecture :</b> on estime des <b>demandes en plus</b> via image + Google + landing.
-                Puis on convertit une partie en <b>clients</b>. On calcule <b>CA</b>, <b>profit</b> et <b>gain net</b>.
+                On estime + demandes via <b>preuve</b> + <b>Google/SEO</b> + <b>landing</b>, puis conversion en clients.
+                Vous gardez la main sur vos valeurs.
               </div>
             </div>
 
@@ -1404,7 +1168,7 @@
             <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap">
               <button class="btn primary" id="calcBtn" type="button" data-evt="calc_run">Calculer</button>
               <button class="btn" id="resetBtn" type="button" data-evt="calc_reset">Reset</button>
-              <a class="btn ghost" href="#audit" data-evt="calc_audit">Audit 60s</a>
+              <a class="btn ghost" href="#audit" data-evt="calc_audit">Recevoir mon plan exact</a>
             </div>
           </div>
 
@@ -1423,33 +1187,15 @@
             </div>
 
             <div class="kpi-row">
-              <div class="kpi">
-                <div class="k">Gain net / mois</div>
-                <div class="v" id="net">—</div>
-              </div>
-              <div class="kpi">
-                <div class="k">Clients en + / mois</div>
-                <div class="v" id="clientsPlus">—</div>
-              </div>
-              <div class="kpi">
-                <div class="k">CA en + / mois</div>
-                <div class="v" id="caPlus">—</div>
-              </div>
+              <div class="kpi"><div class="k">Gain net / mois</div><div class="v" id="net">—</div></div>
+              <div class="kpi"><div class="k">Clients en + / mois</div><div class="v" id="clientsPlus">—</div></div>
+              <div class="kpi"><div class="k">CA en + / mois</div><div class="v" id="caPlus">—</div></div>
             </div>
 
-            <div class="kpi2-row">
-              <div class="kpi">
-                <div class="k">Leads en + / mois</div>
-                <div class="v" id="leadsPlus">—</div>
-              </div>
-              <div class="kpi">
-                <div class="k">Clients nécessaires</div>
-                <div class="v" id="breakeven">—</div>
-              </div>
-              <div class="kpi">
-                <div class="k">Pack recommandé</div>
-                <div class="v" id="recPlan">—</div>
-              </div>
+            <div class="kpi-row">
+              <div class="kpi"><div class="k">Leads en + / mois</div><div class="v" id="leadsPlus">—</div></div>
+              <div class="kpi"><div class="k">Break-even</div><div class="v" id="breakeven">—</div></div>
+              <div class="kpi"><div class="k">Pack recommandé</div><div class="v" id="recPlan">—</div></div>
             </div>
 
             <div class="panel" style="padding:12px">
@@ -1471,18 +1217,26 @@
       </div>
     </section>
 
-    <!-- OFFER LAUNCH -->
+    <!-- OFFRE IRRÉSISTIBLE -->
     <section id="launch">
       <div class="wrap">
         <div class="launch">
           <div class="left">
-            <b>Offre de lancement (beta) — pack bonus inclus</b>
-            <div class="subt">Pour démarrer vite : place limitée. Idéal pour produire les premiers “avant/après” et résultats.</div>
+            <b>Offre “Shock” (démarrage) — bonus inclus</b>
+            <div class="subt">
+              Objectif : produire la preuve + lancer le système en 7 jours. Anti-risque : si aucun signal, itération complète.
+            </div>
           </div>
           <div class="right">
             <span class="counter" id="slots">Places restantes : —</span>
             <a class="btn primary tiny" href="#audit" data-evt="cta_launch_audit">Prendre une place</a>
           </div>
+        </div>
+
+        <div class="guarantee">
+          <b>Garantie anti-risque (30 jours) :</b>
+          si vous n’avez <b>aucun signal d’amélioration visible</b> (activité Google, clics, demandes),
+          on refait une <b>itération complète</b> (landing + Google + contenu) <b>sans coût</b>.
         </div>
       </div>
     </section>
@@ -1491,31 +1245,21 @@
     <section id="packs">
       <div class="wrap">
         <div class="section-title">
-          <h2>Packs (sans engagement)</h2>
-          <p>Choisis ton niveau de délégation. Le but reste le même : <b>plus de demandes</b> + <b>image premium</b>.</p>
+          <h2>Offres (sans engagement)</h2>
+          <p>Le but n’est pas “un pack”. Le but est : <b>des demandes</b>. Choisissez votre niveau de délégation.</p>
         </div>
 
         <div class="pricing">
           <!-- START -->
           <div class="price-card">
             <div class="price-name">START</div>
-            <div class="price-sub">Lancer le système + être visible</div>
+            <div class="price-sub">Conversion minimale, rapide, propre</div>
             <div class="price"><strong>299€</strong><span>/mois</span></div>
-
             <ul class="list">
+              <li><span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4L19 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span> 1 landing offre + CTA unique</li>
               <li><span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4L19 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Google Business : posts + mises à jour</li>
-              <li><span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4L19 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span> 1 landing (offre) + CTA unique</li>
               <li><span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4L19 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Maintenance mensuelle</li>
             </ul>
-
-            <div class="deliver">
-              <table aria-label="Livrables START">
-                <tr><th>Livrable</th><td>Landing + CTA unique</td></tr>
-                <tr><th>Google</th><td>Posts + photos + infos</td></tr>
-                <tr><th>Suivi</th><td>1 itération / mois</td></tr>
-              </table>
-            </div>
-
             <div class="price-actions">
               <button class="btn primary pick" data-plan="START" type="button" data-evt="pick_start">Choisir</button>
               <a class="btn" href="#audit" data-evt="cta_start_audit">Audit</a>
@@ -1526,51 +1270,31 @@
           <div class="price-card reco">
             <div class="tagTop">Best ROI</div>
             <div class="price-name">SCALE</div>
-            <div class="price-sub">Drone + site/landing + SEO local + conversion</div>
+            <div class="price-sub">Le système complet (preuve + Google + landing)</div>
             <div class="price"><strong>690€</strong><span>/mois</span></div>
-
             <ul class="list">
-              <li><span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4L19 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Tournage drone (mensuel)</li>
-              <li><span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4L19 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span> 4 vidéos verticales + photos</li>
-              <li><span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4L19 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Landing optimisée + tracking</li>
-              <li><span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4L19 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span> SEO local + pages services</li>
+              <li><span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4L19 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Drone mensuel + photos premium</li>
+              <li><span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4L19 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span> 4 contenus vertical + showreel</li>
+              <li><span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4L19 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Landing + tracking + itération</li>
+              <li><span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4L19 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Google + SEO local</li>
             </ul>
-
-            <div class="deliver">
-              <table aria-label="Livrables SCALE">
-                <tr><th>Visuel</th><td>1 showreel + 4 vertical + 20 photos</td></tr>
-                <tr><th>Google</th><td>4 posts + photos + réponses</td></tr>
-                <tr><th>Conversion</th><td>Landing + CTA + tracking + 1 itération/mois</td></tr>
-              </table>
-            </div>
-
             <div class="price-actions">
               <button class="btn primary pick" data-plan="SCALE" type="button" data-evt="pick_scale">Choisir</button>
-              <a class="btn" href="#gain" data-evt="cta_scale_calc">Simulation</a>
+              <a class="btn" href="#roi" data-evt="cta_scale_roi">ROI</a>
             </div>
           </div>
 
           <!-- DOMINATE -->
           <div class="price-card">
             <div class="price-name">DOMINATE</div>
-            <div class="price-sub">Full délégation + pilotage croissance</div>
+            <div class="price-sub">Délégation + pilotage croissance</div>
             <div class="price"><strong>1290€</strong><span>/mois</span></div>
-
             <ul class="list">
-              <li><span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4L19 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Contenu intensif + tournages</li>
+              <li><span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4L19 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Contenu intensif + 2 sessions</li>
               <li><span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4L19 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Tunnel + automation RDV</li>
-              <li><span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4L19 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Tracking + itérations + reporting</li>
+              <li><span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4L19 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Optimisation continue + reporting</li>
               <li><span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4L19 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Option ads (budget client)</li>
             </ul>
-
-            <div class="deliver">
-              <table aria-label="Livrables DOMINATE">
-                <tr><th>Visuel</th><td>2 sessions/mois + contenu intensif</td></tr>
-                <tr><th>Conversion</th><td>Funnel + automation RDV + tests</td></tr>
-                <tr><th>Suivi</th><td>Reporting + optimisation continue</td></tr>
-              </table>
-            </div>
-
             <div class="price-actions">
               <button class="btn primary pick" data-plan="DOMINATE" type="button" data-evt="pick_dominate">Choisir</button>
               <a class="btn" href="#audit" data-evt="cta_dominate_audit">Audit</a>
@@ -1578,70 +1302,78 @@
           </div>
         </div>
 
-        <div class="guarantee">
-          <b>Anti-risque :</b> si au bout de 30 jours vous n’avez <b>aucun signal d’amélioration visible</b> (activité Google / clics / demandes),
-          on fait une <b>itération complète</b> (landing + Google + contenu) sans coût.
+        <!-- Compare -->
+        <div class="section-title" style="margin-top:18px">
+          <h2>Pourquoi VISION gagne (comparatif)</h2>
+          <p>Sans blabla : on compare des éléments livrables, pas des promesses.</p>
         </div>
 
-        <div class="panel" style="margin-top:12px; padding:14px">
-          <b>Prestations ponctuelles :</b>
-          <span class="muted">drone / film / photos / site / landing / SEO / maintenance. Démarrage one-shot possible.</span>
+        <div class="compare">
+          <table aria-label="Comparatif VISION">
+            <tr>
+              <th>Élément</th>
+              <th>VISION</th>
+              <th>Alternative “classique”</th>
+            </tr>
+            <tr>
+              <th>Preuve visuelle premium (drone)</th>
+              <td class="ok">✅ Inclus (showreel + vertical + photos)</td>
+              <td class="no">❌ Souvent option / 1 seule vidéo</td>
+            </tr>
+            <tr>
+              <th>Google Business piloté</th>
+              <td class="ok">✅ Posts + photos + réponses + structure</td>
+              <td class="no">❌ “On verra plus tard”</td>
+            </tr>
+            <tr>
+              <th>Landing orientée conversion</th>
+              <td class="ok">✅ CTA unique + offre claire + mobile</td>
+              <td class="no">❌ Site vitrine sans focus</td>
+            </tr>
+            <tr>
+              <th>Tracking & reporting</th>
+              <td class="ok">✅ Mesure = itérations = progrès</td>
+              <td class="no">❌ Pas de métriques exploitables</td>
+            </tr>
+            <tr>
+              <th>Process 7 jours</th>
+              <td class="ok">✅ Plan clair + livraison rapide</td>
+              <td class="no">❌ Délais flous</td>
+            </tr>
+            <tr>
+              <th>Anti-risque</th>
+              <td class="ok">✅ Itération offerte si aucun signal</td>
+              <td class="no">❌ Aucun engagement de résultat</td>
+            </tr>
+          </table>
         </div>
       </div>
     </section>
 
-    <!-- OBJECTIONS -->
-    <section id="objections">
-      <div class="wrap">
-        <div class="section-title">
-          <h2>Ce que les entreprises se disent (et la réponse)</h2>
-          <p>On supprime les blocages avant la décision.</p>
-        </div>
-
-        <div class="grid3">
-          <div class="solution">
-            <h3>“J’ai déjà un site”</h3>
-            <p>On ne refait pas tout : on ajoute une <b>page d’offre</b> + une <b>landing</b> qui convertit.</p>
-            <div class="chips"><span class="chip">Rapide</span><span class="chip">Pas de refonte</span><span class="chip">Conversion</span></div>
-          </div>
-          <div class="solution">
-            <h3>“Je n’ai pas le temps”</h3>
-            <p>On gère tout. Vous validez. Vous récupérez les demandes.</p>
-            <div class="chips"><span class="chip">Délégation</span><span class="chip">Zéro charge</span><span class="chip">Suivi</span></div>
-          </div>
-          <div class="solution">
-            <h3>“Je veux du concret”</h3>
-            <p>Livrables mensuels + reporting. Vous voyez ce qui est fait et l’impact.</p>
-            <div class="chips"><span class="chip">Livrables</span><span class="chip">Chiffres</span><span class="chip">Itérations</span></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- FAQ -->
+    <!-- FAQ objections -->
     <section id="faq">
       <div class="wrap">
         <div class="section-title">
-          <h2>FAQ (simple)</h2>
-          <p>Réponses directes aux questions qui bloquent une décision.</p>
+          <h2>Objections (réponses directes)</h2>
+          <p>On coupe les freins à la décision. Court, clair, actionnable.</p>
         </div>
 
         <div class="panel" style="padding:16px; display:grid; grid-template-columns:1fr 1fr; gap:12px">
           <details>
-            <summary>Comment vous touchez ma fiche Google ?</summary>
-            <p>Vous nous ajoutez en <b>gestionnaire</b> Google Business. Vous gardez votre compte et le contrôle total.</p>
+            <summary>“J’ai déjà un site.”</summary>
+            <p>On ne refait pas “tout”. On ajoute une <b>page d’offre</b> + un <b>CTA unique</b> qui convertit.</p>
           </details>
           <details>
-            <summary>Je dois refaire tout mon site ?</summary>
-            <p>Non. Souvent on ajoute une <b>page d’offre</b> + <b>landing</b> qui convertit. Refonte seulement si nécessaire.</p>
+            <summary>“Je veux du concret.”</summary>
+            <p>Livrables + tracking + reporting : vous voyez ce qui est fait et l’impact.</p>
           </details>
           <details>
-            <summary>Pourquoi le drone fait une différence ?</summary>
-            <p>Parce que l’achat est émotionnel : le drone/visuel pro déclenche <b>confiance</b> et accélère la décision.</p>
+            <summary>“Je n’ai pas le temps.”</summary>
+            <p>Vous validez. On exécute. Vous récupérez les demandes.</p>
           </details>
           <details>
-            <summary>Sans engagement, c’est fiable ?</summary>
-            <p>Oui. Vous restez parce que ça marche. Pas parce que vous êtes bloqué par un contrat.</p>
+            <summary>“Sans engagement = pas fiable.”</summary>
+            <p>Au contraire : vous restez parce que ça marche, pas parce que vous êtes bloqué.</p>
           </details>
         </div>
       </div>
@@ -1652,7 +1384,7 @@
       <div class="wrap">
         <div class="section-title">
           <h2>Audit + plan d’actions (60 secondes)</h2>
-          <p>On renvoie : diagnostic + priorités + pack recommandé + plan 30 jours.</p>
+          <p>On renvoie : diagnostic + priorités + pack recommandé + plan 30 jours. Message prêt à envoyer.</p>
         </div>
 
         <div class="card form">
@@ -1701,7 +1433,7 @@
 
             <div style="grid-column:1/-1;">
               <label for="msg">Message (optionnel)</label>
-              <textarea id="msg" name="msg" rows="4" placeholder="Ex : on veut drone + site + Google + landing pour augmenter les demandes"></textarea>
+              <textarea id="msg" name="msg" rows="4" placeholder="Ex : on veut drone + Google + landing + tracking pour augmenter les demandes"></textarea>
               <div class="hint">Plus c’est précis, plus le plan est personnalisé.</div>
             </div>
 
@@ -1711,7 +1443,7 @@
               <button class="btn primary" type="submit" data-evt="lead_submit_whatsapp">Envoyer via WhatsApp</button>
               <button class="btn" type="button" id="copyBtn" data-evt="lead_copy">Copier le message</button>
               <a class="btn ghost" id="mailBtn" href="#" data-evt="lead_email">Envoyer par email</a>
-              <span class="muted" style="font-size:12px">Sans engagement • contrôle total</span>
+              <span style="color:var(--muted); font-size:12px">Sans engagement • accès conservés • réponse rapide</span>
             </div>
           </form>
         </div>
@@ -1725,10 +1457,10 @@
 
   <div class="sticky" role="region" aria-label="Actions rapides">
     <div class="sticky-inner">
-      <div class="msg">Objectif : <b>plus de clients</b>. Preuve (drone) + visibilité (Google/SEO) + conversion (landing).</div>
+      <div class="msg">Objectif : <b>plus de clients</b>. Preuve (drone) + visibilité (Google/SEO) + conversion (landing) + mesure (tracking).</div>
       <div class="sticky-actions">
-        <a class="btn primary" href="#audit" data-evt="cta_sticky_audit">Audit 60s</a>
-        <a class="btn" href="#gain" data-evt="cta_sticky_calc">Simulation</a>
+        <a class="btn primary" href="#audit" data-evt="cta_sticky_audit">Audit + plan</a>
+        <a class="btn" href="#roi" data-evt="cta_sticky_roi">ROI</a>
         <a class="btn ghost" id="whatsSticky" href="#" data-evt="cta_sticky_whatsapp">WhatsApp</a>
       </div>
     </div>
@@ -1736,23 +1468,22 @@
 
   <script>
     /* ==========================================================
-      VISION — JS (v3)
-      - Proof bars animation
+      VISION — JS v4 (shock conversion)
+      - Proof bars
       - AB toggles
-      - Presets + goal mode adjustments
-      - Scénarios
-      - Simulation V3: leads+clients+CA+profit+net + reco plan
-      - Launch offer slots counter (localStorage)
-      - Tracking: UTM capture + events logger + inject into messages
+      - ROI calculator + pack reco
+      - Launch slots scarcity (localStorage)
+      - UTM capture + events tracking
+      - WhatsApp / Email message generator
     ========================================================== */
 
     const CONFIG = {
       whatsappNumber: "33600000000", // <-- remplace (sans +)
       emailFallback: "contact@tondomaine.fr",
       brandName: "VISION",
-      launchSlotsStart: 10,          // places de lancement
-      launchSlotsKey: "vision_launch_slots_v1",
-      utmKey: "vision_utm_v1"
+      launchSlotsStart: 10,
+      launchSlotsKey: "vision_launch_slots_v4",
+      utmKey: "vision_utm_v4"
     };
 
     const $ = (s, p=document) => p.querySelector(s);
@@ -1790,7 +1521,7 @@
     }, 350);
 
     // AB toggles
-    $$(".abCard").forEach(card=>{
+    $$(".mediaSlot").forEach(card=>{
       const buttons = $$(".toggle button", card);
       buttons.forEach(btn=>{
         btn.addEventListener("click", ()=>{
@@ -1833,7 +1564,7 @@
     }
     const UTM = loadUTM();
 
-    // Simple event tracking (console + optional hook)
+    // Tracking
     function track(name, data={}){
       const payload = {
         name,
@@ -1842,22 +1573,15 @@
         utm: UTM || undefined,
         ...data
       };
-      // For now: console log. Later: send to endpoint.
       console.log("[VISION_EVT]", payload);
-
-      // dataLayer support
       window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({event: "vision_event", ...payload});
+      window.dataLayer.push({event:"vision_event", ...payload});
     }
-
-    // Auto-wire tracking attributes
     $$("[data-evt]").forEach(el=>{
-      el.addEventListener("click", ()=>{
-        track(el.getAttribute("data-evt"));
-      });
+      el.addEventListener("click", ()=> track(el.getAttribute("data-evt")));
     });
 
-    // Launch slots (localStorage)
+    // Launch slots
     function initSlots(){
       const raw = localStorage.getItem(CONFIG.launchSlotsKey);
       if(raw === null){
@@ -1871,28 +1595,24 @@
       const s = initSlots();
       $("#slots").textContent = `Places restantes : ${s}`;
     }
-    renderSlots();
-
-    // Decrease slot when submitting audit (soft scarcity)
     function decrementSlots(){
       const raw = localStorage.getItem(CONFIG.launchSlotsKey);
       const n = Number(raw);
-      if(!Number.isFinite(n)) return;
-      if(n <= 0) return;
+      if(!Number.isFinite(n) || n <= 0) return;
       localStorage.setItem(CONFIG.launchSlotsKey, String(n - 1));
       renderSlots();
     }
+    renderSlots();
 
-    // Presets secteur (valeurs plausibles)
+    // Presets
     const PRESETS = {
       restaurant: { avgClient: 18, margin: 60, currentLeads: 120, closeRate: 4, uplift: 15, timeSaved: 4, hourValue: 25, goalMode:"Réservations" },
       immobilier: { avgClient: 2500, margin: 55, currentLeads: 20, closeRate: 2, uplift: 25, timeSaved: 6, hourValue: 45, goalMode:"RDV" },
-      artisan:    { avgClient: 900, margin: 45, currentLeads: 18, closeRate: 3, uplift: 25, timeSaved: 6, hourValue: 40, goalMode:"Devis" },
+      artisan:    { avgClient: 900, margin: 45, currentLeads: 18, closeRate: 3, uplift: 25, timeSaved: 6, hourValue: 40, goalMode:"Appels" },
       beaute:     { avgClient: 70, margin: 65, currentLeads: 60, closeRate: 4, uplift: 20, timeSaved: 4, hourValue: 25, goalMode:"Réservations" },
       sport:      { avgClient: 60, margin: 55, currentLeads: 45, closeRate: 3, uplift: 20, timeSaved: 5, hourValue: 30, goalMode:"RDV" },
       auto:       { avgClient: 450, margin: 40, currentLeads: 25, closeRate: 3, uplift: 20, timeSaved: 6, hourValue: 35, goalMode:"Appels" }
     };
-
     function applyPreset(key){
       if(key === "custom") return;
       const p = PRESETS[key];
@@ -1904,25 +1624,21 @@
       $("#uplift").value = p.uplift;
       $("#timeSaved").value = p.timeSaved;
       $("#hourValue").value = p.hourValue;
-      // Auto goal mode suggestion
       if(p.goalMode){
-        // map if exists
         const gm = $("#goalMode");
-        [...gm.options].forEach(o=>{
-          if(o.value === p.goalMode) gm.value = p.goalMode;
-        });
+        [...gm.options].forEach(o=>{ if(o.value === p.goalMode) gm.value = p.goalMode; });
       }
-      toast("Chiffres pré-remplis. Ajuste si besoin puis calcule.");
+      toast("Pré-rempli. Ajuste si besoin puis calcule.");
       track("preset_apply", {preset:key});
     }
     $("#sectorPreset").addEventListener("change", (e)=> applyPreset(e.target.value));
 
-    // Scénarios
+    // Scenarios
     let scenario = "prudent";
     const SCENARIOS = {
-      prudent:  { upliftMult: 0.7, closeMult: 0.9, label: "Prudent" },
-      realiste: { upliftMult: 1.0, closeMult: 1.0, label: "Réaliste" },
-      ambitieux:{ upliftMult: 1.3, closeMult: 1.1, label: "Ambitieux" }
+      prudent:  { upliftMult: 0.75, closeMult: 0.95, label: "Prudent" },
+      realiste: { upliftMult: 1.00, closeMult: 1.00, label: "Réaliste" },
+      ambitieux:{ upliftMult: 1.30, closeMult: 1.10, label: "Ambitieux" }
     };
     $$(".tab").forEach(t=>{
       t.addEventListener("click", ()=>{
@@ -1934,10 +1650,7 @@
       });
     });
 
-    // Goal mode adjustments (small influence on close rate suggestion)
     function goalCloseBias(goal){
-      // Slightly different close rates depending on objective
-      // (safe defaults, user can override with closeRate)
       switch(goal){
         case "WhatsApp": return 1.05;
         case "RDV": return 1.00;
@@ -1947,18 +1660,14 @@
       }
     }
 
-    function recommendedPlan(net, extraClients, feeStart, feeScale, feeDom){
-      // simple logic: choose lowest plan that stays net-positive with margin
-      if(net === null) return "—";
-      // if extra clients are strong, recommend SCALE, else START.
-      // If very strong, DOMINATE.
+    function recommendedPlan(extraClients){
       if(extraClients >= 10) return "DOMINATE";
       if(extraClients >= 3) return "SCALE";
       return "START";
     }
 
     function calc(){
-      const planEl = $("#plan");
+      const planEl = $("#planSel");
       const fee = Number(planEl.selectedOptions[0].dataset.price || 0);
 
       const avgClient = Math.max(0, Number($("#avgClient").value || 0));
@@ -1976,7 +1685,6 @@
       const goal = $("#goalMode").value;
       const s = SCENARIOS[scenario];
 
-      // Apply scenario + goal bias (small)
       const uplift = upliftRaw * s.upliftMult;
       const close = closePctBase * s.closeMult * goalCloseBias(goal);
 
@@ -1984,24 +1692,19 @@
       const extraClients = extraLeads * close;
 
       const profitPerClient = avgClient * marginPct;
-      const extraCA = extraClients * avgClient;              // CA additionnel
-      const extraProfit = extraClients * profitPerClient;    // profit additionnel
+      const extraCA = extraClients * avgClient;
+      const extraProfit = extraClients * profitPerClient;
 
       const timeValue = timeSaved * hourValue;
       const net = (extraProfit + timeValue) - fee;
 
       const breakEvenClients = profitPerClient > 0 ? Math.ceil(fee / profitPerClient) : Infinity;
+      const score = (isFinite(breakEvenClients) && breakEvenClients > 0)
+        ? clamp((extraClients / breakEvenClients) * 100, 0, 180)
+        : 0;
 
-      // Score: net positive + ratio
-      let score = 0;
-      if(isFinite(breakEvenClients) && breakEvenClients > 0){
-        score = clamp((extraClients / breakEvenClients) * 100, 0, 180);
-      }
+      const rec = recommendedPlan(extraClients);
 
-      // Recommended plan (based on potential)
-      const rec = recommendedPlan(net, extraClients);
-
-      // UI
       const status = net >= 0 ? "Rentable" : "À optimiser";
       $("#headline").textContent = `${status} — ${money(net)} / mois (estimation)`;
       $("#subtitle").textContent =
@@ -2011,7 +1714,6 @@
       $("#clientsPlus").textContent = `+${round(extraClients)}`;
       $("#caPlus").textContent = `+${round(extraCA)}€`;
       $("#leadsPlus").textContent = `+${round(extraLeads)}`;
-
       $("#breakeven").textContent = isFinite(breakEvenClients) ? `${breakEvenClients} client(s)/mois` : "—";
       $("#recPlan").textContent = rec;
 
@@ -2020,36 +1722,36 @@
         `• Clients en plus : <b>+${round(extraClients)}</b> / mois<br>` +
         `• CA additionnel : <b>+${round(extraCA)}€</b> / mois<br>` +
         `• Profit estimé : <b>${money(extraProfit)}</b> / mois<br>` +
-        `• Temps économisé : <b>${money(timeValue)}</b> / mois<br>` +
-        `• Coût du pack : <b>-${fee}€</b> / mois<br>` +
+        `• Valeur temps : <b>${money(timeValue)}</b> / mois<br>` +
+        `• Coût pack : <b>-${fee}€</b> / mois<br>` +
         `➡ Gain net : <b>${money(net)}</b> / mois`;
 
       const tag = $("#scoreTag");
       const hint = $("#scoreHint");
 
-      if(net >= 0 && score >= 110){
+      if(net >= 0 && score >= 115){
         tag.className = "tag good";
         tag.textContent = "Très bon";
         hint.textContent = "Rentable rapidement : peu de clients en plus suffisent.";
       }else if(net >= 0){
         tag.className = "tag warn";
         tag.textContent = "Bon";
-        hint.textContent = "Rentable. On peut booster visibilité + conversion.";
+        hint.textContent = "Rentable. Optimisation possible (offre/CTA/Google).";
       }else{
         tag.className = "tag bad";
         tag.textContent = "À optimiser";
-        hint.textContent = "On ajuste : offre + Google + landing + contenu pour passer rentable.";
+        hint.textContent = "On renforce preuve + landing + Google pour passer rentable.";
       }
 
       const plan30 = [
-        "Semaine 1 : tournage (drone + photos) + showreel + mise à niveau image.",
-        "Semaine 2 : optimisation Google (infos, photos, posts) + structure SEO local.",
-        "Semaine 3 : page d’offre + landing à CTA unique (WhatsApp/RDV) + tracking.",
-        "Semaine 4 : contenu réseaux sociaux + itération (conversion) + reporting."
+        "Semaine 1 : preuve premium (drone + photos) + showreel + cohérence marque.",
+        "Semaine 2 : Google Business (posts + photos + structure SEO local).",
+        "Semaine 3 : landing à CTA unique + tracking (clics, appels, WhatsApp).",
+        "Semaine 4 : itération conversion + reporting + plan du mois suivant."
       ];
       $("#plan30").innerHTML = plan30.map(x=>`• ${x}`).join("<br>");
 
-      toast("Simulation prête. Si tu veux, envoie l’audit : plan exact + pack recommandé.");
+      toast("ROI calculé. Envoie l’audit pour le plan exact.");
       track("calc_done", {
         scenario, goal,
         extraLeads: round(extraLeads),
@@ -2065,7 +1767,7 @@
     $("#resetBtn").addEventListener("click", ()=>{
       $("#sectorPreset").value = "custom";
       $("#goalMode").value = "Appels";
-      $("#plan").value = "SCALE";
+      $("#planSel").value = "SCALE";
       $("#avgClient").value = 200;
       $("#margin").value = 50;
       $("#currentLeads").value = 15;
@@ -2093,14 +1795,14 @@
     // Pack pick sync
     $$(".pick").forEach(btn=>{
       btn.addEventListener("click", ()=>{
-        $("#plan").value = btn.dataset.plan;
-        location.hash = "#gain";
-        toast(`Pack ${btn.dataset.plan} sélectionné. Lance la simulation.`);
+        $("#planSel").value = btn.dataset.plan;
+        location.hash = "#roi";
+        toast(`Pack ${btn.dataset.plan} sélectionné. Lance le calcul ROI.`);
         track("pick_plan", {plan: btn.dataset.plan});
       });
     });
 
-    // WhatsApp wiring
+    // WhatsApp/email
     function openWhatsApp(text){
       const url = `https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent(text)}`;
       window.open(url, "_blank", "noopener,noreferrer");
@@ -2110,16 +1812,13 @@
       const body = encodeURIComponent(text);
       window.location.href = `mailto:${CONFIG.emailFallback}?subject=${subject}&body=${body}`;
     }
-
     function utmString(){
       if(!UTM) return "";
       return Object.entries(UTM).map(([k,v])=>`${k}=${v}`).join(" | ");
     }
-
     function buildQuickHello(){
       return `Bonjour, je souhaite un audit + plan d’actions (${CONFIG.brandName}).` + (UTM ? `\nUTM: ${utmString()}` : "");
     }
-
     function wireWhats(id, msgBuilder){
       const el = $(id);
       if(!el) return;
@@ -2133,9 +1832,10 @@
     wireWhats("#whatsHero");
     wireWhats("#whatsProof");
     wireWhats("#whatsSticky");
-    wireWhats("#whatsCalc", ()=> buildQuickHello() + "\n\nJe viens de faire la simulation, pouvez-vous me proposer le pack recommandé ?");
+    wireWhats("#whatsPos");
+    wireWhats("#whatsCalc", ()=> buildQuickHello() + "\n\nJe viens de faire le ROI. Pouvez-vous me proposer le pack recommandé + plan 30 jours ?");
 
-    // Lead capture
+    // Lead form
     function getLeadPayload(){
       return {
         company: $("#company").value.trim(),
@@ -2148,7 +1848,7 @@
         website: $("#website").value.trim(),
         msg: $("#msg").value.trim(),
         hp: $("#hp").value.trim(),
-        plan: $("#plan").value,
+        plan: $("#planSel").value,
         scenario
       };
     }
@@ -2156,9 +1856,8 @@
       const required = ["company","city","sector","name","phone","email"];
       return required.every(k => !!p[k]);
     }
-
     function buildLeadMessage(p){
-      const planEl = $("#plan");
+      const planEl = $("#planSel");
       const fee = Number(planEl.selectedOptions[0].dataset.price || 0);
 
       const goalMode = $("#goalMode").value;
@@ -2176,7 +1875,7 @@
         `Secteur : ${p.sector}`,
         `Objectif : ${p.goal}`,
         `Pack sélectionné : ${p.plan} (${fee}€/mois)`,
-        `Simulation : objectif ${goalMode} • scénario ${SCENARIOS[p.scenario].label} • valeur client ${avgClient}€ • marge ${marginPct}% • demandes ${leads}/mois • sur 10 demandes = ${closeRate} client(s) • +${uplift}% demandes`,
+        `ROI : objectif ${goalMode} • scénario ${SCENARIOS[p.scenario].label} • valeur client ${avgClient}€ • marge ${marginPct}% • demandes ${leads}/mois • sur 10 demandes = ${closeRate} client(s) • +${uplift}% demandes`,
         `Nom : ${p.name}`,
         `Téléphone : ${p.phone}`,
         `Email : ${p.email}`,
@@ -2190,11 +1889,9 @@
       const p = getLeadPayload();
       if(p.hp){ toast("Erreur."); return; }
       if(!validateRequired(p)){ toast("Remplis tous les champs obligatoires."); return; }
-
       const msg = buildLeadMessage(p);
-      toast("OK. WhatsApp s’ouvre avec le message prêt.");
+      toast("WhatsApp s’ouvre avec le message prêt.");
       openWhatsApp(msg);
-
       decrementSlots();
       track("lead_submit", {channel:"whatsapp", company:p.company, sector:p.sector});
     });
@@ -2222,23 +1919,6 @@
       decrementSlots();
       track("lead_submit", {channel:"email", company:p.company, sector:p.sector});
     });
-
-    // Optional: auto-fill audit fields with calculator sector preset
-    $("#sectorPreset").addEventListener("change", ()=>{
-      const map = {
-        restaurant:"Restaurant / Snack",
-        immobilier:"Immobilier",
-        artisan:"Artisan / BTP",
-        beaute:"Beauté / Coiffure",
-        sport:"Sport / Salle",
-        auto:"Auto / Garage"
-      };
-      const v = $("#sectorPreset").value;
-      if(v !== "custom" && $("#sector")){
-        $("#sector").value = map[v] || $("#sector").value;
-      }
-    });
-
   </script>
 
   <script type="application/ld+json">
@@ -2248,12 +1928,12 @@
     "name":"VISION",
     "areaServed":"FR",
     "serviceType":[
-      "Drone & Visual Content",
-      "Optimized Website & Landing Pages",
-      "Google Business Profile Optimization",
+      "Drone & Visual Proof System",
+      "Google Business Optimization",
       "Local SEO",
-      "Sales Funnel & Conversion Tracking",
-      "Monthly Maintenance"
+      "Conversion Landing Pages",
+      "Tracking & Reporting",
+      "Monthly Iteration"
     ]
   }
   </script>
