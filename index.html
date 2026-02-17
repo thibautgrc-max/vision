@@ -3,56 +3,67 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="VISION — Système digital premium pour entreprises : Drone + Visuel + Google + SEO + Landing + Tunnel + Maintenance. Un seul objectif : plus de clients." />
+  <meta name="description" content="VISION — Drone + Visuel + Site web optimisé + Google + SEO + Landing + Tunnel + Contenu + Maintenance. Un seul objectif : plus de clients." />
   <meta name="theme-color" content="#070A12" />
-  <title>VISION — La machine à clients (Drone • Google • SEO • Conversion)</title>
+  <title>VISION — Système premium (Drone • Site • Google • SEO • Conversion)</title>
 
   <style>
     /* ==========================================================
-       VISION — CONVERSION LANDING (ONE FILE)
-       Design intent:
-       - ultra lisible, premium, pas long, pas confus
-       - preuve → valeur → plan → packs → action (audit)
-       - calculator = "eye opener" (profit + break-even + time value)
-       - proof wall = assets placeholders (remplacer par tes captures / vidéos)
-       ========================================================== */
+      VISION — ONE FILE CONVERSION SYSTEM (v2 “final base”)
+      Objectif: 1 page = 1 compréhension + 1 décision.
+      Psychologie: preuve → valeur → chiffres → packs → action.
+
+      ✅ Nouveautés
+      - Thème plus graphique (grain + glow + depth)
+      - Section “Solutions” complète (site web optimisé + contenu + vidéos/films/images)
+      - Simulateur amélioré: mots simples + données “réalistes”
+      - Simulation: 3 scénarios (prudent / réaliste / ambitieux)
+      - “Plan d’action 30 jours” généré automatiquement (ultra convaincant)
+      - UX: tooltips, presets par secteur, score de rentabilité
+
+      Remplacer:
+      - CONFIG.whatsappNumber / email
+      - Proof wall (images/vidéos)
+      - Packs/prix si besoin
+    ========================================================== */
 
     :root{
-      /* Core */
+      /* Base */
       --bg:#070A12;
       --bg2:#0A0F1E;
       --text:#EFF2FA;
       --muted:#AEB7D3;
       --line:rgba(255,255,255,.10);
-      --line2:rgba(255,255,255,.18);
-      --panel:rgba(255,255,255,.045);
-      --panel2:rgba(255,255,255,.03);
-      --shadow: 0 24px 70px rgba(0,0,0,.55);
-      --shadow2: 0 16px 44px rgba(0,0,0,.38);
+      --line2:rgba(255,255,255,.20);
+      --panel:rgba(255,255,255,.05);
+      --panel2:rgba(255,255,255,.032);
+      --shadow: 0 26px 80px rgba(0,0,0,.58);
+      --shadow2: 0 18px 52px rgba(0,0,0,.40);
 
-      /* Brand (VISION) */
+      /* Brand */
       --a:#7C5CFF;   /* violet */
       --b:#19F0C2;   /* mint */
       --c:#FFD166;   /* gold */
+      --d:#60A5FA;   /* blue */
 
       /* Status */
       --good:#34D399;
       --warn:#FFCC66;
       --bad:#FB7185;
-      --info:#60A5FA;
 
       /* Radius */
       --r14:14px;
       --r18:18px;
       --r24:24px;
       --r32:32px;
-      --max:1180px;
+      --r40:40px;
+      --max:1200px;
 
       /* Typography */
       --fs0: clamp(13px, 1.05vw, 15px);
       --fs1: clamp(16px, 1.25vw, 18px);
-      --fs2: clamp(22px, 2.25vw, 32px);
-      --fs3: clamp(34px, 4.6vw, 64px);
+      --fs2: clamp(22px, 2.25vw, 34px);
+      --fs3: clamp(36px, 4.9vw, 70px);
 
       /* Motion */
       --ease: cubic-bezier(.2,.85,.2,1);
@@ -65,24 +76,41 @@
       margin:0;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
       color:var(--text);
-      background:
-        radial-gradient(1200px 720px at 10% 10%, rgba(124,92,255,.28), transparent 58%),
-        radial-gradient(900px 680px at 92% 14%, rgba(25,240,194,.15), transparent 55%),
-        radial-gradient(900px 680px at 60% 92%, rgba(255,209,102,.10), transparent 55%),
-        linear-gradient(180deg, var(--bg), var(--bg2) 55%, var(--bg));
       line-height:1.5;
       letter-spacing:.2px;
       overflow-x:hidden;
+
+      /* background layers */
+      background:
+        radial-gradient(1200px 740px at 10% 10%, rgba(124,92,255,.30), transparent 58%),
+        radial-gradient(980px 720px at 92% 14%, rgba(25,240,194,.16), transparent 55%),
+        radial-gradient(900px 720px at 60% 92%, rgba(255,209,102,.11), transparent 55%),
+        linear-gradient(180deg, var(--bg), var(--bg2) 55%, var(--bg));
     }
+
+    /* subtle grain */
+    body:before{
+      content:"";
+      position:fixed; inset:0;
+      pointer-events:none;
+      background-image:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='.18'/%3E%3C/svg%3E");
+      mix-blend-mode:overlay;
+      opacity:.18;
+      z-index:0;
+    }
+
     a{color:inherit}
-    .wrap{max-width:var(--max); margin:0 auto; padding:0 18px}
+    .wrap{max-width:var(--max); margin:0 auto; padding:0 18px; position:relative; z-index:1}
     .sr{position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0}
 
-    /* Topbar */
+    /* ==========================================================
+      TOPBAR
+    ========================================================== */
     .topbar{
       position:sticky; top:0; z-index:80;
-      background: rgba(7,10,18,.72);
-      backdrop-filter: blur(12px);
+      background: rgba(7,10,18,.70);
+      backdrop-filter: blur(14px);
       border-bottom:1px solid var(--line);
     }
     .topbar-inner{
@@ -93,15 +121,17 @@
     .logo{
       width:40px; height:40px; border-radius:16px;
       background: linear-gradient(135deg, var(--a), var(--b));
-      box-shadow: 0 18px 45px rgba(124,92,255,.22), 0 14px 26px rgba(25,240,194,.10);
+      box-shadow:
+        0 18px 45px rgba(124,92,255,.22),
+        0 18px 55px rgba(25,240,194,.10);
       position:relative; overflow:hidden; flex:0 0 auto;
     }
     .logo:before{
       content:""; position:absolute; inset:-2px;
       background:
-        radial-gradient(22px 22px at 28% 28%, rgba(255,255,255,.50), transparent 65%),
-        radial-gradient(28px 28px at 76% 72%, rgba(255,255,255,.18), transparent 68%);
-      opacity:.85; pointer-events:none;
+        radial-gradient(22px 22px at 28% 28%, rgba(255,255,255,.55), transparent 65%),
+        radial-gradient(28px 28px at 76% 72%, rgba(255,255,255,.20), transparent 68%);
+      opacity:.85;
     }
     .brand-title{font-weight:980; letter-spacing:-.5px; font-size:14px; line-height:1}
     .brand-sub{margin-top:4px; color:var(--muted); font-size:12px; font-weight:780}
@@ -118,7 +148,9 @@
     .hide-sm{display:inline-flex}
     @media (max-width: 920px){ .hide-sm{display:none} }
 
-    /* Buttons / pills */
+    /* ==========================================================
+      ATOMS
+    ========================================================== */
     .btn{
       display:inline-flex; align-items:center; justify-content:center; gap:10px;
       padding:12px 14px;
@@ -126,11 +158,13 @@
       border:1px solid var(--line);
       background: rgba(255,255,255,.04);
       text-decoration:none;
-      font-weight:920;
+      font-weight:930;
       font-size:var(--fs0);
       cursor:pointer;
       user-select:none;
       transition: transform var(--dur) var(--ease), border-color var(--dur) var(--ease), filter var(--dur) var(--ease);
+      position:relative;
+      overflow:hidden;
     }
     .btn:hover{transform:translateY(-1px); border-color:var(--line2)}
     .btn:active{transform:translateY(0)}
@@ -138,9 +172,17 @@
       border-color:transparent;
       color:#060813;
       background: linear-gradient(135deg, var(--a), var(--b));
-      box-shadow: 0 22px 60px rgba(124,92,255,.20), 0 14px 30px rgba(25,240,194,.10);
+      box-shadow: 0 22px 70px rgba(124,92,255,.20), 0 18px 40px rgba(25,240,194,.10);
     }
-    .btn.primary:hover{filter:saturate(1.06)}
+    .btn.primary:before{
+      content:"";
+      position:absolute; inset:-2px;
+      background:
+        radial-gradient(240px 120px at 20% 10%, rgba(255,255,255,.30), transparent 60%),
+        radial-gradient(220px 120px at 80% 60%, rgba(255,255,255,.18), transparent 60%);
+      opacity:.75;
+      pointer-events:none;
+    }
     .btn.ghost{background:transparent}
     .btn.tiny{padding:10px 12px; border-radius:12px}
 
@@ -160,13 +202,25 @@
       box-shadow: 0 0 0 3px rgba(52,211,153,.12);
     }
 
-    /* Cards */
     .card{
       border:1px solid var(--line);
-      border-radius: var(--r32);
-      background: linear-gradient(180deg, rgba(255,255,255,.055), rgba(255,255,255,.02));
+      border-radius: var(--r40);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
       box-shadow: var(--shadow);
+      position:relative;
+      overflow:hidden;
     }
+    .card:before{
+      content:"";
+      position:absolute; inset:-2px;
+      background:
+        radial-gradient(900px 260px at 14% 0%, rgba(124,92,255,.16), transparent 62%),
+        radial-gradient(820px 260px at 90% 12%, rgba(25,240,194,.10), transparent 62%);
+      opacity:.85;
+      pointer-events:none;
+    }
+    .card > *{position:relative}
+
     .panel{
       border:1px solid var(--line);
       border-radius: var(--r24);
@@ -182,43 +236,36 @@
     .section-title h2{
       margin:0;
       font-size: var(--fs2);
-      font-weight:980;
+      font-weight:990;
       letter-spacing:-.7px;
     }
     .section-title p{margin:0; color:var(--muted); font-size:var(--fs0); max-width:76ch}
 
-    /* HERO */
+    /* ==========================================================
+      HERO
+    ========================================================== */
     header.hero{padding:34px 0 10px}
     .hero-grid{
       display:grid;
-      grid-template-columns: 1.2fr .8fr;
+      grid-template-columns: 1.22fr .78fr;
       gap:14px;
       align-items:stretch;
     }
     @media (max-width: 980px){ .hero-grid{grid-template-columns:1fr} }
 
-    .hero-left{padding:22px; position:relative; overflow:hidden}
-    .hero-left:before{
-      content:"";
-      position:absolute; inset:-2px;
-      background:
-        radial-gradient(860px 260px at 16% 12%, rgba(124,92,255,.22), transparent 60%),
-        radial-gradient(720px 300px at 86% 16%, rgba(25,240,194,.14), transparent 62%);
-      opacity:.95; pointer-events:none;
-    }
-    .hero-left > *{position:relative}
+    .hero-left{padding:22px}
     .h1{
       font-size: var(--fs3);
-      line-height:1.03;
+      line-height:1.02;
       margin:12px 0 10px;
-      letter-spacing:-1.1px;
-      font-weight:990;
+      letter-spacing:-1.2px;
+      font-weight:999;
     }
     .sub{
       margin:0 0 16px;
       color:var(--muted);
       font-size: var(--fs1);
-      max-width: 70ch;
+      max-width: 72ch;
     }
     .hero-cta{display:flex; gap:10px; flex-wrap:wrap; align-items:center}
     .trust{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px}
@@ -232,10 +279,10 @@
       padding:12px;
       background: rgba(255,255,255,.03);
     }
-    .mini b{display:block; margin-bottom:6px; letter-spacing:-.2px; font-weight:980}
+    .mini b{display:block; margin-bottom:6px; letter-spacing:-.2px; font-weight:990}
     .mini p{margin:0; color:var(--muted); font-size:var(--fs0)}
 
-    /* Proof strip */
+    /* Proof meters */
     .proof-strip{
       display:grid;
       grid-template-columns: 1fr 1fr 1fr;
@@ -249,9 +296,10 @@
       border:1px solid var(--line);
       background: rgba(255,255,255,.03);
     }
-    .proof .k{font-size:12px; color:var(--muted); font-weight:980; letter-spacing:.4px}
-    .proof .t{margin-top:6px; font-weight:990; letter-spacing:-.3px}
+    .proof .k{font-size:12px; color:var(--muted); font-weight:990; letter-spacing:.45px}
+    .proof .t{margin-top:6px; font-weight:999; letter-spacing:-.35px}
     .proof .d{margin-top:6px; color:var(--muted); font-size:var(--fs0)}
+
     .meter{
       height:12px;
       border-radius:999px;
@@ -265,19 +313,68 @@
       width:0%;
       border-radius:999px;
       background: linear-gradient(90deg, var(--a), var(--b));
-      transition: width 520ms var(--ease);
+      transition: width 700ms var(--ease);
     }
 
-    /* Value map (simple system) */
+    /* ==========================================================
+      SOLUTIONS (complete)
+    ========================================================== */
+    .grid3{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:12px;
+    }
+    @media (max-width: 980px){ .grid3{grid-template-columns:1fr} }
+
+    .solution{
+      padding:16px;
+      border-radius: var(--r32);
+      border:1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      box-shadow: var(--shadow2);
+      position:relative;
+      overflow:hidden;
+    }
+    .solution:before{
+      content:"";
+      position:absolute; inset:-2px;
+      background:
+        radial-gradient(520px 180px at 22% 10%, rgba(255,209,102,.10), transparent 62%),
+        radial-gradient(520px 180px at 80% 62%, rgba(96,165,250,.10), transparent 62%);
+      opacity:.75;
+      pointer-events:none;
+    }
+    .solution > *{position:relative}
+    .solution h3{
+      margin:0 0 6px;
+      font-size:18px;
+      font-weight:999;
+      letter-spacing:-.4px;
+    }
+    .solution p{margin:0; color:var(--muted); font-size:var(--fs0)}
+    .chips{display:flex; flex-wrap:wrap; gap:8px; margin-top:12px}
+    .chip{
+      padding:7px 10px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      font-size:12px;
+      color:var(--muted);
+      font-weight:820;
+    }
+
+    /* ==========================================================
+      SYSTEM (3 steps)
+    ========================================================== */
     .ladder{
       display:grid;
       grid-template-columns: repeat(3, 1fr);
-      gap:10px;
+      gap:12px;
     }
     @media (max-width: 980px){ .ladder{grid-template-columns:1fr} }
     .step{
-      padding:14px;
-      border-radius: var(--r24);
+      padding:16px;
+      border-radius: var(--r32);
       border:1px solid var(--line);
       background: rgba(255,255,255,.03);
       position:relative;
@@ -286,15 +383,17 @@
     .step:before{
       content:"";
       position:absolute; inset:-2px;
-      background: radial-gradient(500px 160px at 20% 10%, rgba(255,209,102,.09), transparent 60%);
+      background: radial-gradient(560px 160px at 20% 10%, rgba(124,92,255,.12), transparent 62%);
       opacity:.75; pointer-events:none;
     }
     .step > *{position:relative}
-    .step .k{font-size:12px; color:var(--muted); font-weight:990; letter-spacing:.5px}
-    .step .t{margin-top:6px; font-weight:990; letter-spacing:-.3px}
+    .step .k{font-size:12px; color:var(--muted); font-weight:999; letter-spacing:.5px}
+    .step .t{margin-top:8px; font-weight:999; letter-spacing:-.35px}
     .step .d{margin-top:6px; color:var(--muted); font-size:var(--fs0)}
 
-    /* Calculator */
+    /* ==========================================================
+      CALCULATOR (v2)
+    ========================================================== */
     .two{
       display:grid;
       grid-template-columns: 1fr 1fr;
@@ -302,6 +401,7 @@
       align-items:stretch;
     }
     @media (max-width: 980px){ .two{grid-template-columns:1fr} }
+
     label{display:block; font-size:var(--fs0); color:var(--muted); margin-bottom:6px}
     input, select, textarea{
       width:100%;
@@ -320,9 +420,33 @@
     .row{display:grid; grid-template-columns:1fr 1fr; gap:10px}
     @media (max-width: 540px){ .row{grid-template-columns:1fr} }
 
+    .help{
+      display:flex;
+      align-items:flex-start;
+      gap:10px;
+      margin-top:10px;
+      padding:10px 12px;
+      border-radius: 18px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      color:var(--muted);
+      font-size:12.5px;
+    }
+    .badge{
+      flex:0 0 auto;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid rgba(96,165,250,.28);
+      background: rgba(96,165,250,.12);
+      color:#dbeafe;
+      font-weight:900;
+      font-size:12px;
+      margin-top:1px;
+    }
+
     .result{
       padding:16px;
-      border-radius: var(--r32);
+      border-radius: var(--r40);
       border:1px solid var(--line);
       background: rgba(12,14,32,.60);
       box-shadow: var(--shadow);
@@ -336,12 +460,14 @@
       content:"";
       position:absolute; inset:-2px;
       background:
-        radial-gradient(820px 260px at 22% 18%, rgba(124,92,255,.16), transparent 60%),
-        radial-gradient(820px 260px at 85% 35%, rgba(25,240,194,.10), transparent 62%);
-      opacity:.75; pointer-events:none;
+        radial-gradient(920px 280px at 22% 18%, rgba(124,92,255,.16), transparent 60%),
+        radial-gradient(920px 280px at 85% 35%, rgba(25,240,194,.10), transparent 62%),
+        radial-gradient(820px 240px at 60% 90%, rgba(255,209,102,.08), transparent 62%);
+      opacity:.80; pointer-events:none;
     }
     .result > *{position:relative}
-    .big{font-size:32px; font-weight:990; letter-spacing:-.9px}
+
+    .big{font-size:32px; font-weight:999; letter-spacing:-.9px}
     .small{color:var(--muted); font-size:var(--fs0)}
 
     .kpi-row{
@@ -358,11 +484,62 @@
       background: rgba(255,255,255,.03);
     }
     .kpi .k{color:var(--muted); font-size:12px}
-    .kpi .v{font-weight:990; font-size:20px; letter-spacing:-.5px; margin-top:6px}
+    .kpi .v{font-weight:999; font-size:20px; letter-spacing:-.5px; margin-top:6px}
 
     .hint{color:var(--muted); font-size:12.5px}
 
-    /* Pricing */
+    .tabs{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+      margin-top:10px;
+    }
+    .tab{
+      padding:10px 12px;
+      border-radius: 999px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      font-size:12px;
+      font-weight:950;
+      color:var(--muted);
+      cursor:pointer;
+      transition: transform var(--dur) var(--ease), border-color var(--dur) var(--ease), color var(--dur) var(--ease);
+      user-select:none;
+    }
+    .tab:hover{transform:translateY(-1px); border-color:var(--line2); color:var(--text)}
+    .tab.active{
+      color:#060813;
+      border-color:transparent;
+      background: linear-gradient(135deg, var(--a), var(--b));
+    }
+
+    .score{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      border:1px solid var(--line);
+      border-radius: 18px;
+      padding:12px;
+      background: rgba(255,255,255,.03);
+    }
+    .score b{font-weight:999}
+    .score .tag{
+      padding:7px 10px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      font-size:12px;
+      font-weight:999;
+      color:var(--muted);
+    }
+    .tag.good{border-color: rgba(52,211,153,.28); background: rgba(52,211,153,.12); color:#d1fae5}
+    .tag.warn{border-color: rgba(255,204,102,.30); background: rgba(255,204,102,.12); color:#fff7ed}
+    .tag.bad{border-color: rgba(251,113,133,.30); background: rgba(251,113,133,.12); color:#ffe4e6}
+
+    /* ==========================================================
+      PRICING
+    ========================================================== */
     .pricing{
       display:grid;
       grid-template-columns: repeat(3, 1fr);
@@ -372,37 +549,47 @@
     @media (max-width: 980px){ .pricing{grid-template-columns:1fr} }
     .price-card{
       padding:16px;
-      border-radius: var(--r32);
+      border-radius: var(--r40);
       border:1px solid var(--line);
-      background: linear-gradient(180deg, rgba(255,255,255,.055), rgba(255,255,255,.02));
-      box-shadow: var(--shadow);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      box-shadow: var(--shadow2);
       display:flex;
       flex-direction:column;
       gap:12px;
       position:relative;
       overflow:hidden;
     }
-    .price-card.reco{
-      border-color: rgba(124,92,255,.42);
-      box-shadow: 0 26px 70px rgba(124,92,255,.18), var(--shadow);
+    .price-card:before{
+      content:"";
+      position:absolute; inset:-2px;
+      background:
+        radial-gradient(620px 200px at 20% 0%, rgba(124,92,255,.12), transparent 62%),
+        radial-gradient(520px 180px at 85% 55%, rgba(25,240,194,.08), transparent 62%);
+      opacity:.82;
+      pointer-events:none;
     }
-    .tag{
+    .price-card > *{position:relative}
+    .price-card.reco{
+      border-color: rgba(124,92,255,.44);
+      box-shadow: 0 28px 84px rgba(124,92,255,.18), var(--shadow2);
+    }
+    .tagTop{
       position:absolute; top:14px; right:14px;
       padding:8px 10px;
       border-radius:999px;
       background: rgba(124,92,255,.16);
-      border:1px solid rgba(124,92,255,.28);
+      border:1px solid rgba(124,92,255,.30);
       font-size:12px;
-      font-weight:990;
+      font-weight:999;
       letter-spacing:-.1px;
     }
-    .price-name{font-weight:990; letter-spacing:-.3px; font-size:18px}
+    .price-name{font-weight:999; letter-spacing:-.3px; font-size:18px}
     .price-sub{color:var(--muted); font-size:var(--fs0); margin-top:6px}
     .price{
       display:flex; align-items:flex-end; gap:8px;
       margin-top:10px;
     }
-    .price strong{font-size:34px; letter-spacing:-.8px}
+    .price strong{font-size:34px; letter-spacing:-.9px}
     .price span{color:var(--muted); font-size:var(--fs0); padding-bottom:6px}
 
     .list{margin:0; padding:0; list-style:none; display:flex; flex-direction:column; gap:8px}
@@ -418,7 +605,9 @@
     .tick svg{width:12px; height:12px}
     .price-actions{display:flex; gap:10px; flex-wrap:wrap; margin-top:auto}
 
-    /* Proof wall */
+    /* ==========================================================
+      PROOF WALL (placeholders)
+    ========================================================== */
     .proof-wall{
       display:grid;
       grid-template-columns: 1.15fr .85fr;
@@ -433,9 +622,9 @@
     @media (max-width: 540px){ .gallery{grid-template-columns:1fr} }
     .ph{
       border:1px solid var(--line);
-      border-radius: 18px;
+      border-radius: 20px;
       background: rgba(255,255,255,.03);
-      height: 180px;
+      height: 190px;
       position:relative;
       overflow:hidden;
     }
@@ -443,21 +632,24 @@
       content:"";
       position:absolute; inset:-2px;
       background:
-        radial-gradient(340px 160px at 25% 20%, rgba(124,92,255,.26), transparent 60%),
-        radial-gradient(300px 150px at 75% 60%, rgba(25,240,194,.18), transparent 60%);
-      opacity:.86;
+        radial-gradient(360px 170px at 25% 20%, rgba(124,92,255,.26), transparent 60%),
+        radial-gradient(320px 160px at 75% 60%, rgba(25,240,194,.18), transparent 60%),
+        radial-gradient(320px 160px at 60% 90%, rgba(255,209,102,.12), transparent 60%);
+      opacity:.88;
     }
     .ph span{
       position:absolute; inset:0;
       display:flex; align-items:center; justify-content:center;
-      color:rgba(255,255,255,.74);
+      color:rgba(255,255,255,.76);
       font-size:12px;
-      padding:10px;
+      padding:12px;
       text-align:center;
       line-height:1.35;
     }
 
-    /* Form */
+    /* ==========================================================
+      FORM / FAQ
+    ========================================================== */
     .form{padding:16px}
     .form-grid{display:grid; grid-template-columns:1fr 1fr; gap:12px}
     @media (max-width: 980px){ .form-grid{grid-template-columns:1fr} }
@@ -470,14 +662,16 @@
     }
     summary{
       cursor:pointer;
-      font-weight:990;
+      font-weight:999;
       letter-spacing:-.2px;
       list-style:none;
     }
     summary::-webkit-details-marker{display:none}
     details p{margin:10px 0 0; color:var(--muted); font-size:var(--fs0)}
 
-    /* Toast + sticky */
+    /* ==========================================================
+      TOAST + STICKY
+    ========================================================== */
     .toast{
       position:fixed; bottom:92px; left:50%;
       transform: translateX(-50%);
@@ -495,7 +689,7 @@
       position:fixed; left:0; right:0; bottom:0;
       border-top:1px solid var(--line);
       background: rgba(7,10,18,.76);
-      backdrop-filter: blur(12px);
+      backdrop-filter: blur(14px);
       z-index:90;
     }
     .sticky-inner{
@@ -521,14 +715,14 @@
         <div class="logo" aria-hidden="true"></div>
         <div>
           <div class="brand-title">VISION</div>
-          <div class="brand-sub">Drone • Google • SEO • Conversion</div>
+          <div class="brand-sub">Drone • Site • Google • SEO • Conversion</div>
         </div>
       </a>
 
       <nav class="nav" aria-label="Navigation">
+        <a class="hide-sm" href="#solutions">Solutions</a>
         <a class="hide-sm" href="#preuve">Preuve</a>
-        <a class="hide-sm" href="#systeme">Système</a>
-        <a class="hide-sm" href="#gain">Calculateur</a>
+        <a class="hide-sm" href="#gain">Simulation</a>
         <a class="hide-sm" href="#packs">Packs</a>
         <a href="#audit" class="btn primary">Audit + plan</a>
       </nav>
@@ -541,43 +735,43 @@
       <div class="wrap hero-grid">
         <section class="card hero-left">
           <div class="pill"><span class="dot"></span> Sans engagement • Simple • Mesurable</div>
-          <h1 class="h1">Votre image devient une<br>machine à clients.</h1>
+          <h1 class="h1">Votre entreprise devient<br>une référence locale.</h1>
           <p class="sub">
-            VISION installe un pipeline clair : <b>drone + visuel premium</b> (preuve) → <b>Google & SEO</b> (visibilité) →
-            <b>landing & tunnel</b> (conversion) → <b>WhatsApp / appels / RDV</b> (leads).
-            Vous déléguez. Vous gagnez.
+            VISION installe un système complet : <b>drone + visuels premium</b> (preuve), <b>site web optimisé</b> (clarté),
+            <b>Google & SEO</b> (visibilité), <b>landing & tunnel</b> (conversion), <b>contenu</b> (réseaux sociaux).
+            Objectif : <b>plus de clients</b> + <b>moins de charge mentale</b>.
           </p>
 
           <div class="hero-cta">
-            <a class="btn primary" href="#gain">Voir le gain</a>
-            <a class="btn" href="#preuve">Voir la preuve</a>
+            <a class="btn primary" href="#gain">Voir la simulation</a>
+            <a class="btn" href="#solutions">Voir les solutions</a>
             <a class="btn ghost" id="whatsHero" href="#">WhatsApp</a>
           </div>
 
           <div class="trust">
             <span class="pill">Livraison <b>72h</b> après tournage</span>
-            <span class="pill">CTA <b>unique</b> = plus de conversions</span>
+            <span class="pill">CTA <b>unique</b> = plus de demandes</span>
             <span class="pill">Maintenance <b>mensuelle</b></span>
             <span class="pill">Vous gardez le <b>contrôle</b></span>
           </div>
 
           <div class="proof-strip">
             <div class="proof">
-              <div class="k">IMPACT</div>
-              <div class="t">Image premium</div>
-              <div class="d">Le client se dit “c’est sérieux”, et décide plus vite.</div>
+              <div class="k">IMAGE</div>
+              <div class="t">Drone + visuel premium</div>
+              <div class="d">Confiance immédiate. Vous paraissez “haut niveau”.</div>
               <div class="meter"><div class="bar" id="p1"></div></div>
             </div>
             <div class="proof">
               <div class="k">VISIBILITÉ</div>
-              <div class="t">Google + SEO</div>
-              <div class="d">Vous remontez quand on vous cherche dans votre zone.</div>
+              <div class="t">Google + SEO local</div>
+              <div class="d">On vous trouve quand on vous cherche. Simple.</div>
               <div class="meter"><div class="bar" id="p2"></div></div>
             </div>
             <div class="proof">
               <div class="k">CONVERSION</div>
-              <div class="t">Landing + tunnel</div>
-              <div class="d">Une action : WhatsApp/RDV. On capture le lead.</div>
+              <div class="t">Site + landing + tunnel</div>
+              <div class="d">Une action : WhatsApp/RDV. On capte le lead.</div>
               <div class="meter"><div class="bar" id="p3"></div></div>
             </div>
           </div>
@@ -591,15 +785,15 @@
             </div>
             <div class="mini">
               <b>Ce qui bloque</b>
-              <p>Pas de preuve, Google mort, site qui ne convertit pas.</p>
+              <p>Google mort, site flou, pas de preuve, concurrence agressive.</p>
             </div>
             <div class="mini">
               <b>Ce qu’on installe</b>
-              <p>Preuve → visibilité → conversion (système complet).</p>
+              <p>Preuve → visibilité → conversion → suivi mensuel.</p>
             </div>
             <div class="mini">
               <b>Ce que vous gagnez</b>
-              <p>Leads, temps, crédibilité. Chaque mois.</p>
+              <p>Clients + temps + crédibilité. Chaque mois.</p>
             </div>
           </div>
 
@@ -618,33 +812,86 @@
       </div>
     </header>
 
-    <!-- PROOF WALL -->
+    <!-- SOLUTIONS -->
+    <section id="solutions">
+      <div class="wrap">
+        <div class="section-title">
+          <h2>Solutions VISION (tout ce qui fait signer un client)</h2>
+          <p>On ne vend pas “du contenu”. On vend un système qui transforme la visibilité en demandes.</p>
+        </div>
+
+        <div class="grid3">
+          <div class="solution">
+            <h3>Drone & Visuel premium</h3>
+            <p>Films, vidéos, photos, avant/après, contenu vertical pour réseaux sociaux. Objectif : confiance instantanée.</p>
+            <div class="chips">
+              <span class="chip">Showreel 30–45s</span>
+              <span class="chip">Visuels site</span>
+              <span class="chip">Reels/TikTok</span>
+              <span class="chip">Pack photos</span>
+            </div>
+          </div>
+
+          <div class="solution">
+            <h3>Site web optimisé</h3>
+            <p>Un site clair, rapide, mobile, avec une offre lisible, un bouton unique et une page qui convertit.</p>
+            <div class="chips">
+              <span class="chip">Page “offre”</span>
+              <span class="chip">Pages services</span>
+              <span class="chip">Vitesse mobile</span>
+              <span class="chip">CTA unique</span>
+            </div>
+          </div>
+
+          <div class="solution">
+            <h3>Google & SEO local</h3>
+            <p>Fiche Google vivante + contenu + pages SEO. Le client vous trouve et vous choisit.</p>
+            <div class="chips">
+              <span class="chip">Posts Google</span>
+              <span class="chip">Photos régulières</span>
+              <span class="chip">SEO local</span>
+              <span class="chip">Avis & réponses</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel" style="margin-top:12px; padding:14px">
+          <b>Bonus (conversion maximale) :</b>
+          <span class="muted">
+            landing dédiée + tunnel simple (WhatsApp / appel / RDV) + tracking + reporting mensuel.
+            L’entreprise ne doit pas réfléchir : elle clique.
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROOF -->
     <section id="preuve">
       <div class="wrap">
         <div class="section-title">
-          <h2>Preuve (ce que vous allez voir)</h2>
-          <p>Tu remplaces ces blocs par : showreel drone, captures Google, avant/après site, exemples landing & tunnel.</p>
+          <h2>Preuve (à remplacer par vos vrais résultats)</h2>
+          <p>Pour signer fort : showreel + captures Google + avant/après landing + exemples contenus.</p>
         </div>
 
         <div class="proof-wall">
           <div class="panel" style="padding:16px">
             <div class="gallery">
-              <div class="ph"><span>Showreel drone (30–45s)<br>→ intégrer une vidéo</span></div>
-              <div class="ph"><span>Avant/Après Google Business<br>→ captures réelles</span></div>
-              <div class="ph"><span>Landing qui convertit<br>→ exemple</span></div>
-              <div class="ph"><span>SEO & pages services<br>→ structure</span></div>
+              <div class="ph"><span>Showreel drone (vidéo)</span></div>
+              <div class="ph"><span>Avant/Après Google Business</span></div>
+              <div class="ph"><span>Landing qui convertit</span></div>
+              <div class="ph"><span>Contenu réseaux sociaux</span></div>
             </div>
           </div>
 
           <div class="panel" style="padding:16px">
-            <div class="pill"><span class="dot"></span> “On dirait une grande entreprise.”</div>
+            <div class="pill"><span class="dot"></span> Effet immédiat : “ça fait premium”</div>
             <p class="muted" style="margin:10px 0 0; font-size:var(--fs0)">
-              C’est exactement l’effet recherché : <b>preuve + confiance</b> (drone/visuel), puis <b>conversion</b> (landing + tunnel).
-              Résultat : le prospect te choisit au lieu d’un concurrent “flou”.
+              Le client achète quand il a <b>confiance</b> + <b>clarté</b>. Le drone et le visuel donnent la confiance.
+              Le site + la landing donnent la clarté. Google/SEO amène le trafic.
             </p>
 
             <div class="panel" style="margin-top:12px; padding:12px">
-              <b>Micro promesse :</b> “On vous met niveau premium en 7 jours, puis on maintient la performance chaque mois.”
+              <b>Promesse opérationnelle :</b> “On vous met niveau premium en 7 jours, puis on maintient la performance chaque mois.”
             </div>
 
             <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:12px">
@@ -656,61 +903,32 @@
       </div>
     </section>
 
-    <!-- SYSTEM -->
-    <section id="systeme">
-      <div class="wrap">
-        <div class="section-title">
-          <h2>Le système en 3 étapes (zéro complexité)</h2>
-          <p>Les entreprises n’achètent pas “du contenu”. Elles achètent : <b>plus de clients</b> + <b>moins de charge mentale</b>.</p>
-        </div>
-
-        <div class="ladder">
-          <div class="step">
-            <div class="k">ÉTAPE 1 — PREUVE</div>
-            <div class="t">Drone + visuel premium</div>
-            <div class="d">On rend votre entreprise “évidente” : qualité perçue + crédibilité.</div>
-          </div>
-          <div class="step">
-            <div class="k">ÉTAPE 2 — VISIBILITÉ</div>
-            <div class="t">Google Business + SEO local</div>
-            <div class="d">Vous remontez sur Google, vos services sont clairs, vos avis travaillent.</div>
-          </div>
-          <div class="step">
-            <div class="k">ÉTAPE 3 — CONVERSION</div>
-            <div class="t">Landing + tunnel à CTA unique</div>
-            <div class="d">Une action (WhatsApp/RDV/appel). Tracking. Amélioration mensuelle.</div>
-          </div>
-        </div>
-
-        <div class="panel" style="margin-top:12px; padding:12px">
-          <b>Pourquoi ça marche :</b> on aligne la psychologie d’achat : <b>confiance → clarté → action</b>.
-          <span class="muted">Et on maintient le système (pas un one-shot).</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- CALCULATOR -->
+    <!-- SIMULATION -->
     <section id="gain">
       <div class="wrap">
         <div class="section-title">
-          <h2>Calculateur : votre gain (net, concret)</h2>
-          <p>Tu rentres tes chiffres. On sort : gain net, seuil de rentabilité, payback. Clair. Sans blabla.</p>
+          <h2>Simulation simple : combien ça peut rapporter</h2>
+          <p>On reste clair : tu mets tes chiffres, on te montre le gain potentiel + le nombre de clients nécessaires pour rentabiliser.</p>
         </div>
 
         <div class="two">
+          <!-- Inputs -->
           <div class="panel" style="padding:16px">
             <div class="row">
               <div>
-                <label for="goal">Objectif</label>
-                <select id="goal">
-                  <option value="Devis" selected>Plus de devis</option>
-                  <option value="RDV">Plus de RDV</option>
-                  <option value="Appels">Plus d’appels</option>
-                  <option value="Réservations">Plus de réservations</option>
+                <label for="sectorPreset">Votre secteur (pré-remplissage)</label>
+                <select id="sectorPreset">
+                  <option value="custom" selected>Je choisis moi-même</option>
+                  <option value="restaurant">Restaurant / Snack</option>
+                  <option value="immobilier">Immobilier</option>
+                  <option value="artisan">Artisan / BTP</option>
+                  <option value="beaute">Beauté / Coiffure</option>
+                  <option value="sport">Sport / Salle</option>
+                  <option value="auto">Auto / Garage</option>
                 </select>
               </div>
               <div>
-                <label for="plan">Pack</label>
+                <label for="plan">Pack (sans engagement)</label>
                 <select id="plan">
                   <option value="START" data-price="299">START — 299€/mois</option>
                   <option value="SCALE" data-price="690" selected>SCALE — 690€/mois</option>
@@ -719,43 +937,57 @@
               </div>
             </div>
 
-            <div class="row" style="margin-top:10px">
+            <div class="help">
+              <span class="badge">Simple</span>
               <div>
-                <label for="aov">Valeur moyenne d’un client (€)</label>
-                <input id="aov" type="number" min="10" step="10" value="200" />
-              </div>
-              <div>
-                <label for="marginPct">Marge par client (%)</label>
-                <input id="marginPct" type="number" min="1" max="95" step="1" value="50" />
+                <b>Explication rapide :</b> on estime des <b>demandes en plus</b> (leads) grâce à : image premium + Google/SEO + landing.
+                Ensuite on transforme une partie en <b>clients</b>. Le calcul montre le <b>gain net</b>.
               </div>
             </div>
 
             <div class="row" style="margin-top:10px">
               <div>
-                <label for="leads">Leads/mois actuels</label>
-                <input id="leads" type="number" min="0" step="1" value="15" />
+                <label for="avgClient">Valeur moyenne d’un client (€)</label>
+                <input id="avgClient" type="number" min="10" step="10" value="200" />
               </div>
               <div>
-                <label for="closePct">Conversion lead → client (%)</label>
-                <input id="closePct" type="number" min="1" max="100" step="1" value="30" />
+                <label for="margin">Marge moyenne (%)</label>
+                <input id="margin" type="number" min="1" max="95" step="1" value="50" />
               </div>
             </div>
 
             <div class="row" style="margin-top:10px">
               <div>
-                <label for="upliftPct">Uplift estimé (%)</label>
-                <input id="upliftPct" type="number" min="0" max="300" step="5" value="30" />
+                <label for="currentLeads">Demandes actuelles / mois</label>
+                <input id="currentLeads" type="number" min="0" step="1" value="15" />
               </div>
               <div>
-                <label for="hoursSaved">Temps économisé/mois (h)</label>
-                <input id="hoursSaved" type="number" min="0" step="1" value="6" />
+                <label for="closeRate">Sur 10 demandes, combien deviennent clients ?</label>
+                <input id="closeRate" type="number" min="0" max="10" step="1" value="3" />
+              </div>
+            </div>
+
+            <div class="row" style="margin-top:10px">
+              <div>
+                <label for="uplift">Demandes en plus estimées (%)</label>
+                <input id="uplift" type="number" min="0" max="300" step="5" value="30" />
+              </div>
+              <div>
+                <label for="timeSaved">Temps économisé / mois (heures)</label>
+                <input id="timeSaved" type="number" min="0" step="1" value="6" />
               </div>
             </div>
 
             <div style="margin-top:10px">
               <label for="hourValue">Valeur de votre temps (€/h)</label>
               <input id="hourValue" type="number" min="0" step="5" value="35" />
-              <div class="hint">C’est un levier psychologique énorme : “je délègue → je gagne du temps + des clients”.</div>
+              <div class="hint">Optionnel mais puissant : déléguer = gagner du temps + mieux gérer l’entreprise.</div>
+            </div>
+
+            <div class="tabs" aria-label="Scénarios">
+              <div class="tab active" data-s="prudent">Prudent</div>
+              <div class="tab" data-s="realiste">Réaliste</div>
+              <div class="tab" data-s="ambitieux">Ambitieux</div>
             </div>
 
             <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap">
@@ -765,10 +997,19 @@
             </div>
           </div>
 
+          <!-- Results -->
           <div class="result" aria-live="polite">
             <div class="pill"><span class="dot"></span> Résultat</div>
             <div class="big" id="headline">—</div>
             <div class="small" id="subtitle">Clique “Calculer”.</div>
+
+            <div class="score">
+              <div>
+                <b>Score de rentabilité</b>
+                <div class="hint" id="scoreHint">—</div>
+              </div>
+              <div class="tag" id="scoreTag">—</div>
+            </div>
 
             <div class="kpi-row">
               <div class="kpi">
@@ -776,26 +1017,26 @@
                 <div class="v" id="net">—</div>
               </div>
               <div class="kpi">
-                <div class="k">Seuil rentabilité</div>
+                <div class="k">Clients nécessaires</div>
                 <div class="v" id="breakeven">—</div>
               </div>
               <div class="kpi">
-                <div class="k">Payback estimé</div>
+                <div class="k">Retour estimé</div>
                 <div class="v" id="payback">—</div>
               </div>
             </div>
 
             <div class="panel" style="padding:12px">
-              <b>Décomposition</b>
+              <b>Décomposition simple</b>
               <div class="hint" id="breakdown" style="margin-top:8px">—</div>
             </div>
 
-            <div>
-              <div class="meter"><div class="bar" id="roiBar"></div></div>
-              <div class="hint" id="roiHint">Objectif : rentabilité avec le minimum de nouveaux clients.</div>
+            <div class="panel" style="padding:12px">
+              <b>Plan 30 jours (automatique)</b>
+              <div class="hint" id="plan30" style="margin-top:8px">—</div>
             </div>
 
-            <a class="btn primary" href="#audit">Recevoir un plan concret</a>
+            <a class="btn primary" href="#audit">Recevoir le plan exact</a>
           </div>
         </div>
       </div>
@@ -806,18 +1047,18 @@
       <div class="wrap">
         <div class="section-title">
           <h2>Packs (sans engagement)</h2>
-          <p>Tu choisis le niveau de délégation. Même promesse : <b>plus de clients</b> + <b>moins de charge mentale</b>.</p>
+          <p>Tu choisis le niveau de délégation. Même promesse : plus de clients + moins de charge mentale.</p>
         </div>
 
         <div class="pricing">
           <div class="price-card">
             <div class="price-name">START</div>
-            <div class="price-sub">Setup premium + conversion simple</div>
+            <div class="price-sub">Lancer le système + être visible</div>
             <div class="price"><strong>299€</strong><span>/mois</span></div>
             <ul class="list">
-              <li><span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4L19 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Photos + 1 vidéo / mois</li>
-              <li><span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4L19 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Google Business : posts + photos</li>
-              <li><span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4L19 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Landing + CTA + tracking</li>
+              <li><span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4L19 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Contenu mensuel (photos + 1 vidéo)</li>
+              <li><span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4L19 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Google Business : posts + mise à jour</li>
+              <li><span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4L19 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span> 1 landing + bouton unique</li>
               <li><span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4L19 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Maintenance mensuelle</li>
             </ul>
             <div class="price-actions">
@@ -827,19 +1068,19 @@
           </div>
 
           <div class="price-card reco">
-            <div class="tag">Best ROI</div>
+            <div class="tagTop">Best ROI</div>
             <div class="price-name">SCALE</div>
-            <div class="price-sub">Drone + SEO + tunnel (machine à leads)</div>
+            <div class="price-sub">Drone + site optimisé + SEO local + conversion</div>
             <div class="price"><strong>690€</strong><span>/mois</span></div>
             <ul class="list">
+              <li><span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4L19 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Drone signature (mensuel)</li>
               <li><span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4L19 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span> 4 vidéos verticales + photos</li>
-              <li><span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4L19 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Drone signature / mois</li>
+              <li><span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4L19 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Site/landing optimisés + CTA unique</li>
               <li><span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4L19 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span> SEO local + pages services</li>
-              <li><span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4L19 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Landing + tunnel + reporting</li>
             </ul>
             <div class="price-actions">
               <button class="btn primary pick" data-plan="SCALE" type="button">Choisir</button>
-              <a class="btn" href="#gain">Calculer</a>
+              <a class="btn" href="#gain">Simulation</a>
             </div>
           </div>
 
@@ -849,8 +1090,8 @@
             <div class="price"><strong>1290€</strong><span>/mois</span></div>
             <ul class="list">
               <li><span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4L19 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Contenu intensif + tournages</li>
-              <li><span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4L19 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Tunnel avancé + automation RDV</li>
-              <li><span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4L19 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Tracking + itérations + roadmap</li>
+              <li><span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4L19 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Tunnel + automation RDV</li>
+              <li><span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4L19 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Tracking + itérations mensuelles</li>
               <li><span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4L19 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Option ads (budget pub client)</li>
             </ul>
             <div class="price-actions">
@@ -860,9 +1101,9 @@
           </div>
         </div>
 
-        <div class="panel" style="margin-top:12px; padding:12px">
+        <div class="panel" style="margin-top:12px; padding:14px">
           <b>Prestations ponctuelles :</b>
-          <span class="muted">drone / visuel / landing / SEO / refonte / maintenance. Démarrage one-shot possible, puis passage en mensuel.</span>
+          <span class="muted">drone / film / photos / site / landing / SEO / maintenance. Démarrage one-shot possible.</span>
         </div>
       </div>
     </section>
@@ -871,37 +1112,37 @@
     <section id="faq">
       <div class="wrap">
         <div class="section-title">
-          <h2>FAQ (objections neutralisées)</h2>
-          <p>Clair. Simple. Sécurisant.</p>
+          <h2>FAQ (simple)</h2>
+          <p>Réponses directes aux questions qui bloquent une décision.</p>
         </div>
 
         <div class="panel" style="padding:16px; display:grid; grid-template-columns:1fr 1fr; gap:12px">
           <details>
-            <summary>Je dois donner mon compte Google ?</summary>
-            <p>Non. Tu nous ajoutes en <b>gestionnaire</b> sur ta fiche Google Business. Tu gardes le contrôle total.</p>
+            <summary>Comment vous touchez ma fiche Google ?</summary>
+            <p>Vous nous ajoutez en <b>gestionnaire</b> Google Business. Vous gardez votre compte et le contrôle total.</p>
           </details>
           <details>
-            <summary>Mon site actuel, vous le refaites ?</summary>
-            <p>Pas forcément. On ajoute une <b>landing + tunnel</b> qui convertit. Refonte uniquement si nécessaire.</p>
+            <summary>Je dois refaire tout mon site ?</summary>
+            <p>Non. Souvent on ajoute une <b>page d’offre</b> + <b>landing</b> qui convertit. Refonte seulement si nécessaire.</p>
           </details>
           <details>
-            <summary>Pourquoi le drone est si important ?</summary>
-            <p>Parce que la décision est émotionnelle : le drone + visuel pro déclenche <b>confiance</b> et accélère l’achat.</p>
+            <summary>Pourquoi le drone fait une différence ?</summary>
+            <p>Parce que l’achat est émotionnel : le drone/visuel pro déclenche <b>confiance</b> et accélère la décision.</p>
           </details>
           <details>
-            <summary>Sans engagement, c’est sérieux ?</summary>
-            <p>Oui. On mise sur la performance mensuelle. Tu restes parce que ça marche, pas parce que tu es bloqué.</p>
+            <summary>Sans engagement, c’est fiable ?</summary>
+            <p>Oui. Vous restez parce que ça marche. Pas parce que vous êtes bloqué par un contrat.</p>
           </details>
         </div>
       </div>
     </section>
 
-    <!-- AUDIT FORM -->
+    <!-- AUDIT -->
     <section id="audit">
       <div class="wrap">
         <div class="section-title">
           <h2>Audit + plan d’actions (60 secondes)</h2>
-          <p>On te renvoie : diagnostic + priorités + pack recommandé + plan 30 jours.</p>
+          <p>On renvoie : diagnostic + priorités + pack recommandé + plan 30 jours.</p>
         </div>
 
         <div class="card form">
@@ -949,8 +1190,8 @@
 
             <div style="grid-column:1/-1;">
               <label for="msg">Message (optionnel)</label>
-              <textarea id="msg" name="msg" rows="4" placeholder="Ex : on veut une page devis + drone + SEO local + Google optimisé"></textarea>
-              <div class="hint">Plus tu es précis, plus le plan est chirurgical.</div>
+              <textarea id="msg" name="msg" rows="4" placeholder="Ex : on veut drone + site + Google + landing pour augmenter les demandes"></textarea>
+              <div class="hint">Plus c’est précis, plus le plan est personnalisé.</div>
             </div>
 
             <input type="text" id="hp" name="hp" style="display:none" tabindex="-1" autocomplete="off" />
@@ -959,7 +1200,7 @@
               <button class="btn primary" type="submit">Envoyer via WhatsApp</button>
               <button class="btn" type="button" id="copyBtn">Copier le message</button>
               <a class="btn ghost" id="mailBtn" href="#">Envoyer par email</a>
-              <span class="muted" style="font-size:12px">Sans engagement • vous gardez le contrôle total</span>
+              <span class="muted" style="font-size:12px">Sans engagement • contrôle total</span>
             </div>
           </form>
         </div>
@@ -973,7 +1214,7 @@
 
   <div class="sticky" role="region" aria-label="Actions rapides">
     <div class="sticky-inner">
-      <div class="msg">Objectif : <b>plus de clients</b>. Preuve (drone) + visibilité (Google/SEO) + conversion (landing).</div>
+      <div class="msg">Objectif : <b>plus de clients</b>. Image (drone) + visibilité (Google/SEO) + conversion (site/landing).</div>
       <div class="sticky-actions">
         <a class="btn primary" href="#audit">Audit</a>
         <a class="btn" id="whatsSticky" href="#">WhatsApp</a>
@@ -983,13 +1224,14 @@
 
   <script>
     /* ==========================================================
-       VISION — JS
-       - micro animations (proof bars)
-       - calculator (net profit + break-even + payback)
-       - pack pick sync
-       - lead capture: WhatsApp + copy + email fallback
-       - smooth anchors
-       ========================================================== */
+      VISION — JS (v2)
+      - Proof bars animation
+      - Presets par secteur (données plausibles)
+      - Scénarios (prudent / réaliste / ambitieux)
+      - Simulation: net profit + break-even + payback
+      - Plan 30 jours généré (psychologie: "c’est structuré")
+      - Lead capture WhatsApp/copy/mail
+    ========================================================== */
 
     const CONFIG = {
       whatsappNumber: "33600000000",     // <-- remplace (sans +)
@@ -999,6 +1241,9 @@
 
     const $ = (s, p=document) => p.querySelector(s);
     const $$ = (s, p=document) => [...p.querySelectorAll(s)];
+    const clamp = (n,a,b) => Math.min(b, Math.max(a, n));
+    const round = (n) => Math.round(n);
+    const money = (n) => `${n >= 0 ? "+" : ""}${Math.round(n)}€`;
 
     function toast(msg){
       const el = $("#toast");
@@ -1007,90 +1252,178 @@
       clearTimeout(window.__t);
       window.__t = setTimeout(()=> el.style.display="none", 3200);
     }
-    function clamp(n,a,b){ return Math.min(b, Math.max(a, n)); }
-    function eur(n){
-      const sign = n >= 0 ? "+" : "";
-      return `${sign}${Math.round(n)}€`;
-    }
 
     // Proof bars (subtle)
     setTimeout(()=>{
-      $("#p1").style.width = "88%";
-      $("#p2").style.width = "76%";
-      $("#p3").style.width = "84%";
+      $("#p1").style.width = "90%";
+      $("#p2").style.width = "78%";
+      $("#p3").style.width = "86%";
     }, 350);
 
-    // Calculator
+    // =========================
+    // Presets secteur (valeurs plausibles)
+    // =========================
+    const PRESETS = {
+      restaurant: { avgClient: 18, margin: 60, currentLeads: 120, closeRate: 4, uplift: 15, timeSaved: 4, hourValue: 25 },
+      immobilier: { avgClient: 2500, margin: 55, currentLeads: 20, closeRate: 2, uplift: 25, timeSaved: 6, hourValue: 45 },
+      artisan:    { avgClient: 900, margin: 45, currentLeads: 18, closeRate: 3, uplift: 25, timeSaved: 6, hourValue: 40 },
+      beaute:     { avgClient: 70, margin: 65, currentLeads: 60, closeRate: 4, uplift: 20, timeSaved: 4, hourValue: 25 },
+      sport:      { avgClient: 60, margin: 55, currentLeads: 45, closeRate: 3, uplift: 20, timeSaved: 5, hourValue: 30 },
+      auto:       { avgClient: 450, margin: 40, currentLeads: 25, closeRate: 3, uplift: 20, timeSaved: 6, hourValue: 35 }
+    };
+
+    function applyPreset(key){
+      if(key === "custom") return;
+      const p = PRESETS[key];
+      if(!p) return;
+      $("#avgClient").value = p.avgClient;
+      $("#margin").value = p.margin;
+      $("#currentLeads").value = p.currentLeads;
+      $("#closeRate").value = p.closeRate;
+      $("#uplift").value = p.uplift;
+      $("#timeSaved").value = p.timeSaved;
+      $("#hourValue").value = p.hourValue;
+      toast("Chiffres pré-remplis. Ajuste si besoin puis calcule.");
+    }
+
+    $("#sectorPreset").addEventListener("change", (e)=> applyPreset(e.target.value));
+
+    // =========================
+    // Scénarios
+    // =========================
+    let scenario = "prudent";
+    const SCENARIOS = {
+      prudent:  { upliftMult: 0.7, closeMult: 0.9, label: "Prudent",  color: "warn" },
+      realiste: { upliftMult: 1.0, closeMult: 1.0, label: "Réaliste", color: "good" },
+      ambitieux:{ upliftMult: 1.3, closeMult: 1.1, label: "Ambitieux",color: "good" }
+    };
+
+    $$(".tab").forEach(t=>{
+      t.addEventListener("click", ()=>{
+        $$(".tab").forEach(x=>x.classList.remove("active"));
+        t.classList.add("active");
+        scenario = t.dataset.s;
+        toast(`Scénario : ${SCENARIOS[scenario].label}`);
+      });
+    });
+
+    // =========================
+    // Simulation (simple + crédible)
+    // Modèle:
+    // - Leads actuels = demandes/mois
+    // - Uplift = % de demandes en plus (impact du système)
+    // - closeRate = sur 10 demandes, X deviennent clients (facile à comprendre)
+    // - Profit = clients * (valeur client * marge%)
+    // - Time value = heures économisées * €/h
+    // - Net = (profit + time value) - abonnement
+    // =========================
     function calc(){
       const planEl = $("#plan");
       const fee = Number(planEl.selectedOptions[0].dataset.price || 0);
 
-      const goal = $("#goal").value;
-      const aov = Math.max(0, Number($("#aov").value || 0));
-      const marginPct = clamp(Number($("#marginPct").value || 0), 0, 95) / 100;
+      const avgClient = Math.max(0, Number($("#avgClient").value || 0));
+      const marginPct = clamp(Number($("#margin").value || 0), 0, 95) / 100;
 
-      const leads = Math.max(0, Number($("#leads").value || 0));
-      const closePct = clamp(Number($("#closePct").value || 0), 0, 100) / 100;
+      const leads = Math.max(0, Number($("#currentLeads").value || 0));
+      const closeRate10 = clamp(Number($("#closeRate").value || 0), 0, 10); // out of 10
+      const closePct = closeRate10 / 10;
 
-      const uplift = clamp(Number($("#upliftPct").value || 0), 0, 300) / 100;
+      const upliftRaw = clamp(Number($("#uplift").value || 0), 0, 300) / 100;
 
-      const hoursSaved = Math.max(0, Number($("#hoursSaved").value || 0));
+      const timeSaved = Math.max(0, Number($("#timeSaved").value || 0));
       const hourValue = Math.max(0, Number($("#hourValue").value || 0));
 
-      const profitPerClient = aov * marginPct;
+      const s = SCENARIOS[scenario];
 
-      // Uplift applies to leads (simple mental model)
+      const uplift = upliftRaw * s.upliftMult;
+      const close = closePct * s.closeMult;
+
       const extraLeads = leads * uplift;
-      const extraClients = extraLeads * closePct;
+      const extraClients = extraLeads * close;
 
+      const profitPerClient = avgClient * marginPct;
       const extraProfit = extraClients * profitPerClient;
-      const timeValue = hoursSaved * hourValue;
 
+      const timeValue = timeSaved * hourValue;
       const net = (extraProfit + timeValue) - fee;
 
       const breakEvenClients = profitPerClient > 0 ? Math.ceil(fee / profitPerClient) : Infinity;
-      const paybackDays = (extraProfit + timeValue) > 0 ? Math.ceil((fee / (extraProfit + timeValue)) * 30) : Infinity;
 
-      const ratio = (isFinite(breakEvenClients) && breakEvenClients > 0) ? (extraClients / breakEvenClients) : 0;
-      const score = clamp(ratio * 100, 0, 100);
+      // Payback (days) = fee / (profit+time) * 30
+      const paybackDays = (extraProfit + timeValue) > 0
+        ? Math.ceil((fee / (extraProfit + timeValue)) * 30)
+        : Infinity;
 
+      // Score (simple): ratio extraClients / breakEvenClients
+      let score = 0;
+      if(isFinite(breakEvenClients) && breakEvenClients > 0){
+        score = clamp((extraClients / breakEvenClients) * 100, 0, 160);
+      }
+
+      // UI texts
       const status = net >= 0 ? "Rentable" : "À optimiser";
-      $("#headline").textContent = `${status} — ${eur(net)} / mois (estimation)`;
+      $("#headline").textContent = `${status} — ${money(net)} / mois (estimation)`;
       $("#subtitle").textContent =
-        `Objectif “${goal}”. Estimation : +${Math.max(0, Math.round(extraLeads))} leads/mois → +${Math.max(0, Math.round(extraClients))} clients/mois.`;
+        `Scénario ${s.label}. Estimation : +${Math.max(0, round(extraLeads))} demandes/mois → +${Math.max(0, round(extraClients))} nouveaux clients/mois.`;
 
-      $("#net").textContent = eur(net);
+      $("#net").textContent = money(net);
       $("#breakeven").textContent = isFinite(breakEvenClients) ? `${breakEvenClients} client(s)/mois` : "—";
       $("#payback").textContent = isFinite(paybackDays) ? `${paybackDays} jour(s)` : "—";
 
       $("#breakdown").innerHTML =
-        `• Leads ajoutés : <b>+${Math.round(extraLeads)}</b> / mois<br>` +
-        `• Clients ajoutés : <b>+${Math.round(extraClients)}</b> / mois<br>` +
-        `• Profit estimé (marge) : <b>${eur(extraProfit)}</b> / mois<br>` +
-        `• Valeur temps économisé : <b>${eur(timeValue)}</b> / mois<br>` +
-        `• Coût pack : <b>-${fee}€</b> / mois<br>` +
-        `➡ Net : <b>${eur(net)}</b> / mois`;
+        `• Demandes en plus : <b>+${round(extraLeads)}</b> / mois<br>` +
+        `• Nouveaux clients : <b>+${round(extraClients)}</b> / mois<br>` +
+        `• Profit estimé : <b>${money(extraProfit)}</b> / mois<br>` +
+        `• Temps économisé : <b>${money(timeValue)}</b> / mois<br>` +
+        `• Coût du pack : <b>-${fee}€</b> / mois<br>` +
+        `➡ Gain net : <b>${money(net)}</b> / mois`;
 
-      $("#roiBar").style.width = `${score.toFixed(0)}%`;
-      $("#roiHint").textContent =
-        score >= 100
-          ? "OK : rentable sur hypothèses prudentes. Next step : audit + plan d’actions."
-          : "Pour sécuriser : preuve (visuel/drone), Google optimisé, landing à CTA unique + suivi mensuel.";
+      // Score tag (simple)
+      const tag = $("#scoreTag");
+      const hint = $("#scoreHint");
 
-      toast("Calcul prêt. Si tu veux, envoie l’audit : plan concret.");
+      if(net >= 0 && score >= 100){
+        tag.className = "tag good";
+        tag.textContent = "Très bon";
+        hint.textContent = "Le système est rentable avec peu de clients en plus.";
+      }else if(net >= 0){
+        tag.className = "tag warn";
+        tag.textContent = "Bon";
+        hint.textContent = "Rentable, mais on peut augmenter la conversion/visibilité.";
+      }else{
+        tag.className = "tag bad";
+        tag.textContent = "À travailler";
+        hint.textContent = "On ajuste : offre + Google + landing + contenu. On vise la rentabilité.";
+      }
+
+      // Plan 30 jours (auto)
+      const plan30 = [
+        "Semaine 1 : tournage (drone + photos) + showreel + mise à niveau image.",
+        "Semaine 2 : optimisation Google Business (infos, photos, posts) + structure SEO.",
+        "Semaine 3 : page d’offre claire + landing à bouton unique (WhatsApp/RDV) + tracking.",
+        "Semaine 4 : contenu réseaux sociaux + ajustements (conversion) + reporting mensuel."
+      ];
+      $("#plan30").innerHTML = plan30.map(x=>`• ${x}`).join("<br>");
+
+      toast("Simulation prête. Si tu veux, envoie l’audit : plan exact + pack recommandé.");
     }
 
     $("#calcBtn").addEventListener("click", calc);
+
     $("#resetBtn").addEventListener("click", ()=>{
-      $("#goal").value = "Devis";
+      $("#sectorPreset").value = "custom";
       $("#plan").value = "SCALE";
-      $("#aov").value = 200;
-      $("#marginPct").value = 50;
-      $("#leads").value = 15;
-      $("#closePct").value = 30;
-      $("#upliftPct").value = 30;
-      $("#hoursSaved").value = 6;
+      $("#avgClient").value = 200;
+      $("#margin").value = 50;
+      $("#currentLeads").value = 15;
+      $("#closeRate").value = 3;
+      $("#uplift").value = 30;
+      $("#timeSaved").value = 6;
       $("#hourValue").value = 35;
+
+      scenario = "prudent";
+      $$(".tab").forEach(x=>x.classList.remove("active"));
+      $(`.tab[data-s="prudent"]`).classList.add("active");
 
       $("#headline").textContent = "—";
       $("#subtitle").textContent = "Clique “Calculer”.";
@@ -1098,21 +1431,25 @@
       $("#breakeven").textContent = "—";
       $("#payback").textContent = "—";
       $("#breakdown").textContent = "—";
-      $("#roiBar").style.width = "0%";
-      $("#roiHint").textContent = "Objectif : rentabilité avec le minimum de nouveaux clients.";
+      $("#plan30").textContent = "—";
+      $("#scoreTag").className = "tag";
+      $("#scoreTag").textContent = "—";
+      $("#scoreHint").textContent = "—";
       toast("Reset effectué.");
     });
 
-    // Pack pick sync to calculator
+    // Pack pick sync
     $$(".pick").forEach(btn=>{
       btn.addEventListener("click", ()=>{
         $("#plan").value = btn.dataset.plan;
         location.hash = "#gain";
-        toast(`Pack ${btn.dataset.plan} sélectionné. Calcule le gain.`);
+        toast(`Pack ${btn.dataset.plan} sélectionné. Lance la simulation.`);
       });
     });
 
-    // Leads -> WhatsApp / Email / Copy
+    // =========================
+    // Lead capture
+    // =========================
     function getLeadPayload(){
       return {
         company: $("#company").value.trim(),
@@ -1126,6 +1463,7 @@
         msg: $("#msg").value.trim(),
         hp: $("#hp").value.trim(),
         plan: $("#plan").value,
+        scenario
       };
     }
     function validateRequired(p){
@@ -1136,11 +1474,11 @@
       const planEl = $("#plan");
       const fee = Number(planEl.selectedOptions[0].dataset.price || 0);
 
-      const aov = Number($("#aov").value || 0);
-      const marginPct = Number($("#marginPct").value || 0);
-      const leads = Number($("#leads").value || 0);
-      const closePct = Number($("#closePct").value || 0);
-      const upliftPct = Number($("#upliftPct").value || 0);
+      const avgClient = Number($("#avgClient").value || 0);
+      const marginPct = Number($("#margin").value || 0);
+      const leads = Number($("#currentLeads").value || 0);
+      const closeRate = Number($("#closeRate").value || 0);
+      const uplift = Number($("#uplift").value || 0);
 
       return [
         `Bonjour, je souhaite un audit + plan d’actions (${CONFIG.brandName}).`,
@@ -1148,8 +1486,8 @@
         `Ville/Zone : ${p.city}`,
         `Secteur : ${p.sector}`,
         `Objectif : ${p.goal}`,
-        `Pack visé : ${p.plan} (${fee}€/mois)`,
-        `Chiffres (estimation) : client ${aov}€ • marge ${marginPct}% • leads ${leads}/mois • conv ${closePct}% • uplift ${upliftPct}%`,
+        `Pack : ${p.plan} (${fee}€/mois)`,
+        `Simulation (scénario ${SCENARIOS[p.scenario].label}) : valeur client ${avgClient}€ • marge ${marginPct}% • demandes ${leads}/mois • sur 10 demandes = ${closeRate} client(s) • +${uplift}% demandes`,
         `Nom : ${p.name}`,
         `Téléphone : ${p.phone}`,
         `Email : ${p.email}`,
@@ -1157,6 +1495,7 @@
         p.msg ? `Message : ${p.msg}` : ""
       ].filter(Boolean).join("\n");
     }
+
     function openWhatsApp(text){
       const url = `https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent(text)}`;
       window.open(url, "_blank", "noopener,noreferrer");
@@ -1229,10 +1568,11 @@
     "areaServed":"FR",
     "serviceType":[
       "Drone & Visual Content",
+      "Optimized Website & Landing Pages",
       "Google Business Profile Optimization",
       "Local SEO",
-      "Landing Page & Sales Funnel",
-      "Website Maintenance"
+      "Sales Funnel & Conversion Tracking",
+      "Monthly Maintenance"
     ]
   }
   </script>
