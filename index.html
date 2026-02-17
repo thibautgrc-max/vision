@@ -3,43 +3,65 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="Système Digital de Référence : Drone + Visuel + Google Business + Landing Conversion. Abonnements simples. Résultats mesurables. On transforme l'image en clients." />
-  <meta name="theme-color" content="#070812" />
-  <title>Reference Growth System — Drone • Visuel • Google • Conversion</title>
+  <meta name="description" content="Système Digital Premium : Drone + Visuel + Site + Landing + Tunnel + SEO + Google Business. Une interface qui montre le gain : visibilité → confiance → conversion → clients." />
+  <meta name="theme-color" content="#050610" />
+  <title>Ultimate Growth System — Image • SEO • Conversion • Clients</title>
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Reference Growth System — Drone • Visuel • Google • Conversion" />
-  <meta property="og:description" content="On upgrade votre image + on transforme ça en clients. Packs simples, exécution premium, tracking." />
+  <meta property="og:title" content="Ultimate Growth System — Image • SEO • Conversion • Clients" />
+  <meta property="og:description" content="On transforme votre image en machine à clients avec un système simple, mesurable et premium." />
   <meta property="og:type" content="website" />
 
+  <!-- Preload-ish (system fonts default; keep it single-file) -->
   <style>
+    /* =========================================================
+       ULTIMATE GROWTH SYSTEM — ONE FILE LANDING
+       Goal: convert ANY company by making VALUE tangible
+       - simple UX, premium UI, ultra readable
+       - "value reveal" sections: ROI, gap analysis, competitor map
+       - JS: personalization + interactive value simulator + proof wall
+       - works on static hosting (Vercel/Netlify) + button from Hostinger
+       ========================================================= */
+
     :root{
-      --bg:#070812;
-      --panel:#0c0e1b;
-      --panel2:#0a0c17;
-      --text:#eef0f6;
-      --muted:#aab2c8;
+      /* base */
+      --bg:#050610;
+      --bg2:#070820;
+      --panel: rgba(255,255,255,.04);
+      --panel2: rgba(255,255,255,.03);
+      --text:#eef0f7;
+      --muted:#aab2cb;
       --line:rgba(255,255,255,.10);
-      --line2:rgba(255,255,255,.16);
-      --shadow: 0 18px 50px rgba(0,0,0,.45);
+      --line2:rgba(255,255,255,.18);
+      --shadow: 0 22px 60px rgba(0,0,0,.55);
+      --shadow2: 0 18px 40px rgba(0,0,0,.40);
+      --r14:14px;
+      --r18:18px;
+      --r24:24px;
+      --r32:32px;
+      --max: 1180px;
 
-      --brand:#8a5cff;
-      --brand2:#19f0c2;
-      --brand3:#ffd166;
+      /* brand */
+      --b1:#8a5cff;
+      --b2:#19f0c2;
+      --b3:#ffd166;
 
+      /* status */
       --good:#34d399;
       --warn:#ffcc66;
       --bad:#fb7185;
+      --info:#60a5fa;
 
-      --r16:16px;
-      --r20:20px;
-      --r28:28px;
-      --max:1160px;
-
+      /* typography */
       --fs0: clamp(13px, 1.05vw, 15px);
       --fs1: clamp(16px, 1.25vw, 18px);
       --fs2: clamp(22px, 2.25vw, 32px);
-      --fs3: clamp(34px, 4.2vw, 56px);
+      --fs3: clamp(34px, 4.3vw, 60px);
+      --fs4: clamp(40px, 5vw, 72px);
+
+      /* motion */
+      --ease: cubic-bezier(.2,.8,.2,1);
+      --dur: 220ms;
     }
 
     *{box-sizing:border-box}
@@ -47,177 +69,141 @@
     body{
       margin:0;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-      background:
-        radial-gradient(1200px 700px at 12% 10%, rgba(138,92,255,.28), transparent 58%),
-        radial-gradient(900px 700px at 90% 16%, rgba(25,240,194,.16), transparent 52%),
-        radial-gradient(900px 700px at 60% 90%, rgba(255,209,102,.10), transparent 55%),
-        linear-gradient(180deg, #070812, #070812 35%, #050612);
       color:var(--text);
-      line-height:1.5;
+      background:
+        radial-gradient(1300px 760px at 12% 8%, rgba(138,92,255,.30), transparent 58%),
+        radial-gradient(900px 680px at 92% 15%, rgba(25,240,194,.16), transparent 55%),
+        radial-gradient(900px 680px at 60% 92%, rgba(255,209,102,.11), transparent 55%),
+        linear-gradient(180deg, var(--bg), var(--bg2) 55%, var(--bg));
       letter-spacing:.2px;
+      line-height:1.5;
+      overflow-x:hidden;
     }
+
     a{color:inherit}
     .wrap{max-width:var(--max); margin:0 auto; padding:0 18px}
+    .sr{position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0}
 
-    /* Topbar */
+    /* =========================================================
+       Topbar
+       ========================================================= */
     .topbar{
-      position:sticky; top:0; z-index:50;
-      background:rgba(7,8,18,.72);
+      position:sticky; top:0; z-index:80;
+      background: rgba(5,6,16,.70);
       backdrop-filter: blur(12px);
       border-bottom:1px solid var(--line);
     }
     .topbar-inner{
       display:flex; align-items:center; justify-content:space-between;
-      padding:14px 0;
       gap:12px;
+      padding:14px 0;
     }
     .brand{
-      display:flex; align-items:center; gap:12px; text-decoration:none;
-      font-weight:900;
+      display:flex; align-items:center; gap:12px;
+      text-decoration:none;
     }
     .logo{
-      width:38px; height:38px; border-radius:14px;
-      background: linear-gradient(135deg, var(--brand), var(--brand2));
-      box-shadow: 0 16px 35px rgba(138,92,255,.26), 0 12px 24px rgba(25,240,194,.10);
-      position:relative;
-      overflow:hidden;
+      width:40px; height:40px; border-radius:16px;
+      background: linear-gradient(135deg, var(--b1), var(--b2));
+      box-shadow: 0 16px 45px rgba(138,92,255,.26), 0 14px 26px rgba(25,240,194,.10);
+      position:relative; overflow:hidden;
     }
     .logo:before{
       content:"";
       position:absolute; inset:-2px;
       background:
-        radial-gradient(18px 18px at 30% 30%, rgba(255,255,255,.45), transparent 60%),
-        radial-gradient(28px 28px at 75% 70%, rgba(255,255,255,.22), transparent 62%);
-      opacity:.8;
+        radial-gradient(22px 22px at 28% 28%, rgba(255,255,255,.50), transparent 65%),
+        radial-gradient(28px 28px at 76% 72%, rgba(255,255,255,.20), transparent 68%);
+      opacity:.85;
       pointer-events:none;
     }
-    .brand small{display:block; color:var(--muted); font-weight:700; margin-top:2px; font-size:12px}
-    .nav{display:flex; gap:10px; align-items:center; color:var(--muted); font-size:var(--fs0)}
-    .nav a{padding:8px 10px; border-radius:12px; text-decoration:none; border:1px solid transparent}
-    .nav a:hover{border-color:var(--line); color:var(--text)}
-    .hide-sm{display:inline-flex}
-    @media (max-width: 900px){ .hide-sm{display:none} }
+    .brand-title{font-weight:950; letter-spacing:-.4px; font-size:14px; line-height:1}
+    .brand-sub{color:var(--muted); font-weight:750; font-size:12px; margin-top:4px}
 
-    /* Buttons */
+    .nav{
+      display:flex; align-items:center; gap:10px;
+      font-size:var(--fs0);
+      color:var(--muted);
+    }
+    .nav a{
+      text-decoration:none;
+      padding:8px 10px;
+      border-radius:12px;
+      border:1px solid transparent;
+      transition: border-color var(--dur) var(--ease), color var(--dur) var(--ease), transform var(--dur) var(--ease);
+    }
+    .nav a:hover{border-color:var(--line); color:var(--text); transform: translateY(-1px)}
+    .hide-sm{display:inline-flex}
+    @media (max-width: 920px){ .hide-sm{display:none} }
+
+    /* =========================================================
+       Buttons / pills
+       ========================================================= */
     .btn{
       display:inline-flex; align-items:center; justify-content:center;
       gap:10px;
       padding:12px 14px;
       border-radius:14px;
       border:1px solid var(--line);
-      background:rgba(255,255,255,.04);
+      background: rgba(255,255,255,.04);
       text-decoration:none;
-      font-weight:800;
+      font-weight:900;
       font-size:var(--fs0);
       cursor:pointer;
-      transition: transform .12s ease, border-color .12s ease, filter .12s ease;
       user-select:none;
+      transition: transform var(--dur) var(--ease), border-color var(--dur) var(--ease), filter var(--dur) var(--ease);
     }
     .btn:hover{transform: translateY(-1px); border-color:var(--line2)}
     .btn:active{transform: translateY(0)}
     .btn.primary{
       border-color: transparent;
-      background: linear-gradient(135deg, var(--brand), var(--brand2));
-      color:#050612;
-      box-shadow: 0 18px 50px rgba(138,92,255,.22), 0 12px 26px rgba(25,240,194,.10);
+      color:#04050f;
+      background: linear-gradient(135deg, var(--b1), var(--b2));
+      box-shadow: 0 22px 60px rgba(138,92,255,.22), 0 14px 30px rgba(25,240,194,.10);
     }
     .btn.primary:hover{filter:saturate(1.06)}
     .btn.ghost{background:transparent}
     .btn.tiny{padding:10px 12px; border-radius:12px}
-
-    /* Pills */
     .pill{
       display:inline-flex; align-items:center; gap:8px;
       padding:8px 12px;
       border-radius:999px;
       border:1px solid var(--line);
-      background:rgba(255,255,255,.03);
+      background: rgba(255,255,255,.03);
       color:var(--muted);
       font-size:var(--fs0);
       width:fit-content;
     }
     .dot{
-      width:8px; height:8px; border-radius:999px;
-      background:var(--good);
+      width:9px; height:9px; border-radius:999px;
+      background: var(--good);
       box-shadow: 0 0 0 3px rgba(52,211,153,.12);
     }
-
-    /* Hero */
-    header.hero{padding:34px 0 20px}
-    .hero-grid{
-      display:grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap:14px;
-      align-items:stretch;
-    }
-    @media (max-width: 980px){ .hero-grid{grid-template-columns: 1fr} }
-
-    .card{
-      border:1px solid var(--line);
-      border-radius: var(--r28);
-      background: linear-gradient(180deg, rgba(255,255,255,.045), rgba(255,255,255,.02));
-      box-shadow: var(--shadow);
-      overflow:hidden;
-    }
-    .hero-left{padding:22px; position:relative}
-    .hero-left:before{
-      content:"";
-      position:absolute; inset:-2px;
-      background:
-        radial-gradient(780px 220px at 18% 10%, rgba(138,92,255,.20), transparent 60%),
-        radial-gradient(700px 260px at 85% 18%, rgba(25,240,194,.12), transparent 62%);
-      pointer-events:none;
-      opacity:.95;
-    }
-    .hero-left > *{position:relative}
-    .h1{
-      font-size: var(--fs3);
-      line-height:1.03;
-      margin:12px 0 10px;
-      letter-spacing:-.8px;
-      font-weight:950;
-    }
-    .sub{
-      font-size:var(--fs1);
-      color:var(--muted);
-      margin:0 0 16px;
-      max-width: 64ch;
-    }
-    .hero-cta{display:flex; gap:10px; flex-wrap:wrap; align-items:center}
-    .trust{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px}
-
-    .hero-right{padding:18px; display:flex; flex-direction:column; gap:12px}
-    .mini-grid{
-      display:grid; grid-template-columns: 1fr 1fr; gap:10px;
-    }
-    .mini{
-      border:1px solid var(--line);
-      border-radius: 18px;
-      padding:12px;
-      background: rgba(255,255,255,.03);
-    }
-    .mini b{display:block; margin-bottom:6px}
-    .mini p{margin:0; color:var(--muted); font-size:var(--fs0)}
-    .countdown{
-      border:1px dashed rgba(255,255,255,.20);
-      border-radius:18px;
-      padding:12px;
-      background: rgba(255,255,255,.02);
-      color:var(--muted);
-      font-size:var(--fs0);
-    }
-    .countdown strong{color:var(--text)}
     .kbd{
       font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-      font-size: 12px;
+      font-size:12px;
       padding:3px 8px;
       border-radius:10px;
       border:1px solid var(--line);
       background: rgba(255,255,255,.03);
-      color:var(--muted);
+      color: var(--muted);
     }
 
-    /* Sections */
+    /* =========================================================
+       Cards / layout
+       ========================================================= */
+    .card{
+      border:1px solid var(--line);
+      border-radius: var(--r32);
+      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      box-shadow: var(--shadow);
+    }
+    .panel{
+      border:1px solid var(--line);
+      border-radius: var(--r24);
+      background: rgba(255,255,255,.03);
+      box-shadow: var(--shadow2);
+    }
     section{padding:22px 0}
     .section-title{
       display:flex; align-items:flex-end; justify-content:space-between; gap:12px;
@@ -226,58 +212,204 @@
     .section-title h2{
       margin:0;
       font-size: var(--fs2);
-      letter-spacing:-.5px;
       font-weight:950;
+      letter-spacing:-.6px;
     }
-    .section-title p{margin:0; color:var(--muted); font-size:var(--fs0); max-width: 72ch}
+    .section-title p{margin:0; color:var(--muted); font-size:var(--fs0); max-width: 76ch}
 
-    /* “Choose your reality” selector */
-    .selector{
+    /* =========================================================
+       Hero
+       ========================================================= */
+    header.hero{padding:34px 0 10px}
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:14px;
+      align-items:stretch;
+    }
+    @media (max-width: 980px){ .hero-grid{grid-template-columns: 1fr} }
+    .hero-left{
+      padding:22px;
+      position:relative;
+      overflow:hidden;
+    }
+    .hero-left:before{
+      content:"";
+      position:absolute; inset:-2px;
+      background:
+        radial-gradient(860px 250px at 16% 12%, rgba(138,92,255,.24), transparent 60%),
+        radial-gradient(720px 300px at 86% 16%, rgba(25,240,194,.14), transparent 62%);
+      opacity:.95;
+      pointer-events:none;
+    }
+    .hero-left > *{position:relative}
+    .h1{
+      font-size: var(--fs4);
+      line-height:1.02;
+      margin:12px 0 10px;
+      letter-spacing:-1.0px;
+      font-weight:980;
+    }
+    .sub{
+      margin:0 0 16px;
+      color:var(--muted);
+      font-size: var(--fs1);
+      max-width: 66ch;
+    }
+    .hero-cta{display:flex; gap:10px; flex-wrap:wrap; align-items:center}
+    .trust{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px}
+    .hero-right{padding:18px; display:flex; flex-direction:column; gap:12px}
+    .mini-grid{display:grid; grid-template-columns: 1fr 1fr; gap:10px}
+    @media (max-width: 540px){ .mini-grid{grid-template-columns:1fr} }
+    .mini{
+      border:1px solid var(--line);
+      border-radius: 18px;
+      padding:12px;
+      background: rgba(255,255,255,.03);
+    }
+    .mini b{display:block; margin-bottom:6px; letter-spacing:-.2px}
+    .mini p{margin:0; color:var(--muted); font-size:var(--fs0)}
+    .badge-row{
+      display:flex; gap:10px; flex-wrap:wrap;
+    }
+
+    /* =========================================================
+       Value Reveal (Gap Analysis) — makes companies "open eyes"
+       ========================================================= */
+    .gap{
+      display:grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap:12px;
+      align-items:stretch;
+    }
+    @media (max-width: 980px){ .gap{grid-template-columns:1fr} }
+
+    .gap-left{padding:16px}
+    .gap-right{padding:16px}
+
+    .score{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:10px;
+      margin-top:10px;
+    }
+    @media (max-width: 540px){ .score{grid-template-columns:1fr} }
+
+    .score-card{
+      border:1px solid var(--line);
+      border-radius: 18px;
+      padding:12px;
+      background: rgba(255,255,255,.03);
+    }
+    .score-card .top{display:flex; align-items:center; justify-content:space-between; gap:8px}
+    .score-card .title{font-weight:950; letter-spacing:-.2px}
+    .score-card .val{font-weight:980; letter-spacing:-.6px; font-size:22px}
+    .score-card .mut{color:var(--muted); font-size:12.5px; margin-top:6px}
+
+    .meter{
+      height:12px;
+      border-radius:999px;
+      background: rgba(255,255,255,.08);
+      border:1px solid var(--line);
+      overflow:hidden;
+      margin-top:8px;
+    }
+    .bar{
+      height:100%;
+      width:0%;
+      border-radius:999px;
+      background: linear-gradient(90deg, var(--b1), var(--b2));
+      transition: width 520ms var(--ease);
+    }
+
+    .gap-actions{display:flex; gap:10px; flex-wrap:wrap; margin-top:12px}
+
+    .bullet{
+      display:flex; gap:10px; align-items:flex-start;
+      padding:12px;
+      border-radius: 18px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+    }
+    .ico{
+      width:36px; height:36px; border-radius:14px;
+      display:flex; align-items:center; justify-content:center;
+      background: rgba(138,92,255,.14);
+      border:1px solid rgba(138,92,255,.25);
+      flex:0 0 auto;
+      margin-top:2px;
+    }
+    .ico svg{width:18px; height:18px}
+    .bullet h3{margin:0 0 5px; font-size:16px; font-weight:950; letter-spacing:-.2px}
+    .bullet p{margin:0; color:var(--muted); font-size:var(--fs0)}
+
+    /* =========================================================
+       Offer Map (competitor differentiator)
+       ========================================================= */
+    .map{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:12px;
+    }
+    .matrix{
+      padding:16px;
+      position:relative;
+      overflow:hidden;
+    }
+    .matrix:before{
+      content:"";
+      position:absolute; inset:-2px;
+      background:
+        radial-gradient(700px 220px at 20% 10%, rgba(255,209,102,.11), transparent 60%),
+        radial-gradient(800px 260px at 85% 30%, rgba(25,240,194,.10), transparent 60%);
+      opacity:.85;
+      pointer-events:none;
+    }
+    .matrix > *{position:relative}
+    .grid{
       display:grid;
       grid-template-columns: 1fr 1fr 1fr;
       gap:10px;
+      margin-top:10px;
     }
-    @media (max-width: 980px){ .selector{grid-template-columns: 1fr} }
-    .sel{
-      padding:14px;
-      border-radius: var(--r20);
+    @media (max-width: 980px){ .grid{grid-template-columns:1fr} }
+
+    .tile{
       border:1px solid var(--line);
+      border-radius: 18px;
+      padding:12px;
       background: rgba(255,255,255,.03);
-      cursor:pointer;
-      transition: transform .12s ease, border-color .12s ease, background .12s ease;
-      user-select:none;
     }
-    .sel:hover{transform: translateY(-1px); border-color:var(--line2)}
-    .sel.active{
-      border-color: rgba(138,92,255,.40);
-      background: linear-gradient(180deg, rgba(138,92,255,.14), rgba(255,255,255,.02));
-    }
-    .sel h3{margin:0 0 6px; font-size:18px; font-weight:950; letter-spacing:-.2px}
-    .sel p{margin:0; color:var(--muted); font-size:var(--fs0)}
-    .sel .chip{
-      display:inline-flex; margin-top:10px;
+    .tile .hdr{display:flex; align-items:center; justify-content:space-between; gap:10px}
+    .tile b{font-weight:950; letter-spacing:-.2px}
+    .chip{
+      font-size:12px;
+      font-weight:950;
       padding:6px 10px;
       border-radius:999px;
       border:1px solid var(--line);
       background: rgba(255,255,255,.03);
-      color:var(--muted);
-      font-size:12px;
-      font-weight:800;
+      color: var(--muted);
+      white-space:nowrap;
     }
+    .tile ul{margin:10px 0 0; padding-left:18px; color:var(--muted); font-size:var(--fs0)}
+    .tile li{margin:6px 0}
 
-    /* Pricing */
+    /* =========================================================
+       Pricing (3 simple packs)
+       ========================================================= */
     .pricing{
       display:grid;
       grid-template-columns: repeat(3, 1fr);
       gap:12px;
       align-items:stretch;
     }
-    @media (max-width: 980px){ .pricing{grid-template-columns: 1fr} }
+    @media (max-width: 980px){ .pricing{grid-template-columns:1fr} }
     .price-card{
       padding:16px;
-      border-radius: var(--r28);
+      border-radius: var(--r32);
       border:1px solid var(--line);
-      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
       box-shadow: var(--shadow);
       display:flex;
       flex-direction:column;
@@ -287,7 +419,7 @@
     }
     .price-card.reco{
       border-color: rgba(138,92,255,.42);
-      box-shadow: 0 22px 60px rgba(138,92,255,.18), var(--shadow);
+      box-shadow: 0 26px 70px rgba(138,92,255,.18), var(--shadow);
     }
     .tag{
       position:absolute; top:14px; right:14px;
@@ -295,27 +427,21 @@
       border-radius:999px;
       background: rgba(138,92,255,.16);
       border:1px solid rgba(138,92,255,.28);
-      color:var(--text);
       font-size:12px;
-      font-weight:950;
+      font-weight:980;
       letter-spacing:-.1px;
     }
     .price-top{display:flex; flex-direction:column; gap:6px}
-    .price-name{font-weight:950; letter-spacing:-.3px; font-size:18px}
+    .price-name{font-weight:980; letter-spacing:-.3px; font-size:18px}
     .price-sub{color:var(--muted); font-size:var(--fs0)}
     .price{
       display:flex; align-items:flex-end; gap:8px;
       margin-top:6px;
     }
-    .price strong{font-size:34px; letter-spacing:-.7px}
+    .price strong{font-size:34px; letter-spacing:-.8px}
     .price span{color:var(--muted); font-size:var(--fs0); padding-bottom:6px}
-
     .list{margin:0; padding:0; list-style:none; display:flex; flex-direction:column; gap:8px}
-    .list li{
-      display:flex; gap:10px; align-items:flex-start;
-      color:var(--muted);
-      font-size:var(--fs0);
-    }
+    .list li{display:flex; gap:10px; align-items:flex-start; color:var(--muted); font-size:var(--fs0)}
     .tick{
       width:18px; height:18px; border-radius:6px;
       background: rgba(52,211,153,.16);
@@ -325,66 +451,18 @@
       margin-top:1px;
     }
     .tick svg{width:12px; height:12px}
-    .price-actions{display:flex; gap:10px; margin-top:auto; flex-wrap:wrap}
+    .price-actions{display:flex; gap:10px; flex-wrap:wrap; margin-top:auto}
 
-    /* Proof / assets */
-    .proof{
-      display:grid;
-      grid-template-columns: 1.15fr .85fr;
-      gap:12px;
-    }
-    @media (max-width: 980px){ .proof{grid-template-columns: 1fr} }
-    .gallery{
-      display:grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap:10px;
-    }
-    @media (max-width: 540px){ .gallery{grid-template-columns: 1fr} }
-    .ph{
-      border:1px solid var(--line);
-      border-radius: 18px;
-      background: rgba(255,255,255,.03);
-      height: 165px;
-      position:relative;
-      overflow:hidden;
-    }
-    .ph:before{
-      content:"";
-      position:absolute; inset:-2px;
-      background:
-        radial-gradient(320px 150px at 25% 20%, rgba(138,92,255,.24), transparent 60%),
-        radial-gradient(280px 140px at 75% 60%, rgba(25,240,194,.18), transparent 60%);
-      opacity:.85;
-    }
-    .ph span{
-      position:absolute; inset:0;
-      display:flex; align-items:center; justify-content:center;
-      color:rgba(255,255,255,.70);
-      font-size:12px;
-      padding:10px;
-      text-align:center;
-      line-height:1.35;
-    }
-    .proof-right .pill{margin-bottom:10px}
-    .proof-right p{margin:0; color:var(--muted); font-size:var(--fs0)}
-    .stack{display:flex; flex-direction:column; gap:10px}
-    .micro{
-      border:1px solid var(--line);
-      border-radius: 18px;
-      padding:12px;
-      background: rgba(255,255,255,.03);
-      color:var(--muted);
-      font-size:var(--fs0);
-    }
-
-    /* ROI + Lead */
+    /* =========================================================
+       ROI + “Profit Window” simulator (the eye-opener)
+       ========================================================= */
     .two{
       display:grid;
       grid-template-columns: 1fr 1fr;
       gap:12px;
       align-items:stretch;
     }
-    @media (max-width: 980px){ .two{grid-template-columns: 1fr} }
+    @media (max-width: 980px){ .two{grid-template-columns:1fr} }
 
     label{display:block; font-size:var(--fs0); color:var(--muted); margin-bottom:6px}
     input, select, textarea{
@@ -395,6 +473,7 @@
       background: rgba(255,255,255,.03);
       color:var(--text);
       outline:none;
+      transition: box-shadow var(--dur) var(--ease), border-color var(--dur) var(--ease);
     }
     input:focus, select:focus, textarea:focus{
       border-color: rgba(138,92,255,.48);
@@ -404,34 +483,110 @@
     @media (max-width: 540px){ .row{grid-template-columns:1fr} }
 
     .result{
-      border:1px solid var(--line);
-      border-radius: var(--r28);
       padding:16px;
-      background: rgba(12,14,27,.60);
+      border-radius: var(--r32);
+      border:1px solid var(--line);
+      background: rgba(12,14,32,.60);
       box-shadow: var(--shadow);
       display:flex; flex-direction:column; gap:10px;
-    }
-    .result .big{font-size: 32px; font-weight:950; letter-spacing:-.8px}
-    .result .small{color:var(--muted); font-size:var(--fs0)}
-    .meter{
-      height:12px;
-      border-radius:999px;
-      background: rgba(255,255,255,.08);
-      border:1px solid var(--line);
+      position:relative;
       overflow:hidden;
     }
-    .bar{
-      height:100%;
-      width:0%;
-      background: linear-gradient(90deg, var(--brand), var(--brand2));
-      border-radius:999px;
-      transition: width .35s ease;
+    .result:before{
+      content:"";
+      position:absolute; inset:-2px;
+      background:
+        radial-gradient(820px 260px at 22% 18%, rgba(138,92,255,.16), transparent 60%),
+        radial-gradient(820px 260px at 85% 35%, rgba(25,240,194,.10), transparent 62%);
+      opacity:.75;
+      pointer-events:none;
     }
-    .hint{color:var(--muted); font-size:12.5px}
+    .result > *{position:relative}
+    .result .big{font-size: 32px; font-weight:980; letter-spacing:-.9px}
+    .result .small{color:var(--muted); font-size:var(--fs0)}
+    .kpi-row{
+      display:grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap:10px;
+      margin-top:6px;
+    }
+    @media (max-width: 760px){ .kpi-row{grid-template-columns:1fr} }
+    .kpi{
+      border:1px solid var(--line);
+      border-radius: 18px;
+      padding:12px;
+      background: rgba(255,255,255,.03);
+    }
+    .kpi .k{color:var(--muted); font-size:12px}
+    .kpi .v{font-weight:980; font-size:20px; letter-spacing:-.5px; margin-top:6px}
 
-    /* FAQ */
-    .faq{display:grid; grid-template-columns: 1fr 1fr; gap:12px}
-    @media (max-width: 980px){ .faq{grid-template-columns: 1fr} }
+    .hint{color:var(--muted); font-size:12.5px}
+    .profit-window{
+      margin-top:10px;
+      border:1px solid var(--line);
+      border-radius: 18px;
+      padding:12px;
+      background: rgba(255,255,255,.03);
+    }
+    .profit-window .title{font-weight:950; letter-spacing:-.2px}
+    .spark{
+      margin-top:10px;
+      height:90px;
+      width:100%;
+      border-radius: 14px;
+      background: rgba(255,255,255,.03);
+      border:1px solid var(--line);
+      overflow:hidden;
+      position:relative;
+    }
+    .spark canvas{display:block; width:100%; height:100%}
+
+    /* =========================================================
+       Proof wall
+       ========================================================= */
+    .proof{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap:12px;
+    }
+    @media (max-width: 980px){ .proof{grid-template-columns:1fr} }
+    .gallery{
+      display:grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap:10px;
+    }
+    @media (max-width: 540px){ .gallery{grid-template-columns:1fr} }
+    .ph{
+      border:1px solid var(--line);
+      border-radius: 18px;
+      background: rgba(255,255,255,.03);
+      height: 170px;
+      position:relative;
+      overflow:hidden;
+    }
+    .ph:before{
+      content:"";
+      position:absolute; inset:-2px;
+      background:
+        radial-gradient(330px 160px at 25% 20%, rgba(138,92,255,.26), transparent 60%),
+        radial-gradient(290px 150px at 75% 60%, rgba(25,240,194,.18), transparent 60%);
+      opacity:.86;
+    }
+    .ph span{
+      position:absolute; inset:0;
+      display:flex; align-items:center; justify-content:center;
+      color:rgba(255,255,255,.74);
+      font-size:12px;
+      padding:10px;
+      text-align:center;
+      line-height:1.35;
+    }
+
+    /* =========================================================
+       FAQ
+       ========================================================= */
+    .faq{display:grid; grid-template-columns:1fr 1fr; gap:12px}
+    @media (max-width: 980px){ .faq{grid-template-columns:1fr} }
     details{
       border:1px solid var(--line);
       border-radius: 18px;
@@ -440,300 +595,428 @@
     }
     summary{
       cursor:pointer;
-      font-weight:950;
+      font-weight:980;
       letter-spacing:-.2px;
       list-style:none;
     }
     summary::-webkit-details-marker{display:none}
     details p{margin:10px 0 0; color:var(--muted); font-size:var(--fs0)}
 
-    /* Toast */
+    /* =========================================================
+       Lead form
+       ========================================================= */
+    .form{
+      padding:16px;
+    }
+    .form-grid{display:grid; grid-template-columns:1fr 1fr; gap:12px}
+    @media (max-width: 980px){ .form-grid{grid-template-columns:1fr} }
+
+    /* =========================================================
+       Toast + Sticky CTA
+       ========================================================= */
     .toast{
       position:fixed; bottom:92px; left:50%;
       transform: translateX(-50%);
-      background: rgba(12,14,27,.92);
+      background: rgba(12,14,32,.92);
       border:1px solid var(--line);
       border-radius: 14px;
       padding:12px 14px;
-      color:var(--text);
-      box-shadow: var(--shadow);
+      box-shadow: var(--shadow2);
       display:none;
-      z-index:80;
-      max-width:min(820px, calc(100% - 24px));
+      z-index:100;
+      max-width:min(900px, calc(100% - 24px));
       font-size:var(--fs0);
     }
-
-    /* Sticky bar */
     .sticky{
       position:fixed; left:0; right:0; bottom:0;
       border-top:1px solid var(--line);
-      background: rgba(7,8,18,.74);
+      background: rgba(5,6,16,.76);
       backdrop-filter: blur(12px);
-      z-index:60;
+      z-index:90;
     }
     .sticky-inner{
-      max-width:var(--max); margin:0 auto;
-      padding:12px 18px;
-      display:flex; align-items:center; justify-content:space-between; gap:10px;
-      flex-wrap:wrap;
+      max-width:var(--max); margin:0 auto; padding:12px 18px;
+      display:flex; align-items:center; justify-content:space-between;
+      gap:10px; flex-wrap:wrap;
     }
     .sticky .msg{color:var(--muted); font-size:var(--fs0)}
     .sticky .msg b{color:var(--text)}
     .sticky-actions{display:flex; gap:10px; flex-wrap:wrap}
-    .spacer{height:92px}
+    .spacer{height:96px}
 
-    .muted{color:var(--muted)}
+    /* =========================================================
+       Reduced motion
+       ========================================================= */
+    @media (prefers-reduced-motion: reduce){
+      *{scroll-behavior:auto !important; transition:none !important}
+    }
   </style>
 </head>
 
 <body>
+  <!-- =========================================================
+       TOPBAR
+       ========================================================= -->
   <div class="topbar">
     <div class="wrap topbar-inner">
       <a class="brand" href="#top">
         <div class="logo" aria-hidden="true"></div>
         <div>
-          <div style="font-size:14px; line-height:1; font-weight:950;">Reference Growth System</div>
-          <small>Drone • Visuel • Google • Landing • Conversion</small>
+          <div class="brand-title">Ultimate Growth System</div>
+          <div class="brand-sub">Drone • Visuel • SEO • Tunnel • Conversion</div>
         </div>
       </a>
 
-      <div class="nav" aria-label="Navigation">
-        <a class="hide-sm" href="#systeme">Système</a>
+      <nav class="nav" aria-label="Navigation">
+        <a class="hide-sm" href="#value">Valeur</a>
+        <a class="hide-sm" href="#map">Pourquoi nous</a>
         <a class="hide-sm" href="#packs">Packs</a>
-        <a class="hide-sm" href="#preuve">Preuve</a>
-        <a class="hide-sm" href="#roi">ROI</a>
+        <a class="hide-sm" href="#roi">Simulateur</a>
         <a href="#audit" class="btn primary">Audit + plan</a>
-      </div>
+      </nav>
     </div>
   </div>
 
   <main id="top">
+    <!-- =========================================================
+         HERO
+         ========================================================= -->
     <header class="hero">
       <div class="wrap hero-grid">
-        <div class="card hero-left">
-          <div class="pill"><span class="dot"></span> Système d’acquisition locale (sans complexité)</div>
-          <h1 class="h1">Ton image devient une machine à clients.<br>Chaque mois.</h1>
-          <p class="sub">
-            On installe un pipeline simple : <b>Image premium (drone + visuel)</b> → <b>Google Business</b> → <b>Landing conversion</b> →
-            <b>WhatsApp / RDV / Devis</b>. Tu délègues, tu scales, tu deviens la référence de ta zone.
+        <section class="card hero-left" aria-label="Présentation">
+          <div class="pill"><span class="dot"></span> Le système qui transforme ton image en clients — sans complexité</div>
+          <h1 class="h1">Tu ne vends plus “un service”.<br>Tu deviens le choix évident.</h1>
+          <p class="sub" id="heroSub">
+            On installe un système premium : <b>visuels + drone signature</b> → <b>Google & SEO</b> → <b>landing + tunnel</b> →
+            <b>WhatsApp / RDV / devis</b>. Tu montes en gamme, tu convertis plus, tu prends ta zone.
           </p>
 
           <div class="hero-cta">
-            <a class="btn primary" href="#audit">Recevoir l’audit</a>
-            <a class="btn" href="#packs">Voir les packs</a>
+            <a class="btn primary" href="#audit">Recevoir l’audit (gratuit)</a>
+            <a class="btn" href="#roi">Voir le gain</a>
             <a class="btn ghost" id="whatsHero" href="#">WhatsApp</a>
           </div>
 
           <div class="trust">
             <span class="pill">Livraison <b>72h</b> après tournage</span>
-            <span class="pill"><b>1 objectif</b> = 1 page qui convertit</span>
+            <span class="pill"><b>1 objectif</b> = 1 tunnel</span>
             <span class="pill">Tracking <b>clair</b> (clics/leads)</span>
+            <span class="pill">Maintenance <b>mensuelle</b></span>
           </div>
-        </div>
+        </section>
 
-        <aside class="card hero-right">
+        <aside class="card hero-right" aria-label="Résumé valeur">
           <div class="mini-grid">
             <div class="mini">
-              <b>Drone “signature”</b>
-              <p>3 plans standard : Hero / Reveal / Proof. Réutilisable partout.</p>
+              <b>Image premium</b>
+              <p>Drone + visuels pro = confiance instantanée. Ton entreprise “paraît plus grosse”.</p>
             </div>
             <div class="mini">
-              <b>Google + Maps</b>
-              <p>Posts + photos récentes + services = boost visibilité locale.</p>
+              <b>SEO & Google</b>
+              <p>Présence locale boostée : posts, photos, services, avis, pages SEO.</p>
             </div>
             <div class="mini">
-              <b>Landing conversion</b>
-              <p>CTA, formulaire, WhatsApp, RDV. Zéro friction.</p>
+              <b>Conversion</b>
+              <p>Landing + tunnel : CTA unique (WhatsApp/RDV) + preuve + offre.</p>
             </div>
             <div class="mini">
               <b>Récurrence</b>
-              <p>Contenu mensuel + reporting 1 page + itérations.</p>
+              <p>Contenu, mises à jour, maintenance, itérations. Ça reste performant.</p>
             </div>
           </div>
 
-          <div class="countdown" aria-live="polite">
-            <strong>Founders (lancement)</strong> : setup offert + 1 session drone signature offerte (places limitées).<br>
-            <span class="muted">Lien pro :</span> <span class="kbd">offre.votredomaine.fr</span> • <span id="slotsTxt">10 places</span> • <span id="timerTxt">—</span>
+          <div class="panel" style="padding:12px">
+            <b>Setup ultra simple</b><br>
+            <span class="muted" style="font-size:var(--fs0)">
+              Vous nous ajoutez en <b>Gestionnaire</b> Google Business + on connecte <span class="kbd">offre.votredomaine.fr</span>.
+              Le reste est opéré pour vous.
+            </span>
           </div>
 
-          <a class="btn primary" href="#audit">Débloquer l’offre Founders</a>
+          <div class="badge-row">
+            <button class="btn tiny" id="personaBtn" type="button">Adapter à mon activité</button>
+            <a class="btn primary tiny" href="#packs">Voir les packs</a>
+          </div>
         </aside>
       </div>
     </header>
 
-    <section id="systeme">
+    <!-- =========================================================
+         VALUE REVEAL (GAP ANALYSIS)
+         ========================================================= -->
+    <section id="value">
       <div class="wrap">
         <div class="section-title">
-          <h2>Le système (ce que les entreprises veulent vraiment)</h2>
-          <p>Pas “du contenu”. Pas “du drone”. Un système qui <b>amène des clients</b> et renforce l’image — sans leur prendre du temps.</p>
+          <h2>Ce que tu gagnes (visible immédiatement)</h2>
+          <p>On met les chiffres sur la table : visibilité → confiance → conversion. Si tu as un trou dans une étape, tu perds des clients.</p>
         </div>
 
-        <div class="selector" role="tablist" aria-label="Sélecteur de besoin entreprise">
-          <div class="sel active" role="tab" tabindex="0" data-mode="trust">
-            <h3>Crédibilité instantanée</h3>
-            <p>On te rend premium : visuels propres + drone signature + page claire.</p>
-            <span class="chip">Idéal : artisans / commerces</span>
-          </div>
-          <div class="sel" role="tab" tabindex="0" data-mode="leads">
-            <h3>Plus de demandes / RDV</h3>
-            <p>On pousse Google + une landing qui convertit (WhatsApp/RDV/devis).</p>
-            <span class="chip">Idéal : services / PME</span>
-          </div>
-          <div class="sel" role="tab" tabindex="0" data-mode="dominate">
-            <h3>Référence locale</h3>
-            <p>Contenu + diffusion + acquisition. On pilote la croissance.</p>
-            <span class="chip">Idéal : premium / multi-sites</span>
-          </div>
-        </div>
+        <div class="gap">
+          <div class="panel gap-left">
+            <div class="pill"><span class="dot"></span> Diagnostic rapide (2 minutes)</div>
+            <p class="muted" style="margin:10px 0 0; font-size:var(--fs0)">
+              Renseigne ton niveau actuel. Le système calcule ton <b>manque à gagner</b> et te montre le plan le plus rentable.
+            </p>
 
-        <div class="card" style="margin-top:12px; padding:16px" id="modeCard">
-          <div class="pill"><span class="dot"></span> Mode : <b id="modeTitle">Crédibilité instantanée</b></div>
-          <div style="margin-top:10px; color:var(--muted); font-size:var(--fs0)" id="modeText">
-            Tu prends des visuels premium + une présence Google propre. Résultat : quand un client te cherche, il te choisit.
+            <div class="row" style="margin-top:12px">
+              <div>
+                <label for="stage">Niveau digital actuel</label>
+                <select id="stage">
+                  <option value="0">0 — quasi rien (pas optimisé)</option>
+                  <option value="1" selected>1 — présent mais faible</option>
+                  <option value="2">2 — correct mais irrégulier</option>
+                  <option value="3">3 — déjà solide</option>
+                </select>
+              </div>
+              <div>
+                <label for="objective">Objectif prioritaire</label>
+                <select id="objective">
+                  <option value="Devis" selected>Plus de devis</option>
+                  <option value="RDV">Plus de RDV</option>
+                  <option value="Appels">Plus d'appels</option>
+                  <option value="Réservations">Plus de réservations</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="row" style="margin-top:10px">
+              <div>
+                <label for="avgSale">Valeur moyenne d’un client (€)</label>
+                <input id="avgSale" type="number" min="10" step="10" value="200" />
+              </div>
+              <div>
+                <label for="monthlyLeads">Leads/mois actuels</label>
+                <input id="monthlyLeads" type="number" min="0" step="1" value="15" />
+              </div>
+            </div>
+
+            <div class="row" style="margin-top:10px">
+              <div>
+                <label for="closeRate">Conversion lead → client (%)</label>
+                <input id="closeRate" type="number" min="1" max="100" step="1" value="30" />
+              </div>
+              <div>
+                <label for="competition">Niveau concurrence</label>
+                <select id="competition">
+                  <option value="low">Faible</option>
+                  <option value="mid" selected>Moyenne</option>
+                  <option value="high">Forte</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="gap-actions">
+              <button class="btn primary" id="gapCalc" type="button">Afficher mon manque à gagner</button>
+              <button class="btn" id="gapReset" type="button">Reset</button>
+              <a class="btn ghost" href="#audit">Audit gratuit</a>
+            </div>
+
+            <div class="hint" style="margin-top:10px">
+              Note : estimation conservatrice. L’objectif est de rendre la valeur <b>tangible</b>, pas de vendre un rêve.
+            </div>
           </div>
-          <div class="hero-cta" style="margin-top:12px">
-            <a class="btn primary" href="#packs">Voir le pack recommandé</a>
-            <a class="btn" href="#audit">Audit gratuit</a>
+
+          <div class="panel gap-right">
+            <div class="pill"><span class="dot"></span> Score & plan</div>
+
+            <div class="score">
+              <div class="score-card">
+                <div class="top">
+                  <div class="title">Visibilité</div>
+                  <div class="val" id="sVis">—</div>
+                </div>
+                <div class="meter"><div class="bar" id="bVis"></div></div>
+                <div class="mut">Google Business + SEO + fréquence de contenu</div>
+              </div>
+
+              <div class="score-card">
+                <div class="top">
+                  <div class="title">Crédibilité</div>
+                  <div class="val" id="sCred">—</div>
+                </div>
+                <div class="meter"><div class="bar" id="bCred"></div></div>
+                <div class="mut">Visuels pro + drone + preuve sociale</div>
+              </div>
+
+              <div class="score-card">
+                <div class="top">
+                  <div class="title">Conversion</div>
+                  <div class="val" id="sConv">—</div>
+                </div>
+                <div class="meter"><div class="bar" id="bConv"></div></div>
+                <div class="mut">Landing + tunnel + CTA (WhatsApp/RDV)</div>
+              </div>
+
+              <div class="score-card">
+                <div class="top">
+                  <div class="title">Maintenance</div>
+                  <div class="val" id="sMaint">—</div>
+                </div>
+                <div class="meter"><div class="bar" id="bMaint"></div></div>
+                <div class="mut">Mises à jour mensuelles + itérations</div>
+              </div>
+            </div>
+
+            <div class="panel" style="margin-top:12px; padding:12px">
+              <b id="gapHeadline">Ton manque à gagner</b>
+              <div class="muted" style="margin-top:8px; font-size:var(--fs0)" id="gapText">Calcule pour afficher une estimation.</div>
+            </div>
+
+            <div class="bullet" style="margin-top:12px">
+              <div class="ico" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M4 12h16M4 7h10M4 17h13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              </div>
+              <div>
+                <h3 id="recTitle">Recommandation</h3>
+                <p id="recText">On te propose le pack le plus rentable selon ton niveau + ton objectif.</p>
+              </div>
+            </div>
+
+            <div class="gap-actions">
+              <a class="btn primary" href="#packs" id="recBtn">Voir le pack recommandé</a>
+              <a class="btn" href="#roi">Simuler ROI</a>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- =========================================================
+         WHY US (competitor map)
+         ========================================================= -->
+    <section id="map">
+      <div class="wrap">
+        <div class="section-title">
+          <h2>Pourquoi tu nous choisis vs le marché</h2>
+          <p>Les concurrents te vendent “un service”. Nous on te livre un système complet : image + SEO + tunnel + maintenance.</p>
+        </div>
+
+        <div class="panel matrix">
+          <div class="pill"><span class="dot"></span> Matrice de différenciation</div>
+          <div class="grid">
+            <div class="tile">
+              <div class="hdr"><b>Freelance contenu</b><span class="chip">1 pièce</span></div>
+              <ul>
+                <li>Photos/vidéos OK</li>
+                <li><span class="muted">Mais pas de SEO / tunnel</span></li>
+                <li><span class="muted">Pas de maintenance = retombe</span></li>
+              </ul>
+            </div>
+            <div class="tile">
+              <div class="hdr"><b>Agence “site”</b><span class="chip">vitrine</span></div>
+              <ul>
+                <li>Site propre</li>
+                <li><span class="muted">Mais peu de contenus récurrents</span></li>
+                <li><span class="muted">Conversion souvent faible</span></li>
+              </ul>
+            </div>
+            <div class="tile">
+              <div class="hdr"><b>Nous : Growth System</b><span class="chip">pipeline</span></div>
+              <ul>
+                <li><b>Image premium</b> (drone + visuel)</li>
+                <li><b>SEO + Google</b> (visibilité)</li>
+                <li><b>Landing + tunnel</b> (conversion)</li>
+                <li><b>Maintenance</b> (performance continue)</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="panel" style="margin-top:12px; padding:12px">
+            <b>Résultat :</b> quand un client te compare, tu gagnes. <span class="muted">Parce que tu as la preuve + le parcours + le CTA.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         PACKS
+         ========================================================= -->
     <section id="packs">
       <div class="wrap">
         <div class="section-title">
-          <h2>Packs (simples, ultra vendables)</h2>
-          <p>Chaque pack inclut la valeur “image” (visuel + drone selon niveau) + la mécanique “clients” (Google + landing + CTA).</p>
+          <h2>Packs (ultra simples pour les entreprises)</h2>
+          <p>3 niveaux. Même logique. Plus tu montes, plus tu délègues, plus on pilote l’acquisition.</p>
         </div>
 
         <div class="pricing">
           <div class="price-card">
             <div class="price-top">
               <div class="price-name">START</div>
-              <div class="price-sub">Image pro + Google (le + simple)</div>
+              <div class="price-sub">Image + Google + landing (starter premium)</div>
               <div class="price"><strong>299€</strong><span>/mois</span></div>
             </div>
-
             <ul class="list">
-              <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4L19 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span> 1 session/mois (45 min) : intérieur + extérieur</li>
-              <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4L19 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span> 15 photos optimisées (Google + site)</li>
-              <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4L19 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span> 1 vidéo verticale/mois (15–25s)</li>
-              <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4L19 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Google Business : setup + 2 posts/mois + photos</li>
-              <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4L19 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Landing “devis/RDV” + bouton Hostinger</li>
+              <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4L19 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Session mensuelle (45 min)</li>
+              <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4L19 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span> 15 photos + 1 vidéo verticale</li>
+              <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4L19 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Google Business : setup + 2 posts</li>
+              <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4L19 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Landing + CTA Hostinger + tracking</li>
+              <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4L19 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Maintenance mensuelle</li>
             </ul>
-
             <div class="price-actions">
-              <button class="btn primary jsPick" data-plan="START" data-price="299">Choisir START</button>
+              <button class="btn primary jsPick" data-plan="START" data-price="299" type="button">Choisir START</button>
               <a class="btn" href="#audit">Audit</a>
             </div>
           </div>
 
           <div class="price-card reco">
-            <div class="tag">Référence locale</div>
+            <div class="tag">Best ROI</div>
             <div class="price-top">
               <div class="price-name">SCALE</div>
-              <div class="price-sub">Contenu hebdo + drone + conversion</div>
+              <div class="price-sub">Contenu hebdo + drone + SEO + tunnel</div>
               <div class="price"><strong>690€</strong><span>/mois</span></div>
             </div>
-
             <ul class="list">
-              <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4L19 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span> 1 session/mois (1h–1h30)</li>
-              <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4L19 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span> 25 photos + 4 vidéos verticales/mois</li>
-              <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4L19 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span> 1 vidéo horizontale site (service/présentation)</li>
-              <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4L19 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Drone : 1 session/mois (Hero/Reveal/Proof)</li>
-              <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4L19 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Google : 4 posts/mois + stratégie avis</li>
-              <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4L19 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Landing campagne + tracking + reporting 1 page</li>
+              <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4L19 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span> 25 photos + 4 vidéos verticales</li>
+              <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4L19 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Drone signature (Hero/Reveal/Proof)</li>
+              <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4L19 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Google : 4 posts + avis + photos</li>
+              <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4L19 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Landing + tunnel + tracking + reporting</li>
+              <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4L19 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span> SEO local (pages/services)</li>
             </ul>
-
             <div class="price-actions">
-              <button class="btn primary jsPick" data-plan="SCALE" data-price="690">Choisir SCALE</button>
-              <a class="btn" href="#roi">ROI</a>
+              <button class="btn primary jsPick" data-plan="SCALE" data-price="690" type="button">Choisir SCALE</button>
+              <a class="btn" href="#roi">Simulateur</a>
             </div>
           </div>
 
           <div class="price-card">
             <div class="price-top">
               <div class="price-name">DOMINATE</div>
-              <div class="price-sub">On pilote la croissance (full délégation)</div>
+              <div class="price-sub">Full délégation + acquisition pilotée</div>
               <div class="price"><strong>1290€</strong><span>/mois</span></div>
             </div>
-
             <ul class="list">
-              <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4L19 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span> 2 sessions/mois (ou 1 longue)</li>
-              <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4L19 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span> 40 photos + 8 vidéos verticales/mois</li>
-              <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4L19 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Drone : 1 session/mois (plans signature + ciné)</li>
-              <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4L19 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Publication gérée + copywriting + CTA</li>
-              <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4L19 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Acquisition ads + tracking + automation RDV</li>
+              <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4L19 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span> 2 sessions/mois</li>
+              <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4L19 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span> 40 photos + 8 vidéos verticales</li>
+              <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4L19 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Drone mensuel + cinématique</li>
+              <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4L19 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Gestion publication + copywriting</li>
+              <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12l4 4L19 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Ads + automation RDV (budget pub client)</li>
             </ul>
-
             <div class="price-actions">
-              <button class="btn primary jsPick" data-plan="DOMINATE" data-price="1290">Choisir DOMINATE</button>
-              <a class="btn" href="#faq">FAQ</a>
+              <button class="btn primary jsPick" data-plan="DOMINATE" data-price="1290" type="button">Choisir DOMINATE</button>
+              <a class="btn" href="#audit">Audit</a>
             </div>
           </div>
         </div>
 
-        <div class="card" style="margin-top:12px; padding:16px">
-          <b>Ce qui te différencie des concurrents</b> : ils livrent des “contenus”. Toi tu livres un <b>système</b> :
-          <span class="muted">Image premium + diffusion Google + landing conversion + tracking + itérations mensuelles.</span>
+        <div class="panel" style="margin-top:12px; padding:12px">
+          <b>Important :</b> si ton site actuel est “ok”, on ne refait pas tout. On ajoute une <b>landing + tunnel</b> et on pilote la performance.
+          <span class="muted">Refonte uniquement si nécessaire.</span>
         </div>
       </div>
     </section>
 
-    <section id="preuve">
-      <div class="wrap">
-        <div class="section-title">
-          <h2>Preuve (là où tu écrases le marché)</h2>
-          <p>Remplace les placeholders par tes assets : showreel, avant/après, captures Google, extraits Reels. C’est ton “mur de preuve”.</p>
-        </div>
-
-        <div class="proof">
-          <div class="card" style="padding:16px">
-            <div class="gallery" aria-label="Galerie preuves">
-              <div class="ph"><span>Showreel drone (30–45s)<br>→ remplace par une vidéo</span></div>
-              <div class="ph"><span>Avant / Après Google Business<br>→ captures réelles</span></div>
-              <div class="ph"><span>Photos pro (extérieur/intérieur)<br>→ pack premium</span></div>
-              <div class="ph"><span>Reels (hook + CTA)<br>→ preuves de conversion</span></div>
-            </div>
-          </div>
-
-          <div class="card proof-right" style="padding:16px">
-            <div class="stack">
-              <div class="pill"><span class="dot"></span> Drone “signature” (simple, répétable)</div>
-              <p>
-                3 plans standard (Hero / Reveal / Proof). Tu les réutilises sur <b>Google</b>, <b>site</b>, <b>Reels</b>, <b>pub</b>.
-                Résultat : image premium + confiance immédiate.
-              </p>
-
-              <div class="micro">
-                <b>Promesse opérationnelle</b><br>
-                <span class="muted">On te livre une présence qui se vend toute seule : quand on te compare, tu gagnes.</span>
-              </div>
-
-              <div class="micro">
-                <b>Setup ultra simple</b><br>
-                <span class="muted">Tu nous ajoutes en <b>Gestionnaire</b> Google Business + on connecte <b>offre.domaine.fr</b>. C’est tout.</span>
-              </div>
-
-              <div style="display:flex; gap:10px; flex-wrap:wrap">
-                <a class="btn primary" href="#audit">Audit + plan</a>
-                <a class="btn" id="whatsProof" href="#">WhatsApp</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
+    <!-- =========================================================
+         ROI SIMULATOR (Profit Window + Sparkline)
+         ========================================================= -->
     <section id="roi">
       <div class="wrap">
         <div class="section-title">
-          <h2>ROI (ultra lisible)</h2>
-          <p>Tu parles le langage entreprise : seuil de rentabilité + clients nécessaires. Zéro blabla.</p>
+          <h2>Simulateur : combien ça te rapporte (concret)</h2>
+          <p>Tu vois le seuil de rentabilité + le gain net. Et tu comprends pourquoi les entreprises qui gagnent ont un système.</p>
         </div>
 
         <div class="two">
-          <div class="card" style="padding:16px">
+          <div class="panel" style="padding:16px">
             <div class="row">
               <div>
                 <label for="plan">Pack</label>
@@ -745,71 +1028,134 @@
               </div>
               <div>
                 <label for="margin">Marge moyenne par client (€)</label>
-                <input id="margin" type="number" min="0" step="10" value="200" />
+                <input id="margin" type="number" min="10" step="10" value="200" />
               </div>
             </div>
 
             <div class="row" style="margin-top:10px">
               <div>
-                <label for="closeRate">Conversion lead → client (%)</label>
-                <input id="closeRate" type="number" min="1" max="100" step="1" value="30" />
-              </div>
-              <div>
                 <label for="leads">Leads/mois actuels</label>
                 <input id="leads" type="number" min="0" step="1" value="15" />
               </div>
+              <div>
+                <label for="conv">Conversion lead → client (%)</label>
+                <input id="conv" type="number" min="1" max="100" step="1" value="30" />
+              </div>
             </div>
 
-            <div style="margin-top:10px">
-              <label for="uplift">Uplift attendu (%)</label>
-              <input id="uplift" type="number" min="0" max="300" step="5" value="30" />
-              <div class="hint">Conservateur : 15–30%. Ambitieux : 40–70% (selon niche + exécution).</div>
+            <div class="row" style="margin-top:10px">
+              <div>
+                <label for="uplift">Uplift estimé (%)</label>
+                <input id="uplift" type="number" min="0" max="300" step="5" value="30" />
+              </div>
+              <div>
+                <label for="speed">Vitesse d’exécution</label>
+                <select id="speed">
+                  <option value="fast" selected>Rapide (72h + rythme mensuel)</option>
+                  <option value="mid">Moyenne</option>
+                  <option value="slow">Lente</option>
+                </select>
+              </div>
             </div>
 
-            <div class="hero-cta" style="margin-top:12px">
-              <button class="btn primary" id="calcBtn" type="button">Calculer</button>
+            <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap">
+              <button class="btn primary" id="calcBtn" type="button">Calculer mon ROI</button>
               <button class="btn" id="resetBtn" type="button">Reset</button>
+              <a class="btn ghost" href="#audit">Audit gratuit</a>
+            </div>
+
+            <div class="hint" style="margin-top:10px">
+              Astuce : si la concurrence est forte, l’image (drone + visuel) te donne l’avantage décisif sur la comparaison.
             </div>
           </div>
 
-          <div class="result">
+          <div class="result" aria-live="polite">
             <div class="pill"><span class="dot"></span> Résultat</div>
             <div class="big" id="roiBig">—</div>
-            <div class="small" id="roiSmall">Remplis les champs puis calcule.</div>
+            <div class="small" id="roiSmall">Clique “Calculer” pour afficher ton gain net estimé.</div>
+
+            <div class="kpi-row">
+              <div class="kpi">
+                <div class="k">Seuil clients/mois</div>
+                <div class="v" id="breakEven">—</div>
+              </div>
+              <div class="kpi">
+                <div class="k">Leads add. nécessaires</div>
+                <div class="v" id="extraLeads">—</div>
+              </div>
+              <div class="kpi">
+                <div class="k">Gain net estimé</div>
+                <div class="v" id="profit">—</div>
+              </div>
+            </div>
 
             <div>
               <div class="meter"><div class="bar" id="roiBar"></div></div>
               <div class="hint" id="roiHint">Objectif : rentabilité avec le minimum de nouveaux clients.</div>
             </div>
 
-            <div class="card" style="padding:12px; background:rgba(255,255,255,.03)">
-              <div style="display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap">
-                <div>
-                  <div class="muted" style="font-size:12px">Seuil clients/mois</div>
-                  <div style="font-weight:950; font-size:20px" id="breakEven">—</div>
-                </div>
-                <div>
-                  <div class="muted" style="font-size:12px">Leads additionnels nécessaires</div>
-                  <div style="font-weight:950; font-size:20px" id="extraLeads">—</div>
-                </div>
-                <div>
-                  <div class="muted" style="font-size:12px">Profit estimé (delta)</div>
-                  <div style="font-weight:950; font-size:20px" id="profit">—</div>
-                </div>
+            <div class="profit-window">
+              <div class="title">Profit Window (12 mois)</div>
+              <div class="muted" style="margin-top:6px; font-size:var(--fs0)" id="pwText">
+                Projection simple : cumulé sur 12 mois (si tu maintiens le système).
               </div>
+              <div class="spark"><canvas id="spark" width="800" height="180"></canvas></div>
             </div>
 
-            <a class="btn primary" href="#audit">Recevoir le plan concret</a>
+            <a class="btn primary" href="#audit" id="ctaFromROI">Obtenir le plan concret</a>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- =========================================================
+         PROOF WALL (placeholders)
+         ========================================================= -->
+    <section id="proof">
+      <div class="wrap">
+        <div class="section-title">
+          <h2>Preuve (ce qui fait “OK, je signe”)</h2>
+          <p>Remplace par tes assets : showreel drone, captures Google, avant/après site, exemples landing & tunnel.</p>
+        </div>
+
+        <div class="proof">
+          <div class="panel" style="padding:16px">
+            <div class="gallery" aria-label="Galerie preuves">
+              <div class="ph"><span>Showreel drone (30–45s)<br>→ intégrer une vidéo</span></div>
+              <div class="ph"><span>Avant/Après Google Business<br>→ captures réelles</span></div>
+              <div class="ph"><span>Landing qui convertit<br>→ exemple</span></div>
+              <div class="ph"><span>SEO & pages services<br>→ structure</span></div>
+            </div>
+          </div>
+
+          <div class="panel" style="padding:16px">
+            <div class="pill"><span class="dot"></span> Drone “signature” = avantage immédiat</div>
+            <p class="muted" style="margin:10px 0 0; font-size:var(--fs0)">
+              Les entreprises gagnantes paraissent plus premium. Le drone + visuels pro = <b>confiance</b> et <b>décision plus rapide</b>.
+              Ensuite, le tunnel capture le lead.
+            </p>
+
+            <div class="panel" style="margin-top:12px; padding:12px">
+              <b>Micro promesse :</b> “On vous met au niveau premium en 7 jours, puis on maintient la performance chaque mois.”
+            </div>
+
+            <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:12px">
+              <a class="btn primary" href="#audit">Audit + plan</a>
+              <a class="btn" id="whatsProof" href="#">WhatsApp</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         FAQ
+         ========================================================= -->
     <section id="faq">
       <div class="wrap">
         <div class="section-title">
           <h2>FAQ (objections neutralisées)</h2>
-          <p>Le but : rassurer et faire passer à l’action, sans friction.</p>
+          <p>Réponses courtes, claires. L’achat devient safe.</p>
         </div>
 
         <div class="faq">
@@ -817,35 +1163,33 @@
             <summary>Je dois te donner mon compte Google ?</summary>
             <p>Non. Tu nous ajoutes en <b>Gestionnaire</b> sur ta fiche Google Business. Tu gardes le contrôle total.</p>
           </details>
-
           <details>
-            <summary>La landing est séparée du site Hostinger ?</summary>
-            <p>Oui. Le site = crédibilité/SEO. La landing = conversion. Le bouton Hostinger redirige vers <b>offre.domaine.fr</b> (plus pro, plus rapide).</p>
+            <summary>La landing est séparée de mon site Hostinger ?</summary>
+            <p>Oui : site = crédibilité/SEO. Landing = conversion. Ton bouton Hostinger redirige vers <b>offre.domaine.fr</b>.</p>
           </details>
-
           <details>
-            <summary>Le drone apporte quoi concrètement ?</summary>
-            <p>Une <b>preuve premium</b> : tu parais plus sérieux, plus gros, plus fiable. Utilisable sur Google, site, réseaux, pubs. C’est un accélérateur de décision.</p>
+            <summary>Pourquoi “tunnel” ?</summary>
+            <p>Parce que sans tunnel, tu perds les prospects. Le tunnel guide vers <b>1 action</b> : WhatsApp, appel ou RDV.</p>
           </details>
-
-          <details>
-            <summary>Délais ?</summary>
-            <p>Standard : livraison photos/vidéos sous <b>72h</b> après tournage. Google posts selon calendrier. Landing activée dès le setup.</p>
-          </details>
-
-          <details>
-            <summary>Et si on a déjà un prestataire ?</summary>
-            <p>On peut s’intégrer : on apporte l’architecture (Google + landing + tracking) + la signature visuelle (drone/visuels). Objectif : performance, pas ego.</p>
-          </details>
-
           <details>
             <summary>Résultats garantis ?</summary>
-            <p>On garantit un <b>système</b> (assets + diffusion + conversion + suivi). Les résultats dépendent de l’offre, du marché, et de la réactivité commerciale.</p>
+            <p>On garantit un <b>système</b> (assets + diffusion + conversion + suivi). Les résultats dépendent de l’offre, du marché et du suivi commercial.</p>
+          </details>
+          <details>
+            <summary>Si mon site est déjà bien ?</summary>
+            <p>On ne casse rien : on ajoute landing + tunnel + tracking + contenus + Google. Refonte seulement si nécessaire.</p>
+          </details>
+          <details>
+            <summary>Délais ?</summary>
+            <p>Livraison standard : <b>72h</b> après tournage. Puis cadence mensuelle (maintenance + itérations).</p>
           </details>
         </div>
       </div>
     </section>
 
+    <!-- =========================================================
+         AUDIT FORM
+         ========================================================= -->
     <section id="audit">
       <div class="wrap">
         <div class="section-title">
@@ -853,75 +1197,63 @@
           <p>Tu remplis. On renvoie : diagnostic + pack recommandé + plan concret sur 30 jours.</p>
         </div>
 
-        <div class="card" style="padding:16px">
-          <form id="leadForm" autocomplete="on">
-            <div class="row">
-              <div>
-                <label for="company">Entreprise</label>
-                <input id="company" name="company" required placeholder="Nom de l'entreprise" />
-              </div>
-              <div>
-                <label for="city">Ville / zone</label>
-                <input id="city" name="city" required placeholder="Ex : Gignac / Montpellier" />
-              </div>
+        <div class="card form">
+          <form id="leadForm" class="form-grid" autocomplete="on">
+            <div>
+              <label for="company">Entreprise</label>
+              <input id="company" name="company" required placeholder="Nom de l'entreprise" />
+            </div>
+            <div>
+              <label for="city">Ville / zone</label>
+              <input id="city" name="city" required placeholder="Ex : Gignac / Montpellier" />
             </div>
 
-            <div class="row" style="margin-top:10px">
-              <div>
-                <label for="sector">Secteur</label>
-                <input id="sector" name="sector" required placeholder="Ex : immobilier, restaurant, padel..." />
-              </div>
-              <div>
-                <label for="goal">Objectif principal</label>
-                <select id="goal" name="goal" required>
-                  <option value="Devis">Plus de devis</option>
-                  <option value="RDV">Plus de RDV</option>
-                  <option value="Appels">Plus d’appels</option>
-                  <option value="Réservations">Plus de réservations</option>
-                </select>
-              </div>
+            <div>
+              <label for="sector">Secteur</label>
+              <input id="sector" name="sector" required placeholder="Ex : immobilier, restaurant, padel..." />
+            </div>
+            <div>
+              <label for="goal">Objectif</label>
+              <select id="goal" name="goal" required>
+                <option value="Devis">Plus de devis</option>
+                <option value="RDV">Plus de RDV</option>
+                <option value="Appels">Plus d’appels</option>
+                <option value="Réservations">Plus de réservations</option>
+              </select>
             </div>
 
-            <div class="row" style="margin-top:10px">
-              <div>
-                <label for="name">Nom</label>
-                <input id="name" name="name" required placeholder="Prénom" />
-              </div>
-              <div>
-                <label for="phone">Téléphone</label>
-                <input id="phone" name="phone" required inputmode="tel" placeholder="06..." />
-              </div>
+            <div>
+              <label for="name">Nom</label>
+              <input id="name" name="name" required placeholder="Prénom" />
+            </div>
+            <div>
+              <label for="phone">Téléphone</label>
+              <input id="phone" name="phone" required inputmode="tel" placeholder="06..." />
             </div>
 
-            <div class="row" style="margin-top:10px">
-              <div>
-                <label for="email">Email</label>
-                <input id="email" name="email" type="email" required placeholder="email@domaine.fr" />
-              </div>
-              <div>
-                <label for="website">Site (optionnel)</label>
-                <input id="website" name="website" placeholder="https://..." />
-              </div>
+            <div>
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" required placeholder="email@domaine.fr" />
+            </div>
+            <div>
+              <label for="website">Site (optionnel)</label>
+              <input id="website" name="website" placeholder="https://..." />
             </div>
 
-            <div style="margin-top:10px">
+            <div style="grid-column: 1 / -1;">
               <label for="msg">Message (optionnel)</label>
-              <textarea id="msg" name="msg" rows="4" placeholder="Ex : on veut une landing ‘devis’ + contenu drone pour booster Google"></textarea>
-              <div class="hint">Astuce : plus tu es précis, plus le plan est chirurgical.</div>
+              <textarea id="msg" name="msg" rows="4" placeholder="Ex : on veut une landing devis + drone + SEO local + Google optimisé"></textarea>
+              <div class="hint">Le plan sera plus chirurgical si tu mentionnes ton offre et ta zone.</div>
             </div>
 
             <!-- Honeypot -->
             <input type="text" id="hp" name="hp" style="display:none" tabindex="-1" autocomplete="off" />
 
-            <div class="hero-cta" style="margin-top:12px">
+            <div style="grid-column: 1 / -1; display:flex; gap:10px; flex-wrap:wrap; align-items:center">
               <button class="btn primary" type="submit">Envoyer via WhatsApp</button>
               <button class="btn" type="button" id="copyBtn">Copier le message</button>
               <a class="btn ghost" id="mailBtn" href="#">Envoyer par email</a>
-            </div>
-
-            <div class="card" style="margin-top:12px; padding:12px; background:rgba(255,255,255,.03)">
-              <b>Livraison pro :</b> lien landing + bouton CTA Hostinger + QR avis + contenus dans un dashboard simple (Notion/Drive).
-              <span class="muted">Tu gardes le contrôle, nous on opère.</span>
+              <span class="muted" style="font-size:12px">En envoyant, tu acceptes d’être recontacté pour l’audit.</span>
             </div>
           </form>
         </div>
@@ -935,7 +1267,7 @@
 
   <div class="sticky" role="region" aria-label="Actions rapides">
     <div class="sticky-inner">
-      <div class="msg">Tu veux devenir <b>le choix évident</b> sur ta zone ? <span class="muted">Audit + plan d’actions.</span></div>
+      <div class="msg">Objectif : <b>plus de clients</b> via image premium + SEO + tunnel. <span class="muted">Audit gratuit en 60s.</span></div>
       <div class="sticky-actions">
         <a class="btn primary" href="#audit">Audit</a>
         <a class="btn" id="whatsSticky" href="#">WhatsApp</a>
@@ -944,17 +1276,23 @@
   </div>
 
   <script>
-    // =========================
-    // CONFIG (à personnaliser)
-    // =========================
+    /* =========================================================
+       ULTIMATE JS — "Chirurgical" conversion logic
+       - Personalization (persona)
+       - Gap Analysis (eye opener)
+       - ROI Simulator + Profit Window chart
+       - WhatsApp lead transport + copy + email fallback
+       - Smooth scroll
+       ========================================================= */
+
+    // --------------- CONFIG (EDIT THESE) ---------------
     const CONFIG = {
-      whatsappNumber: "33600000000",     // ex: 33612345678 (sans +)
-      brandName: "Reference Growth System",
+      whatsappNumber: "33600000000", // <-- replace (no +)
       emailFallback: "contact@tondomaine.fr",
-      foundersSlotsStart: 10,
-      foundersEndISO: "2026-03-01T23:59:59+01:00" // modifie la date limite si tu veux
+      brandName: "Ultimate Growth System"
     };
 
+    // --------------- Helpers ---------------
     const $ = (s, p=document) => p.querySelector(s);
     const $$ = (s, p=document) => [...p.querySelectorAll(s)];
 
@@ -966,154 +1304,332 @@
       window.__t = setTimeout(()=> el.style.display="none", 3200);
     }
 
-    // =========================
-    // Founders countdown + slots
-    // =========================
-    const endTs = Date.parse(CONFIG.foundersEndISO);
-    let slots = CONFIG.foundersSlotsStart;
-
-    function fmt2(n){ return String(n).padStart(2,"0"); }
-    function tick(){
-      const now = Date.now();
-      const diff = Math.max(0, endTs - now);
-      const s = Math.floor(diff/1000);
-      const d = Math.floor(s/86400);
-      const h = Math.floor((s%86400)/3600);
-      const m = Math.floor((s%3600)/60);
-      const ss = s%60;
-      $("#timerTxt").textContent = diff > 0 ? `Fin dans ${d}j ${fmt2(h)}:${fmt2(m)}:${fmt2(ss)}` : "Offre Founders terminée";
-      $("#slotsTxt").textContent = `${slots} places`;
+    function clamp(n, a, b){ return Math.min(b, Math.max(a, n)); }
+    function round(n){ return Math.round(n); }
+    function money(n){
+      const sign = n >= 0 ? "+" : "";
+      return `${sign}${Math.round(n)}€`;
     }
-    tick();
-    setInterval(tick, 1000);
 
-    // =========================
-    // Mode selector (needs)
-    // =========================
-    const MODE = {
-      trust: {
-        title: "Crédibilité instantanée",
-        text: "Tu prends des visuels premium + une présence Google propre. Résultat : quand un client te cherche, il te choisit.",
-        recommend: "START"
-      },
-      leads: {
-        title: "Plus de demandes / RDV",
-        text: "On boost Google + on active une landing qui convertit. Objectif : plus de WhatsApp, plus d’appels, plus de devis.",
-        recommend: "SCALE"
-      },
-      dominate: {
-        title: "Référence locale",
-        text: "On pilote contenu + diffusion + acquisition. Tu deviens le choix évident face aux concurrents.",
-        recommend: "DOMINATE"
-      }
-    };
+    // --------------- Personalization (fast persona) ---------------
+    // One button that makes the copy feel "made for them" without creating complexity.
+    const PERSONAS = [
+      { key:"immobilier", label:"Immobilier", hooks:["visites","mandats","biens"], obj:"RDV", uplift:40 },
+      { key:"resto", label:"Restaurant / Hôtel", hooks:["réservations","visibilité Maps","avis"], obj:"Réservations", uplift:35 },
+      { key:"artisans", label:"Artisan / Services", hooks:["devis","appels","confiance"], obj:"Devis", uplift:30 },
+      { key:"sport", label:"Sport / Club", hooks:["inscriptions","abonnements","réputation"], obj:"RDV", uplift:35 },
+      { key:"btp", label:"BTP / Industrie", hooks:["projets","appels d'offres","crédibilité"], obj:"Devis", uplift:25 }
+    ];
 
-    function setMode(key){
-      $$(".sel").forEach(el => el.classList.toggle("active", el.dataset.mode === key));
-      $("#modeTitle").textContent = MODE[key].title;
-      $("#modeText").textContent  = MODE[key].text;
+    function pickPersona(){
+      // lightweight picker: prompt-based to keep it single-file
+      const options = PERSONAS.map((p,i)=> `${i+1}. ${p.label}`).join("\n");
+      const choice = prompt(`Choisis ton activité (1-${PERSONAS.length}) :\n\n${options}\n\nOK pour valider.`);
+      const idx = Number(choice) - 1;
+      if(Number.isNaN(idx) || idx < 0 || idx >= PERSONAS.length) return;
 
-      // Soft nudge: highlight recommended pack via toast and preselect ROI plan
-      const rec = MODE[key].recommend;
+      const p = PERSONAS[idx];
+      // adapt a few fields + hero line
+      $("#objective").value = p.obj;
+      $("#goal").value = p.obj;
+      $("#uplift").value = p.uplift;
+
+      $("#heroSub").innerHTML =
+        `On installe un système premium : <b>visuels + drone signature</b> → <b>Google & SEO</b> → <b>landing + tunnel</b> → ` +
+        `<b>${p.hooks[0]}</b>, <b>${p.hooks[1]}</b>, <b>${p.hooks[2]}</b>. Tu montes en gamme, tu convertis plus, tu prends ta zone.`;
+
+      toast(`Personnalisation activée : ${p.label}.`);
+      // nudge to value calculator
+      location.hash = "#value";
+    }
+
+    $("#personaBtn").addEventListener("click", pickPersona);
+
+    // --------------- Gap Analysis (eye opener) ---------------
+    function computeScores(stage, competition){
+      // stage 0..3 => base maturity
+      // competition affects how strict the score is
+      const compFactor = competition === "high" ? 0.85 : competition === "mid" ? 0.92 : 1.0;
+
+      // Base distribution by stage (vis, cred, conv, maint)
+      const bases = [
+        {vis:20, cred:20, conv:15, maint:10},
+        {vis:38, cred:40, conv:28, maint:20},
+        {vis:55, cred:60, conv:45, maint:38},
+        {vis:70, cred:75, conv:62, maint:55},
+      ][stage];
+
+      // Apply comp factor (harder market => lower effective score)
+      const vis = clamp(bases.vis * compFactor, 0, 100);
+      const cred = clamp(bases.cred * compFactor, 0, 100);
+      const conv = clamp(bases.conv * compFactor, 0, 100);
+      const maint = clamp(bases.maint * compFactor, 0, 100);
+
+      return {vis, cred, conv, maint};
+    }
+
+    function setBars({vis, cred, conv, maint}){
+      $("#sVis").textContent = `${round(vis)}/100`;
+      $("#sCred").textContent = `${round(cred)}/100`;
+      $("#sConv").textContent = `${round(conv)}/100`;
+      $("#sMaint").textContent = `${round(maint)}/100`;
+
+      $("#bVis").style.width = `${vis}%`;
+      $("#bCred").style.width = `${cred}%`;
+      $("#bConv").style.width = `${conv}%`;
+      $("#bMaint").style.width = `${maint}%`;
+    }
+
+    function recommendPack(scores){
+      // simple rule: if conversion + maintenance low => SCALE; if all low => START; if high maturity => DOMINATE
+      const avg = (scores.vis + scores.cred + scores.conv + scores.maint) / 4;
+      if(avg < 35) return "START";
+      if(avg < 62) return "SCALE";
+      return "DOMINATE";
+    }
+
+    function estimateUplift(stage, competition){
+      // conservative uplift model
+      const base = [55, 35, 22, 14][stage]; // lower stage => bigger upside
+      const compAdj = competition === "high" ? 1.05 : competition === "mid" ? 1.0 : 0.95;
+      return clamp(Math.round(base * compAdj), 10, 80);
+    }
+
+    function gapCalc(){
+      const stage = Number($("#stage").value);
+      const objective = $("#objective").value;
+      const avgSale = Math.max(10, Number($("#avgSale").value || 0));
+      const leads = Math.max(0, Number($("#monthlyLeads").value || 0));
+      const closeRatePct = clamp(Number($("#closeRate").value || 0), 1, 100);
+      const competition = $("#competition").value;
+
+      const scores = computeScores(stage, competition);
+      setBars(scores);
+
+      const rec = recommendPack(scores);
+
+      // Estimate uplift based on stage/competition
+      const upliftPct = estimateUplift(stage, competition);
+      // Estimate revenue delta (simple)
+      const closeRate = closeRatePct / 100;
+      const currentClients = leads * closeRate;
+      const newLeads = leads * (upliftPct/100);
+      const newClients = newLeads * closeRate;
+
+      const monthlyDelta = newClients * avgSale; // revenue delta (conservative)
+      const annualDelta = monthlyDelta * 12;
+
+      $("#gapHeadline").textContent = "Manque à gagner estimé (conservateur)";
+      $("#gapText").innerHTML =
+        `Avec votre niveau actuel, on estime un uplift de <b>${upliftPct}%</b> si on installe le système. ` +
+        `Cela représente environ <b>${money(monthlyDelta)}</b> / mois (≈ <b>${money(annualDelta)}</b> / an) ` +
+        `en opportunité sur l’objectif <b>${objective}</b>.`;
+
+      // Recommendation explanation
+      const recText =
+        rec === "START"
+          ? "START : on te met premium vite (image + Google + landing). Objectif : arrêter de perdre des clients quand on te compare."
+          : rec === "SCALE"
+          ? "SCALE : meilleur ROI. Contenu hebdo + drone signature + SEO + tunnel. Objectif : générer plus de leads et mieux convertir."
+          : "DOMINATE : délégation totale. On pilote contenu + acquisition + automation. Objectif : devenir la référence de ta zone.";
+
+      $("#recTitle").textContent = `Pack recommandé : ${rec}`;
+      $("#recText").textContent = recText;
+
+      // Preselect ROI plan accordingly
       $("#plan").value = rec;
-      toast(`Mode réglé : ${MODE[key].title}. Pack recommandé : ${rec}.`);
-      // scroll only if user wants; not auto-scroll.
+
+      // Small nudge
+      toast(`Diagnostic prêt. Pack recommandé : ${rec}.`);
     }
 
-    $$(".sel").forEach(el=>{
-      el.addEventListener("click", ()=> setMode(el.dataset.mode));
-      el.addEventListener("keydown", (e)=>{
-        if(e.key === "Enter" || e.key === " "){
-          e.preventDefault();
-          setMode(el.dataset.mode);
-        }
-      });
+    $("#gapCalc").addEventListener("click", gapCalc);
+    $("#gapReset").addEventListener("click", ()=>{
+      $("#stage").value = "1";
+      $("#objective").value = "Devis";
+      $("#avgSale").value = 200;
+      $("#monthlyLeads").value = 15;
+      $("#closeRate").value = 30;
+      $("#competition").value = "mid";
+
+      ["sVis","sCred","sConv","sMaint"].forEach(id=> $(("#"+id)).textContent="—");
+      ["bVis","bCred","bConv","bMaint"].forEach(id=> $(("#"+id)).style.width="0%");
+      $("#gapHeadline").textContent = "Ton manque à gagner";
+      $("#gapText").textContent = "Calcule pour afficher une estimation.";
+      $("#recTitle").textContent = "Recommandation";
+      $("#recText").textContent = "On te propose le pack le plus rentable selon ton niveau + ton objectif.";
+      toast("Reset effectué.");
     });
 
-    // =========================
-    // Pick plan buttons => prefill ROI + lead message
-    // =========================
+    // --------------- Pricing pick buttons ---------------
     $$(".jsPick").forEach(btn=>{
       btn.addEventListener("click", ()=>{
         const plan = btn.dataset.plan;
         $("#plan").value = plan;
-        toast(`Pack ${plan} sélectionné. Calcule le ROI ou envoie l’audit.`);
+        toast(`Pack ${plan} sélectionné. Lance le simulateur ROI.`);
         location.hash = "#roi";
       });
     });
 
-    // =========================
-    // ROI calculator
-    // =========================
+    // --------------- ROI Simulator + Profit Window ---------------
     function calcROI(){
       const planEl = $("#plan");
       const price = Number(planEl.selectedOptions[0].dataset.price || 0);
-      const margin = Math.max(0, Number($("#margin").value || 0));
-      const closeRatePct = Math.min(100, Math.max(1, Number($("#closeRate").value || 0)));
+      const margin = Math.max(10, Number($("#margin").value || 0));
       const leads = Math.max(0, Number($("#leads").value || 0));
-      const upliftPct = Math.max(0, Number($("#uplift").value || 0));
+      const convPct = clamp(Number($("#conv").value || 0), 1, 100);
+      const upliftPct = clamp(Number($("#uplift").value || 0), 0, 300);
+      const speed = $("#speed").value;
 
-      const closeRate = closeRatePct / 100;
+      const speedFactor = speed === "fast" ? 1.00 : speed === "mid" ? 0.88 : 0.78;
+      const conv = convPct / 100;
 
-      const addLeads = Math.round(leads * (upliftPct/100));
-      const totalLeads = leads + addLeads;
+      const addLeads = leads * (upliftPct/100) * speedFactor;
+      const addClients = addLeads * conv;
 
-      const currentClients = Math.round(leads * closeRate);
-      const newClients = Math.round(totalLeads * closeRate);
+      const breakEvenClients = Math.ceil(price / margin);
+      const neededLeads = Math.max(0, Math.ceil(breakEvenClients / conv) - leads);
 
-      const deltaClients = Math.max(0, newClients - currentClients);
+      const deltaProfit = (addClients * margin) - price;
 
-      const breakEvenClients = margin > 0 ? Math.ceil(price / margin) : Infinity;
+      $("#breakEven").textContent = `${breakEvenClients} client(s)`;
+      $("#extraLeads").textContent = `${Math.round(neededLeads)} lead(s)`;
+      $("#profit").textContent = money(deltaProfit);
 
-      const deltaProfit = (deltaClients * margin) - price;
-
-      $("#breakEven").textContent = isFinite(breakEvenClients) ? `${breakEvenClients} client(s)` : "—";
-      const neededLeads = closeRate > 0 ? Math.max(0, Math.ceil(breakEvenClients / closeRate) - leads) : 0;
-      $("#extraLeads").textContent = isFinite(neededLeads) ? `${neededLeads} lead(s)` : "—";
-
-      $("#profit").textContent = `${deltaProfit >= 0 ? "+" : ""}${Math.round(deltaProfit)}€ / mois`;
-
-      $("#roiBig").textContent =
-        isFinite(breakEvenClients)
-          ? `Rentable dès +${breakEvenClients} client(s)/mois`
-          : "Renseigne ta marge pour estimer le seuil";
+      $("#roiBig").textContent = deltaProfit >= 0
+        ? `OK : rentable avec +${breakEvenClients} client(s)/mois`
+        : `Objectif : +${breakEvenClients} client(s)/mois pour rentabiliser`;
 
       $("#roiSmall").textContent =
-        `Pack ${planEl.value} (${price}€/mois). Uplift ${upliftPct}% • conversion ${closeRatePct}% • objectif +${deltaClients} client(s)/mois.`;
+        `Pack ${planEl.value} (${price}€/mois). Uplift ${upliftPct}% (vitesse: ${speed}). ` +
+        `Estimation : +${Math.max(0, Math.round(addClients))} client(s)/mois.`;
 
-      let score = 0;
-      if (isFinite(breakEvenClients) && breakEvenClients > 0){
-        score = Math.min(100, Math.max(0, (deltaClients / breakEvenClients) * 100));
-      }
+      // Progress bar
+      const score = clamp((addClients / breakEvenClients) * 100, 0, 100);
       $("#roiBar").style.width = `${score.toFixed(0)}%`;
-
       $("#roiHint").textContent =
         score >= 100
-          ? "OK : modèle rentable sur hypothèses prudentes."
-          : "Pour sécuriser : offre + CTA + avis Google + posts réguliers + assets drone signature.";
+          ? "Rentable sur hypothèses prudentes. Next step : audit + plan d’actions."
+          : "Pour sécuriser : renforcer l’offre, la preuve (visuel/drone), et un CTA unique (landing + tunnel).";
+
+      // Profit window: 12 months cumulative (simple growth curve)
+      const months = 12;
+      const data = [];
+      let cum = 0;
+      for(let i=1;i<=months;i++){
+        // ramp-up factor: first 2 months slower
+        const ramp = i <= 2 ? 0.6 : i <= 4 ? 0.8 : 1.0;
+        const monthProfit = ((addClients * margin) * ramp) - price;
+        cum += monthProfit;
+        data.push(cum);
+      }
+      $("#pwText").textContent = `Projection : cumulé ≈ ${money(cum)} sur 12 mois (avec maintien du système).`;
+      drawSparkline(data);
+    }
+
+    function drawSparkline(data){
+      const canvas = $("#spark");
+      const ctx = canvas.getContext("2d");
+
+      // handle device pixel ratio
+      const dpr = window.devicePixelRatio || 1;
+      const cssW = canvas.clientWidth || 800;
+      const cssH = canvas.clientHeight || 180;
+      canvas.width = Math.round(cssW * dpr);
+      canvas.height = Math.round(cssH * dpr);
+      ctx.scale(dpr, dpr);
+
+      // clear
+      ctx.clearRect(0,0,cssW,cssH);
+
+      // background subtle gradient (no hardcoded colors besides alpha)
+      const grd = ctx.createLinearGradient(0,0,cssW,cssH);
+      grd.addColorStop(0, "rgba(138,92,255,.18)");
+      grd.addColorStop(1, "rgba(25,240,194,.12)");
+      ctx.fillStyle = grd;
+      ctx.fillRect(0,0,cssW,cssH);
+
+      // plot
+      const min = Math.min(...data);
+      const max = Math.max(...data);
+      const pad = 10;
+      const w = cssW - pad*2;
+      const h = cssH - pad*2;
+
+      function x(i){ return pad + (i/(data.length-1))*w; }
+      function y(v){
+        if(max === min) return pad + h/2;
+        const t = (v - min) / (max - min);
+        return pad + (1 - t)*h;
+      }
+
+      // axis line
+      ctx.strokeStyle = "rgba(255,255,255,.12)";
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(pad, pad + h);
+      ctx.lineTo(pad + w, pad + h);
+      ctx.stroke();
+
+      // line
+      ctx.strokeStyle = "rgba(255,255,255,.85)";
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      data.forEach((v,i)=>{
+        const xi = x(i), yi = y(v);
+        if(i===0) ctx.moveTo(xi, yi);
+        else ctx.lineTo(xi, yi);
+      });
+      ctx.stroke();
+
+      // fill
+      ctx.fillStyle = "rgba(255,255,255,.10)";
+      ctx.beginPath();
+      data.forEach((v,i)=>{
+        const xi = x(i), yi = y(v);
+        if(i===0) ctx.moveTo(xi, yi);
+        else ctx.lineTo(xi, yi);
+      });
+      ctx.lineTo(pad + w, pad + h);
+      ctx.lineTo(pad, pad + h);
+      ctx.closePath();
+      ctx.fill();
+
+      // last dot
+      const lastX = x(data.length-1);
+      const lastY = y(data[data.length-1]);
+      ctx.fillStyle = "rgba(255,255,255,.95)";
+      ctx.beginPath();
+      ctx.arc(lastX, lastY, 3.2, 0, Math.PI*2);
+      ctx.fill();
     }
 
     $("#calcBtn").addEventListener("click", calcROI);
     $("#resetBtn").addEventListener("click", ()=>{
       $("#plan").value = "SCALE";
       $("#margin").value = 200;
-      $("#closeRate").value = 30;
       $("#leads").value = 15;
+      $("#conv").value = 30;
       $("#uplift").value = 30;
+      $("#speed").value = "fast";
+
       $("#roiBig").textContent = "—";
-      $("#roiSmall").textContent = "Remplis les champs puis calcule.";
-      $("#roiBar").style.width = "0%";
+      $("#roiSmall").textContent = "Clique “Calculer” pour afficher ton gain net estimé.";
       $("#breakEven").textContent = "—";
       $("#extraLeads").textContent = "—";
       $("#profit").textContent = "—";
+      $("#roiBar").style.width = "0%";
       $("#roiHint").textContent = "Objectif : rentabilité avec le minimum de nouveaux clients.";
-      toast("ROI reset.");
+      $("#pwText").textContent = "Projection simple : cumulé sur 12 mois (si tu maintiens le système).";
+      drawSparkline([0,0,0,0,0,0,0,0,0,0,0,0]);
+      toast("Reset simulateur.");
     });
 
-    // =========================
-    // Lead -> WhatsApp / Email
-    // =========================
-    function getPayload(){
+    // draw initial empty spark
+    drawSparkline([0,0,0,0,0,0,0,0,0,0,0,0]);
+
+    // --------------- WhatsApp / Email lead transport ---------------
+    function getLeadPayload(){
       return {
         company: $("#company").value.trim(),
         city: $("#city").value.trim(),
@@ -1125,11 +1641,17 @@
         website: $("#website").value.trim(),
         msg: $("#msg").value.trim(),
         hp: $("#hp").value.trim(),
-        plan: $("#plan").value
+        plan: $("#plan").value,
       };
     }
 
-    function buildMessage(p){
+    function buildLeadMessage(p){
+      // include insights from calculators to make it feel "professional"
+      const stage = $("#stage").value;
+      const objective = $("#objective").value;
+      const comp = $("#competition").value;
+      const uplift = $("#uplift").value;
+
       return [
         `Bonjour, je souhaite un audit + plan d’actions (${CONFIG.brandName}).`,
         `Entreprise : ${p.company || "-"}`,
@@ -1137,6 +1659,7 @@
         `Secteur : ${p.sector || "-"}`,
         `Objectif : ${p.goal || "-"}`,
         `Pack visé : ${p.plan || "-"}`,
+        `Niveau actuel : ${stage} | Concurrence : ${comp} | Uplift simulé : ${uplift}%`,
         `Nom : ${p.name || "-"}`,
         `Téléphone : ${p.phone || "-"}`,
         `Email : ${p.email || "-"}`,
@@ -1153,8 +1676,7 @@
     function openMail(text){
       const subject = encodeURIComponent(`Audit + plan d’actions — ${CONFIG.brandName}`);
       const body = encodeURIComponent(text);
-      const mailto = `mailto:${CONFIG.emailFallback}?subject=${subject}&body=${body}`;
-      window.location.href = mailto;
+      window.location.href = `mailto:${CONFIG.emailFallback}?subject=${subject}&body=${body}`;
     }
 
     function validateRequired(p){
@@ -1167,24 +1689,19 @@
 
     $("#leadForm").addEventListener("submit", (e)=>{
       e.preventDefault();
-      const p = getPayload();
+      const p = getLeadPayload();
 
-      if(p.hp){ toast("Erreur."); return; } // anti-bot
+      if(p.hp){ toast("Erreur."); return; } // honeypot anti-bot
       if(!validateRequired(p)){ toast("Remplis tous les champs obligatoires."); return; }
 
-      const msg = buildMessage(p);
-
-      // simulate slot consumption on submit (optional psychological proof)
-      if(slots > 0) slots -= 1;
-
-      toast("OK. Envoi WhatsApp ouvert.");
-      openWhatsApp(msg);
+      toast("OK. WhatsApp s’ouvre avec le message prêt.");
+      openWhatsApp(buildLeadMessage(p));
     });
 
     $("#copyBtn").addEventListener("click", async ()=>{
-      const p = getPayload();
+      const p = getLeadPayload();
       if(!validateRequired(p)){ toast("Remplis les champs obligatoires pour générer le message."); return; }
-      const msg = buildMessage(p);
+      const msg = buildLeadMessage(p);
       try{
         await navigator.clipboard.writeText(msg);
         toast("Message copié.");
@@ -1195,20 +1712,19 @@
 
     $("#mailBtn").addEventListener("click", (e)=>{
       e.preventDefault();
-      const p = getPayload();
+      const p = getLeadPayload();
       if(!validateRequired(p)){ toast("Remplis les champs obligatoires."); return; }
-      openMail(buildMessage(p));
+      openMail(buildLeadMessage(p));
     });
 
-    // WhatsApp quick buttons (no form filled => generic)
     function wireWhats(id){
       const el = $(id);
       if(!el) return;
       el.addEventListener("click", (e)=>{
         e.preventDefault();
-        const p = getPayload();
+        const p = getLeadPayload();
         const msg = (p.company || p.name || p.phone || p.email)
-          ? buildMessage(p)
+          ? buildLeadMessage(p)
           : `Bonjour, je souhaite un audit + plan d’actions (${CONFIG.brandName}).`;
         openWhatsApp(msg);
       });
@@ -1217,7 +1733,7 @@
     wireWhats("#whatsProof");
     wireWhats("#whatsSticky");
 
-    // Smooth anchors
+    // --------------- Smooth anchors ---------------
     $$('a[href^="#"]').forEach(a=>{
       a.addEventListener("click", (e)=>{
         const href = a.getAttribute("href");
@@ -1230,20 +1746,24 @@
       });
     });
 
-    // Optional: auto-calc first view
-    // calcROI();
+    // Optional: prefill value scores once so page doesn't feel empty
+    setTimeout(()=> {
+      const scores = computeScores(Number($("#stage").value), $("#competition").value);
+      setBars(scores);
+    }, 250);
   </script>
 
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
     "@type":"ProfessionalService",
-    "name":"Reference Growth System",
+    "name":"Ultimate Growth System",
     "areaServed":"FR",
     "serviceType":[
       "Google Business Profile Optimization",
-      "Landing Page Conversion",
-      "Local Marketing",
+      "SEO Local",
+      "Landing Page & Sales Funnel",
+      "Website Creation & Maintenance",
       "Video Production",
       "Aerial Photography"
     ]
