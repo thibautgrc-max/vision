@@ -3,8 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+
   <title>VISION — Stock Privé</title>
-  <meta name="description" content="Catalogue privé VISION. Drops limités, photos réelles, réservation directe sur Snapchat." />
+  <meta
+    name="description"
+    content="Catalogue privé VISION. Drops limités, photos réelles, outfits complets et réservation directe sur Snapchat."
+  />
   <meta name="theme-color" content="#060606" />
   <meta name="mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -12,247 +16,506 @@
 
   <!-- Open Graph -->
   <meta property="og:title" content="VISION — Stock Privé" />
-  <meta property="og:description" content="Catalogue privé. Stock limité. Réservation directe." />
+  <meta
+    property="og:description"
+    content="Stock privé VISION. Catalogue Homme/Femme, drops limités, outfits complets et réservation Snapchat."
+  />
   <meta property="og:image" content="assets/brand/vision-og.jpg" />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://vision-stock.vercel.app" />
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="VISION — Stock Privé" />
-  <meta name="twitter:description" content="Catalogue privé. Stock limité. Réservation directe." />
+  <meta
+    name="twitter:description"
+    content="Catalogue privé VISION. Stock limité, photos réelles et réservation directe."
+  />
+  <meta name="twitter:image" content="assets/brand/vision-og.jpg" />
 
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="assets/brand/favicon.svg" />
 
-  <!-- Fonts : Space Grotesk (display) + Inter (body) -->
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
 
+  <!-- Styles -->
   <link rel="stylesheet" href="style.css" />
 </head>
-<body>
 
+<body>
   <!-- ═══════════════════════════════════════════════
-       TICKER — bande défilante en haut
+       TICKER PREMIUM
   ═══════════════════════════════════════════════ -->
-  <div class="ticker" role="marquee" aria-label="Informations live stock">
-    <div class="ticker-track" id="tickerTrack">
-      <!-- Populé par JS -->
+  <div class="ticker" role="marquee" aria-label="Informations live du stock VISION">
+    <div class="ticker-track" id="tickerTrack" aria-live="polite">
+      <!-- Contenu alimenté par script.js -->
     </div>
   </div>
 
   <!-- ═══════════════════════════════════════════════
-       HEADER
+       HEADER PREMIUM
   ═══════════════════════════════════════════════ -->
   <header class="header" id="header">
     <div class="header-inner">
-
-      <a href="#" class="header-logo" aria-label="VISION — retour accueil">VISION</a>
+      <a href="#" class="header-logo" aria-label="VISION — retour à l'accueil">
+        <span class="header-logo-mark" aria-hidden="true">VISION</span>
+      </a>
 
       <nav class="header-nav" aria-label="Navigation principale">
         <a href="#stock" class="nav-link">Stock</a>
-        <a href="#packs" class="nav-link">Packs</a>
+        <a href="#outfits" class="nav-link">Outfits</a>
+        <a href="#how" class="nav-link">Comment commander</a>
         <a href="#contact" class="nav-link">Contact</a>
       </nav>
 
       <div class="header-right">
-        <div class="header-count" id="headerCount" aria-label="Articles disponibles">
-          <span class="count-dot" aria-hidden="true"></span>
-          <span id="countNum">—</span>
-          <span class="count-unit">articles</span>
-        </div>
-        <button class="btn-reserve snap-trigger header-cta" aria-label="Réserver sur Snapchat">
-          Réserver
+        <span
+          class="catalogue-badge"
+          id="catalogueBadge"
+          aria-live="polite"
+          hidden
+        >
+          Catalogue
+        </span>
+
+        <button
+          class="change-catalogue-btn"
+          id="changeCatalogueBtn"
+          type="button"
+          aria-label="Changer de catalogue Homme ou Femme"
+          hidden
+        >
+          Changer
         </button>
-        <button class="nav-burger" id="navBurger" aria-label="Ouvrir le menu" aria-expanded="false">
-          <span></span>
-          <span></span>
-        </button>
-      </div>
 
-    </div>
-
-    <!-- Nav mobile overlay -->
-    <div class="mobile-nav" id="mobileNav" aria-hidden="true">
-      <a href="#stock" class="mobile-link">Stock</a>
-      <a href="#packs" class="mobile-link">Packs</a>
-      <a href="#contact" class="mobile-link">Contact</a>
-      <button class="btn-reserve full snap-trigger" aria-label="Réserver sur Snapchat">
-        Réserver sur Snapchat
-      </button>
-    </div>
-  </header>
-
-
-  <!-- ═══════════════════════════════════════════════
-       HERO — minimal, impact max
-  ═══════════════════════════════════════════════ -->
-  <section class="hero" id="home" aria-label="VISION — Stock Privé">
-
-    <!-- Fond grid subtil -->
-    <div class="hero-bg" aria-hidden="true">
-      <div class="hero-grid"></div>
-      <div class="hero-glow"></div>
-    </div>
-
-    <div class="hero-content">
-
-      <!-- Badge drop actif -->
-      <div class="drop-pill" aria-label="Drop actif en cours">
-        <span class="drop-dot" aria-hidden="true"></span>
-        DROP ACTIF
-      </div>
-
-      <!-- Titre principal — VISION occupe max de la largeur -->
-      <h1 class="hero-title" aria-label="VISION Stock Privé">
-        <span class="title-solid">VISION</span>
-        <span class="title-outline" aria-hidden="true">STOCK<br />PRIVÉ</span>
-      </h1>
-
-      <!-- Meta rapide -->
-      <div class="hero-meta" aria-live="polite">
-        <span class="hero-count" id="heroCount" aria-label="Nombre d'articles disponibles">—</span>
-        <span class="hero-sep" aria-hidden="true">·</span>
-        <span>Photos réelles</span>
-        <span class="hero-sep" aria-hidden="true">·</span>
-        <span>Réservation directe</span>
-      </div>
-
-      <!-- CTA unique -->
-      <a href="#stock" class="btn-hero" aria-label="Voir le catalogue">
-        Voir le stock
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
-      </a>
-
-    </div>
-
-    <!-- Flèche scroll -->
-    <div class="scroll-arrow" aria-hidden="true">
-      <div class="arrow-line"></div>
-      <div class="arrow-head"></div>
-    </div>
-
-  </section>
-
-
-  <!-- ═══════════════════════════════════════════════
-       CATALOGUE / STOCK
-  ═══════════════════════════════════════════════ -->
-  <section class="catalog" id="stock" aria-label="Catalogue produits">
-
-    <!-- Barre de filtres + recherche -->
-    <div class="catalog-controls">
-      <div class="filter-bar" id="filterBar" role="tablist" aria-label="Filtrer le catalogue">
-        <!-- Populé par JS -->
-      </div>
-      <div class="search-row">
-        <div class="search-wrap">
-          <svg class="search-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
-            <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
-          </svg>
-          <input
-            type="search"
-            id="searchInput"
-            placeholder="Rechercher…"
-            class="search-input"
-            aria-label="Rechercher un article"
-            autocomplete="off"
-            autocorrect="off"
-            spellcheck="false"
-          />
-        </div>
-        <span class="result-count" id="resultCount" aria-live="polite"></span>
-      </div>
-    </div>
-
-    <!-- Grille produits -->
-    <div class="product-grid" id="productGrid" role="list" aria-label="Articles disponibles">
-      <!-- Populé par JS -->
-    </div>
-
-    <!-- État vide -->
-    <div class="empty-state" id="emptyState" hidden aria-live="polite">
-      <span class="empty-glyph" aria-hidden="true">◎</span>
-      <p>Aucun article trouvé</p>
-      <button class="btn-ghost" onclick="resetFilters()">Tout voir</button>
-    </div>
-
-  </section>
-
-
-  <!-- ═══════════════════════════════════════════════
-       PACKS
-  ═══════════════════════════════════════════════ -->
-  <section class="section-packs" id="packs" aria-label="Packs VISION">
-    <div class="section-head">
-      <span class="section-eyebrow">Exclusif</span>
-      <h2 class="section-title">Packs VISION</h2>
-      <p class="section-sub">Outfit complet · Économie directe</p>
-    </div>
-    <div class="packs-grid" id="packsGrid">
-      <!-- Populé par JS -->
-    </div>
-  </section>
-
-
-  <!-- ═══════════════════════════════════════════════
-       PROCESS — 4 étapes inline
-  ═══════════════════════════════════════════════ -->
-  <section class="section-process" id="how" aria-label="Comment commander">
-    <div class="process-row" role="list">
-      <div class="process-step" role="listitem">
-        <span class="step-num" aria-hidden="true">01</span>
-        <span class="step-label">Choisis</span>
-      </div>
-      <div class="process-arrow" aria-hidden="true">→</div>
-      <div class="process-step" role="listitem">
-        <span class="step-num" aria-hidden="true">02</span>
-        <span class="step-label">Réserve</span>
-      </div>
-      <div class="process-arrow" aria-hidden="true">→</div>
-      <div class="process-step" role="listitem">
-        <span class="step-num" aria-hidden="true">03</span>
-        <span class="step-label">Confirmation</span>
-      </div>
-      <div class="process-arrow" aria-hidden="true">→</div>
-      <div class="process-step" role="listitem">
-        <span class="step-num" aria-hidden="true">04</span>
-        <span class="step-label">Réception</span>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ═══════════════════════════════════════════════
-       CONTACT
-  ═══════════════════════════════════════════════ -->
-  <section class="section-contact" id="contact" aria-label="Contact VISION">
-    <div class="contact-inner">
-      <span class="contact-logo" aria-label="VISION">VISION</span>
-      <p class="contact-sub">Stock privé · Réservation directe</p>
-      <div class="contact-actions">
-        <button class="btn-reserve snap-trigger" aria-label="Contacter sur Snapchat">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.1 14.08c-.29.19-.86.16-1.45-.08-.77-.31-1.52-.93-2.65-.93s-1.88.62-2.65.93c-.59.24-1.16.27-1.45.08-.19-.13-.23-.36-.04-.6.37-.48.66-1.06.75-1.44.02-.08-.01-.15-.07-.2-.87-.6-1.55-1.5-1.55-2.84 0-2.05 1.52-3.5 4-3.5s4 1.45 4 3.5c0 1.34-.68 2.24-1.55 2.84-.06.05-.09.12-.07.2.09.38.38.96.75 1.44.2.24.16.47-.02.6z"/>
-          </svg>
+        <button
+          class="btn-reserve snap-trigger header-cta"
+          type="button"
+          aria-label="Réserver sur Snapchat"
+        >
           Snapchat
         </button>
-        <button class="btn-ghost insta-trigger" aria-label="Voir sur Instagram">Instagram</button>
+
+        <button
+          class="nav-burger"
+          id="navBurger"
+          type="button"
+          aria-label="Ouvrir le menu mobile"
+          aria-controls="mobileNav"
+          aria-expanded="false"
+        >
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </button>
       </div>
     </div>
-  </section>
 
+    <nav
+      class="mobile-nav"
+      id="mobileNav"
+      aria-label="Navigation mobile"
+      aria-hidden="true"
+    >
+      <a href="#stock" class="mobile-link">Stock</a>
+      <a href="#outfits" class="mobile-link">Outfits</a>
+      <a href="#how" class="mobile-link">Comment commander</a>
+      <a href="#contact" class="mobile-link">Contact</a>
+
+      <button
+        class="mobile-link mobile-change-catalogue"
+        id="mobileChangeCatalogueBtn"
+        type="button"
+        aria-label="Changer de catalogue Homme ou Femme"
+        hidden
+      >
+        Changer de catalogue
+      </button>
+
+      <button
+        class="btn-reserve full snap-trigger"
+        type="button"
+        aria-label="Réserver sur Snapchat"
+      >
+        Réserver sur Snapchat
+      </button>
+    </nav>
+  </header>
+
+  <main>
+    <!-- ═══════════════════════════════════════════════
+         ÉCRAN D’ENTRÉE HOMME / FEMME
+    ═══════════════════════════════════════════════ -->
+    <section
+      class="gender-gate"
+      id="genderGate"
+      aria-label="Choix du catalogue VISION"
+    >
+      <div class="gender-bg" aria-hidden="true">
+        <div class="gender-grid"></div>
+        <div class="gender-glow gender-glow-primary"></div>
+        <div class="gender-glow gender-glow-secondary"></div>
+        <div class="gender-noise"></div>
+      </div>
+
+      <div class="gender-content">
+        <p class="gender-kicker">Accès privé</p>
+
+        <h1 class="gender-title" aria-label="VISION">
+          <span>VISION</span>
+        </h1>
+
+        <p class="gender-subtitle">
+          Stock privé · Drops limités · Réservation Snapchat
+        </p>
+
+        <p class="gender-intro">
+          Choisis ton catalogue et accède directement aux produits disponibles,
+          aux looks complets et aux réservations rapides.
+        </p>
+
+        <div class="gender-choices" role="list" aria-label="Choisir un catalogue">
+          <button
+            class="gender-card gender-card-homme"
+            id="choiceHomme"
+            type="button"
+            data-catalogue="homme"
+            aria-label="Voir le stock homme"
+          >
+            <span class="gender-card-media" aria-hidden="true">
+              <img
+                src="assets/brand/hero-homme.jpg"
+                alt=""
+                loading="eager"
+                decoding="async"
+              />
+              <span class="gender-card-overlay"></span>
+            </span>
+
+            <span class="gender-card-content">
+              <span class="gender-card-badge">Catalogue</span>
+              <span class="gender-card-title">HOMME</span>
+              <span class="gender-card-text">
+                Sélection streetwear, essentiels premium et outfits prêts.
+              </span>
+
+              <span class="gender-card-meta" aria-hidden="true">
+                <span>Stock limité</span>
+                <span>Photos réelles</span>
+                <span>Snap direct</span>
+              </span>
+
+              <span class="gender-card-cta">
+                Voir le stock homme
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </span>
+            </span>
+          </button>
+
+          <button
+            class="gender-card gender-card-femme"
+            id="choiceFemme"
+            type="button"
+            data-catalogue="femme"
+            aria-label="Voir le stock femme"
+          >
+            <span class="gender-card-media" aria-hidden="true">
+              <img
+                src="assets/brand/hero-femme.jpg"
+                alt=""
+                loading="eager"
+                decoding="async"
+              />
+              <span class="gender-card-overlay"></span>
+            </span>
+
+            <span class="gender-card-content">
+              <span class="gender-card-badge">Catalogue</span>
+              <span class="gender-card-title">FEMME</span>
+              <span class="gender-card-text">
+                Pièces sélectionnées, looks complets et drops privés.
+              </span>
+
+              <span class="gender-card-meta" aria-hidden="true">
+                <span>Outfits</span>
+                <span>Dernières pièces</span>
+                <span>Snap direct</span>
+              </span>
+
+              <span class="gender-card-cta">
+                Voir le stock femme
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </span>
+            </span>
+          </button>
+        </div>
+
+        <div class="gender-trust" aria-label="Informations de confiance">
+          <span>Photos réelles</span>
+          <span aria-hidden="true">·</span>
+          <span>Stock selon disponibilité</span>
+          <span aria-hidden="true">·</span>
+          <span>Réservation directe</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         APPLICATION CATALOGUE
+    ═══════════════════════════════════════════════ -->
+    <div class="app-shell" id="appShell" aria-hidden="true" hidden>
+      <!-- ═══════════════════════════════════════════════
+           HERO CATALOGUE DYNAMIQUE
+      ═══════════════════════════════════════════════ -->
+      <section
+        class="catalogue-hero"
+        id="catalogueHero"
+        aria-label="Catalogue VISION sélectionné"
+      >
+        <div class="catalogue-hero-bg" aria-hidden="true">
+          <div class="catalogue-hero-grid"></div>
+          <div class="catalogue-hero-glow"></div>
+          <div class="catalogue-hero-orbit"></div>
+        </div>
+
+        <div class="catalogue-hero-content">
+          <p class="catalogue-hero-kicker">Stock privé actif</p>
+
+          <h2 class="hero-title" id="heroTitle" aria-live="polite">
+            VISION
+          </h2>
+
+          <p class="hero-subtitle" id="heroSubtitle" aria-live="polite">
+            Stock privé · Photos réelles · Réservation directe
+          </p>
+
+          <div class="hero-badges" aria-label="Avantages du catalogue">
+            <span class="hero-badge">
+              <span class="hero-badge-dot" aria-hidden="true"></span>
+              Photos réelles
+            </span>
+            <span class="hero-badge">
+              <span class="hero-badge-dot" aria-hidden="true"></span>
+              Stock limité
+            </span>
+            <span class="hero-badge">
+              <span class="hero-badge-dot" aria-hidden="true"></span>
+              Réservation directe
+            </span>
+          </div>
+
+          <div class="hero-stats" aria-label="Nombre d'articles disponibles">
+            <span class="hero-count" id="heroCount" aria-live="polite">—</span>
+            <span class="hero-count-label">articles disponibles</span>
+          </div>
+
+          <div class="catalogue-hero-actions">
+            <a href="#stock" class="btn-hero" aria-label="Voir le stock privé">
+              Voir le stock
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M12 5v14M5 12l7 7 7-7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </a>
+
+            <a href="#outfits" class="btn-ghost btn-hero-secondary" aria-label="Voir les outfits VISION">
+              Voir les outfits
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════════════
+           SECTION CATALOGUE PRODUITS
+      ═══════════════════════════════════════════════ -->
+      <section class="catalog" id="stock" aria-label="Catalogue produits VISION">
+        <div class="section-head catalog-head">
+          <span class="section-eyebrow">Catalogue</span>
+          <h2 class="section-title">Stock privé</h2>
+          <p class="section-sub">
+            Sélection disponible selon arrivage. Recherche, filtre et réserve directement.
+          </p>
+        </div>
+
+        <div class="catalog-controls" aria-label="Filtres et recherche catalogue">
+          <div
+            class="filter-bar"
+            id="filterBar"
+            role="tablist"
+            aria-label="Filtrer le catalogue"
+          >
+            <!-- Filtres alimentés par script.js -->
+          </div>
+
+          <div class="search-row">
+            <div class="search-wrap">
+              <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <circle cx="11" cy="11" r="7.5" stroke="currentColor" stroke-width="2.3" />
+                <path d="M16.5 16.5 21 21" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" />
+              </svg>
+
+              <label class="sr-only" for="searchInput">Rechercher un article</label>
+              <input
+                type="search"
+                class="search-input"
+                id="searchInput"
+                placeholder="Rechercher un article, une taille, une couleur…"
+                autocomplete="off"
+                autocorrect="off"
+                spellcheck="false"
+                aria-label="Rechercher un article"
+              />
+            </div>
+
+            <span class="result-count" id="resultCount" aria-live="polite">
+              —
+            </span>
+          </div>
+        </div>
+
+        <div
+          class="product-grid"
+          id="productGrid"
+          role="list"
+          aria-label="Articles du catalogue"
+        >
+          <!-- Produits alimentés par script.js -->
+        </div>
+
+        <div class="empty-state" id="emptyState" hidden aria-live="polite">
+          <span class="empty-glyph" aria-hidden="true">◎</span>
+          <h3>Aucun article trouvé</h3>
+          <p>Modifie ta recherche ou reviens sur l’ensemble du stock.</p>
+          <button
+            class="btn-ghost"
+            type="button"
+            data-action="reset-filters"
+            aria-label="Afficher tout le stock"
+          >
+            Tout voir
+          </button>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════════════
+           SECTION OUTFITS VISION
+      ═══════════════════════════════════════════════ -->
+      <section class="outfits-section" id="outfits" aria-label="Outfits VISION">
+        <div class="outfits-bg" aria-hidden="true">
+          <div class="outfits-glow"></div>
+        </div>
+
+        <div class="section-head outfits-head">
+          <span class="section-eyebrow">LOOKS COMPLETS</span>
+          <h2 class="section-title">Outfits VISION</h2>
+          <p class="section-sub">
+            Réduction immédiate sur les tenues complètes.
+          </p>
+          <p class="section-note">
+            Looks complets avec haut, bas, chaussures et accessoires selon disponibilité.
+          </p>
+        </div>
+
+        <div
+          class="outfits-grid"
+          id="outfitsGrid"
+          role="list"
+          aria-label="Looks complets VISION"
+        >
+          <!-- Outfits alimentés par script.js -->
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════════════
+           SECTION COMMENT COMMANDER
+      ═══════════════════════════════════════════════ -->
+      <section class="section-process" id="how" aria-label="Comment commander sur VISION">
+        <div class="section-head process-head">
+          <span class="section-eyebrow">Process</span>
+          <h2 class="section-title">Comment commander</h2>
+          <p class="section-sub">
+            Un parcours simple, rapide et pensé pour Snapchat.
+          </p>
+        </div>
+
+        <div class="process-grid" role="list">
+          <article class="process-card" role="listitem">
+            <span class="process-num" aria-hidden="true">01</span>
+            <h3>Choisis ton catalogue</h3>
+            <p>Homme ou Femme, le stock s’adapte directement à ton choix.</p>
+          </article>
+
+          <article class="process-card" role="listitem">
+            <span class="process-num" aria-hidden="true">02</span>
+            <h3>Sélectionne ton article</h3>
+            <p>Ouvre la fiche, vérifie les tailles, couleurs et disponibilités.</p>
+          </article>
+
+          <article class="process-card" role="listitem">
+            <span class="process-num" aria-hidden="true">03</span>
+            <h3>Réserve sur Snapchat</h3>
+            <p>Le message est préparé automatiquement pour une demande rapide.</p>
+          </article>
+
+          <article class="process-card" role="listitem">
+            <span class="process-num" aria-hidden="true">04</span>
+            <h3>Confirmation & réception</h3>
+            <p>La réservation est confirmée selon disponibilité du stock.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════════════
+           SECTION CONTACT
+      ═══════════════════════════════════════════════ -->
+      <section class="section-contact" id="contact" aria-label="Contact VISION">
+        <div class="contact-inner">
+          <span class="contact-logo" aria-label="VISION">VISION</span>
+          <p class="contact-sub">Stock privé · Réservation directe</p>
+          <p class="contact-copy">Réponse rapide selon disponibilité.</p>
+
+          <div class="contact-actions">
+            <button
+              class="btn-reserve snap-trigger"
+              type="button"
+              aria-label="Contacter VISION sur Snapchat"
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2Zm4.1 14.08c-.29.19-.86.16-1.45-.08-.77-.31-1.52-.93-2.65-.93s-1.88.62-2.65.93c-.59.24-1.16.27-1.45.08-.19-.13-.23-.36-.04-.6.37-.48.66-1.06.75-1.44.02-.08-.01-.15-.07-.2-.87-.6-1.55-1.5-1.55-2.84 0-2.05 1.52-3.5 4-3.5s4 1.45 4 3.5c0 1.34-.68 2.24-1.55 2.84-.06.05-.09.12-.07.2.09.38.38.96.75 1.44.2.24.16.47-.02.6Z" />
+              </svg>
+              Snapchat
+            </button>
+
+            <button
+              class="btn-ghost insta-trigger"
+              type="button"
+              aria-label="Voir VISION sur Instagram"
+            >
+              Instagram
+            </button>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
 
   <!-- ═══════════════════════════════════════════════
        FOOTER
   ═══════════════════════════════════════════════ -->
   <footer class="footer" role="contentinfo">
     <span class="footer-logo">VISION</span>
-    <span class="footer-note">Stock selon disponibilité · Photos réelles · Prix indicatifs</span>
+    <span class="footer-note">
+      Stock selon disponibilité · Photos réelles · Prix indicatifs
+    </span>
   </footer>
-
 
   <!-- ═══════════════════════════════════════════════
        MODAL PRODUIT
@@ -266,36 +529,83 @@
     aria-hidden="true"
   >
     <div class="modal" id="modal">
-      <button class="modal-close" id="modalClose" aria-label="Fermer">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
-          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+      <button
+        class="modal-close"
+        id="modalClose"
+        type="button"
+        aria-label="Fermer la fiche produit"
+      >
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M18 6 6 18M6 6l12 12" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" />
         </svg>
       </button>
-      <!-- Contenu populé par JS -->
-      <div id="modalContent" class="modal-content"></div>
+
+      <div class="modal-content" id="modalContent">
+        <!-- Contenu produit alimenté par script.js -->
+      </div>
     </div>
   </div>
 
+  <!-- ═══════════════════════════════════════════════
+       MODAL OUTFIT
+  ═══════════════════════════════════════════════ -->
+  <div
+    class="modal-overlay outfit-modal-overlay"
+    id="outfitModalOverlay"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Détail outfit VISION"
+    aria-hidden="true"
+  >
+    <div class="modal outfit-modal" id="outfitModal">
+      <button
+        class="modal-close"
+        id="outfitModalClose"
+        type="button"
+        aria-label="Fermer la fiche outfit"
+      >
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M18 6 6 18M6 6l12 12" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" />
+        </svg>
+      </button>
+
+      <div class="modal-content outfit-modal-content" id="outfitModalContent">
+        <!-- Contenu outfit alimenté par script.js -->
+      </div>
+    </div>
+  </div>
 
   <!-- ═══════════════════════════════════════════════
-       TOAST — notification clipboard
+       TOAST
   ═══════════════════════════════════════════════ -->
-  <div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true"></div>
-
+  <div
+    class="toast"
+    id="toast"
+    role="status"
+    aria-live="polite"
+    aria-atomic="true"
+  ></div>
 
   <!-- ═══════════════════════════════════════════════
-       STICKY CTA — mobile toujours visible
+       STICKY CTA MOBILE
   ═══════════════════════════════════════════════ -->
-  <div class="sticky" id="sticky" aria-hidden="true">
-    <button class="sticky-btn snap-trigger" id="stickyBtn" aria-label="Réserver sur Snapchat">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.1 14.08c-.29.19-.86.16-1.45-.08-.77-.31-1.52-.93-2.65-.93s-1.88.62-2.65.93c-.59.24-1.16.27-1.45.08-.19-.13-.23-.36-.04-.6.37-.48.66-1.06.75-1.44.02-.08-.01-.15-.07-.2-.87-.6-1.55-1.5-1.55-2.84 0-2.05 1.52-3.5 4-3.5s4 1.45 4 3.5c0 1.34-.68 2.24-1.55 2.84-.06.05-.09.12-.07.2.09.38.38.96.75 1.44.2.24.16.47-.02.6z"/>
-      </svg>
-      <span id="stickyLabel">Réserver sur Snapchat</span>
+  <div class="sticky" id="sticky" aria-hidden="false">
+    <button
+      class="sticky-btn"
+      id="stickyBtn"
+      type="button"
+      aria-label="Choisir mon catalogue"
+    >
+      <span class="sticky-icon" aria-hidden="true">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none">
+          <path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" />
+        </svg>
+      </span>
+      <span id="stickyLabel">Choisir mon catalogue</span>
     </button>
   </div>
 
-
+  <!-- Scripts -->
   <script src="script.js"></script>
 </body>
 </html>
