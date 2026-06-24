@@ -641,8 +641,10 @@ input, select { font: inherit; }
 /* Filter tabs */
 .filter-bar {
   display: flex;
-  gap: 0;
+  gap: 6px;
   overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x proximity;
   scrollbar-width: none;
   -ms-overflow-style: none;
   padding: 12px 20px 0;
@@ -657,6 +659,7 @@ input, select { font: inherit; }
 
 .filter-tab {
   flex-shrink: 0;
+  min-height: 42px;
   padding: 8px 16px 10px;
   background: transparent;
   color: var(--text-2);
@@ -670,6 +673,7 @@ input, select { font: inherit; }
   cursor: pointer;
   transition: all var(--dur) var(--ease);
   white-space: nowrap;
+  scroll-snap-align: start;
   -webkit-tap-highlight-color: transparent;
 }
 
@@ -678,6 +682,23 @@ input, select { font: inherit; }
 .filter-tab.active {
   color: var(--gold);
   border-bottom-color: var(--gold);
+}
+
+.filter-tab-pack {
+  margin-bottom: 6px;
+  padding: 7px 14px;
+  min-height: 34px;
+  align-self: center;
+  border: 1px solid var(--gold-border);
+  border-radius: 999px;
+  background: var(--gold-dim);
+  color: var(--gold-bright);
+}
+
+.filter-tab-pack.active {
+  border-color: var(--gold);
+  background: var(--gold);
+  color: #060606;
 }
 
 /* Ligne search + count */
@@ -788,16 +809,26 @@ input, select { font: inherit; }
 /* Zone image */
 .card-img-wrap {
   position: relative;
-  aspect-ratio: 3 / 4;
+  aspect-ratio: 4 / 5;
   overflow: hidden;
-  background: var(--surface);
+  background: #070707;
   flex-shrink: 0;
+}
+
+.card-img-wrap::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(to bottom, transparent 68%, rgba(0, 0, 0, .18));
 }
 
 .card-img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  object-position: center center;
   transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
   display: block;
   loading: lazy;
@@ -847,11 +878,13 @@ input, select { font: inherit; }
   letter-spacing: 0.1em;
   text-transform: uppercase;
   line-height: 1.6;
+  z-index: 2;
 }
 
 .status-high   { background: var(--green-bg);   color: var(--green); border: 1px solid var(--green-border); }
 .status-medium { background: var(--muted-bg);   color: var(--text-2); border: 1px solid var(--muted-border); }
 .status-low    { background: var(--amber-bg);   color: var(--amber); border: 1px solid var(--amber-border); }
+.status-inquiry{ background: rgba(201, 165, 90, .12); color: var(--gold-bright); border: 1px solid var(--gold-border); }
 .status-reserved{ background: var(--red-bg);    color: var(--red);   border: 1px solid var(--red-border); }
 .status-soon   { background: var(--muted-bg);   color: var(--text-3); border: 1px solid var(--muted-border); }
 
@@ -869,6 +902,7 @@ input, select { font: inherit; }
   font-weight: 800;
   letter-spacing: 0.12em;
   text-transform: uppercase;
+  z-index: 2;
 }
 
 /* Corps de la carte */
@@ -897,6 +931,11 @@ input, select { font: inherit; }
   color: var(--text);
   line-height: 1.25;
   letter-spacing: 0.01em;
+  display: -webkit-box;
+  min-height: 2.5em;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 }
 
 .card-sizes {
@@ -905,6 +944,9 @@ input, select { font: inherit; }
   font-weight: 500;
   letter-spacing: 0.06em;
   color: var(--text-3);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 /* Pied de carte */
@@ -923,6 +965,15 @@ input, select { font: inherit; }
   color: var(--gold);
   letter-spacing: -0.01em;
   line-height: 1;
+}
+
+.card-price.price-on-request {
+  display: block;
+  max-width: 76px;
+  font-size: 8px;
+  line-height: 1.25;
+  letter-spacing: .07em;
+  text-transform: uppercase;
 }
 
 .card-old-price {
@@ -985,6 +1036,7 @@ input, select { font: inherit; }
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
   padding: 64px 20px;
+  scroll-margin-top: calc(var(--offset) + 12px);
 }
 
 @media (min-width: 768px) {
@@ -1434,15 +1486,16 @@ input, select { font: inherit; }
 /* Image modal */
 .modal-img-wrap {
   position: relative;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 4 / 5;
   overflow: hidden;
-  background: var(--surface);
+  background: #050505;
 }
 
 .modal-img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  object-position: center center;
   display: block;
 }
 
@@ -1556,6 +1609,11 @@ input, select { font: inherit; }
   color: var(--gold);
   letter-spacing: -0.02em;
   line-height: 1;
+}
+
+.modal-price.price-on-request {
+  font-size: 17px;
+  letter-spacing: .02em;
 }
 
 .modal-old-price {
@@ -2146,7 +2204,7 @@ body.gate-open { overflow: hidden; }
 
 .pack-img-wrap {
   position: relative;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 4 / 5;
   overflow: hidden;
   background: #0b0b0b;
   border-bottom: 1px solid var(--gold-border);
@@ -2156,6 +2214,7 @@ body.gate-open { overflow: hidden; }
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center center;
   transition: transform .5s var(--ease);
 }
 
@@ -2200,6 +2259,11 @@ body.gate-open { overflow: hidden; }
 .pack-desc { margin-bottom: 12px; }
 .pack-items { margin-bottom: 14px; }
 .pack-pricing { margin-bottom: 14px; }
+
+.pack-price.price-on-request {
+  font-size: 17px;
+  letter-spacing: .01em;
+}
 
 /* ─── CONVERSION COURTE ─────────────────────────────── */
 .conversion-strip {
@@ -2540,9 +2604,9 @@ body.gate-open { overflow: hidden; }
 
 .audience-choice .choice-letter { opacity: .42; }
 
-/* Le catalogue n'expose qu'un seul onglet premium. */
+/* Navigation catalogue — filtres tactiles et défilement horizontal mobile. */
 .filter-bar { padding-bottom: 0; }
-.filter-tab { pointer-events: none; }
+.filter-tab { pointer-events: auto; }
 
 @media (max-width: 580px) {
   .brand-lockup-gate { gap: 7px; }
