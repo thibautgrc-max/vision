@@ -34,6 +34,7 @@ const STATUS = {
   high:     { label: 'Disponible',       css: 'status-high',     available: true  },
   medium:   { label: 'Disponible',       css: 'status-medium',   available: true  },
   low:      { label: 'Stock limité',      css: 'status-low',      available: true  },
+  inquiry:  { label: 'Sur demande',       css: 'status-inquiry',  available: true  },
   reserved: { label: 'Réservé',          css: 'status-reserved', available: false },
   soon:     { label: 'Bientôt',          css: 'status-soon',     available: false },
 };
@@ -43,106 +44,283 @@ const STATUS = {
    ③ PRODUITS
 
    audience : 'homme' ou 'femme'
-   image    : déposer les photos dans assets/products/homme|femme
+   group    : clothing | fragrance | accessories
+   image    : déposer les photos dans assets/products/men|women
    gallery  : ajouter plusieurs chemins pour la galerie produit
    ───────────────────────────────────────────────────────────────── */
 const PRODUCTS = [
   {
-    id: 'VH-001', audience: 'homme', name: 'Ensemble Carbone', category: 'Ensembles',
-    price: 69, oldPrice: 82, sizes: ['S', 'M', 'L', 'XL'], colors: ['Noir profond'],
-    stockLevel: 'low', image: '', gallery: [],
-    description: 'Sweat zippé et pantalon coordonné. Une silhouette monochrome nette, facile à porter complète ou séparée.',
-    material: 'Coton dense 320 g', fit: 'Coupe droite', detail: 'Zip métal · bas ajustable',
-    featured: true, topRequested: true, isNew: false,
+    id: 'VH-001', audience: 'homme', group: 'accessories', name: 'Enceinte Charge 6 — Noir', category: 'Audio',
+    price: null, oldPrice: null, sizes: ['Unique'], colors: ['Noir'],
+    stockLevel: 'inquiry', image: 'assets/products/men/speaker-charge6-black.jpg', gallery: [],
+    description: 'Enceinte portable au format généreux, présentée avec son coffret dans une finition noire discrète et premium.',
+    material: 'Finition textile', fit: 'Format portable', detail: 'Bluetooth · autonomie annoncée 28 h',
+    featured: true, topRequested: true, isNew: true,
   },
   {
-    id: 'VH-002', audience: 'homme', name: 'T-Shirt Heavy Frame', category: 'T-shirts',
-    price: 29, oldPrice: null, sizes: ['S', 'M', 'L', 'XL', 'XXL'], colors: ['Blanc cassé', 'Noir'],
-    stockLevel: 'high', image: '', gallery: [],
-    description: 'T-shirt lourd avec une épaule tombante et un col renforcé qui conserve sa forme.',
-    material: 'Jersey 240 g', fit: 'Oversize', detail: 'Col côtelé renforcé',
+    id: 'VH-002', audience: 'homme', group: 'accessories', name: 'Enceinte Charge 6 — Bleu', category: 'Audio',
+    price: null, oldPrice: null, sizes: ['Unique'], colors: ['Bleu nuit'],
+    stockLevel: 'inquiry', image: 'assets/products/men/speaker-charge6-blue.jpg', gallery: [],
+    description: 'La version bleu nuit de l’enceinte portable, mise en scène avec son coffret pour une lecture produit immédiate.',
+    material: 'Finition textile', fit: 'Format portable', detail: 'Bluetooth · autonomie annoncée 28 h',
     featured: false, topRequested: false, isNew: true,
   },
   {
-    id: 'VH-003', audience: 'homme', name: 'Cargo Système', category: 'Bas',
-    price: 49, oldPrice: 59, sizes: ['38', '40', '42', '44'], colors: ['Anthracite'],
-    stockLevel: 'medium', image: '', gallery: [],
-    description: 'Cargo fonctionnel équilibré entre volume streetwear et ligne fuselée.',
-    material: 'Ripstop technique', fit: 'Relaxed taper', detail: '6 poches · chevilles ajustables',
-    featured: false, topRequested: false, isNew: false,
-  },
-  {
-    id: 'VH-004', audience: 'homme', name: 'Runner Axis', category: 'Chaussures',
-    price: 79, oldPrice: 95, sizes: ['40', '41', '42', '43', '44', '45'], colors: ['Gris / Crème'],
-    stockLevel: 'low', image: '', gallery: [],
-    description: 'Runner graphique avec semelle sculptée, confortable au quotidien et forte visuellement.',
-    material: 'Mesh technique', fit: 'Taille normalement', detail: 'Semelle épaisse · laçage rapide',
-    featured: true, topRequested: true, isNew: false,
-  },
-  {
-    id: 'VH-005', audience: 'homme', name: 'Veste Utility 02', category: 'Vestes',
-    price: 65, oldPrice: null, sizes: ['M', 'L', 'XL'], colors: ['Kaki minéral'],
-    stockLevel: 'medium', image: '', gallery: [],
-    description: 'Veste courte et structurée qui donne immédiatement plus de présence à la silhouette.',
-    material: 'Toile structurée', fit: 'Boxy', detail: 'Poches plaquées · zip métal',
+    id: 'VH-003', audience: 'homme', group: 'accessories', name: 'Enceinte Charge 6 — Blanc', category: 'Audio',
+    price: null, oldPrice: null, sizes: ['Unique'], colors: ['Blanc'],
+    stockLevel: 'inquiry', image: 'assets/products/men/speaker-charge6-white.jpg', gallery: [],
+    description: 'Une finition blanche lumineuse et épurée, accompagnée de son coffret et pensée pour un univers plus minimal.',
+    material: 'Finition textile', fit: 'Format portable', detail: 'Bluetooth · autonomie annoncée 28 h',
     featured: false, topRequested: false, isNew: true,
   },
   {
-    id: 'VH-006', audience: 'homme', name: 'Sac Transit', category: 'Accessoires',
-    price: 35, oldPrice: null, sizes: ['Unique'], colors: ['Noir'],
-    stockLevel: 'high', image: '', gallery: [],
-    description: 'Format compact avec trois compartiments pour garder l’essentiel accessible.',
-    material: 'Nylon déperlant', fit: 'Bandoulière réglable', detail: '3 compartiments sécurisés',
-    featured: false, topRequested: false, isNew: false,
+    id: 'VH-004', audience: 'homme', group: 'accessories', name: 'Casque Max — Bleu nuit', category: 'Casques',
+    price: null, oldPrice: null, sizes: ['Unique'], colors: ['Bleu nuit'],
+    stockLevel: 'inquiry', image: 'assets/products/men/headphones-max-midnight.jpg', gallery: [],
+    description: 'Casque circum-aural présenté avec son étui et son coffret, dans une finition bleu nuit profonde.',
+    material: 'Arceau textile · coques satinées', fit: 'Circum-aural', detail: 'Étui de transport inclus',
+    featured: true, topRequested: true, isNew: true,
+  },
+  {
+    id: 'VH-005', audience: 'homme', group: 'accessories', name: 'Casque Max — Argent', category: 'Casques',
+    price: null, oldPrice: null, sizes: ['Unique'], colors: ['Argent'],
+    stockLevel: 'inquiry', image: 'assets/products/men/headphones-max-silver.jpg', gallery: [],
+    description: 'Casque circum-aural dans une finition argent clair, livré avec son étui et présenté dans un décor sobre.',
+    material: 'Arceau textile · coques satinées', fit: 'Circum-aural', detail: 'Étui de transport inclus',
+    featured: false, topRequested: false, isNew: true,
+  },
+  {
+    id: 'VH-006', audience: 'homme', group: 'accessories', name: 'Casque Max — Or', category: 'Casques',
+    price: null, oldPrice: null, sizes: ['Unique'], colors: ['Or'],
+    stockLevel: 'inquiry', image: 'assets/products/men/headphones-max-gold.jpg', gallery: [],
+    description: 'Une déclinaison dorée au rendu chaleureux, avec étui coordonné et coffret de présentation.',
+    material: 'Arceau textile · coques satinées', fit: 'Circum-aural', detail: 'Étui de transport inclus',
+    featured: true, topRequested: false, isNew: true,
+  },
+  {
+    id: 'VH-007', audience: 'homme', group: 'accessories', name: 'Casque Max — Graphite', category: 'Casques',
+    price: null, oldPrice: null, sizes: ['Unique'], colors: ['Graphite'],
+    stockLevel: 'inquiry', image: 'assets/products/men/headphones-max-graphite.jpg', gallery: [],
+    description: 'Casque circum-aural graphite au rendu technique et discret, accompagné de son étui de transport.',
+    material: 'Arceau textile · coques satinées', fit: 'Circum-aural', detail: 'Étui de transport inclus',
+    featured: false, topRequested: false, isNew: true,
+  },
+  {
+    id: 'VH-008', audience: 'homme', group: 'accessories', name: 'Casque Max — Cuivre', category: 'Casques',
+    price: null, oldPrice: null, sizes: ['Unique'], colors: ['Cuivre'],
+    stockLevel: 'inquiry', image: 'assets/products/men/headphones-max-copper.jpg', gallery: [],
+    description: 'Une finition cuivre expressive, mise en valeur par un cadrage produit complet avec étui et coffret.',
+    material: 'Arceau textile · coques satinées', fit: 'Circum-aural', detail: 'Étui de transport inclus',
+    featured: false, topRequested: false, isNew: true,
+  },
+  {
+    id: 'VH-009', audience: 'homme', group: 'fragrance', name: 'Baccarat Rouge 540 — 70 ml', category: 'Parfums',
+    price: null, oldPrice: null, sizes: ['70 ml'], colors: ['Rouge · Or'],
+    stockLevel: 'inquiry', image: 'assets/products/men/fragrance-baccarat-rouge-540.jpg', gallery: [],
+    description: 'Flacon Baccarat Rouge 540 présenté dans son écrin rouge et or, avec une mise en scène sombre et raffinée.',
+    material: 'Extrait de parfum', fit: 'Flacon 70 ml', detail: 'Écrin de présentation inclus',
+    featured: true, topRequested: true, isNew: true,
+  },
+  {
+    id: 'VH-010', audience: 'homme', group: 'fragrance', name: 'Bleu — 100 ml', category: 'Parfums',
+    price: null, oldPrice: null, sizes: ['100 ml'], colors: ['Bleu nuit'],
+    stockLevel: 'inquiry', image: 'assets/products/men/fragrance-bleu.jpg', gallery: [],
+    description: 'Flacon Bleu de Chanel présenté avec son coffret dans une composition bleu nuit très lisible.',
+    material: 'Eau de toilette', fit: 'Flacon 100 ml', detail: 'Coffret de présentation inclus',
+    featured: false, topRequested: false, isNew: true,
+  },
+  {
+    id: 'VH-011', audience: 'homme', group: 'fragrance', name: 'Sauvage — 100 ml', category: 'Parfums',
+    price: null, oldPrice: null, sizes: ['100 ml'], colors: ['Noir'],
+    stockLevel: 'inquiry', image: 'assets/products/men/fragrance-sauvage.jpg', gallery: [],
+    description: 'Flacon Sauvage présenté avec son coffret sur une matière sombre, pour une lecture masculine et directe.',
+    material: 'Eau de parfum', fit: 'Flacon 100 ml', detail: 'Coffret de présentation inclus',
+    featured: false, topRequested: true, isNew: true,
   },
 
   {
-    id: 'VF-001', audience: 'femme', name: 'Set Sculpt 01', category: 'Ensembles',
-    price: 62, oldPrice: 75, sizes: ['XS', 'S', 'M', 'L'], colors: ['Cacao'],
-    stockLevel: 'low', image: '', gallery: [],
-    description: 'Top manches longues et jupe midi. Une silhouette complète, sculptante et fluide.',
-    material: 'Maille double épaisseur', fit: 'Près du corps', detail: 'Taille haute · toucher doux',
-    featured: true, topRequested: true, isNew: false,
+    id: 'VF-001', audience: 'femme', group: 'clothing', name: 'Top Alo Sculpt — Bleu', category: 'Tops',
+    price: null, oldPrice: null, sizes: ['XS', 'S', 'M', 'L', 'XL'], colors: ['Bleu royal'],
+    stockLevel: 'inquiry', image: 'assets/products/women/top-alo-blue.jpg', gallery: [],
+    description: 'Top court à dos nageur et ligne athleisure nette, présenté dans une finition bleu royal intense.',
+    material: 'Jersey technique extensible', fit: 'Ajusté', detail: 'Dos nageur · maintien près du corps',
+    featured: true, topRequested: true, isNew: true,
   },
   {
-    id: 'VF-002', audience: 'femme', name: 'Top Asymmetry', category: 'Tops',
-    price: 27, oldPrice: null, sizes: ['XS', 'S', 'M', 'L'], colors: ['Ivoire', 'Noir'],
-    stockLevel: 'high', image: '', gallery: [],
-    description: 'Une ligne minimaliste avec une encolure asymétrique qui fonctionne de jour comme le soir.',
-    material: 'Jersey doux 220 g', fit: 'Ajusté', detail: 'Encolure asymétrique',
+    id: 'VF-002', audience: 'femme', group: 'clothing', name: 'Top Alo Rib — Rouge', category: 'Tops',
+    price: null, oldPrice: null, sizes: ['XS', 'S', 'M', 'L', 'XL'], colors: ['Rouge profond'],
+    stockLevel: 'inquiry', image: 'assets/products/women/top-alo-red.jpg', gallery: [],
+    description: 'Top court côtelé à dos nageur, pensé pour une silhouette sportive et structurée.',
+    material: 'Maille côtelée extensible', fit: 'Ajusté', detail: 'Finition côtelée · coupe courte',
     featured: false, topRequested: false, isNew: true,
   },
   {
-    id: 'VF-003', audience: 'femme', name: 'Jean Curve 90', category: 'Bas',
-    price: 48, oldPrice: 58, sizes: ['34', '36', '38', '40', '42'], colors: ['Bleu vintage'],
-    stockLevel: 'medium', image: '', gallery: [],
-    description: 'Jean taille haute à jambe droite, pensé pour allonger la silhouette sans la contraindre.',
-    material: 'Denim rigide', fit: 'Taille haute', detail: 'Jambe droite · longueur cheville',
-    featured: false, topRequested: false, isNew: false,
-  },
-  {
-    id: 'VF-004', audience: 'femme', name: 'Boot Halo', category: 'Chaussures',
-    price: 76, oldPrice: 89, sizes: ['36', '37', '38', '39', '40', '41'], colors: ['Noir'],
-    stockLevel: 'low', image: '', gallery: [],
-    description: 'Bottine nette et stable, suffisamment graphique pour terminer un look minimaliste.',
-    material: 'Fini cuir lisse', fit: 'Taille normalement', detail: 'Talon 7 cm · bout carré',
-    featured: true, topRequested: true, isNew: false,
-  },
-  {
-    id: 'VF-005', audience: 'femme', name: 'Blazer Frame', category: 'Vestes',
-    price: 68, oldPrice: null, sizes: ['XS', 'S', 'M', 'L'], colors: ['Gris graphite'],
-    stockLevel: 'medium', image: '', gallery: [],
-    description: 'Blazer à la structure précise, pensé pour fonctionner avec un denim ou en total look.',
-    material: 'Twill doublé', fit: 'Oversize structuré', detail: 'Épaules dessinées · croisé',
+    id: 'VF-003', audience: 'femme', group: 'clothing', name: 'Top Alo Rib — Vert', category: 'Tops',
+    price: null, oldPrice: null, sizes: ['XS', 'S', 'M', 'L', 'XL'], colors: ['Vert émeraude'],
+    stockLevel: 'inquiry', image: 'assets/products/women/top-alo-green.jpg', gallery: [],
+    description: 'La déclinaison vert émeraude du top côtelé, avec un volume compact et une présence visuelle forte.',
+    material: 'Maille côtelée extensible', fit: 'Ajusté', detail: 'Dos nageur · coupe courte',
     featured: false, topRequested: false, isNew: true,
   },
   {
-    id: 'VF-006', audience: 'femme', name: 'Mini Bag Orbit', category: 'Accessoires',
-    price: 39, oldPrice: 49, sizes: ['Unique'], colors: ['Bordeaux'],
-    stockLevel: 'high', image: '', gallery: [],
-    description: 'Mini sac compact à la couleur profonde, pensé comme le point final de l’outfit.',
-    material: 'Fini grainé', fit: 'Anse + bandoulière', detail: 'Fermoir métal · poche intérieure',
-    featured: false, topRequested: false, isNew: false,
+    id: 'VF-004', audience: 'femme', group: 'accessories', name: 'Supersonic — Noir', category: 'Beauté & Électronique',
+    price: null, oldPrice: null, sizes: ['Unique'], colors: ['Noir · Argent'],
+    stockLevel: 'inquiry', image: 'assets/products/women/hair-supersonic-black.jpg', gallery: [],
+    description: 'Sèche-cheveux Supersonic présenté avec son coffret et ses accessoires dans une finition noire sobre.',
+    material: 'Finition satinée', fit: 'Format coiffure', detail: 'Diffuseur · concentrateurs · étui',
+    featured: true, topRequested: true, isNew: true,
+  },
+  {
+    id: 'VF-005', audience: 'femme', group: 'accessories', name: 'Supersonic — Bleu & Cuivre', category: 'Beauté & Électronique',
+    price: null, oldPrice: null, sizes: ['Unique'], colors: ['Bleu nuit · Cuivre'],
+    stockLevel: 'inquiry', image: 'assets/products/women/hair-supersonic-blue-copper.jpg', gallery: [],
+    description: 'Version bleu nuit et cuivre du Supersonic, mise en scène avec son coffret et ses embouts.',
+    material: 'Finition satinée', fit: 'Format coiffure', detail: 'Diffuseur · concentrateurs · étui',
+    featured: false, topRequested: false, isNew: true,
+  },
+  {
+    id: 'VF-006', audience: 'femme', group: 'accessories', name: 'Airwrap Complete Long — Violet', category: 'Beauté & Électronique',
+    price: null, oldPrice: null, sizes: ['Unique'], colors: ['Violet · Cuivre'],
+    stockLevel: 'inquiry', image: 'assets/products/women/hair-airwrap-purple-copper.jpg', gallery: [],
+    description: 'Coffret coiffure Airwrap Complete Long avec plusieurs embouts et rangement coordonné violet.',
+    material: 'Finition satinée', fit: 'Coffret multi-styler', detail: 'Embouts coiffage · brosses · étui',
+    featured: true, topRequested: true, isNew: true,
+  },
+  {
+    id: 'VF-007', audience: 'femme', group: 'accessories', name: 'Airwrap Complete Long — Argent', category: 'Beauté & Électronique',
+    price: null, oldPrice: null, sizes: ['Unique'], colors: ['Argent · Cuivre'],
+    stockLevel: 'inquiry', image: 'assets/products/women/hair-airwrap-silver-copper.jpg', gallery: [],
+    description: 'Coffret Airwrap Complete Long argent et cuivre, présenté avec ses accessoires de coiffage.',
+    material: 'Finition métallisée', fit: 'Coffret multi-styler', detail: 'Embouts coiffage · brosses · étui',
+    featured: false, topRequested: false, isNew: true,
+  },
+  {
+    id: 'VF-008', audience: 'femme', group: 'accessories', name: 'Airstrait — Bleu & Or', category: 'Beauté & Électronique',
+    price: null, oldPrice: null, sizes: ['Unique'], colors: ['Bleu nuit · Or'],
+    stockLevel: 'inquiry', image: 'assets/products/women/hair-airstrait-blue-gold.jpg', gallery: [],
+    description: 'Lisseur-sécheur Airstrait présenté dans son étui rigide, finition bleu nuit et détails dorés.',
+    material: 'Finition satinée', fit: 'Format lisseur', detail: 'Étui rigide · câble intégré',
+    featured: false, topRequested: false, isNew: true,
+  },
+  {
+    id: 'VF-009', audience: 'femme', group: 'accessories', name: 'Airstrait — Rose', category: 'Beauté & Électronique',
+    price: null, oldPrice: null, sizes: ['Unique'], colors: ['Rose poudré'],
+    stockLevel: 'inquiry', image: 'assets/products/women/hair-airstrait-rose.jpg', gallery: [],
+    description: 'Déclinaison rose poudré du lisseur-sécheur Airstrait, accompagnée de son étui de rangement.',
+    material: 'Finition satinée', fit: 'Format lisseur', detail: 'Étui rigide · câble intégré',
+    featured: false, topRequested: false, isNew: true,
+  },
+  {
+    id: 'VF-010', audience: 'femme', group: 'clothing', name: 'Short Alo Flow — Noir', category: 'Shorts',
+    price: null, oldPrice: null, sizes: ['XS', 'S', 'M', 'L', 'XL'], colors: ['Noir'],
+    stockLevel: 'inquiry', image: 'assets/products/women/shorts-alo-black.jpg', gallery: [],
+    description: 'Short sport léger à taille élastiquée contrastée, conçu pour une silhouette athleisure épurée.',
+    material: 'Textile technique léger', fit: 'Coupe running', detail: 'Taille élastiquée · côtés arrondis',
+    featured: false, topRequested: false, isNew: true,
+  },
+  {
+    id: 'VF-011', audience: 'femme', group: 'clothing', name: 'Short Alo Flow — Blanc', category: 'Shorts',
+    price: null, oldPrice: null, sizes: ['XS', 'S', 'M', 'L', 'XL'], colors: ['Blanc'],
+    stockLevel: 'inquiry', image: 'assets/products/women/shorts-alo-white.jpg', gallery: [],
+    description: 'Version blanche du short Flow, avec taille noire contrastée et coupe sportive courte.',
+    material: 'Textile technique léger', fit: 'Coupe running', detail: 'Taille élastiquée · côtés arrondis',
+    featured: false, topRequested: false, isNew: true,
+  },
+  {
+    id: 'VF-012', audience: 'femme', group: 'clothing', name: 'Ensemble Alo Studio — Noir', category: 'Ensembles',
+    price: null, oldPrice: null, sizes: ['XS', 'S', 'M', 'L', 'XL'], colors: ['Noir'],
+    stockLevel: 'inquiry', image: 'assets/products/women/set-alo-black.jpg', gallery: [],
+    description: 'Ensemble deux pièces composé d’un t-shirt ajusté et d’un pantalon fluide à jambe large.',
+    material: 'Jersey souple', fit: 'Haut ajusté · bas fluide', detail: 'Deux pièces coordonnées',
+    featured: true, topRequested: true, isNew: true,
+  },
+  {
+    id: 'VF-013', audience: 'femme', group: 'accessories', name: 'Sandales H — Noir', category: 'Sandales',
+    price: null, oldPrice: null, sizes: ['35', '36', '37', '38', '39', '40', '41', '42'], colors: ['Noir'],
+    stockLevel: 'inquiry', image: 'assets/products/women/sandals-h-black.jpg', gallery: [],
+    description: 'Sandales plates noires à large découpe H, présentées dans un environnement marbre et orange.',
+    material: 'Finition cuir lisse', fit: 'Forme plate', detail: 'Large bride H · semelle noire',
+    featured: true, topRequested: true, isNew: true,
+  },
+  {
+    id: 'VF-014', audience: 'femme', group: 'clothing', name: 'Ensemble Alo Studio — Kaki', category: 'Ensembles',
+    price: null, oldPrice: null, sizes: ['XS', 'S', 'M', 'L', 'XL'], colors: ['Kaki minéral'],
+    stockLevel: 'inquiry', image: 'assets/products/women/set-alo-khaki.jpg', gallery: [],
+    description: 'Ensemble t-shirt ajusté et pantalon fluide dans une tonalité kaki douce et contemporaine.',
+    material: 'Jersey souple', fit: 'Haut ajusté · bas fluide', detail: 'Deux pièces coordonnées',
+    featured: false, topRequested: false, isNew: true,
+  },
+  {
+    id: 'VF-015', audience: 'femme', group: 'accessories', name: 'Sandales H — Blanc', category: 'Sandales',
+    price: null, oldPrice: null, sizes: ['35', '36', '37', '38', '39', '40', '41', '42'], colors: ['Blanc'],
+    stockLevel: 'inquiry', image: 'assets/products/women/sandals-h-white.jpg', gallery: [],
+    description: 'Sandales plates blanches à découpe H ton sur ton, dans une présentation nette et lumineuse.',
+    material: 'Finition cuir lisse', fit: 'Forme plate', detail: 'Large bride H · semelle blanche',
+    featured: false, topRequested: false, isNew: true,
+  },
+  {
+    id: 'VF-016', audience: 'femme', group: 'accessories', name: 'Sandales Lock — Blanc', category: 'Sandales',
+    price: null, oldPrice: null, sizes: ['35', '36', '37', '38', '39', '40', '41', '42'], colors: ['Blanc · Argent'],
+    stockLevel: 'inquiry', image: 'assets/products/women/sandals-lock-white.jpg', gallery: [],
+    description: 'Sandales blanches à double bride, soulignées par un fermoir métallique central.',
+    material: 'Finition cuir lisse', fit: 'Forme plate', detail: 'Double bride · fermoir métal',
+    featured: false, topRequested: false, isNew: true,
+  },
+  {
+    id: 'VF-017', audience: 'femme', group: 'accessories', name: 'Sandales H Strap — Écru', category: 'Sandales',
+    price: null, oldPrice: null, sizes: ['35', '36', '37', '38', '39', '40', '41', '42'], colors: ['Écru · Noir'],
+    stockLevel: 'inquiry', image: 'assets/products/women/sandals-h-contrast.jpg', gallery: [],
+    description: 'Sandales contrastées avec découpe H écrue, semelle noire et bride de maintien réglable.',
+    material: 'Finition cuir lisse', fit: 'Forme plate', detail: 'Bride H · maintien arrière',
+    featured: false, topRequested: false, isNew: true,
+  },
+  {
+    id: 'VF-018', audience: 'femme', group: 'clothing', name: 'Ensemble Alo Studio — Marine', category: 'Ensembles',
+    price: null, oldPrice: null, sizes: ['XS', 'S', 'M', 'L', 'XL'], colors: ['Bleu marine'],
+    stockLevel: 'inquiry', image: 'assets/products/women/set-alo-navy.jpg', gallery: [],
+    description: 'Ensemble coordonné bleu marine associant un haut ajusté et un pantalon fluide à jambe large.',
+    material: 'Jersey souple', fit: 'Haut ajusté · bas fluide', detail: 'Deux pièces coordonnées',
+    featured: false, topRequested: false, isNew: true,
+  },
+  {
+    id: 'VF-019', audience: 'femme', group: 'accessories', name: 'Sandales H — Brun', category: 'Sandales',
+    price: null, oldPrice: null, sizes: ['35', '36', '37', '38', '39', '40', '41', '42'], colors: ['Brun cognac'],
+    stockLevel: 'inquiry', image: 'assets/products/women/sandals-h-brown.jpg', gallery: [],
+    description: 'Sandales à découpe H dans une teinte brun cognac, rehaussées de surpiqûres claires.',
+    material: 'Finition cuir lisse', fit: 'Forme plate', detail: 'Bride H · surpiqûres contrastées',
+    featured: false, topRequested: false, isNew: true,
+  },
+  {
+    id: 'VF-020', audience: 'femme', group: 'accessories', name: 'Sandales Lock — Cognac', category: 'Sandales',
+    price: null, oldPrice: null, sizes: ['35', '36', '37', '38', '39', '40', '41', '42'], colors: ['Cognac · Or'],
+    stockLevel: 'inquiry', image: 'assets/products/women/sandals-lock-cognac.jpg', gallery: [],
+    description: 'Sandales cognac à double bride avec fermoir doré central et finitions ton sur ton.',
+    material: 'Finition cuir lisse', fit: 'Forme plate', detail: 'Double bride · fermoir doré',
+    featured: true, topRequested: false, isNew: true,
+  },
+  {
+    id: 'VF-021', audience: 'femme', group: 'clothing', name: 'Short Alo Flow — Marine', category: 'Shorts',
+    price: null, oldPrice: null, sizes: ['XS', 'S', 'M', 'L', 'XL'], colors: ['Bleu marine'],
+    stockLevel: 'inquiry', image: 'assets/products/women/shorts-alo-navy.jpg', gallery: [],
+    description: 'Short Flow bleu marine à taille contrastée, léger et pensé pour un usage sport ou quotidien.',
+    material: 'Textile technique léger', fit: 'Coupe running', detail: 'Taille élastiquée · côtés arrondis',
+    featured: false, topRequested: false, isNew: true,
+  },
+  {
+    id: 'VF-022', audience: 'femme', group: 'accessories', name: 'Sandales H — Noir Grainé', category: 'Sandales',
+    price: null, oldPrice: null, sizes: ['35', '36', '37', '38', '39', '40', '41', '42'], colors: ['Noir'],
+    stockLevel: 'inquiry', image: 'assets/products/women/sandals-h-black-marble.jpg', gallery: [],
+    description: 'Sandales noires à découpe H et finition légèrement grainée, photographiées sur un fond marbré.',
+    material: 'Finition grainée', fit: 'Forme plate', detail: 'Large bride H · semelle noire',
+    featured: false, topRequested: false, isNew: true,
+  },
+  {
+    id: 'VF-023', audience: 'femme', group: 'accessories', name: 'Sandales Lock — Noir', category: 'Sandales',
+    price: null, oldPrice: null, sizes: ['35', '36', '37', '38', '39', '40', '41', '42'], colors: ['Noir · Or'],
+    stockLevel: 'inquiry', image: 'assets/products/women/sandals-lock-black.jpg', gallery: [],
+    description: 'Sandales noires à double bride et fermoir doré, dans une composition élégante et contrastée.',
+    material: 'Finition cuir lisse', fit: 'Forme plate', detail: 'Double bride · fermoir doré',
+    featured: true, topRequested: true, isNew: true,
   },
 ];
 
@@ -152,28 +330,28 @@ const PRODUCTS = [
    ───────────────────────────────────────────────────────────────── */
 const PACKS = [
   {
-    id: 'PH-001', audience: 'homme', name: 'Total Shadow', label: 'Choix du drop', badgeType: 'best',
-    description: 'Le total look sombre, équilibré du haut aux accessoires.',
-    itemLabels: ['Ensemble Carbone', 'T-Shirt Heavy Frame', 'Sac Transit'],
-    sizes: ['S', 'M', 'L', 'XL'], price: 109, oldPrice: 133, stockLevel: 'low', image: '',
+    id: 'PH-001', audience: 'homme', name: 'Pack Audio Nomade', label: 'Pack privé', badgeType: 'best',
+    description: 'Le duo audio VISION : une enceinte portable et un casque coordonné dans une sélection sombre.',
+    itemLabels: ['Enceinte Charge 6 — Noir', 'Casque Max — Graphite'],
+    sizes: ['Pack unique'], price: null, oldPrice: null, stockLevel: 'inquiry', image: 'assets/products/men/speaker-charge6-black.jpg',
   },
   {
-    id: 'PH-002', audience: 'homme', name: 'Utility Axis', label: 'Économie 24€', badgeType: null,
-    description: 'Un outfit technique construit autour de volumes utilitaires.',
-    itemLabels: ['Veste Utility 02', 'Cargo Système', 'Runner Axis'],
-    sizes: ['M / 41', 'M / 42', 'L / 42', 'L / 43', 'XL / 44'], price: 169, oldPrice: 193, stockLevel: 'low', image: '',
+    id: 'PH-002', audience: 'homme', name: 'Duo Signature', label: 'Sélection parfum', badgeType: null,
+    description: 'Deux signatures olfactives dans un pack confidentiel, proposé directement sur demande.',
+    itemLabels: ['Bleu — 100 ml', 'Sauvage — 100 ml'],
+    sizes: ['Pack unique'], price: null, oldPrice: null, stockLevel: 'inquiry', image: 'assets/products/men/fragrance-bleu.jpg',
   },
   {
-    id: 'PF-001', audience: 'femme', name: 'Sculpt & Orbit', label: 'Choix du drop', badgeType: 'best',
-    description: 'Une silhouette cacao relevée par un mini sac bordeaux.',
-    itemLabels: ['Set Sculpt 01', 'Mini Bag Orbit'],
-    sizes: ['XS', 'S', 'M', 'L'], price: 89, oldPrice: 101, stockLevel: 'medium', image: '',
+    id: 'PF-001', audience: 'femme', name: 'Pack Active Noir', label: 'Tenue complète', badgeType: 'best',
+    description: 'Une silhouette complète et monochrome, prête à être réservée en un seul message.',
+    itemLabels: ['T-shirt Alo ajusté', 'Pantalon Alo fluide'],
+    sizes: ['XS', 'S', 'M', 'L', 'XL'], price: null, oldPrice: null, stockLevel: 'inquiry', image: 'assets/products/women/set-alo-black.jpg',
   },
   {
-    id: 'PF-002', audience: 'femme', name: 'City Frame', label: 'Économie 30€', badgeType: null,
-    description: 'Le vestiaire urbain complet : proportions fortes et bottine graphique.',
-    itemLabels: ['Blazer Frame', 'Top Asymmetry', 'Jean Curve 90', 'Boot Halo'],
-    sizes: ['S / 37', 'S / 38', 'M / 38', 'M / 39', 'L / 40'], price: 189, oldPrice: 219, stockLevel: 'low', image: '',
+    id: 'PF-002', audience: 'femme', name: 'Pack Active Kaki', label: 'Sélection privée', badgeType: null,
+    description: 'Le duo kaki coordonné pour une allure douce, sportive et immédiatement lisible.',
+    itemLabels: ['T-shirt Alo ajusté', 'Pantalon Alo fluide'],
+    sizes: ['XS', 'S', 'M', 'L', 'XL'], price: null, oldPrice: null, stockLevel: 'inquiry', image: 'assets/products/women/set-alo-khaki.jpg',
   },
 ];
 
@@ -182,7 +360,11 @@ const PACKS = [
    ⑤ FILTRES & ÉTAT
    ───────────────────────────────────────────────────────────────── */
 const SPECIAL_FILTERS = [
-  { key: 'all', label: 'Nouveauté Privé' },
+  { key: 'all',         label: 'Nouveautés' },
+  { key: 'clothing',    label: 'Vêtements' },
+  { key: 'fragrance',   label: 'Parfums' },
+  { key: 'accessories', label: 'Accessoires & Électroniques' },
+  { key: 'packs',       label: 'Packs complets' },
 ];
 
 const state = {
@@ -213,6 +395,18 @@ function escHtml(str = '') {
 
 function brandLockupHTML(className = 'brand-lockup-mini') {
   return `<span class="brand-lockup ${className}" aria-label="VISION"><img src="assets/brand/vision-logo.jpeg" alt="" width="28" height="28" /><span>VISION</span></span>`;
+}
+
+function hasKnownPrice(item) {
+  return Number.isFinite(item?.price) && item.price > 0;
+}
+
+function formatPrice(item) {
+  return hasKnownPrice(item) ? `${item.price}${CONFIG.currency}` : 'Prix sur demande';
+}
+
+function hasDiscount(item) {
+  return hasKnownPrice(item) && Number.isFinite(item?.oldPrice) && item.oldPrice > item.price;
 }
 
 function animateCounter(el, target, duration = 700) {
@@ -338,6 +532,9 @@ function getAvailableCount() {
 
 function getFilteredProducts() {
   return getAudienceProducts().filter(product => {
+    if (['clothing', 'fragrance', 'accessories'].includes(state.activeFilter) && product.group !== state.activeFilter) {
+      return false;
+    }
     if (state.searchQuery) {
       const query = state.searchQuery.toLocaleLowerCase('fr');
       const content = [
@@ -415,14 +612,18 @@ function buildOrderMessage(item, size, type, askOnly = false) {
     return `Salut VISION, je suis intéressé(e) par ${item.id} — ${item.name}. Peux-tu me confirmer les tailles, couleurs et la disponibilité ?`;
   }
   const sizeText = size ? ` — Taille ${size}` : '';
-  return [
+  const lines = [
     `Salut VISION, je souhaite réserver ce ${label} :`,
     `${item.id} — ${item.name}${sizeText}`,
-    `Prix catalogue : ${item.price}${CONFIG.currency}`,
+  ];
+  if (hasKnownPrice(item)) lines.push(`Prix catalogue : ${formatPrice(item)}`);
+  else lines.push('Je souhaite connaître le prix actuel.');
+  lines.push(
     `Univers : ${audienceLabel()}`,
     '',
     'Peux-tu me confirmer la disponibilité et la livraison ?',
-  ].join('\n');
+  );
+  return lines.join('\n');
 }
 
 
@@ -473,7 +674,7 @@ function openAudienceGate() {
    ⑧ TICKER, FILTRES, PRODUITS
    ───────────────────────────────────────────────────────────────── */
 function renderTicker() {
-  const items = ['DROP ACTIF', 'STOCK MIS À JOUR', 'PHOTOS RÉELLES', 'RÉSERVATION DIRECTE', 'STOCK PRIVÉ', 'OUTFITS PRIVÉS'];
+  const items = ['DROP ACTIF', 'STOCK MIS À JOUR', 'VISUELS PRODUITS', 'RÉSERVATION DIRECTE', 'STOCK PRIVÉ', 'PACKS COMPLETS'];
   const track = document.getElementById('tickerTrack');
   if (!track) return;
   track.innerHTML = [...items, ...items].map(item => `
@@ -485,7 +686,7 @@ function renderFilters() {
   const bar = document.getElementById('filterBar');
   if (!bar) return;
   bar.innerHTML = SPECIAL_FILTERS.map(filter => `
-    <button class="filter-tab ${state.activeFilter === filter.key ? 'active' : ''}"
+    <button class="filter-tab ${filter.key === 'packs' ? 'filter-tab-pack' : ''} ${state.activeFilter === filter.key ? 'active' : ''}"
       data-filter="${escHtml(filter.key)}" type="button" role="tab"
       aria-selected="${state.activeFilter === filter.key}">${escHtml(filter.label)}</button>
   `).join('');
@@ -512,21 +713,22 @@ function attachImageFallbacks(scope = document) {
 
 function renderProductCard(product) {
   const status = STATUS[product.stockLevel] || STATUS.medium;
-  const oldPrice = product.oldPrice ? `<span class="card-old-price">${product.oldPrice}${CONFIG.currency}</span>` : '';
+  const oldPrice = hasDiscount(product) ? `<span class="card-old-price">${product.oldPrice}${CONFIG.currency}</span>` : '';
+  const price = formatPrice(product);
   return `
     <article class="product-card reveal" role="listitem" data-id="${escHtml(product.id)}" tabindex="0"
-      aria-label="${escHtml(product.name)} — ${product.price}${CONFIG.currency} — ${status.label}">
+      aria-label="${escHtml(product.name)} — ${price} — ${status.label}">
       <div class="card-img-wrap">
         ${productImageHTML(product.image, product.name, product.id)}
         <div class="card-status ${status.css}">${status.label}</div>
-        ${product.topRequested ? '<div class="card-top-badge">Top</div>' : ''}
+        ${product.topRequested ? '<div class="card-top-badge">Top</div>' : (product.isNew ? '<div class="card-top-badge">Nouveau</div>' : '')}
       </div>
       <div class="card-body">
-        <span class="card-cat">Nouveauté Privé</span>
+        <span class="card-cat">${escHtml(product.category)}</span>
         <span class="card-name">${escHtml(product.name)}</span>
         <span class="card-sizes">${product.sizes.map(escHtml).join(' · ')}</span>
         <div class="card-foot">
-          <div><span class="card-price">${product.price}${CONFIG.currency}</span>${oldPrice}</div>
+          <div><span class="card-price ${hasKnownPrice(product) ? '' : 'price-on-request'}">${price}</span>${oldPrice}</div>
           <button class="card-btn" type="button" data-action="open" data-id="${escHtml(product.id)}" aria-label="Voir ${escHtml(product.name)}">Voir</button>
         </div>
       </div>
@@ -537,8 +739,16 @@ function renderProducts() {
   const grid = document.getElementById('productGrid');
   const empty = document.getElementById('emptyState');
   const count = document.getElementById('resultCount');
+  const title = document.getElementById('catalogTitle');
+  const emptyMessage = document.getElementById('emptyMessage');
   if (!grid) return;
   const filtered = getFilteredProducts();
+  const activeMeta = SPECIAL_FILTERS.find(filter => filter.key === state.activeFilter) || SPECIAL_FILTERS[0];
+
+  if (title && state.activeFilter !== 'packs') title.textContent = activeMeta.label;
+  if (emptyMessage) emptyMessage.textContent = state.searchQuery
+    ? 'Aucun article ne correspond à cette recherche'
+    : `Aucun article dans la catégorie ${activeMeta.label}`;
 
   grid.innerHTML = filtered.map(renderProductCard).join('');
   grid.hidden = filtered.length === 0;
@@ -554,13 +764,16 @@ function renderProducts() {
    ───────────────────────────────────────────────────────────────── */
 function packImageHTML(pack) {
   if (pack.image) {
-    return `<img class="pack-img" src="${escHtml(pack.image)}" alt="Outfit ${escHtml(pack.name)}" loading="lazy" data-pack-fallback="${escHtml(pack.id)}" />`;
+    return `<img class="pack-img" src="${escHtml(pack.image)}" alt="Pack ${escHtml(pack.name)}" loading="lazy" data-pack-fallback="${escHtml(pack.id)}" />`;
   }
   return `<div class="pack-img-fallback">${brandLockupHTML('brand-lockup-pack')}<small>OUTFIT · ${escHtml(pack.id)}</small></div>`;
 }
 
 function renderPackCard(pack) {
-  const saving = pack.oldPrice ? Math.round((1 - pack.price / pack.oldPrice) * 100) : 0;
+  const discounted = hasDiscount(pack);
+  const saving = discounted ? Math.round((1 - pack.price / pack.oldPrice) * 100) : 0;
+  const oldPrice = discounted ? `<span class="pack-old">${pack.oldPrice}${CONFIG.currency}</span>` : '';
+  const savingBadge = discounted ? `<span class="pack-saving">-${saving}%</span>` : '';
   return `
     <article class="pack-card reveal" data-pack-id="${escHtml(pack.id)}">
       <div class="pack-img-wrap">${packImageHTML(pack)}</div>
@@ -569,7 +782,7 @@ function renderPackCard(pack) {
         <h3 class="pack-name">${escHtml(pack.name)}</h3>
         <p class="pack-desc">${escHtml(pack.description)}</p>
         <div class="pack-items">${pack.itemLabels.map(item => `<div class="pack-item"><span class="pack-item-dot"></span><span>${escHtml(item)}</span></div>`).join('')}</div>
-        <div class="pack-pricing"><span class="pack-price">${pack.price}${CONFIG.currency}</span><span class="pack-old">${pack.oldPrice}${CONFIG.currency}</span><span class="pack-saving">-${saving}%</span></div>
+        <div class="pack-pricing"><span class="pack-price ${hasKnownPrice(pack) ? '' : 'price-on-request'}">${formatPrice(pack)}</span>${oldPrice}${savingBadge}</div>
         <button class="pack-cta" type="button" data-pack-action="open" data-pack-id="${escHtml(pack.id)}">Voir &amp; réserver le pack</button>
       </div>
     </article>`;
@@ -645,20 +858,20 @@ function renderModalContent(item, type) {
   if (!content) return;
   const isPack = type === 'pack';
   const status = STATUS[item.stockLevel] || STATUS.medium;
-  const oldPrice = item.oldPrice ? `<span class="modal-old-price">${item.oldPrice}${CONFIG.currency}</span>` : '';
+  const oldPrice = hasDiscount(item) ? `<span class="modal-old-price">${item.oldPrice}${CONFIG.currency}</span>` : '';
   const sizeLabel = isPack ? 'Combinaison de tailles' : 'Choisir la taille';
   const details = isPack
-    ? [['Contenu', `${item.itemLabels.length} pièces`], ['Avantage', `${item.oldPrice - item.price}${CONFIG.currency} économisés`]]
+    ? [['Contenu', `${item.itemLabels.length} pièces`], ['Tarif', hasKnownPrice(item) ? formatPrice(item) : 'Sur demande']]
     : [['Matière', item.material], ['Coupe', item.fit], ['Couleur', item.colors.join(' / ')], ['Détail', item.detail]];
 
   content.innerHTML = `
     <div class="modal-handle" aria-hidden="true"></div>
     <div class="modal-img-wrap" id="modalImgWrap">${modalImageHTML(item, type)}${modalGalleryNavHTML(item, type)}</div>
     <div class="modal-body">
-      <div class="modal-status-row"><span class="modal-status ${status.css}">${status.label}</span><span class="modal-cat">${isPack ? 'Pack VISION' : 'Nouveauté Privé'}</span></div>
+      <div class="modal-status-row"><span class="modal-status ${status.css}">${status.label}</span><span class="modal-cat">${isPack ? 'Pack VISION' : escHtml(item.category)}</span></div>
       <h2 class="modal-name">${escHtml(item.name)}</h2>
       <div class="modal-id">${escHtml(item.id)} · ${audienceLabel()}</div>
-      <div class="modal-price-row"><span class="modal-price">${item.price}${CONFIG.currency}</span>${oldPrice}</div>
+      <div class="modal-price-row"><span class="modal-price ${hasKnownPrice(item) ? '' : 'price-on-request'}">${formatPrice(item)}</span>${oldPrice}</div>
       <p class="modal-description">${escHtml(item.description)}</p>
       ${isPack ? `<div class="modal-pack-items">${item.itemLabels.map(label => `<span>+ ${escHtml(label)}</span>`).join('')}</div>` : ''}
       <div class="modal-detail-grid">${details.map(([label, value]) => `<div><span>${escHtml(label)}</span><strong>${escHtml(value)}</strong></div>`).join('')}</div>
@@ -781,6 +994,10 @@ function initEvents() {
     if (filter) {
       state.activeFilter = filter.dataset.filter;
       renderFilters();
+      if (state.activeFilter === 'packs') {
+        document.getElementById('packs')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        return;
+      }
       renderProducts();
       return;
     }
@@ -813,6 +1030,10 @@ function initEvents() {
   document.getElementById('resetFilters')?.addEventListener('click', resetFilters);
   document.getElementById('searchInput')?.addEventListener('input', event => {
     state.searchQuery = event.target.value.trim();
+    if (state.activeFilter === 'packs') {
+      state.activeFilter = 'all';
+      renderFilters();
+    }
     renderProducts();
   });
 
