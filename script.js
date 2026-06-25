@@ -17,7 +17,7 @@
    ───────────────────────────────────────────────────────────────── */
 const CONFIG = {
   brandName: 'VISION',
-  snapchatUsername: 'TON_PSEUDO_SNAP', // sans @
+  snapchatUsername: 'visionhousefr', // sans @
   instagramUrl: '',
   whatsappNumber: '',
   defaultContact: 'snapchat',
@@ -50,12 +50,12 @@ const STATUS = {
    ───────────────────────────────────────────────────────────────── */
 const PRODUCTS = [
   {
-    id: 'VH-012', audience: 'homme', group: 'shoes', name: 'Sneakers Dior Runner — Gris', category: 'Chaussures / Sneakers',
-    price: null, oldPrice: null, sizes: ['39', '40', '41', '42', '43', '44', '45'], colors: ['Gris', 'Noir', 'Blanc'],
+    id: 'VH-012', audience: 'homme', group: 'shoes', name: 'Dior B30 — Gris/Noir', category: 'Chaussures / Sneakers',
+    price: null, oldPrice: null, sizes: ['42', '43'], colors: ['Gris', 'Noir'],
     stockLevel: 'inquiry', image: 'assets/products/men/sneakers-dior-b30-grey-pair.jpg',
     gallery: ['assets/products/men/sneakers-dior-b30-grey-pair.jpg', 'assets/products/men/sneakers-dior-b30-grey-double.jpg'],
-    description: 'Paire de sneakers premium gris, noir et blanc, présentée avec coffret et éclairage studio violet.',
-    material: 'Mesh technique · empiècements structurés', fit: 'Pointure normale', detail: 'Coffret inclus · silhouette running luxe',
+    description: 'Paire de chaussure premium gris, noir, avec coffret original et élément complet.',
+    material: 'Matériaux original · Haute qualité', fit: 'Pointure normale', detail: 'Coffret & élément inclus · luxe',
     featured: true, topRequested: true, isNew: true,
   },
   {
