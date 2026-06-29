@@ -113,7 +113,7 @@ const PRODUCTS = [
   },
   {
     id: 'VH-019', audience: 'homme', group: 'shoes', name: 'On Running Cloudtilt — Gris & Vert Minéral', category: 'Chaussures / Sneakers',
-    price: null, oldPrice: null, sizes: ['42', '43'], colors: ['Vert minéral', 'Gris', 'Noir],
+    price: null, oldPrice: null, sizes: ['42', '43'], colors: ['Vert minéral', 'Gris', 'Noir'],
     stockLevel: 'inquiry', image: 'assets/products/men/sneakers-on-cloudtilt-green.jpg', gallery: [],
     description: 'Sneaker On Running sombre, idéale pour une sélection sport chic.',
     material: 'Haute qualité réspirant · semelle Cloud technique', fit: 'Pointure normale', detail: 'Boîte incluse · amorti sculpté',
@@ -472,7 +472,7 @@ const PRODUCTS = [
   },
   {
     id: 'VF-013', audience: 'femme', group: 'shoes', name: 'Hermès Chypre — Noir', category: 'Chaussures / Claquettes',
-    price: null, oldPrice: null, sizes: ['38', '39', '42' '43'], colors: ['Noir'],
+    price: null, oldPrice: null, sizes: ['38', '39', '42', '43'], colors: ['Noir'],
     stockLevel: 'inquiry', image: 'assets/products/women/sandals-h-black.jpg', gallery: [],
     description: 'Sandales plates noires à large découpe H, présentées dans un environnement marbre et orange.',
     material: 'Finition cuir lisse', fit: 'Forme plate', detail: 'Large bride H · semelle noire',
@@ -2000,9 +2000,22 @@ function resetFilters() {
 }
 
 function initEvents() {
+  document.querySelectorAll('.audience-choice[data-audience]').forEach(button => {
+    if (button.dataset.audienceBound === 'true') return;
+    button.dataset.audienceBound = 'true';
+    button.addEventListener('click', event => {
+      event.preventDefault();
+      event.stopPropagation();
+      selectAudience(button.dataset.audience);
+    });
+  });
+
   document.addEventListener('click', event => {
     const audienceButton = event.target.closest('.audience-choice[data-audience]');
-    if (audienceButton) return selectAudience(audienceButton.dataset.audience);
+    if (audienceButton) {
+      event.preventDefault();
+      return selectAudience(audienceButton.dataset.audience);
+    }
 
     const packNav = event.target.closest('[data-pack-nav]');
     if (packNav) {
