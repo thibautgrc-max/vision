@@ -216,7 +216,7 @@ const PRODUCTS = [
   // Nouveaux articles Homme · Vêtements — intégration stock du 30/06.
   {
     id: 'VH-040', audience: 'homme', group: 'clothing', name: 'Polo Ralph Lauren torsadé — Blanc', category: 'Vêtements / Polos',
-    price: null, oldPrice: null, sizes: ['S', 'M', 'L', 'XL'], colors: ['Blanc'],
+    price: null, oldPrice: null, sizes: ['M', 'L'], colors: ['Blanc'],
     stockLevel: 'inquiry', image: 'assets/products/men/polo-rl-cable-white.jpg', gallery: [],
     alt: 'Polo homme blanc en maille torsadée avec col boutonné',
     description: 'Polo blanc en maille texturée, rendu propre et lumineux pour une sélection homme premium.',
@@ -225,7 +225,7 @@ const PRODUCTS = [
   },
   {
     id: 'VH-041', audience: 'homme', group: 'clothing', name: 'Polo Ralph Lauren torsadé — Beige', category: 'Vêtements / Polos',
-    price: null, oldPrice: null, sizes: ['S', 'M', 'L', 'XL'], colors: ['Beige'],
+    price: null, oldPrice: null, sizes: ['M', 'L'], colors: ['Beige'],
     stockLevel: 'inquiry', image: 'assets/products/men/polo-rl-cable-beige.jpg', gallery: [],
     alt: 'Polo homme beige en maille torsadée avec étiquette',
     description: 'Polo beige texturé avec étiquette visible, parfait pour une carte catalogue chaude et premium.',
@@ -233,8 +233,8 @@ const PRODUCTS = [
     featured: false, topRequested: true, isNew: true,
   },
   {
-    id: 'VH-042', audience: 'homme', group: 'clothing', name: 'Pull col zippé Ralph Lauren — Gris clair', category: 'Vêtements / Pulls',
-    price: null, oldPrice: null, sizes: ['S', 'M', 'L', 'XL'], colors: ['Gris clair'],
+    id: 'VH-042', audience: 'homme', group: 'clothing', name: 'Pull zippé Ralph Lauren — Crème', category: 'Vêtements / Pulls',
+    price: null, oldPrice: null, sizes: ['M', 'L'], colors: ['Gris clair'],
     stockLevel: 'inquiry', image: 'assets/products/men/sweat-rl-halfzip-grey.jpg', gallery: [],
     alt: 'Pull homme gris clair avec col zippé et étiquette',
     description: 'Pull col zippé gris clair, sobre et facile à porter, avec une lecture produit immédiate.',
@@ -242,8 +242,8 @@ const PRODUCTS = [
     featured: true, topRequested: true, isNew: true,
   },
   {
-    id: 'VH-043', audience: 'homme', group: 'clothing', name: 'Pull col zippé Ralph Lauren — Beige sable', category: 'Vêtements / Pulls',
-    price: null, oldPrice: null, sizes: ['S', 'M', 'L', 'XL'], colors: ['Beige sable'],
+    id: 'VH-043', audience: 'homme', group: 'clothing', name: 'Pull zippé Ralph Lauren — Beige sable', category: 'Vêtements / Pulls',
+    price: null, oldPrice: null, sizes: ['M', 'L'], colors: ['Beige sable'],
     stockLevel: 'inquiry', image: 'assets/products/men/sweat-rl-halfzip-beige.jpg', gallery: [],
     alt: 'Pull homme beige sable avec col zippé',
     description: 'Version beige sable du col zippé, visuel chaud, propre et cohérent avec l’univers VISION.',
@@ -251,8 +251,8 @@ const PRODUCTS = [
     featured: false, topRequested: false, isNew: true,
   },
   {
-    id: 'VH-044', audience: 'homme', group: 'clothing', name: 'Pull col zippé Ralph Lauren — Blanc crème', category: 'Vêtements / Pulls',
-    price: null, oldPrice: null, sizes: ['S', 'M', 'L', 'XL'], colors: ['Blanc crème'],
+    id: 'VH-044', audience: 'homme', group: 'clothing', name: 'Pull zippé Ralph Lauren — Blanc crème', category: 'Vêtements / Pulls',
+    price: null, oldPrice: null, sizes: ['M', 'L'], colors: ['Blanc crème'],
     stockLevel: 'inquiry', image: 'assets/products/men/sweat-rl-halfzip-white.jpg', gallery: [],
     alt: 'Pull homme blanc crème avec col zippé et étiquette',
     description: 'Pull blanc crème avec zip doré, rendu premium et très lisible sur fond sombre.',
@@ -260,8 +260,8 @@ const PRODUCTS = [
     featured: false, topRequested: true, isNew: true,
   },
   {
-    id: 'VH-045', audience: 'homme', group: 'clothing', name: 'Short Ralph Lauren côtelé — Blanc crème', category: 'Vêtements / Shorts',
-    price: null, oldPrice: null, sizes: ['S', 'M', 'L', 'XL'], colors: ['Blanc crème'],
+    id: 'VH-045', audience: 'homme', group: 'clothing', name: 'Short velour Ralph Lauren — Blanc crème', category: 'Vêtements / Shorts',
+    price: null, oldPrice: null, sizes: ['M', 'L'], colors: ['Blanc crème'],
     stockLevel: 'inquiry', image: 'assets/products/men/short-rl-corduroy-cream.jpg', gallery: [],
     alt: 'Short homme blanc crème côtelé avec cordon de serrage',
     description: 'Short côtelé blanc crème avec cordon, pensé pour composer rapidement un outfit premium.',
@@ -269,8 +269,8 @@ const PRODUCTS = [
     featured: false, topRequested: false, isNew: true,
   },
   {
-    id: 'VH-046', audience: 'homme', group: 'clothing', name: 'Short Ralph Lauren côtelé — Beige', category: 'Vêtements / Shorts',
-    price: null, oldPrice: null, sizes: ['S', 'M', 'L', 'XL'], colors: ['Beige'],
+    id: 'VH-046', audience: 'homme', group: 'clothing', name: 'Short velour Ralph Lauren — Beige', category: 'Vêtements / Shorts',
+    price: null, oldPrice: null, sizes: ['M', 'L'], colors: ['Beige'],
     stockLevel: 'inquiry', image: 'assets/products/men/short-rl-corduroy-beige.jpg', gallery: [],
     alt: 'Short homme beige côtelé avec étiquette',
     description: 'Short beige en texture côtelée, visuel chaleureux et très adapté aux sélections été.',
@@ -278,8 +278,8 @@ const PRODUCTS = [
     featured: false, topRequested: false, isNew: true,
   },
   {
-    id: 'VH-047', audience: 'homme', group: 'clothing', name: 'Pull col zippé Ralph Lauren — Gris chiné', category: 'Vêtements / Pulls',
-    price: null, oldPrice: null, sizes: ['S', 'M', 'L', 'XL'], colors: ['Gris chiné'],
+    id: 'VH-047', audience: 'homme', group: 'clothing', name: 'Pull col zippé Ralph Lauren — Gris clair', category: 'Vêtements / Pulls',
+    price: null, oldPrice: null, sizes: ['M', 'L'], colors: ['Gris chiné'],
     stockLevel: 'inquiry', image: 'assets/products/men/sweat-rl-halfzip-grey-alt.jpg', gallery: [],
     alt: 'Pull homme gris chiné avec col zippé et étiquette',
     description: 'Variante gris chiné du col zippé, ajoutée en fiche séparée pour garder chaque image indépendante.',
@@ -287,8 +287,8 @@ const PRODUCTS = [
     featured: false, topRequested: false, isNew: true,
   },
   {
-    id: 'VH-048', audience: 'homme', group: 'clothing', name: 'Short Ralph Lauren côtelé — Bleu marine', category: 'Vêtements / Shorts',
-    price: null, oldPrice: null, sizes: ['S', 'M', 'L', 'XL'], colors: ['Bleu marine'],
+    id: 'VH-048', audience: 'homme', group: 'clothing', name: 'Short velour Ralph Lauren — Bleu marine', category: 'Vêtements / Shorts',
+    price: null, oldPrice: null, sizes: ['M', 'L'], colors: ['Bleu marine'],
     stockLevel: 'inquiry', image: 'assets/products/men/short-rl-corduroy-navy.jpg', gallery: [],
     alt: 'Short homme bleu marine côtelé avec cordon blanc',
     description: 'Short bleu marine avec cordons blancs, contraste net et lecture produit forte sur mobile.',
@@ -296,8 +296,8 @@ const PRODUCTS = [
     featured: false, topRequested: true, isNew: true,
   },
   {
-    id: 'VH-049', audience: 'homme', group: 'clothing', name: 'Veste Ralph Lauren zippée — Beige', category: 'Vêtements / Vestes',
-    price: null, oldPrice: null, sizes: ['S', 'M', 'L', 'XL'], colors: ['Beige'],
+    id: 'VH-049', audience: 'homme', group: 'clothing', name: 'Veste Harrington Ralph Lauren — Beige', category: 'Vêtements / Vestes',
+    price: null, oldPrice: null, sizes: ['S', 'M', 'L'], colors: ['Beige'],
     stockLevel: 'inquiry', image: 'assets/products/men/jacket-rl-harrington-beige.jpg', gallery: [],
     alt: 'Veste homme beige zippée avec poches latérales',
     description: 'Veste beige zippée avec poches, pièce forte pour compléter une sélection homme premium.',
