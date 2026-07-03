@@ -24,7 +24,7 @@ const CONFIG = {
   whatsappNumber: '',
   defaultContact: 'snapchat',
   enableWhatsapp: false,
-  currency: '€',
+  currency: ' V',
   lastUpdate: 'Aujourd’hui',
 };
 
@@ -53,7 +53,7 @@ const STATUS = {
 const PRODUCTS = [
   {
     id: 'VH-012', audience: 'homme', group: 'shoes', name: 'Dior B30 — Gris & Noir', category: 'Chaussures / Sneakers',
-    price: null, oldPrice: null, sizes: ['42', '43'], colors: ['Gris', 'Noir'],
+    price: 89, oldPrice: null, sizes: ['42', '43'], colors: ['Gris', 'Noir'],
     stockLevel: 'inquiry', image: 'assets/products/men/sneakers-dior-b30-grey-pair.jpg',
     gallery: [],
     description: 'Paire de chaussure de luxe gris, gris et noir, inclus avec coffret et sac Dior officiel.',
@@ -62,7 +62,7 @@ const PRODUCTS = [
   },
   {
     id: 'VH-013', audience: 'homme', group: 'shoes', name: 'Dior Chrono — Noir & Blanc', category: 'Chaussures / Sneakers',
-    price: null, oldPrice: null, sizes: ['42', '43'], colors: ['Noir', 'Blanc'],
+    price: 89, oldPrice: null, sizes: ['42', '43'], colors: ['Noir', 'Blanc'],
     stockLevel: 'inquiry', image: 'assets/products/men/sneakers-dior-b30-black-white.jpg', gallery: [],
     description: 'Paire de chaussure de luxe, noir et blanc, inclus avec coffret et sac Dior officiel.',
     material: 'Haute qualité · Matériaux premium', fit: 'Pointure normale', detail: 'Coffret/sac inclus · luxe',
@@ -70,7 +70,7 @@ const PRODUCTS = [
   },
   {
     id: 'VH-014', audience: 'homme', group: 'shoes', name: 'Dior Chrono — Blanc', category: 'Chaussures / Sneakers',
-    price: null, oldPrice: null, sizes: ['42', '43'], colors: ['Blanc'],
+    price: 89, oldPrice: null, sizes: ['42', '43'], colors: ['Blanc'],
     stockLevel: 'inquiry', image: 'assets/products/men/sneakers-dior-b30-white.jpg',
     gallery: [],
     description: 'Paire de chaussure de luxe, blanc, inclus avec coffret et sac Dior officiel.',
@@ -79,7 +79,7 @@ const PRODUCTS = [
   },
   {
     id: 'VH-015', audience: 'homme', group: 'shoes', name: 'Asics Gel-Kayano 14 — Bleu Glacier', category: 'Chaussures / Sneakers',
-    price: null, oldPrice: null, sizes: ['41', '42', '43', '44'], colors: ['Blanc', 'Bleu glacier'],
+    price: 84, oldPrice: null, sizes: ['41', '42', '43', '44'], colors: ['Blanc', 'Bleu glacier'],
     stockLevel: 'inquiry', image: 'assets/products/men/sneakers-asics-gel-kayano-blue.jpg', gallery: [],
     description: 'Asics bleutée à finition technique, Coffret/sac inclus.',
     material: 'Haute qualité réspirant · Matériaux premium', fit: 'Pointure normale', detail: 'Gel-Kayano sport · confort quotidien',
@@ -87,7 +87,7 @@ const PRODUCTS = [
   },
   {
     id: 'VH-016', audience: 'homme', group: 'shoes', name: 'New Balance 1906R — Phantom Gris', category: 'Chaussures / Sneakers',
-    price: null, oldPrice: null, sizes: ['42', '43'], colors: ['Gris anthracite', 'Noir'],
+    price: 89, oldPrice: null, sizes: ['42', '43'], colors: ['Gris anthracite', 'Noir'],
     stockLevel: 'inquiry', image: 'assets/products/men/sneakers-new-balance-grey.jpg', gallery: [],
     description: 'New Balance sombre, Coffret/sac inclus.',
     material: 'Haute qualité réspirant', fit: 'Pointure normale', detail: 'Semelle technique ·confort quotidien',
@@ -95,7 +95,7 @@ const PRODUCTS = [
   },
   {
     id: 'VH-017', audience: 'homme', group: 'shoes', name: 'New Balance 1906R — Phantom Blanc', category: 'Chaussures / Sneakers',
-    price: null, oldPrice: null, sizes: ['42', '43'], colors: ['Blanc', 'Gris clair'],
+    price: 89, oldPrice: null, sizes: ['42', '43'], colors: ['Blanc', 'Gris clair'],
     stockLevel: 'inquiry', image: 'assets/products/men/sneakers-new-balance-white.jpg',
     gallery: [],
     description: 'New Balance clair, Coffret/sac inclus.',
@@ -104,7 +104,7 @@ const PRODUCTS = [
   },
   {
     id: 'VH-018', audience: 'homme', group: 'shoes', name: 'On Running Cloudmonster — Blanc', category: 'Chaussures / Sneakers',
-    price: null, oldPrice: null, sizes: ['42', '43'], colors: ['Blanc', 'Gris', 'Noir'],
+    price: 89, oldPrice: null, sizes: ['42', '43'], colors: ['Blanc', 'Gris', 'Noir'],
     stockLevel: 'inquiry', image: 'assets/products/men/sneakers-on-cloudmonster-white.jpg',
     gallery: [],
     description: 'Sneaker On Running claire, sport et moderne, avec semelle Cloud qualitative .',
@@ -113,7 +113,7 @@ const PRODUCTS = [
   },
   {
     id: 'VH-019', audience: 'homme', group: 'shoes', name: 'On Running Cloudtilt — Gris & Vert Minéral', category: 'Chaussures / Sneakers',
-    price: null, oldPrice: null, sizes: ['42', '43'], colors: ['Vert minéral', 'Gris', 'Noir'],
+    price: 89, oldPrice: null, sizes: ['42', '43'], colors: ['Vert minéral', 'Gris', 'Noir'],
     stockLevel: 'inquiry', image: 'assets/products/men/sneakers-on-cloudtilt-green.jpg', gallery: [],
     description: 'Sneaker On Running sombre, idéale pour une sélection sport chic.',
     material: 'Haute qualité réspirant · semelle Cloud technique', fit: 'Pointure normale', detail: 'Boîte incluse · amorti sculpté',
@@ -121,7 +121,7 @@ const PRODUCTS = [
   },
   {
     id: 'VH-020', audience: 'homme', group: 'shoes', name: 'On Running Cloudmonster — Noir & Blanc', category: 'Chaussures / Sneakers',
-    price: null, oldPrice: null, sizes: ['42', '43'], colors: ['Noir', 'Blanc'],
+    price: 89, oldPrice: null, sizes: ['42', '43'], colors: ['Noir', 'Blanc'],
     stockLevel: 'inquiry', image: 'assets/products/men/sneakers-on-cloudmonster-black-white.jpg', gallery: [],
     description: 'Sneaker On Running sombre, parfaite pour une sélection quotidienne sombre et sportive.',
     material: 'Haute qualité réspirant · semelle Cloud', fit: 'Pointure normale', detail: 'boîte incluse',
@@ -129,7 +129,7 @@ const PRODUCTS = [
   },
   {
     id: 'VH-030', audience: 'homme', group: 'shoes', name: 'Dior B30 — Gris & Blanc', category: 'Chaussures / Sneakers',
-    price: null, oldPrice: null, sizes: ['42', '43'], colors: ['Gris', 'Blanc'],
+    price: 89, oldPrice: null, sizes: ['42', '43'], colors: ['Gris', 'Blanc'],
     stockLevel: 'inquiry', image: 'assets/products/men/sneakers-dior-b30-grey-double.jpg', gallery: [],
     description: 'Paire de chaussure de luxe, gris & blanc, inclus avec coffret et sac Dior officiel',
     material: 'Haute qualité · empiècements structurés', fit: 'Pointure normale', detail: 'Coffret/sac inclus · luxe',
@@ -137,7 +137,7 @@ const PRODUCTS = [
   },
   {
     id: 'VH-031', audience: 'homme', group: 'shoes', name: 'Dior B30 — Blanc', category: 'Chaussures / Sneakers',
-    price: null, oldPrice: null, sizes: ['42', '43'], colors: ['Blanc'],
+    price: 89, oldPrice: null, sizes: ['42', '43'], colors: ['Blanc'],
     stockLevel: 'inquiry', image: 'assets/products/men/sneakers-dior-b30-white-single.jpg', gallery: [],
     description: 'Paire de chaussure de luxe, blanc, inclus avec coffret et sac Dior officiel.',
     material: 'Haute qualité · empiècements structurés', fit: 'Pointure normale', detail: 'Coffret/sac inclus · luxe',
@@ -145,7 +145,7 @@ const PRODUCTS = [
   },
   {
     id: 'VH-032', audience: 'homme', group: 'shoes', name: 'New Balance 1906R — Blanc', category: 'Chaussures / Sneakers',
-    price: null, oldPrice: null, sizes: ['41', '42'], colors: ['Blanc'],
+    price: 89, oldPrice: null, sizes: ['41', '42'], colors: ['Blanc'],
     stockLevel: 'inquiry', image: 'assets/products/men/sneakers-new-balance-white-1906.jpg', gallery: [],
     description: 'New Balance clair, Coffret/sac inclus.',
     material: 'Haute qualité réspirant', fit: 'Pointure normale', detail: 'Semelle technique · confort quotidien',
@@ -153,7 +153,7 @@ const PRODUCTS = [
   },
   {
     id: 'VH-033', audience: 'homme', group: 'shoes', name: 'On Running Cloudtilt — Blanc & Bleu Brume', category: 'Chaussures / Sneakers',
-    price: null, oldPrice: null, sizes: ['42', '43'], colors: ['Bleu brume', 'Blanc'],
+    price: 89, oldPrice: null, sizes: ['42', '43'], colors: ['Bleu brume', 'Blanc'],
     stockLevel: 'inquiry', image: 'assets/products/men/sneakers-on-cloudtilt-blue.jpg', gallery: [],
     description: 'Sneaker On Running, parfaite pour une sélection quotidienne sombre et sportive.',
     material: 'Haute qualité réspirant · semelle Cloud', fit: 'Pointure normale', detail: 'boîte incluse',
@@ -161,7 +161,7 @@ const PRODUCTS = [
   },
   {
     id: 'VH-034', audience: 'homme', group: 'clothing', name: 'T-shirt VRUNK Signature V — Noir Vert', category: 'Vêtements / T-shirts',
-    price: null, oldPrice: null, sizes: ['S'], colors: ['Noir', 'Vert', 'Rose'],
+    price: 20, oldPrice: null, sizes: ['S'], colors: ['Noir', 'Vert', 'Rose'],
     stockLevel: 'low', image: 'assets/products/men/shirt-vision-v-green-black-back.jpg', gallery: [],
     alt: 'T-shirt homme noir VRUNK avec grand V au dos',
     description: 'T-shirt noir avec grand V graphique vert au dos.',
@@ -170,7 +170,7 @@ const PRODUCTS = [
   },
   {
     id: 'VH-035', audience: 'homme', group: 'clothing', name: 'T-shirt VRUNK  — Bleu turquoise', category: 'Vêtements / T-shirts',
-    price: null, oldPrice: null, sizes: ['S'], colors: ['Mint', 'Turquoise', 'Noir'],
+    price: 20, oldPrice: null, sizes: ['S'], colors: ['Mint', 'Turquoise', 'Noir'],
     stockLevel: 'low', image: 'assets/products/men/shirt-vrk-mint.jpg', gallery: [],
     alt: 'T-shirt homme VRK avec détails turquoise',
     description: 'T-shirt mint VRK à motifs ton sur ton, accent turquoise et rendu sport premium.',
@@ -179,7 +179,7 @@ const PRODUCTS = [
   },
   {
     id: 'VH-036', audience: 'homme', group: 'clothing', name: 'T-shirt VRUNK Mizuno — noir / violet / jaune', category: 'Vêtements / T-shirts',
-    price: null, oldPrice: null, sizes: ['L'], colors: ['Graphite', 'Noir', 'Jaune volt'],
+    price: 20, oldPrice: null, sizes: ['L'], colors: ['Graphite', 'Noir', 'Jaune volt'],
     stockLevel: 'low', image: 'assets/products/men/shirt-vrk-mizuno-graphite.jpg', gallery: [],
     alt: 'T-shirt homme graphite VRK Mizuno avec motif hexagonal',
     description: 'T-shirt graphite à motif hexagonal, signature et lecture très sportive.',
@@ -188,7 +188,7 @@ const PRODUCTS = [
   },
   {
     id: 'VH-037', audience: 'homme', group: 'clothing', name: 'T-shirt VRUNK Peace — Blanc Rouge', category: 'Vêtements / T-shirts',
-    price: null, oldPrice: null, sizes: ['S'], colors: ['Blanc', 'Rouge'],
+    price: 20, oldPrice: null, sizes: ['S'], colors: ['Blanc', 'Rouge'],
     stockLevel: 'low', image: 'assets/products/men/shirt-vrk-white-red-front-back.jpg', gallery: [],
     alt: 'T-shirt homme blanc VRK avec visuel rouge devant et dos',
     description: 'Rendu clair et très lisible quotidien.',
@@ -197,7 +197,7 @@ const PRODUCTS = [
   },
   {
     id: 'VH-038', audience: 'homme', group: 'clothing', name: 'T-shirt VRUNK Limited V — Noir Rouge', category: 'Vêtements / T-shirts',
-    price: null, oldPrice: null, sizes: ['M'], colors: ['Noir', 'Rouge', 'Blanc'],
+    price: 20, oldPrice: null, sizes: ['M'], colors: ['Noir', 'Rouge', 'Blanc'],
     stockLevel: 'low', image: 'assets/products/men/shirt-vrk-black-red-back.jpg', gallery: [],
     alt: 'T-shirt homme noir VRK limited avec grand V rouge au dos',
     description: 'Édition limitée avec grand V rouge au dos.',
@@ -206,7 +206,7 @@ const PRODUCTS = [
   },
   {
     id: 'VH-039', audience: 'homme', group: 'clothing', name: 'T-shirt VRUNK Peace — Noir Bleu', category: 'Vêtements / T-shirts',
-    price: null, oldPrice: null, sizes: ['M'], colors: ['Noir', 'Bleu'],
+    price: 20, oldPrice: null, sizes: ['M'], colors: ['Noir', 'Bleu'],
     stockLevel: 'low', image: 'assets/products/men/shirt-vrk-black-blue-front-back.jpg', gallery: [],
     alt: 'T-shirt homme noir VRK avec visuel bleu devant et dos',
     description: 'sobre, premium et facile à intégrer en Pack Outfit.',
@@ -216,7 +216,7 @@ const PRODUCTS = [
   // Nouveaux articles Homme · Vêtements — intégration stock du 30/06.
   {
     id: 'VH-040', audience: 'homme', group: 'clothing', name: 'Polo Ralph Lauren torsadé — Blanc', category: 'Vêtements / Polos',
-    price: null, oldPrice: null, sizes: ['M', 'L'], colors: ['Blanc'],
+    price: 34, oldPrice: null, sizes: ['S', 'M', 'L', 'XL'], colors: ['Blanc'],
     stockLevel: 'inquiry', image: 'assets/products/men/polo-rl-cable-white.jpg', gallery: [],
     alt: 'Polo homme blanc en maille torsadée avec col boutonné',
     description: 'Polo blanc en maille texturée, rendu propre et lumineux pour une sélection homme premium.',
@@ -225,7 +225,7 @@ const PRODUCTS = [
   },
   {
     id: 'VH-041', audience: 'homme', group: 'clothing', name: 'Polo Ralph Lauren torsadé — Beige', category: 'Vêtements / Polos',
-    price: null, oldPrice: null, sizes: ['M', 'L'], colors: ['Beige'],
+    price: 34, oldPrice: null, sizes: ['S', 'M', 'L', 'XL'], colors: ['Beige'],
     stockLevel: 'inquiry', image: 'assets/products/men/polo-rl-cable-beige.jpg', gallery: [],
     alt: 'Polo homme beige en maille torsadée avec étiquette',
     description: 'Polo beige texturé avec étiquette visible, parfait pour une carte catalogue chaude et premium.',
@@ -233,8 +233,8 @@ const PRODUCTS = [
     featured: false, topRequested: true, isNew: true,
   },
   {
-    id: 'VH-042', audience: 'homme', group: 'clothing', name: 'Pull zippé Ralph Lauren — Crème', category: 'Vêtements / Pulls',
-    price: null, oldPrice: null, sizes: ['M', 'L'], colors: ['Gris clair'],
+    id: 'VH-042', audience: 'homme', group: 'clothing', name: 'Pull col zippé Ralph Lauren — Gris clair', category: 'Vêtements / Pulls',
+    price: 42, oldPrice: null, sizes: ['S', 'M', 'L', 'XL'], colors: ['Gris clair'],
     stockLevel: 'inquiry', image: 'assets/products/men/sweat-rl-halfzip-grey.jpg', gallery: [],
     alt: 'Pull homme gris clair avec col zippé et étiquette',
     description: 'Pull col zippé gris clair, sobre et facile à porter, avec une lecture produit immédiate.',
@@ -242,8 +242,8 @@ const PRODUCTS = [
     featured: true, topRequested: true, isNew: true,
   },
   {
-    id: 'VH-043', audience: 'homme', group: 'clothing', name: 'Pull zippé Ralph Lauren — Beige sable', category: 'Vêtements / Pulls',
-    price: null, oldPrice: null, sizes: ['M', 'L'], colors: ['Beige sable'],
+    id: 'VH-043', audience: 'homme', group: 'clothing', name: 'Pull col zippé Ralph Lauren — Beige sable', category: 'Vêtements / Pulls',
+    price: 42, oldPrice: null, sizes: ['S', 'M', 'L', 'XL'], colors: ['Beige sable'],
     stockLevel: 'inquiry', image: 'assets/products/men/sweat-rl-halfzip-beige.jpg', gallery: [],
     alt: 'Pull homme beige sable avec col zippé',
     description: 'Version beige sable du col zippé, visuel chaud, propre et cohérent avec l’univers VISION.',
@@ -251,8 +251,8 @@ const PRODUCTS = [
     featured: false, topRequested: false, isNew: true,
   },
   {
-    id: 'VH-044', audience: 'homme', group: 'clothing', name: 'Pull zippé Ralph Lauren — Blanc crème', category: 'Vêtements / Pulls',
-    price: null, oldPrice: null, sizes: ['M', 'L'], colors: ['Blanc crème'],
+    id: 'VH-044', audience: 'homme', group: 'clothing', name: 'Pull col zippé Ralph Lauren — Blanc crème', category: 'Vêtements / Pulls',
+    price: 42, oldPrice: null, sizes: ['S', 'M', 'L', 'XL'], colors: ['Blanc crème'],
     stockLevel: 'inquiry', image: 'assets/products/men/sweat-rl-halfzip-white.jpg', gallery: [],
     alt: 'Pull homme blanc crème avec col zippé et étiquette',
     description: 'Pull blanc crème avec zip doré, rendu premium et très lisible sur fond sombre.',
@@ -260,8 +260,8 @@ const PRODUCTS = [
     featured: false, topRequested: true, isNew: true,
   },
   {
-    id: 'VH-045', audience: 'homme', group: 'clothing', name: 'Short velour Ralph Lauren — Blanc crème', category: 'Vêtements / Shorts',
-    price: null, oldPrice: null, sizes: ['M', 'L'], colors: ['Blanc crème'],
+    id: 'VH-045', audience: 'homme', group: 'clothing', name: 'Short Ralph Lauren côtelé — Blanc crème', category: 'Vêtements / Shorts',
+    price: 44, oldPrice: null, sizes: ['S', 'M', 'L', 'XL'], colors: ['Blanc crème'],
     stockLevel: 'inquiry', image: 'assets/products/men/short-rl-corduroy-cream.jpg', gallery: [],
     alt: 'Short homme blanc crème côtelé avec cordon de serrage',
     description: 'Short côtelé blanc crème avec cordon, pensé pour composer rapidement un outfit premium.',
@@ -269,8 +269,8 @@ const PRODUCTS = [
     featured: false, topRequested: false, isNew: true,
   },
   {
-    id: 'VH-046', audience: 'homme', group: 'clothing', name: 'Short velour Ralph Lauren — Beige', category: 'Vêtements / Shorts',
-    price: null, oldPrice: null, sizes: ['M', 'L'], colors: ['Beige'],
+    id: 'VH-046', audience: 'homme', group: 'clothing', name: 'Short Ralph Lauren côtelé — Beige', category: 'Vêtements / Shorts',
+    price: 44, oldPrice: null, sizes: ['S', 'M', 'L', 'XL'], colors: ['Beige'],
     stockLevel: 'inquiry', image: 'assets/products/men/short-rl-corduroy-beige.jpg', gallery: [],
     alt: 'Short homme beige côtelé avec étiquette',
     description: 'Short beige en texture côtelée, visuel chaleureux et très adapté aux sélections été.',
@@ -278,8 +278,8 @@ const PRODUCTS = [
     featured: false, topRequested: false, isNew: true,
   },
   {
-    id: 'VH-047', audience: 'homme', group: 'clothing', name: 'Pull col zippé Ralph Lauren — Gris clair', category: 'Vêtements / Pulls',
-    price: null, oldPrice: null, sizes: ['M', 'L'], colors: ['Gris chiné'],
+    id: 'VH-047', audience: 'homme', group: 'clothing', name: 'Pull col zippé Ralph Lauren — Gris chiné', category: 'Vêtements / Pulls',
+    price: 42, oldPrice: null, sizes: ['S', 'M', 'L', 'XL'], colors: ['Gris chiné'],
     stockLevel: 'inquiry', image: 'assets/products/men/sweat-rl-halfzip-grey-alt.jpg', gallery: [],
     alt: 'Pull homme gris chiné avec col zippé et étiquette',
     description: 'Variante gris chiné du col zippé, ajoutée en fiche séparée pour garder chaque image indépendante.',
@@ -287,8 +287,8 @@ const PRODUCTS = [
     featured: false, topRequested: false, isNew: true,
   },
   {
-    id: 'VH-048', audience: 'homme', group: 'clothing', name: 'Short velour Ralph Lauren — Bleu marine', category: 'Vêtements / Shorts',
-    price: null, oldPrice: null, sizes: ['M', 'L'], colors: ['Bleu marine'],
+    id: 'VH-048', audience: 'homme', group: 'clothing', name: 'Short Ralph Lauren côtelé — Bleu marine', category: 'Vêtements / Shorts',
+    price: 44, oldPrice: null, sizes: ['S', 'M', 'L', 'XL'], colors: ['Bleu marine'],
     stockLevel: 'inquiry', image: 'assets/products/men/short-rl-corduroy-navy.jpg', gallery: [],
     alt: 'Short homme bleu marine côtelé avec cordon blanc',
     description: 'Short bleu marine avec cordons blancs, contraste net et lecture produit forte sur mobile.',
@@ -296,8 +296,8 @@ const PRODUCTS = [
     featured: false, topRequested: true, isNew: true,
   },
   {
-    id: 'VH-049', audience: 'homme', group: 'clothing', name: 'Veste Harrington Ralph Lauren — Beige', category: 'Vêtements / Vestes',
-    price: null, oldPrice: null, sizes: ['S', 'M', 'L'], colors: ['Beige'],
+    id: 'VH-049', audience: 'homme', group: 'clothing', name: 'Veste Ralph Lauren zippée — Beige', category: 'Vêtements / Vestes',
+    price: 62, oldPrice: null, sizes: ['S', 'M', 'L', 'XL'], colors: ['Beige'],
     stockLevel: 'inquiry', image: 'assets/products/men/jacket-rl-harrington-beige.jpg', gallery: [],
     alt: 'Veste homme beige zippée avec poches latérales',
     description: 'Veste beige zippée avec poches, pièce forte pour compléter une sélection homme premium.',
@@ -306,7 +306,7 @@ const PRODUCTS = [
   },
   {
     id: 'VH-021', audience: 'homme', group: 'clothing', name: 'Ensemble Stone Island — Blanc & Noir', category: 'Vêtements / Ensembles',
-    price: null, oldPrice: null, sizes: ['S', 'M', 'L'], colors: ['Blanc', 'Noir'],
+    price: 59, oldPrice: null, sizes: ['S', 'M', 'L'], colors: ['Blanc', 'Noir'],
     stockLevel: 'inquiry', image: 'assets/products/men/outfit-stone-island-white-black.jpg', gallery: [],
     description: 'Ensemble t-shirt blanc imprimé et short cargo noir, prêt pour une proposition pack complète.',
     material: 'Coton premium · short technique', fit: 'Coupe droite', detail: 'Badge cargo · look coordonné',
@@ -314,7 +314,7 @@ const PRODUCTS = [
   },
   {
     id: 'VH-022', audience: 'homme', group: 'clothing', name: 'Ensemble Stone Island — Blanc & Gris', category: 'Vêtements / Ensembles',
-    price: null, oldPrice: null, sizes: ['S', 'M', 'L'], colors: ['Blanc', 'Gris'],
+    price: 59, oldPrice: null, sizes: ['S', 'M', 'L'], colors: ['Blanc', 'Gris'],
     stockLevel: 'inquiry', image: 'assets/products/men/outfit-stone-island-white-grey.jpg', gallery: [],
     description: 'T-shirt blanc graphique associé à un short gris clair, rendu propre et facile à projeter.',
     material: 'Coton premium · short cargo léger', fit: 'Coupe droite', detail: 'Ensemble coordonné · badge latéral',
@@ -322,7 +322,7 @@ const PRODUCTS = [
   },
   {
     id: 'VH-023', audience: 'homme', group: 'clothing', name: 'Ensemble Stone Island — Noir & Gris', category: 'Vêtements / Ensembles',
-    price: null, oldPrice: null, sizes: ['S', 'M', 'L'], colors: ['Noir', 'Gris'],
+    price: 59, oldPrice: null, sizes: ['S', 'M', 'L'], colors: ['Noir', 'Gris'],
     stockLevel: 'inquiry', image: 'assets/products/men/outfit-stone-island-black-grey.jpg', gallery: [],
     description: 'Variation noire et grise, plus sombre, avec un contraste fort et une lecture immédiate.',
     material: 'Coton premium · short cargo léger', fit: 'Coupe droite', detail: 'T-shirt imprimé · short cargo',
@@ -330,7 +330,7 @@ const PRODUCTS = [
   },
   {
     id: 'VH-024', audience: 'homme', group: 'clothing', name: 'Ensemble Stone Island — Noir & Marine', category: 'Vêtements / Ensembles',
-    price: null, oldPrice: null, sizes: ['S', 'M', 'L'], colors: ['Noir', 'Bleu marine'],
+    price: 59, oldPrice: null, sizes: ['S', 'M', 'L'], colors: ['Noir', 'Bleu marine'],
     stockLevel: 'inquiry', image: 'assets/products/men/outfit-stone-island-black-navy.jpg', gallery: [],
     description: 'T-shirt noir associé à un short marine, très facile à porter et cohérent avec l’univers VISION.',
     material: 'Coton premium · short cargo léger', fit: 'Coupe droite', detail: 'Palette sombre · badge cargo',
@@ -338,7 +338,7 @@ const PRODUCTS = [
   },
   {
     id: 'VH-025', audience: 'homme', group: 'clothing', name: 'Ensemble Stone Island — Blanc & Marine', category: 'Vêtements / Ensembles',
-    price: null, oldPrice: null, sizes: ['S', 'M', 'L'], colors: ['Blanc', 'Bleu marine'],
+    price: 59, oldPrice: null, sizes: ['S', 'M', 'L'], colors: ['Blanc', 'Bleu marine'],
     stockLevel: 'inquiry', image: 'assets/products/men/outfit-stone-island-white-navy.jpg', gallery: [],
     description: 'Une combinaison blanc et marine très nette, pensée pour composer rapidement un outfit complet.',
     material: 'Coton premium · short cargo léger', fit: 'Coupe droite', detail: 'Graphisme bleu · short marine',
@@ -346,7 +346,7 @@ const PRODUCTS = [
   },
   {
     id: 'VH-026', audience: 'homme', group: 'clothing', name: 'Ensemble Under Armour — Gris Performance', category: 'Vêtements / Ensembles',
-    price: null, oldPrice: null, sizes: ['S', 'M', 'L'], colors: ['Gris'],
+    price: 54, oldPrice: null, sizes: ['S', 'M', 'L'], colors: ['Gris'],
     stockLevel: 'inquiry', image: 'assets/products/men/outfit-under-armour-grey.jpg', gallery: [],
     description: 'Set training gris composé d’un t-shirt technique et d’un short assorti à zips.',
     material: 'Textile performance respirant', fit: 'Coupe sport', detail: 'Poches zippées · motif ton sur ton',
@@ -354,7 +354,7 @@ const PRODUCTS = [
   },
   {
     id: 'VH-027', audience: 'homme', group: 'clothing', name: 'Ensemble Under Armour — Turquoise & Noir', category: 'Vêtements / Ensembles',
-    price: null, oldPrice: null, sizes: ['S', 'M', 'L'], colors: ['Turquoise', 'Noir'],
+    price: 54, oldPrice: null, sizes: ['S', 'M', 'L'], colors: ['Turquoise', 'Noir'],
     stockLevel: 'inquiry', image: 'assets/products/men/outfit-under-armour-turquoise-black.jpg', gallery: [],
     description: 'Set sport turquoise et noir, visuel très identifiable pour une sélection estivale technique.',
     material: 'Textile performance respirant', fit: 'Coupe sport', detail: 'T-shirt imprimé · short noir zippé',
@@ -362,7 +362,7 @@ const PRODUCTS = [
   },
   {
     id: 'VH-028', audience: 'homme', group: 'clothing', name: 'Ensemble Under Armour — Noir Graphite', category: 'Vêtements / Ensembles',
-    price: null, oldPrice: null, sizes: ['S', 'M', 'L'], colors: ['Graphite', 'Noir'],
+    price: 54, oldPrice: null, sizes: ['S', 'M', 'L'], colors: ['Graphite', 'Noir'],
     stockLevel: 'inquiry', image: 'assets/products/men/outfit-under-armour-dark.jpg', gallery: [],
     description: 'Version sombre graphite, très premium, avec détails techniques et contraste discret.',
     material: 'Textile performance respirant', fit: 'Coupe sport', detail: 'Motif marbré · short noir',
@@ -370,7 +370,7 @@ const PRODUCTS = [
   },
   {
     id: 'VH-029', audience: 'homme', group: 'clothing', name: 'Ensemble Under Armour — Beige Sable', category: 'Vêtements / Ensembles',
-    price: null, oldPrice: null, sizes: ['S', 'M', 'L'], colors: ['Beige sable'],
+    price: 54, oldPrice: null, sizes: ['S', 'M', 'L'], colors: ['Beige sable'],
     stockLevel: 'inquiry', image: 'assets/products/men/outfit-under-armour-beige.jpg', gallery: [],
     description: 'Set beige sable à la lecture douce, parfait pour diversifier une sélection sport premium.',
     material: 'Textile performance respirant', fit: 'Coupe sport', detail: 'T-shirt ton sur ton · short assorti',
@@ -378,7 +378,7 @@ const PRODUCTS = [
   },
   {
     id: 'VH-001', audience: 'homme', group: 'accessories', name: 'JBL Charge 6 — Noir', category: 'Audio',
-    price: null, oldPrice: null, sizes: ['Unique'], colors: ['Noir'],
+    price: 79, oldPrice: null, sizes: ['Unique'], colors: ['Noir'],
     stockLevel: 'inquiry', image: 'assets/products/men/speaker-charge6-black.jpg', gallery: [],
     description: 'Enceinte portable au format généreux, présentée avec son coffret dans une finition noire discrète et premium.',
     material: 'Finition textile', fit: 'Format portable', detail: 'Bluetooth · autonomie annoncée 28 h',
@@ -386,7 +386,7 @@ const PRODUCTS = [
   },
   {
     id: 'VH-002', audience: 'homme', group: 'accessories', name: 'JBL Charge 6 — Bleu', category: 'Audio',
-    price: null, oldPrice: null, sizes: ['Unique'], colors: ['Bleu nuit'],
+    price: 79, oldPrice: null, sizes: ['Unique'], colors: ['Bleu nuit'],
     stockLevel: 'inquiry', image: 'assets/products/men/speaker-charge6-blue.jpg', gallery: [],
     description: 'La version bleu nuit de l’enceinte portable, mise en scène avec son coffret pour une lecture produit immédiate.',
     material: 'Finition textile', fit: 'Format portable', detail: 'Bluetooth · autonomie annoncée 28 h',
@@ -394,7 +394,7 @@ const PRODUCTS = [
   },
   {
     id: 'VH-003', audience: 'homme', group: 'accessories', name: 'JBL Charge 6 — Blanc', category: 'Audio',
-    price: null, oldPrice: null, sizes: ['Unique'], colors: ['Blanc'],
+    price: 79, oldPrice: null, sizes: ['Unique'], colors: ['Blanc'],
     stockLevel: 'inquiry', image: 'assets/products/men/speaker-charge6-white.jpg', gallery: [],
     description: 'Une finition blanche lumineuse et épurée, accompagnée de son coffret et pensée pour un univers plus minimal.',
     material: 'Finition textile', fit: 'Format portable', detail: 'Bluetooth · autonomie annoncée 28 h',
@@ -402,7 +402,7 @@ const PRODUCTS = [
   },
   {
     id: 'VH-004', audience: 'homme', group: 'accessories', name: 'Casque Apple Max — Bleu nuit', category: 'Casques',
-    price: null, oldPrice: null, sizes: ['Unique'], colors: ['Bleu nuit'],
+    price: 89, oldPrice: null, sizes: ['Unique'], colors: ['Bleu nuit'],
     stockLevel: 'inquiry', image: 'assets/products/men/headphones-max-midnight.jpg', gallery: [],
     description: 'Casque circum-aural présenté avec son étui et son coffret, dans une finition bleu nuit profonde.',
     material: 'Arceau textile · coques satinées', fit: 'Circum-aural', detail: 'Étui de transport inclus',
@@ -410,7 +410,7 @@ const PRODUCTS = [
   },
   {
     id: 'VH-005', audience: 'homme', group: 'accessories', name: 'Casque Apple Max — Argent', category: 'Casques',
-    price: null, oldPrice: null, sizes: ['Unique'], colors: ['Argent'],
+    price: 89, oldPrice: null, sizes: ['Unique'], colors: ['Argent'],
     stockLevel: 'inquiry', image: 'assets/products/men/headphones-max-silver.jpg', gallery: [],
     description: 'Casque circum-aural dans une finition argent clair, livré avec son étui et présenté dans un décor sobre.',
     material: 'Arceau textile · coques satinées', fit: 'Circum-aural', detail: 'Étui de transport inclus',
@@ -418,7 +418,7 @@ const PRODUCTS = [
   },
   {
     id: 'VH-006', audience: 'homme', group: 'accessories', name: 'Casque Apple Max — Or', category: 'Casques',
-    price: null, oldPrice: null, sizes: ['Unique'], colors: ['Or'],
+    price: 89, oldPrice: null, sizes: ['Unique'], colors: ['Or'],
     stockLevel: 'inquiry', image: 'assets/products/men/headphones-max-gold.jpg', gallery: [],
     description: 'Une déclinaison dorée au rendu chaleureux, avec étui coordonné et coffret de présentation.',
     material: 'Arceau textile · coques satinées', fit: 'Circum-aural', detail: 'Étui de transport inclus',
@@ -426,7 +426,7 @@ const PRODUCTS = [
   },
   {
     id: 'VH-007', audience: 'homme', group: 'accessories', name: 'Casque Apple Max — Graphite', category: 'Casques',
-    price: null, oldPrice: null, sizes: ['Unique'], colors: ['Graphite'],
+    price: 89, oldPrice: null, sizes: ['Unique'], colors: ['Graphite'],
     stockLevel: 'inquiry', image: 'assets/products/men/headphones-max-graphite.jpg', gallery: [],
     description: 'Casque circum-aural graphite au rendu technique et discret, accompagné de son étui de transport.',
     material: 'Arceau textile · coques satinées', fit: 'Circum-aural', detail: 'Étui de transport inclus',
@@ -434,7 +434,7 @@ const PRODUCTS = [
   },
   {
     id: 'VH-008', audience: 'homme', group: 'accessories', name: 'Casque Apple Max — Cuivre', category: 'Casques',
-    price: null, oldPrice: null, sizes: ['Unique'], colors: ['Cuivre'],
+    price: 89, oldPrice: null, sizes: ['Unique'], colors: ['Cuivre'],
     stockLevel: 'inquiry', image: 'assets/products/men/headphones-max-copper.jpg', gallery: [],
     description: 'Une finition cuivre expressive, mise en valeur par un cadrage produit complet avec étui et coffret.',
     material: 'Arceau textile · coques satinées', fit: 'Circum-aural', detail: 'Étui de transport inclus',
@@ -442,7 +442,7 @@ const PRODUCTS = [
   },
   {
     id: 'VH-009', audience: 'homme', group: 'fragrance', name: 'Baccarat Rouge 540 — 100 ml', category: 'Parfums',
-    price: null, oldPrice: null, sizes: ['100 ml'], colors: ['Rouge · Or'],
+    price: 74, oldPrice: null, sizes: ['100 ml'], colors: ['Rouge · Or'],
     stockLevel: 'inquiry', image: 'assets/products/men/fragrance-baccarat-rouge-540.jpg', gallery: [],
     description: 'Flacon Baccarat Rouge 540 présenté dans son écrin rouge et or, avec une mise en scène sombre et raffinée.',
     material: 'Extrait de parfum', fit: 'Flacon 100 ml', detail: 'Écrin de présentation inclus',
@@ -450,7 +450,7 @@ const PRODUCTS = [
   },
   {
     id: 'VH-010', audience: 'homme', group: 'fragrance', name: 'Bleu — 100 ml', category: 'Parfums',
-    price: null, oldPrice: null, sizes: ['100 ml'], colors: ['Bleu nuit'],
+    price: 74, oldPrice: null, sizes: ['100 ml'], colors: ['Bleu nuit'],
     stockLevel: 'inquiry', image: 'assets/products/men/fragrance-bleu.jpg', gallery: [],
     description: 'Flacon Bleu de Chanel présenté avec son coffret dans une composition bleu nuit très lisible.',
     material: 'Eau de toilette', fit: 'Flacon 100 ml', detail: 'Coffret de présentation inclus',
@@ -458,7 +458,7 @@ const PRODUCTS = [
   },
   {
     id: 'VH-011', audience: 'homme', group: 'fragrance', name: 'Sauvage — 100 ml', category: 'Parfums',
-    price: null, oldPrice: null, sizes: ['100 ml'], colors: ['Noir'],
+    price: 74, oldPrice: null, sizes: ['100 ml'], colors: ['Noir'],
     stockLevel: 'inquiry', image: 'assets/products/men/fragrance-sauvage.jpg', gallery: [],
     description: 'Flacon Sauvage présenté avec son coffret sur une matière sombre, pour une lecture masculine et directe.',
     material: 'Eau de parfum', fit: 'Flacon 100 ml', detail: 'Coffret de présentation inclus',
@@ -467,7 +467,7 @@ const PRODUCTS = [
 
   {
     id: 'VF-001', audience: 'femme', group: 'clothing', name: 'Top ALO yoga — Bleu', category: 'Tops',
-    price: null, oldPrice: null, sizes: ['S', 'M'], colors: ['Bleu royal'],
+    price: 32, oldPrice: null, sizes: ['S', 'M'], colors: ['Bleu royal'],
     stockLevel: 'inquiry', image: 'assets/products/women/top-alo-blue.jpg', gallery: [],
     description: 'Top court à dos nageur et ligne athleisure nette, présenté dans une finition bleu royal intense.',
     material: 'Jersey technique extensible', fit: 'Ajusté', detail: 'Dos nageur · maintien près du corps',
@@ -475,7 +475,7 @@ const PRODUCTS = [
   },
   {
     id: 'VF-002', audience: 'femme', group: 'clothing', name: 'Top ALO yoga — Rouge', category: 'Tops',
-    price: null, oldPrice: null, sizes: ['S', 'M'], colors: ['Rouge profond'],
+    price: 32, oldPrice: null, sizes: ['S', 'M'], colors: ['Rouge profond'],
     stockLevel: 'inquiry', image: 'assets/products/women/top-alo-red.jpg', gallery: [],
     description: 'Top court côtelé à dos nageur, pensé pour une silhouette sportive et structurée.',
     material: 'Maille côtelée extensible', fit: 'Ajusté', detail: 'Finition côtelée · coupe courte',
@@ -483,7 +483,7 @@ const PRODUCTS = [
   },
   {
     id: 'VF-003', audience: 'femme', group: 'clothing', name: 'Top ALO yoga — Vert', category: 'Tops',
-    price: null, oldPrice: null, sizes: ['S', 'M'], colors: ['Vert émeraude'],
+    price: 32, oldPrice: null, sizes: ['S', 'M'], colors: ['Vert émeraude'],
     stockLevel: 'inquiry', image: 'assets/products/women/top-alo-green.jpg', gallery: [],
     description: 'La déclinaison vert émeraude du top côtelé, avec un volume compact et une présence visuelle forte.',
     material: 'Maille côtelée extensible', fit: 'Ajusté', detail: 'Dos nageur · coupe courte',
@@ -491,7 +491,7 @@ const PRODUCTS = [
   },
   {
     id: 'VF-004', audience: 'femme', group: 'accessories', name: 'Dyson Supersonic — Noir & Argent', category: 'Beauté & Électronique',
-    price: null, oldPrice: null, sizes: ['Unique'], colors: ['Noir · Argent'],
+    price: 110, oldPrice: null, sizes: ['Unique'], colors: ['Noir · Argent'],
     stockLevel: 'inquiry', image: 'assets/products/women/hair-supersonic-black.jpg', gallery: [],
     description: 'Sèche-cheveux Supersonic présenté avec son coffret et ses accessoires dans une finition noire sobre.',
     material: 'Finition satinée', fit: 'Format coiffure', detail: 'Diffuseur · concentrateurs · étui',
@@ -499,7 +499,7 @@ const PRODUCTS = [
   },
   {
     id: 'VF-005', audience: 'femme', group: 'accessories', name: 'Dyson Supersonic — Bleu & Cuivre', category: 'Beauté & Électronique',
-    price: null, oldPrice: null, sizes: ['Unique'], colors: ['Bleu nuit · Cuivre'],
+    price: 110, oldPrice: null, sizes: ['Unique'], colors: ['Bleu nuit · Cuivre'],
     stockLevel: 'inquiry', image: 'assets/products/women/hair-supersonic-blue-copper.jpg', gallery: [],
     description: 'Version bleu nuit et cuivre du Supersonic, mise en scène avec son coffret et ses embouts.',
     material: 'Finition satinée', fit: 'Format coiffure', detail: 'Diffuseur · concentrateurs · étui',
@@ -507,7 +507,7 @@ const PRODUCTS = [
   },
   {
     id: 'VF-006', audience: 'femme', group: 'accessories', name: 'Dyson Airwrap Complete Long — Bleu & Cuivré', category: 'Beauté & Électronique',
-    price: null, oldPrice: null, sizes: ['Unique'], colors: ['Bleu · Cuivre'],
+    price: 190, oldPrice: null, sizes: ['Unique'], colors: ['Bleu · Cuivre'],
     stockLevel: 'inquiry', image: 'assets/products/women/hair-airwrap-purple-copper.jpg', gallery: [],
     description: 'Coffret coiffure Airwrap Complete Long avec plusieurs embouts et rangement coordonné.',
     material: 'Finition satinée', fit: 'Coffret multi-styler', detail: 'Embouts coiffage · brosses · étui',
@@ -515,7 +515,7 @@ const PRODUCTS = [
   },
   {
     id: 'VF-007', audience: 'femme', group: 'accessories', name: 'Dyson Airwrap Complete Long — Argent & Cuivré', category: 'Beauté & Électronique',
-    price: null, oldPrice: null, sizes: ['Unique'], colors: ['Argent · Cuivre'],
+    price: 190, oldPrice: null, sizes: ['Unique'], colors: ['Argent · Cuivre'],
     stockLevel: 'inquiry', image: 'assets/products/women/hair-airwrap-silver-copper.jpg', gallery: [],
     description: 'Coffret Airwrap Complete Long argent et cuivre, présenté avec ses accessoires de coiffage.',
     material: 'Finition métallisée', fit: 'Coffret multi-styler', detail: 'Embouts coiffage · brosses · étui',
@@ -523,7 +523,7 @@ const PRODUCTS = [
   },
   {
     id: 'VF-008', audience: 'femme', group: 'accessories', name: 'Dyson Airstrait — Bleu & Or', category: 'Beauté & Électronique',
-    price: null, oldPrice: null, sizes: ['Unique'], colors: ['Bleu nuit · Or'],
+    price: 140, oldPrice: null, sizes: ['Unique'], colors: ['Bleu nuit · Or'],
     stockLevel: 'inquiry', image: 'assets/products/women/hair-airstrait-blue-gold.jpg', gallery: [],
     description: 'Lisseur-sécheur Airstrait présenté dans son étui rigide, finition bleu nuit et détails dorés.',
     material: 'Finition satinée', fit: 'Format lisseur', detail: 'Étui rigide · câble intégré',
@@ -531,7 +531,7 @@ const PRODUCTS = [
   },
   {
     id: 'VF-009', audience: 'femme', group: 'accessories', name: 'Dyson Airstrait — Rose', category: 'Beauté & Électronique',
-    price: null, oldPrice: null, sizes: ['Unique'], colors: ['Rose poudré'],
+    price: 140, oldPrice: null, sizes: ['Unique'], colors: ['Rose poudré'],
     stockLevel: 'inquiry', image: 'assets/products/women/hair-airstrait-rose.jpg', gallery: [],
     description: 'Déclinaison rose poudré du lisseur-sécheur Airstrait, accompagnée de son étui de rangement.',
     material: 'Finition satinée', fit: 'Format lisseur', detail: 'Étui rigide · câble intégré',
@@ -539,7 +539,7 @@ const PRODUCTS = [
   },
   {
     id: 'VF-010', audience: 'femme', group: 'clothing', name: 'Short ALO yoga — Noir', category: 'Shorts',
-    price: null, oldPrice: null, sizes: ['S', 'M', 'L'], colors: ['Noir'],
+    price: 42, oldPrice: null, sizes: ['S', 'M', 'L'], colors: ['Noir'],
     stockLevel: 'inquiry', image: 'assets/products/women/shorts-alo-black.jpg', gallery: [],
     description: 'Short sport léger à taille élastiquée contrastée, conçu pour une silhouette athleisure épurée.',
     material: 'Textile technique léger', fit: 'Coupe running', detail: 'Taille élastiquée · côtés arrondis',
@@ -547,7 +547,7 @@ const PRODUCTS = [
   },
   {
     id: 'VF-011', audience: 'femme', group: 'clothing', name: 'Short ALO yoga — Blanc', category: 'Shorts',
-    price: null, oldPrice: null, sizes: ['S', 'M', 'L'], colors: ['Blanc'],
+    price: 42, oldPrice: null, sizes: ['S', 'M', 'L'], colors: ['Blanc'],
     stockLevel: 'inquiry', image: 'assets/products/women/shorts-alo-white.jpg', gallery: [],
     description: 'Version blanche du short Flow, avec taille noire contrastée et coupe sportive courte.',
     material: 'Textile technique léger', fit: 'Coupe running', detail: 'Taille élastiquée · côtés arrondis',
@@ -555,7 +555,7 @@ const PRODUCTS = [
   },
   {
     id: 'VF-012', audience: 'femme', group: 'clothing', name: 'Ensemble ALO yoga — Noir', category: 'Ensembles',
-    price: null, oldPrice: null, sizes: ['S', 'M', 'L'], colors: ['Noir'],
+    price: 74, oldPrice: null, sizes: ['S', 'M', 'L'], colors: ['Noir'],
     stockLevel: 'inquiry', image: 'assets/products/women/set-alo-black.jpg', gallery: [],
     description: 'Ensemble deux pièces composé d’un t-shirt ajusté et d’un pantalon fluide à jambe large.',
     material: 'Jersey souple', fit: 'Haut ajusté · bas fluide', detail: 'Deux pièces coordonnées',
@@ -563,7 +563,7 @@ const PRODUCTS = [
   },
   {
     id: 'VF-013', audience: 'femme', group: 'shoes', name: 'Hermès Chypre — Noir', category: 'Chaussures / Claquettes',
-    price: null, oldPrice: null, sizes: ['38', '39', '42', '43'], colors: ['Noir'],
+    price: 59, oldPrice: null, sizes: ['38', '39', '42', '43'], colors: ['Noir'],
     stockLevel: 'inquiry', image: 'assets/products/women/sandals-h-black.jpg', gallery: [],
     description: 'Sandales plates noires à large découpe H, présentées dans un environnement marbre et orange.',
     material: 'Finition cuir lisse', fit: 'Forme plate', detail: 'Large bride H · semelle noire',
@@ -571,7 +571,7 @@ const PRODUCTS = [
   },
   {
     id: 'VF-014', audience: 'femme', group: 'clothing', name: 'Ensemble ALO yoga — Kaki', category: 'Ensembles',
-    price: null, oldPrice: null, sizes: ['S', 'M', 'L'], colors: ['Kaki minéral'],
+    price: 74, oldPrice: null, sizes: ['S', 'M', 'L'], colors: ['Kaki minéral'],
     stockLevel: 'inquiry', image: 'assets/products/women/set-alo-khaki.jpg', gallery: [],
     description: 'Ensemble t-shirt ajusté et pantalon fluide dans une tonalité kaki douce et contemporaine.',
     material: 'Jersey souple', fit: 'Haut ajusté · bas fluide', detail: 'Deux pièces coordonnées',
@@ -579,7 +579,7 @@ const PRODUCTS = [
   },
   {
     id: 'VF-015', audience: 'femme', group: 'shoes', name: ' Hermès Claquette — Blanc', category: 'Chaussures / Claquettes',
-    price: null, oldPrice: null, sizes: ['37', '38', '39'], colors: ['Blanc'],
+    price: 54, oldPrice: null, sizes: ['37', '38', '39'], colors: ['Blanc'],
     stockLevel: 'inquiry', image: 'assets/products/women/sandals-h-white.jpg', gallery: [],
     description: 'Sandales plates blanches à découpe H ton sur ton, dans une présentation nette et lumineuse.',
     material: 'Finition cuir lisse', fit: 'Forme plate', detail: 'Large bride H · semelle blanche',
@@ -587,7 +587,7 @@ const PRODUCTS = [
   },
   {
     id: 'VF-016', audience: 'femme', group: 'shoes', name: 'Hermès Claquette New — Blanc', category: 'Chaussures / Claquettes',
-    price: null, oldPrice: null, sizes: ['38', '39'], colors: ['Blanc · Argent'],
+    price: 64, oldPrice: null, sizes: ['38', '39'], colors: ['Blanc · Argent'],
     stockLevel: 'inquiry', image: 'assets/products/women/sandals-lock-white.jpg', gallery: [],
     description: 'Sandales blanches à double bride, soulignées par un fermoir métallique central.',
     material: 'Finition cuir lisse', fit: 'Forme plate', detail: 'Double bride · fermoir métal',
@@ -595,7 +595,7 @@ const PRODUCTS = [
   },
   {
     id: 'VF-017', audience: 'femme', group: 'shoes', name: 'Hermès Chypre — Blanc', category: 'Chaussures / Claquettes',
-    price: null, oldPrice: null, sizes: ['38', '39', '42', '43'], colors: ['Écru · Noir'],
+    price: 59, oldPrice: null, sizes: ['38', '39', '42', '43'], colors: ['Écru · Noir'],
     stockLevel: 'inquiry', image: 'assets/products/women/sandals-h-contrast.jpg', gallery: [],
     description: 'Sandales contrastées avec découpe H écrue, semelle noire et bride de maintien réglable.',
     material: 'Finition cuir lisse', fit: 'Forme plate', detail: ' H Luxe · maintien arrière',
@@ -603,7 +603,7 @@ const PRODUCTS = [
   },
   {
     id: 'VF-018', audience: 'femme', group: 'clothing', name: 'Ensemble ALO yoga — Marine', category: 'Ensembles',
-    price: null, oldPrice: null, sizes: ['S', 'M', 'L'], colors: ['Bleu marine'],
+    price: 74, oldPrice: null, sizes: ['S', 'M', 'L'], colors: ['Bleu marine'],
     stockLevel: 'inquiry', image: 'assets/products/women/set-alo-navy.jpg', gallery: [],
     description: 'Ensemble coordonné bleu marine associant un haut ajusté et un pantalon fluide à jambe large.',
     material: 'Jersey souple', fit: 'Haut ajusté · bas fluide', detail: 'Deux pièces coordonnées',
@@ -611,7 +611,7 @@ const PRODUCTS = [
   },
   {
     id: 'VF-019', audience: 'femme', group: 'shoes', name: 'Hermès Claquette — Brun', category: 'Chaussures / Claquettes',
-    price: null, oldPrice: null, sizes: ['38', '39'], colors: ['Brun cognac'],
+    price: 54, oldPrice: null, sizes: ['38', '39'], colors: ['Brun cognac'],
     stockLevel: 'inquiry', image: 'assets/products/women/sandals-h-brown.jpg', gallery: [],
     description: 'Sandales à découpe H dans une teinte brun cognac, rehaussées de surpiqûres claires.',
     material: 'Finition cuir lisse', fit: 'Forme plate', detail: 'Bride H · surpiqûres contrastées',
@@ -619,7 +619,7 @@ const PRODUCTS = [
   },
   {
     id: 'VF-020', audience: 'femme', group: 'shoes', name: 'Hermès Claquette New — Brun', category: 'Chaussures / Claquettes',
-    price: null, oldPrice: null, sizes: ['38', '39'], colors: ['Cognac · Or'],
+    price: 64, oldPrice: null, sizes: ['38', '39'], colors: ['Cognac · Or'],
     stockLevel: 'inquiry', image: 'assets/products/women/sandals-lock-cognac.jpg', gallery: [],
     description: 'Sandales cognac à double bride avec fermoir doré central et finitions ton sur ton.',
     material: 'Finition cuir lisse', fit: 'Forme plate', detail: 'Double bride · fermoir doré',
@@ -627,7 +627,7 @@ const PRODUCTS = [
   },
   {
     id: 'VF-021', audience: 'femme', group: 'clothing', name: 'Short ALO yoga — Marine', category: 'Shorts',
-    price: null, oldPrice: null, sizes: ['S', 'M'], colors: ['Bleu marine'],
+    price: 42, oldPrice: null, sizes: ['S', 'M'], colors: ['Bleu marine'],
     stockLevel: 'inquiry', image: 'assets/products/women/shorts-alo-navy.jpg', gallery: [],
     description: 'Short Flow bleu marine à taille contrastée, léger et pensé pour un usage sport ou quotidien.',
     material: 'Textile technique léger', fit: 'Coupe running', detail: 'Taille élastiquée · côtés arrondis',
@@ -635,7 +635,7 @@ const PRODUCTS = [
   },
   {
     id: 'VF-022', audience: 'femme', group: 'shoes', name: 'Hermès Claquette — Noir Grainé', category: 'Chaussures / Claquettes',
-    price: null, oldPrice: null, sizes: ['37', '38', '39'], colors: ['Noir'],
+    price: 54, oldPrice: null, sizes: ['37', '38', '39'], colors: ['Noir'],
     stockLevel: 'inquiry', image: 'assets/products/women/sandals-h-black-marble.jpg', gallery: [],
     description: 'Sandales noires à découpe H et finition légèrement grainée, photographiées sur un fond marbré.',
     material: 'Finition grainée', fit: 'Forme plate', detail: 'Large bride H · semelle noire',
@@ -643,7 +643,7 @@ const PRODUCTS = [
   },
   {
     id: 'VF-023', audience: 'femme', group: 'shoes', name: 'Hermès Claquette New — Noir', category: 'Chaussures / Claquettes',
-    price: null, oldPrice: null, sizes: ['38', '39'], colors: ['Noir · Or'],
+    price: 64, oldPrice: null, sizes: ['38', '39'], colors: ['Noir · Or'],
     stockLevel: 'inquiry', image: 'assets/products/women/sandals-lock-black.jpg', gallery: [],
     description: 'Sandales noires à double bride et fermoir doré, dans une composition élégante et contrastée.',
     material: 'Finition cuir lisse', fit: 'Forme plate', detail: 'Double bride · fermoir doré',
@@ -729,7 +729,7 @@ const PACK_CONFIG = {
   threeItemsDiscountPercent: 14,
   minItems: 2,
   maxItems: 3,
-  currency: '€',
+  currency: ' V',
 };
 
 const packState = {
@@ -1308,7 +1308,7 @@ function renderPackCard(pack) {
         <div class="pack-items">${pack.itemLabels.map(item => `<div class="pack-item"><span class="pack-item-dot"></span><span>${escHtml(item)}</span></div>`).join('')}</div>
         <div class="pack-pricing"><span class="pack-price ${hasKnownPrice(pack) ? '' : 'price-on-request'}">${formatPrice(pack)}</span>${oldPrice}${savingBadge}</div>
         <div class="vision-referral-pack-note">
-          <p>Pack éligible Vision Club : filleul -10 €, parrain +15 € crédit.</p>
+          <p>Pack éligible Vision Club : filleul -10 V, parrain +15 V crédit.</p>
           <button class="vision-referral-inline-btn" type="button" data-referral-open="filleul" data-referral-offer="pack">Activer l’offre Pack Outfit</button>
         </div>
         <button class="pack-cta" type="button" data-pack-action="open" data-pack-id="${escHtml(pack.id)}">Voir &amp; réserver le pack</button>
@@ -1935,12 +1935,12 @@ function renderModalContent(item, type) {
   const referralInline = isPack
     ? `<div class="vision-referral-inline">
         <strong>Pack éligible Vision Club</strong>
-        <p>Filleul -10 €, parrain +15 € crédit après validation Snapchat.</p>
+        <p>Filleul -10 V, parrain +15 V crédit après validation Snapchat.</p>
         <button class="vision-referral-inline-btn" type="button" data-referral-open="filleul" data-referral-offer="pack">Activer l’offre Pack Outfit</button>
       </div>`
     : `<div class="vision-referral-inline">
         <strong>Parrainage Vision</strong>
-        <p>Ton ami gagne -5 €, ton parrain reçoit +10 € crédit.</p>
+        <p>Ton ami gagne -5 V, ton parrain reçoit +10 V crédit.</p>
         <button class="vision-referral-inline-btn" type="button" data-referral-open="filleul" data-referral-offer="article">Utiliser / créer un parrainage</button>
       </div>`;
 
@@ -2258,14 +2258,14 @@ document.addEventListener('DOMContentLoaded', init);
   const OFFERS = {
     article: {
       label: 'Article au choix',
-      filleulDiscount: '-5€',
-      parrainCredit: '+10€ crédit Vision',
+      filleulDiscount: '-5 V',
+      parrainCredit: '+10 V crédit Vision',
       description: 'Valable dès la première commande Vision validée.',
     },
     pack: {
       label: 'Pack Outfit',
-      filleulDiscount: '-10€',
-      parrainCredit: '+15€ crédit Vision',
+      filleulDiscount: '-10 V',
+      parrainCredit: '+15 V crédit Vision',
       description: 'Le meilleur deal pour les looks complets.',
     },
   };
